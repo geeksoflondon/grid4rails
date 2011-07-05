@@ -20,10 +20,11 @@ Slot
 A Slot contains a Talk. A slot is contained in a Timeslot and optionally a Room.
 
 Properties:
-  * room (Room)
-  * timeslot (Timeslot)
-  * booked? (bool)
-  * talk (Talk?)
+
+* room (Room)
+* timeslot (Timeslot)
+* booked? (bool)
+* talk (Talk?)
 
 Room
 ----
