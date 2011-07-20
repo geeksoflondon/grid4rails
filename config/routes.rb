@@ -1,4 +1,6 @@
 Griddy::Application.routes.draw do
+  resources :users
+
   resources :timeslots
 
   resources :rooms
