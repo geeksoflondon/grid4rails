@@ -49,6 +49,9 @@ A Timeslot is a set period of time when a session takes place. Slots are
 created by taking the set of all timeslots and the set of all rooms and
 combining each one in turn.
 
+You cannot have duplicate timeslots at the same time. That is, if the pair
+(start-time, end-time) already exists in the database it should raise an error.
+
 User
 ----
 
