@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  description: MyString
+chx:
+  name: Charing Cross
+  description: The big room upstairs.
+  short_code: chx
 
 two:
-  name: MyString
-  description: MyString
+  name: London Bridge
+  description: The horrible skanky room that smells of piss.
+  short_code: lbg
