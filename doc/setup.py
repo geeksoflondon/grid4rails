@@ -30,8 +30,8 @@ def main():
     if os.uname()[0] is "Darwin":
         mac()
     if os.uname()[0] is "Windows":
-        print("Windows is not currently supported.")
-        print("Have you accepted Linus Torvalds as your personal Lord and Saviour yet?")
+        print "Windows is not currently supported."
+        print "Have you accepted Linus Torvalds as your personal Lord and Saviour yet?"
 
 def apt(package):
     system("sudo aptitude install ", package)
@@ -52,11 +52,11 @@ def mac_check_install_homebrew():
     if sytem("brew -v") == 0:
         print "Yup, you've got Homebrew installed"
     else:
-        print "You haven't got Homebrew installed. We'll just install that.")
+        print "You haven't got Homebrew installed. We'll just install that."
         system("ruby -e \"$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)\"")
-        print "...Phew. That was a lot of work!")
-        print "You should now have Homebrew. Follow the instuctions above,")
-        print "then rerun this setup script. ;-)")
+        print "...Phew. That was a lot of work!"
+        print "You should now have Homebrew. Follow the instuctions above,"
+        print "then rerun this setup script. ;-)"
 
 if __name__ == "main":
     main()
