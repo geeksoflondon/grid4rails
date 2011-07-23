@@ -1,16 +1,97 @@
 <% tomorrow = (Date.today + 1).to_s %>
 
 one:
-  name: "1"
+  name: "Session 1"
   start: <%= tomorrow %> 10:30:00
   end: <%= tomorrow %> 11:00:00
 
 two:
-  name: "2"
+  name: "Session 2"
   start: <%= tomorrow %> 11:00:00
   end: <%= tomorrow %> 11:30:00
 
 three:
-  name: "3"
+  name: "Session 3"
   start: <%= tomorrow %> 11:30:00
   end: <%= tomorrow %> 12:00:00
+
+four:
+  name: "Session 4"
+  start: <%= tomorrow %> 12:00:00
+  end: <%= tomorrow %> 12:30:00
+
+five:
+  name: "Session 5"
+  start: <%= tomorrow %> 12:30:00
+  end: <%= tomorrow %> 13:00:00
+
+lunchtime:
+  name: "Lunch"
+  start: <%= tomorrow %> 13:00:00
+  end: <%= tomorrow %> 14:00:00
+  assign_slots: false
+
+six:
+  name: "Session 6"
+  start: <%= tomorrow %> 14:00:00
+  end: <%= tomorrow %> 14:30:00
+
+seven:
+  name: "Session 7"
+  start: <%= tomorrow %> 14:30:00
+  end: <%= tomorrow %> 15:00:00
+
+eight:
+  name: "Session 8"
+  start: <%= tomorrow %> 15:00:00
+  end: <%= tomorrow %> 15:30:00
+
+breaktime:
+  name: "Break"
+  start: <%= tomorrow %> 15:30:00
+  end: <%= tomorrow %> 16:00:00
+  assign_slots: false
+
+nine:
+  name: "Session 9"
+  start: <%= tomorrow %> 16:00:00
+  end: <%= tomorrow %> 16:30:00
+
+ten:
+  name: "Session 10"
+  start: <%= tomorrow %> 16:30:00
+  end: <%= tomorrow %> 17:00:00
+
+eleven:
+  name: "Session 11"
+  start: <%= tomorrow %> 17:00:00
+  end: <%= tomorrow %> 17:30:00
+
+twelve:
+  name: "Session 12"
+  start: <%= tomorrow %> 17:30:00
+  end: <%= tomorrow %> 18:00:00
+
+thirteen:
+  name: "Session 13"
+  start: <%= tomorrow %> 18:00:00
+  end: <%= tomorrow %> 18:30:00
+
+fourteen:
+  name: "Session 14"
+  start: <%= tomorrow %> 18:30:00
+  end: <%= tomorrow %> 19:00:00
+
+dinner:
+  name: "Dinner"
+  start: <%= tomorrow %> 19:00:00
+  end: <%= tomorrow %> 20:30:00
+  assign_slots: false
+  description: "Dinner in the atrium."
+
+werewolf:
+  name: "Werewolf"
+  start: <%= tomorrow %> 21:00:00
+  end: <%= tomorrow %> 23:59:59
+  assign_slots: false
+  description: "Secret clue for future BarCamp attendees: @cbetta is the werewolf."
