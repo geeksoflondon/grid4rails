@@ -15,15 +15,17 @@ class Slot < ActiveRecord::Base
     rooms = Room.find(:all)
     slots = Slot.find(:all)
 
-    timeslots.each do |ts|
-      rooms.each do |rm|
-        filtered_selection = slots.select {|sl| sl.room_id == rm.id && sl.timeslot_id == ts.id }
-        if filtered_selection.size == 0
-          new_slot = Slot.new(:room_id => rm.id, :timeslot_id => ts.id)
-          new_slot.save
-        end
+    timeslots.each {|ts|
+      if ts.assign_slots? == true
+        rooms.each {|rm|
+          filtered_selection = slots.select {|sl| sl.room_id == rm.id && sl.timeslot_id == ts.id }
+          if filtered_selection.size == 0
+            new_slot = Slot.new(:room_id => rm.id, :timeslot_id => ts.id)
+            new_slot.save
+          end
+        }
       end
-    end
+    }
   end
 
   def slots_by_room
