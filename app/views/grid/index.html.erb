@@ -1,0 +1,18 @@
+<!--The Grid-->
+<table>
+		<th>&nbsp;</th>
+	<% @timeslots.each do |timeslot| %>
+		<th><%= timeslot['name'] %></th>
+	<% end %>
+	<% @rooms.each do |room| %>
+		<tr>
+			<td><%= room['name'] %></td>
+			<% room.slots.each do |slot| %>
+				<td>
+					<%= slot.talk.name unless slot.talk.nil? %>
+					<%= "Empty" if slot.talk.nil? %>
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>

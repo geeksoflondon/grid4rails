@@ -9,6 +9,8 @@ Griddy::Application.routes.draw do
 
   resources :slots
 
+  resources :grid
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

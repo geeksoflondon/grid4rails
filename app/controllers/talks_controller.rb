@@ -35,6 +35,7 @@ class TalksController < ApplicationController
   # GET /talks/1/edit
   def edit
     @talk = Talk.find(params[:id])
+    @timeslots = Timeslots.all
   end
 
   # POST /talks
