@@ -1,4 +1,6 @@
 Griddy::Application.routes.draw do
+  resources :talks
+
   resources :users
 
   resources :timeslots

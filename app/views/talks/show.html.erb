@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @talk.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @talk.description %>
+</p>
+
+<p>
+  <b>Slot:</b>
+  <%= @talk.slot_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_talk_path(@talk) %> |
+<%= link_to 'Back', talks_path %>
