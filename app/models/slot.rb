@@ -3,6 +3,8 @@ class Slot < ActiveRecord::Base
   belongs_to :timeslot, :class_name => "Timeslot", :foreign_key => "timeslot_id"
   has_one :talk, :class_name => "Talk", :foreign_key => "talk_id"
 
+  validates_presence_of :room_id, :timeslot_id
+
   def self.generate!
     # I would like to point out for posterity that the code below
     # is slow and... I don't care. The value of (rooms.count *
