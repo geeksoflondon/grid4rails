@@ -1,0 +1,32 @@
+<h1>Listing slots</h1>
+
+<table>
+  <tr>
+    <th>Session</th>
+    <th>Room</th>
+    <th>Talk</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @slots.each do |slot| %>
+  <tr>
+    <td><%= slot.timeslot['name'] %></td>
+    <td><%= slot.room['name'] %></td>
+    <td><%= unless slot.talk.nil? 
+				slot.talk['title']
+			else
+				"No Talk Yet"
+			end
+		%></td>
+    <td><%= link_to 'Show', slot %></td>
+    <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
+    <td><%= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Room', new_room_path %>

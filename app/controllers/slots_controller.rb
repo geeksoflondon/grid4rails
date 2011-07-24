@@ -1,5 +1,7 @@
 class SlotsController < ApplicationController
   def index
+    @slots = Slot.all
+    
     respond_to do |format|
       format.html
     end
