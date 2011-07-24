@@ -1,11 +1,9 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 chx:
   name: Charing Cross
   description: The big room upstairs.
   short_code: chx
 
-two:
+lbg:
   name: London Bridge
   description: The horrible skanky room that smells of piss.
   short_code: lbg
