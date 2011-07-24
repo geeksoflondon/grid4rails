@@ -1,11 +1,10 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+<% ["chx", "lbg"].each do |r| %>
+<% ["one", "two", "three", "four", "five", "six",
+    "seven", "eight", "nine", "ten", "eleven",
+    "twelve", "thirteen", "fourteen"].each do |t| %>
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+<%= r %><%= t %>:
+  room: <%= r %>
+  timeslot: <%= t %>
+
+<% end; end %>
