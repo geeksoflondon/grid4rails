@@ -1,9 +1,12 @@
 <!--The Grid-->
 <table>
+	<thead>
 		<th>&nbsp;</th>
 	<% @timeslots.each do |timeslot| %>
 		<th><%= timeslot['name'] %></th>
 	<% end %>
+	</thead>
+	<tbody>
 	<% @rooms.each do |room| %>
 		<tr>
 			<td><%= room['name'] %></td>
@@ -15,4 +18,5 @@
 			<% end %>
 		</tr>
 	<% end %>
+	</tbody>
 </table>
