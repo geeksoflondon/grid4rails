@@ -2,7 +2,7 @@ class TimeslotsController < ApplicationController
   # GET /timeslots
   # GET /timeslots.xml
   def index
-    @timeslots = Timeslot.all
+    @timeslots = Timeslot.order('start').all
 
     respond_to do |format|
       format.html # index.html.erb
