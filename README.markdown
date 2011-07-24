@@ -9,5 +9,3 @@ Proposed licenses:
 - Affero GPL v3
 - GPL v3
 - BSD/MIT License
-
-Experimenting with git.
