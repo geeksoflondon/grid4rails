@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Griddy</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+	<title>Griddy</title>
+	<%= stylesheet_link_tag :all %>
+	<%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+	<body>
+		<%= render 'shared/header' %>
+		<div id="content">
+			<%= yield %>
+		</div>
+		<%= render 'shared/footer' %>
+	</body>
 </html>
