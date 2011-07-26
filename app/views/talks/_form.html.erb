@@ -1,29 +1,37 @@
 <%= form_for(@talk) do |f| %>
-  <% if @talk.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
+ 	
+	<% if @talk.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
+			<ul>
+				<% @talk.errors.full_messages.each do |msg| %>
+	        		<li><%= msg %></li>
+	      		<% end %>
+	      	</ul>
+	    </div>
+	<% end %>
 
-      <ul>
-      <% @talk.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :slot_id %><br />
-    <%= f.text_field :slot_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="field">
+		<%= f.label :title %><br />
+		<%= f.text_field :title %>
+	</div>
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_field :description %>
+	</div>
+	<!--
+	<div class="field">
+		<%# f.label :speaker %><br />
+		<%# f.text_field :speaker %>
+	</div>
+	-->	
+	<!-- div class="field">
+		<%# f.label :slot_id %><br />
+		<%# f.text_field :slot_id %>
+	</div -->
+	<fieldset class="actions">		
+		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
+		<span class="submit"><%= f.submit %></span>		
+	</fieldset>
+	
 <% end %>
