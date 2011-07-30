@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  username: MyString
-  name: MyString
-  website: MyString
+  username: JohnDoe
+  name: John Doe
+  website: www.bbc.co.uk
 
 two:
-  username: MyString
-  name: MyString
-  website: MyString
+  username: JaneDoe
+  name: Jane Doe
+  website: www.cnn.com

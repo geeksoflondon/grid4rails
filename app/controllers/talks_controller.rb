@@ -32,7 +32,7 @@ class TalksController < ApplicationController
 
   def edit
     @talk = Talk.find(params[:id])
-    @timeslots = Timeslots.all
+    @timeslots = Timeslot.all
   end
 
   def create

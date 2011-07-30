@@ -17,8 +17,11 @@ class RoomsControllerTest < ActionController::TestCase
   end
 
   test "should create room" do
+    @new_room = rooms(:chx)
+    @new_room['short_code'] = 'CHX1'
+
     assert_difference('Room.count') do
-      post :create, :room => @room.attributes
+      post :create, :room => @new_room.attributes
     end
 
     assert_redirected_to room_path(assigns(:room))
