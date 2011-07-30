@@ -9,7 +9,7 @@ Griddy::Application.routes.draw do
 
   resources :rooms
 
-  resources :slots
+  resources :slots, :only => [:index]
 
   resources :grid
 
