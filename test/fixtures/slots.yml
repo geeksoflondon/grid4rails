@@ -1,7 +1,7 @@
 <% ["chx", "lbg"].each do |r| %>
-<% ["one", "two", "three", "four", "five", "six",
-    "seven", "eight", "nine", "ten", "eleven",
-    "twelve", "thirteen", "fourteen"].each do |t| %>
+<% ["one", "two", "three", "four", "five", "lunch", "six",
+    "seven", "eight", "break", "nine", "ten", "eleven",
+    "twelve", "thirteen", "fourteen", "dinner", "werewolf"].each do |t| %>
 
 <%= r %><%= t %>:
   room: <%= r %>
