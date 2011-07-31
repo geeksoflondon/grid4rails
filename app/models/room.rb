@@ -8,4 +8,8 @@ class Room < ActiveRecord::Base
   def slots
     Slot.find_all_by_room_id(id)
   end
+  
+  def slots_mixed_with_nonassignables
+    (slots + Timeslot.non_assignables).sort_by(:&start)
+  end
 end
