@@ -4,6 +4,14 @@ class Slot < ActiveRecord::Base
   has_one :talk
 
   validates_presence_of :timeslot_id
+  
+  def start
+    timeslot.start
+  end
+  
+  def end
+    timeslot.end
+  end
 
   def self.generate!
     # I would like to point out for posterity that the code below
@@ -37,5 +45,5 @@ class Slot < ActiveRecord::Base
   def slots_without_rooms
     Slot.find(:all).select {|i| i.room == nil }
   end
-
+  
 end
