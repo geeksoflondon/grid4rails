@@ -39,7 +39,7 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.save
-        format.html { redirect_to('/slot/', :notice => 'Talk was successfully created.') }
+        format.html { redirect_to(@talk, :notice => 'Talk was successfully created.') }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
         format.json  { render :json => @talk, :status => :created, :location => @talk }
       else
