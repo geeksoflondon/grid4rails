@@ -1,97 +1,164 @@
-<% tomorrow = (Date.today + 1).to_s %>
+<%
+  today = (Date.today).to_s
+  tomorrow = (Date.today + 1).to_s
+%>
 
 one:
   name: "Session 1"
-  start: <%= tomorrow %> 10:30:00
-  end: <%= tomorrow %> 11:00:00
+  start: <%= today %> 11:00:00
+  end: <%= today %> 11:20:00
 
 two:
   name: "Session 2"
-  start: <%= tomorrow %> 11:00:00
-  end: <%= tomorrow %> 11:30:00
+  start: <%= today %> 11:30:00
+  end: <%= today %> 11:50:00
 
 three:
   name: "Session 3"
-  start: <%= tomorrow %> 11:30:00
-  end: <%= tomorrow %> 12:00:00
+  start: <%= today %> 12:00:00
+  end: <%= today %> 12:20:00
 
 four:
   name: "Session 4"
-  start: <%= tomorrow %> 12:00:00
-  end: <%= tomorrow %> 12:30:00
+  start: <%= today %> 12:50:00
+  end: <%= today %> 13:10:00
+
+lunchtime_1:
+  name: "Lunch"
+  start: <%= today %> 13:10:00
+  end: <%= today %> 14:00:00
+  assign_slots: false
 
 five:
   name: "Session 5"
-  start: <%= tomorrow %> 12:30:00
-  end: <%= tomorrow %> 13:00:00
-
-lunchtime:
-  name: "Lunch"
-  start: <%= tomorrow %> 13:00:00
-  end: <%= tomorrow %> 14:00:00
-  assign_slots: false
+  start: <%= today %> 14:00:00
+  end: <%= today %> 14:20:00
 
 six:
   name: "Session 6"
-  start: <%= tomorrow %> 14:00:00
-  end: <%= tomorrow %> 14:30:00
+  start: <%= today %> 14:30:00
+  end: <%= today %> 14:50:00
+
+breaktime_1:
+  name: "Break"
+  start: <%= today %> 14:50:00
+  end: <%= today %> 15:20:00
+  assign_slots: false
 
 seven:
   name: "Session 7"
-  start: <%= tomorrow %> 14:30:00
-  end: <%= tomorrow %> 15:00:00
+  start: <%= today %> 15:50:00
+  end: <%= today %> 16:10:00
 
 eight:
   name: "Session 8"
-  start: <%= tomorrow %> 15:00:00
-  end: <%= tomorrow %> 15:30:00
-
-breaktime:
-  name: "Break"
-  start: <%= tomorrow %> 15:30:00
-  end: <%= tomorrow %> 16:00:00
-  assign_slots: false
+  start: <%= today %> 16:20:00
+  end: <%= today %> 16:40:00
 
 nine:
   name: "Session 9"
-  start: <%= tomorrow %> 16:00:00
-  end: <%= tomorrow %> 16:30:00
+  start: <%= today %> 16:50:00
+  end: <%= today %> 17:10:00
 
 ten:
   name: "Session 10"
-  start: <%= tomorrow %> 16:30:00
-  end: <%= tomorrow %> 17:00:00
+  start: <%= today %> 17:20:00
+  end: <%= today %> 17:40:00
 
 eleven:
   name: "Session 11"
-  start: <%= tomorrow %> 17:00:00
-  end: <%= tomorrow %> 17:30:00
+  start: <%= today %> 17:50:00
+  end: <%= today %> 18:10:00
 
 twelve:
   name: "Session 12"
-  start: <%= tomorrow %> 17:30:00
-  end: <%= tomorrow %> 18:00:00
-
-thirteen:
-  name: "Session 13"
-  start: <%= tomorrow %> 18:00:00
-  end: <%= tomorrow %> 18:30:00
-
-fourteen:
-  name: "Session 14"
-  start: <%= tomorrow %> 18:30:00
-  end: <%= tomorrow %> 19:00:00
+  start: <%= today %> 18:20:00
+  end: <%= today %> 18:40:00
 
 dinner:
   name: "Dinner"
-  start: <%= tomorrow %> 19:00:00
-  end: <%= tomorrow %> 20:30:00
+  start: <%= today %> 18:30:00
+  end: <%= today %> 20:00:00
   assign_slots: false
   description: "Dinner in the atrium."
 
+thirteen:
+  name: "Session 13"
+  start: <%= today %> 20:00:00
+  end: <%= today %> 20:30:00
+  
+fourteen:
+  name: "Session 14"
+  start: <%= today %> 20:30:00
+  end: <%= today %> 21:00:00
+
 werewolf:
-  name: "Werewolf"
-  start: <%= tomorrow %> 21:00:00
-  end: <%= tomorrow %> 23:59:59
+  name: "Party & Games"
+  start: <%= today %> 21:00:00
+  end: <%= today %> 23:59:59
   assign_slots: false
   description: "Secret clue for future BarCamp attendees: @cbetta is the werewolf."
+
+breakfast:
+  name: "Breakfast"
+  start: <%= tomorrow %> 08:30:00
+  end: <%= tomorrow %> 09:30:00
+
+fifteen:
+  name: "Session 15"
+  start: <%= tomorrow %> 10:00:00
+  end: <%= tomorrow %> 10:30:00
+
+sixteen:
+  name: "Session 16"
+  start: <%= tomorrow %> 11:00:00
+  end: <%= tomorrow %> 11:30:00
+
+seventeen:
+  name: "Session 17"
+  start: <%= tomorrow %> 11:30:00
+  end: <%= tomorrow %> 12:00:00
+
+
+eighteen:
+  name: "Session 18"
+  start: <%= tomorrow %> 12:00:00
+  end: <%= tomorrow %> 12:30:00
+
+lunchtime_2:
+  name: "Lunch"
+  start: <%= tomorrow %> 12:30:00
+  end: <%= tomorrow %> 13:30:00
+  assign_slots: false
+
+nineteen:
+  name: "Session 19"
+  start: <%= tomorrow %> 13:30:00
+  end: <%= tomorrow %> 14:00:00
+
+twenty:
+  name: "Session 20"
+  start: <%= tomorrow %> 14:30:00
+  end: <%= tomorrow %> 15:00:00
+
+breaktime_2:
+  name: "Break"
+  start: <%= tomorrow %> 15:00:00
+  end: <%= tomorrow %> 15:30:00
+  assign_slots: false
+
+twentyone:
+  name: "Session 21"
+  start: <%= tomorrow %> 15:30:00
+  end: <%= tomorrow %> 16:00:00
+
+twentytwo:
+  name: "Session 22"
+  start: <%= tomorrow %> 16:00:00
+  end: <%= tomorrow %> 16:30:00
+
+twentythree:
+  name: "Closing"
+  start: <%= tomorrow %> 16:30:00
+  end: <%= tomorrow %> 17:30:00
+  assign_slots: false

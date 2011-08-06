@@ -7,3 +7,33 @@ lbg:
   name: London Bridge
   description: The horrible skanky room that smells of piss.
   short_code: lbg
+
+pad:
+  name: Paddington
+  description: A room.
+  short_code: pad
+
+kgx:
+  name: Kings Cross
+  description: Has a roof
+  short_code: kgx
+
+mar:
+  name: Marylebone
+  description: Has a roof
+  short_code: mar
+
+eus:
+  name: Euston
+  description: old station from the 80s
+  short_code: eus
+
+vic:
+  name: Victoria
+  description: southbank mess
+  short_code: vic
+
+wat:
+  name: Waterloo
+  description: the wet station
+  short_code: wat
