@@ -1,3 +1,3 @@
 class Talk < ActiveRecord::Base
-  has_one :slot
+  belongs_to :slot
 end
