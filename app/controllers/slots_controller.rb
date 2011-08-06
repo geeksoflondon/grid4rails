@@ -12,6 +12,10 @@ class SlotsController < ApplicationController
     end
   end
 
+  def allocate
+    @slots = Slot.slots_which_are_empty()
+  end
+
   def regenerate
     Slot.generate!
 

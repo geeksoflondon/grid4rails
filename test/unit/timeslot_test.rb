@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TimeslotTest < ActiveSupport::TestCase
   test "load fixtures from file" do
-    assert timeslots(:one).name == "1"
+    assert timeslots(:one).name == "Session 1"
     assert timeslots(:one).start < timeslots(:one).end
     assert timeslots(:one) != timeslots(:two)
     assert timeslots(:one).class == timeslots(:two).class

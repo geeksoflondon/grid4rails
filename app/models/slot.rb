@@ -4,11 +4,11 @@ class Slot < ActiveRecord::Base
   has_one :talk
 
   validates_presence_of :timeslot_id
-  
+
   def start
     timeslot.start
   end
-  
+
   def end
     timeslot.end
   end
@@ -45,5 +45,9 @@ class Slot < ActiveRecord::Base
   def slots_without_rooms
     Slot.find(:all).select {|i| i.room == nil }
   end
-  
+
+  def slots_which_are_empty
+    Slot.find_all_by_talk_id(nil)
+  end
+
 end

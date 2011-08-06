@@ -12,7 +12,7 @@
 			<td><%= room['name'] %></td>
 			<% room.slots.each do |slot| %>
 				<td>
-					<%= slot.talk.name unless slot.talk.nil? %>
+					<%= slot.talk.title unless slot.talk.nil? %>
 					<%= "Empty" if slot.talk.nil? %>
 				</td>
 			<% end %>
