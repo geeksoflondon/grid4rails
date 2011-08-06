@@ -5,7 +5,7 @@ class RoomTest < ActiveSupport::TestCase
     rm1 = Room.new do |r|
       r.name        = "Paddington"
       r.description = "The big room upstairs."
-      r.short_code  = "pad"
+      r.short_code  = "pai"
     end
 
     rm1.save
@@ -14,13 +14,13 @@ class RoomTest < ActiveSupport::TestCase
     rm2 = Room.new do |r|
       r.name        = "Paddington Bear"
       r.description = "A completely different room."
-      r.short_code  = "pad"
+      r.short_code  = "pai"
     end
-    
+
     rm2.save
     assert rm2.errors.include?(:short_code)
   end
-  
+
   test "short codes must be of the right format" do
     rm = Room.new(:name => "Charing Cross", :short_code => "Charing Cross")
     rm.save
