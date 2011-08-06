@@ -14,28 +14,26 @@ class Slot < ActiveRecord::Base
   end
 
   def self.generate!
-    # I would like to point out for posterity that the code below
-    # is slow and... I don't care. The value of (rooms.count *
-    # slots.count) shouldn't ever be more than a couple of hundred
-    # so... who cares about performance? I don't.
-    #
-    # Screw premature optimization.
+    # KP/Leeky - We are refactoring this sorry Tom
 
-    timeslots = Timeslot.find(:all)
-    rooms = Room.find(:all)
-    slots = Slot.find(:all)
+    timeslots = Timeslot.order(:start).all
+    rooms = Room.all
 
-    timeslots.each {|ts|
-      if ts.assign_slots? == true
-        rooms.each {|rm|
-          filtered_selection = slots.select {|sl| sl.room_id == rm.id && sl.timeslot_id == ts.id }
-          if filtered_selection.size == 0
-            new_slot = Slot.new(:room_id => rm.id, :timeslot_id => ts.id)
-            new_slot.save
-          end
-        }
+    Slot.delete_all
+
+    timeslots.each do |timeslot|
+      rooms.each do |room|
+        new_slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
+
+        unless timeslot.assign_slots?
+          new_talk = Talk.create(:slot_id => new_slot.id, :title => timeslot.name, :locked => true)
+          logger.info new_slot.talk.inspect
+        end
+
+        new_slot.save
       end
-    }
+    end
+
   end
 
   def slots_by_room
