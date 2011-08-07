@@ -3,13 +3,13 @@
 	<thead>
 		<th>&nbsp;</th>
 	<% @timeslots.each do |timeslot| %>
-		<th><%= timeslot['name'] %></th>
+		<th><%= timeslot.name %></th>
 	<% end %>
 	</thead>
 	<tbody>
 	<% @rooms.each do |room| %>
 		<tr>
-			<td><%= room['name'] %></td>
+			<td><%= room.name %></td>
 			<% room.slots.each do |slot| %>
 				<td>
 					<%= slot.talk.title unless slot.talk.nil? %>
