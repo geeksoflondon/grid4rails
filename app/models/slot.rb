@@ -36,16 +36,8 @@ class Slot < ActiveRecord::Base
 
   end
 
-  def slots_by_room
-    Slot.find(:all).select {|i| i.room != nil }.group_by {|i| i.room }
-  end
-
-  def slots_without_rooms
-    Slot.find(:all).select {|i| i.room == nil }
-  end
-
   def slots_which_are_empty
-    Slot.find_all_by_talk_id(nil)
+    Slot.joins("left join talks on (slots.id = talks.slot_id)").where("talks.slot_id is null")
   end
 
 end
