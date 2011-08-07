@@ -40,4 +40,16 @@ class Slot < ActiveRecord::Base
     Slot.joins("left join talks on (slots.id = talks.slot_id)").where("talks.slot_id is null")
   end
 
+  def slots_by_timeslot(timeslot)
+    Slot.joins(:timeslot).where('timeslots.start = ?', timeslot)
+  end
+
+  def self.now
+    Timeslot.now.slots
+  end
+
+  def self.next
+    Timeslot.next.slots
+  end
+
 end
