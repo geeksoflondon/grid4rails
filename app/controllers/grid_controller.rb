@@ -1,7 +1,7 @@
 class GridController < ApplicationController
 
   def index
-    @timeslots = Timeslot.order('start').all
+    @timeslots = Timeslot.all
     @rooms = Room.all
   end
 
