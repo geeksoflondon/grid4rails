@@ -12,3 +12,7 @@ gem "rake", ">= 0.8.7"
 group :development do 
   gem 'heroku'
 end
+
+group :test do 
+  gem 'timecop'
+end
