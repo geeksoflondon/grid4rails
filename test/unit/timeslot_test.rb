@@ -27,4 +27,18 @@ class TimeslotTest < ActiveSupport::TestCase
     assert ts2.save == false
     assert !(ts2.errors.empty?)
   end
+  
+  test "can get the current timeslot and the next timeslot" do
+    ts1 = Timeslot.all.first
+    ts2 = Timeslot.all.second
+    
+    Timecop.travel(ts1.start)
+    
+    assert Timeslot.now == ts1
+    assert Timeslot.next == ts2
+    
+    Timecop.return()
+    
+  end
+  
 end
