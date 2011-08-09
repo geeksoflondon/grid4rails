@@ -10,3 +10,4 @@ Generating slots
 script/rails console 
 Slot.generate!
 exit
+g
