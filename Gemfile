@@ -11,6 +11,7 @@ gem "rake", ">= 0.8.7"
 
 gem "jquery-rails", "~> 1.0.12"
 
+gem "clearance"
 
 group :development do 
   gem 'heroku'
