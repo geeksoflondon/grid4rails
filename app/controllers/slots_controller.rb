@@ -13,7 +13,7 @@ class SlotsController < ApplicationController
   end
 
   def allocate
-    @slots = Slot.slots_which_are_empty()
+    @slots = Slot.find_empty
   end
 
   def regenerate

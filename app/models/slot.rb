@@ -36,7 +36,7 @@ class Slot < ActiveRecord::Base
 
   end
 
-  def slots_which_are_empty
+  def self.find_empty
     Slot.joins("left join talks on (slots.id = talks.slot_id)").where("talks.slot_id is null")
   end
 
