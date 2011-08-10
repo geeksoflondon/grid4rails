@@ -12,24 +12,21 @@
   <%= csrf_meta_tag %>
   <meta name="description" content=""> 
   <meta name="author" content=""> 
- 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head> 
 <body> 
- 
-  <div id="container"> 
- 
-    <header> 
-		<a href="/index.html" title="Select this link to return to the home page"> 
-			<%= image_tag("bcl8_logo.png") %>
-		</a> 
-		<nav> 
-			<ul> 
-				<li><%= link_to 'View Grid', grid_index_path() %></li> 
-				<li><%= link_to 'Add Talk', new_talk_path() %></li> 
-				<li><a href="/feedback">Feedback</a></li>
-			</ul> 
-		</nav> 
-    </header> 
- 
-     
+	<div id="header">
+		<h1>Griddy</h1>
+		<p class="logo">
+			<a href="/index.html" title="Select this link to return to the home page"> 
+				<%= image_tag("bcl8_logo.png") %>
+			</a>
+		</p>
+		<ul class="nav">
+			<li><a href="/grid/now">Now</a></li>
+			<li><a href="/grid/next">Next</a></li>
+			<li><a href="/grid">View Grid</a></li>
+			<li><a href="/talks/new">Add Talk</a></li>
+			<li><a href="/feedback">Feedback</a></li>
+		</ul>
+	</div>
