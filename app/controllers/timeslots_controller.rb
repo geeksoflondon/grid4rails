@@ -76,15 +76,5 @@ class TimeslotsController < ApplicationController
       format.json  { head :ok }
     end
   end
-  
-  def now
-    @timeslot = Timeslot.now
-    @rooms = Room.all
-  end
-  
-  def next
-    @timeslot = Timeslot.next
-    @rooms = Room.all
-  end
 
 end

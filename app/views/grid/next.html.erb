@@ -1,0 +1,6 @@
+<h1>Next</h1> 
+<% if (@timeslots.nil?) %>
+	<p>That's all folks!</p>
+<% else %>
+	<%= render 'shared/grid' %>
+<% end %>

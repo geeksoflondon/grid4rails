@@ -9,11 +9,19 @@ class Timeslot < ActiveRecord::Base
   end
 
   def self.now
-    Timeslot.where('start <= ? AND end >= ?', Time.now, Time.now).first
+    Timeslot.past.last
   end
 
   def self.next
-    Timeslot.where('start > ?', Time.now).first
+    Timeslot.upcoming.first
+  end
+
+  def self.upcoming
+        Timeslot.where('start >= ?', Time.now)
+  end
+
+  def self.past
+    Timeslot.where('start < ?', Time.now)
   end
 
 end

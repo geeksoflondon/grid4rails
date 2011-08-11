@@ -1,0 +1,6 @@
+<h1>Now</h1> 
+<% if (@timeslots.nil?) %>
+	<p>Nothing doing.</p>
+<% else %>
+	<%= render 'shared/grid' %>
+<% end %>

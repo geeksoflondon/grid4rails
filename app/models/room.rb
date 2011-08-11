@@ -12,4 +12,5 @@ class Room < ActiveRecord::Base
   def slots_mixed_with_nonassignables
     (slots + Timeslot.non_assignables).sort_by(:start)
   end
+  
 end

@@ -1,4 +1,4 @@
-<table summary="List of all the talks at Barcamp 2011" id="gridTable" cellpadding="5"> 
+<table summary="<%= @description %>" id="gridTable" cellpadding="5"> 
 	<tr> 
 		<td>&nbsp;</td> 
 		<% @timeslots.each do |timeslot| %>
@@ -8,18 +8,22 @@
 	<% @rooms.each do |room| %>
 		<tr> 
 			<th class="room"><%= room.name %></th>
-			<% room.slots.each do |slot| %>
-				<td class="slot">
-					<% if (slot.talk.nil?) %>
-						<p>Empty</p>
-					<% else %>
-						<div class="talk"> 					
-							<h2 class="heading title"><%= slot.talk.title unless slot.talk.title.nil? %></h2> 
-							<h3 class="heading speaker"><%= slot.talk.speaker unless slot.talk.speaker.nil? %></h3>
-							<p class="description"><%= slot.talk.description unless slot.talk.description.nil? %></p>
-						</div>				
-					<% end %>
-				</td> 
+			<% @timeslots.each do |timeslot| %>								
+				<% room.slots.each do |slot| %>
+					<% if (slot.timeslot.id == timeslot.id) %>
+						<td class="slot">
+							<% if (slot.talk.nil?) %>
+								<p>Empty</p>
+							<% else %>
+								<div class="talk"> 					
+									<h2 class="heading title"><%= slot.talk.title unless slot.talk.title.nil? %></h2> 
+									<h3 class="heading speaker"><%= slot.talk.speaker unless slot.talk.speaker.nil? %></h3>
+									<p class="description"><%= slot.talk.description unless slot.talk.description.nil? %></p>									
+								</div>				
+							<% end %>
+						</td>
+					<% end %> 
+				<% end %>
 			<% end %>
 		</tr>
 	<% end %>

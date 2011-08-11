@@ -11,6 +11,8 @@ Griddy::Application.routes.draw do
 
   resources :slots, :only => [:index]
 
+  match 'grid/now' => "grid#now"
+  match 'grid/next' => "grid#next"
   resources :grid
 
   # The priority is based upon order of creation:

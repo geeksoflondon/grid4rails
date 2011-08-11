@@ -1,16 +1,21 @@
 class GridController < ApplicationController
 
-  def index
+  def index    
     @timeslots = Timeslot.all
     @rooms = Room.all
+    @description = "All talks."
   end
-
+    
   def now
-    redirect_to timeslot_now_path
+    @timeslots = Array.wrap(Timeslot.now)
+    @rooms = Array.wrap(Room.all)
+    @description = "What's on now."
   end
   
   def next
-    redirect_to timeslot_next_path
+    @timeslots = Array.wrap(Timeslot.next)
+    @rooms = Array.wrap(Room.all)
+    @description = "What's on next."
   end
 
 end

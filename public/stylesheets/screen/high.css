@@ -68,7 +68,7 @@ body,
 #gridTable td, 
 #gridTable th {
     border-color: #ffffff;
-    border-width: 0px 30px 0px 0px;
+    border-width: 0px 0px 0px 30px;
     border-style: solid;
     font-family: Verdana;
     font-size: 100%;
@@ -99,7 +99,7 @@ body,
     padding: 12px 2px 0;
 }
 
-#gridTable .room {
+#gridTable th.room {
     border-left: none;
     border-bottom: 30px solid #FFFFFF;    
     width: 60px;
