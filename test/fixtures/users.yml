@@ -1,11 +1,1 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  username: JohnDoe
-  name: John Doe
-  website: www.bbc.co.uk
-
-two:
-  username: JaneDoe
-  name: Jane Doe
-  website: www.cnn.com
