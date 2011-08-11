@@ -1,3 +1,10 @@
+/* NOTES: Med
+-----------------------------
+*  Can use px for font size
+*  Don't try to use positioning
+*  Typeface still unlikely to be the one you specify
+-----------------------------*/
+
 /* Workarounds
 -----------------------------*/
 
@@ -24,15 +31,9 @@ body {
     padding: 3px;
 }
 
-/* Header
------------------------------*/
 
-#header .page-title a {
-    display: block;
-    height: 127px;
-    width: 360px;
-    background-image: url('/images/bcl8_logo.png');    
-}
+/* Layout
+-----------------------------*/
 
 #header .page-title,
 #header .nav,
@@ -40,10 +41,35 @@ body {
     margin-bottom: 1em;
 }
 
-#header .nav {
+#header {
+    margin-bottom: 2em;
+}
+
+#footer {
+    margin-top: 2em;
+}
+
+h1 {
+    margin-bottom: 1em;
+}
+
+/* Custom features
+-----------------------------*/
+
+/* Logo */
+#header .page-title a {
+    display: block;
+    height: 127px;
+    width: 360px;
+    background-image: url('/images/bcl8_logo.png');    
+}
+
+/* Global nav in header */
+#header .nav li {
     font-size: medium;
 }
 
+/* Version switcher */
 .version-switcher .heading {
     margin-bottom: .25em;
 }
@@ -62,21 +88,13 @@ body {
     font-weight: normal;
 }
 
-#header {
-    margin-bottom: 2em;
+/* Main page title */
+#main h1 {
+    font-size: 200%;
 }
 
-#footer {
-    margin-top: 2em;
-}
-
-
-/* PAGE: the grid
+/* VIEW: the grid
 -----------------------------*/
-
-h1 {
-    margin-bottom: 1em;
-}
 
 #gridTable td, 
 #gridTable th {
@@ -109,5 +127,11 @@ h1 {
 
 #gridTable .slot {
     color: #666699;
-    padding: 12px 2px 0;
+    padding: 6px 2px;
+}
+
+.slot p,
+.slot .heading {
+    margin-top: 6px;
+    margin-bottom: 6px;
 }

@@ -1,12 +1,38 @@
+/* NOTES: High
+-----------------------------
+*  Go for it. CSS3, the lot.
+*  med.css applied first.
+-----------------------------*/
+
+/* Custom hides */
+.version-switcher .skip {
+	margin: 0 0 0 -5000px;
+	position: absolute;
+	top: 0;	
+	left: 0;
+}
+
+/* Basic text rules
+-----------------------------*/
+
 body,
 .version-switcher {
     padding: 1em;
 }
 
+
+/* Layout
+-----------------------------*/
+
 #footer .nav {
     text-align: center;
 }
 
+
+/* Custom features
+-----------------------------*/
+
+/* Global nav in header */
 #header .nav li,
 #footer .nav li {
     display: inline;
@@ -22,6 +48,7 @@ body,
     -moz-border-radius: 3px;   
 }
 
+/* Version switcher */
 .version-switcher {
     position: absolute;
     top: 0;
@@ -34,16 +61,8 @@ body,
     -moz-border-radius: 3px;
 }
 
-/* Custom hides */
-.version-switcher .skip {
-	margin: 0 0 0 -5000px;
-	position: absolute;
-	top: 0;	
-	left: 0;
-}
 
-
-/* PAGE: the grid
+/* VIEW: the grid
 -----------------------------*/
 
 #gridTable td, 

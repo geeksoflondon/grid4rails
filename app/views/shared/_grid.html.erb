@@ -11,11 +11,11 @@
 			<% room.slots.each do |slot| %>
 				<td class="slot">
 					<% if (slot.talk.nil?) %>
-						<%= "Empty" %>
+						<p>Empty</p>
 					<% else %>
 						<div class="talk"> 					
-							<h2 class="title"><%= slot.talk.title unless slot.talk.title.nil? %></h2> 
-							<h3 class"speaker"><%= slot.talk.speaker unless slot.talk.speaker.nil? %></h3>
+							<h2 class="heading title"><%= slot.talk.title unless slot.talk.title.nil? %></h2> 
+							<h3 class="heading speaker"><%= slot.talk.speaker unless slot.talk.speaker.nil? %></h3>
 							<p class="description"><%= slot.talk.description unless slot.talk.description.nil? %></p>
 						</div>				
 					<% end %>

@@ -4,7 +4,6 @@
 
 body {
 	font-style: normal;
-	font-size: small;
 	background-color: #ffffff;	
 }
 
@@ -13,7 +12,6 @@ body {
 }
 
 .heading {
-    font-size: medium;
     font-weight: bold;
 }
 
@@ -78,4 +76,9 @@ img[alt]{
 #gridTable .timeslot, 
 #gridTable .slot {
     text-align: center;
+}
+
+.talk .speaker {
+    font-weight: normal;
+    font-style: italic;
 }
