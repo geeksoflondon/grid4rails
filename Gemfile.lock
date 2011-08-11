@@ -31,6 +31,11 @@ GEM
     addressable (2.2.6)
     arel (2.0.10)
     builder (2.1.2)
+    clearance (0.12.0)
+      diesel (~> 0.1.4)
+      rails (>= 3.0)
+    diesel (0.1.5)
+      railties
     erubis (2.6.6)
       abstract (>= 1.0.0)
     heroku (2.4.0)
@@ -85,6 +90,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  clearance
   heroku
   jquery-rails (~> 1.0.12)
   rails (= 3.0.3)
