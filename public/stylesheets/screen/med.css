@@ -1,0 +1,113 @@
+/* Workarounds
+-----------------------------*/
+
+.clear {
+	height: 0;
+	width: 0;
+	margin: 0;
+	padding: 0;
+	clear: both;	
+}
+.hide {
+	margin: 0 0 0 -5000px;
+	position: absolute;
+	top: 0;	
+	left: 0;
+}
+
+
+/* Basic text rules
+-----------------------------*/
+
+body {
+    font-family: serif;
+    padding: 3px;
+}
+
+/* Header
+-----------------------------*/
+
+#header .page-title a {
+    display: block;
+    height: 127px;
+    width: 360px;
+    background-image: url('/images/bcl8_logo.png');    
+}
+
+#header .page-title,
+#header .nav,
+#header .version-switcher {
+    margin-bottom: 1em;
+}
+
+#header .nav {
+    font-size: medium;
+}
+
+.version-switcher .heading {
+    margin-bottom: .25em;
+}
+.version-switcher .options {
+    color: #cccccc;
+}
+.version-switcher .selected {
+    background-color: orange;
+    border: 2px solid orange;
+    font-weight: bold;
+    color: white;
+}
+.version-switcher .skip {
+    color: #cccccc;
+    font-size: smaller;
+    font-weight: normal;
+}
+
+#header {
+    margin-bottom: 2em;
+}
+
+#footer {
+    margin-top: 2em;
+}
+
+
+/* PAGE: the grid
+-----------------------------*/
+
+h1 {
+    margin-bottom: 1em;
+}
+
+#gridTable td, 
+#gridTable th {
+    border-color: #ffffff;
+    border-width: 0px 30px 0px 0px;
+    border-style: solid;
+    font-family: Verdana;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+#gridTable th {
+    color: #003399;
+    font-size: larger;
+    font-weight: normal;
+    padding: 8px 2px;
+}
+
+#gridTable .timeslot {
+    border-bottom: 2px solid #6678B1;
+    color: #003399;
+    font-size: 14px;
+    padding: 8px 2px;
+}
+
+#gridTable .slot {
+    color: #666699;
+    padding: 12px 2px 0;
+}

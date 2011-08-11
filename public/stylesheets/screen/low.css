@@ -1,0 +1,71 @@
+body {
+    font-family: sans-serif;
+    padding: 3px;
+}
+
+/* Version switcher */
+.version-switcher {
+    margin-top: 10px;
+}
+.version-switcher .heading {
+    font-size: small;
+}
+.version-switcher .options {
+    color: #cccccc;
+}
+.version-switcher .selected {
+    text-decoration: underline;
+    font-weight: bold;
+}
+.version-switcher .skip {
+    color: #cccccc;
+    font-size: x-small;
+    font-weight: normal;
+}
+
+#header {
+    margin-bottom: 20px;
+}
+
+#footer {
+    margin-top: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+
+/* PAGE: the grid
+-----------------------------*/
+
+#gridTable td, 
+#gridTable th {
+    border: 1px solid silver;
+    font-family: Verdana;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+#gridTable th {
+    color: #003399;
+    font-size: larger;
+    font-weight: normal;
+    padding: 8px 2px;
+}
+
+#gridTable .timeslot {
+    color: #003399;
+    font-size: 14px;
+    padding: 8px 2px;
+}
+
+#gridTable .slot {
+    color: #666699;
+    padding: 12px 2px 0;
+}

@@ -1,0 +1,81 @@
+
+/* Basic text rules
+-----------------------------*/
+
+body {
+	font-style: normal;
+	font-size: small;
+	background-color: #ffffff;	
+}
+
+.title {
+	font-weight: bold;
+}
+
+.heading {
+    font-size: medium;
+    font-weight: bold;
+}
+
+
+/* Basic link rules
+-----------------------------*/
+
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+	color: #0000ff;
+	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
+}
+
+a:link,
+a:visited {
+	color: #000080;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+	text-decoration: underline;
+}
+
+/* Basic List rules
+-----------------------------*/
+
+
+
+
+/* Basic image rules
+-----------------------------*/
+img,
+a img {
+    border: none;
+}
+
+img[alt]{
+	font-size: small;
+}
+
+
+/* PAGE: the grid
+-----------------------------*/
+
+#gridTable {
+   border-collapse: collapse;
+   font-family: typeface;
+   font-size: 12px;
+   text-align: left;
+   width: 100%;
+}
+
+#gridTable .room, 
+#gridTable .talk {
+    text-align: left;
+}
+#gridTable .timeslot, 
+#gridTable .slot {
+    text-align: center;
+}
