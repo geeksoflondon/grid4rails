@@ -15,13 +15,21 @@ class Timeslot < ActiveRecord::Base
   def self.next
     Timeslot.upcoming.first
   end
+  
+  def next
+    Timeslot.where('start > ?', self.start).find(:all, :order => 'start ASC').first
+  end
+  
+  def prev
+    Timeslot.where('start < ?', self.start).find(:all, :order => 'start DESC').first
+  end
 
   def self.upcoming
-        Timeslot.where('start >= ?', Time.now)
+    Timeslot.where('start >= ?', Time.now).find(:all, :order => 'start ASC')
   end
 
   def self.past
-    Timeslot.where('start < ?', Time.now)
+    Timeslot.where('start < ?', Time.now).find(:all, :order => 'start DESC')
   end
 
 end

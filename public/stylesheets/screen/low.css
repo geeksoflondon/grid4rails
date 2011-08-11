@@ -40,13 +40,18 @@ h1 {
 -----------------------------*/
 
 /* Version switcher */
+/* Single timeslot grid view scroller */
 .version-switcher {
     margin-top: 10px;
+}
+.scroller {
+    margin-bottom: 12px;   
 }
 .version-switcher .heading {
     font-size: small;
 }
-.version-switcher .options {
+.version-switcher .options,
+.scroller .options {
     color: #cccccc;
 }
 .version-switcher .selected {
@@ -58,6 +63,11 @@ h1 {
     font-size: x-small;
     font-weight: normal;
 }
+.scroller a .arrows {
+    color: #cccccc;
+}
+
+
 
 /* Main page title */
 #main h1 {
