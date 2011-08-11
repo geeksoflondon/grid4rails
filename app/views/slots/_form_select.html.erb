@@ -1,0 +1,34 @@
+<%= form_for(@slot) do |f| %>
+	
+	<fieldset class="when">
+		<legend>When</legend>
+		<div class="field">
+			<%= f.label :timeslot_id %><br />
+			<%= f.text_field :timeslot_id %>
+		</div>
+		<% @timeslots.each do |timeslot| %>
+			<p><%= timeslot['name'] %> (<%= timeslot['start'] %>)</p>
+		<% end %>
+
+		<!--
+		<%# @slots.each do |item| %>
+			<p><%#= item.timeslot['name'] %> (<%#= item.timeslot['start'] %>)</p>
+		<%# end %>
+		-->
+	</fieldset>
+	
+	<fieldset class="where">
+		<div class="field">
+			<%# f.label :room %><br />
+			<%# f.select_tag :room, [['Test', 1],['ing', 2]]) %>
+		</div>
+	</fieldset>
+	
+	<fieldset class="actions">	
+		<legend>Options</legend>	
+		<span class="cancel"><%= link_to 'Cancel', slots_path %></span>
+		<span class="submit"><%= f.submit %></span>		
+	</fieldset>
+	
+<% end %>
+

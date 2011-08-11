@@ -1,0 +1,29 @@
+<%= form_for(@slot) do |f| %>
+			
+	<fieldset class="what">
+		<div class="field">
+			<%# f.label :room %><br />
+			<%# f.select_tag :room, [['Test', 1],['ing', 2]]) %>
+		</div>
+	</fieldset>
+	
+	<fieldset class="when">
+		<legend>When</legend>
+		<p><%= @slot.timeslot.name %>
+		<p>Start: <%= @slot.timeslot.start %></p>
+		<p>End: <%= @slot.timeslot.end %></p>	
+	</fieldset>
+	
+	<fieldset class="where">
+		<legend>When</legend>
+		<p>Room: <%= @slot.room.name %>	
+	</fieldset>
+	
+	<fieldset class="actions">	
+		<legend>Options</legend>	
+		<span class="cancel"><%= link_to 'Cancel', slots_path %></span>
+		<span class="submit"><%= f.submit %></span>		
+	</fieldset>
+	
+<% end %>
+
