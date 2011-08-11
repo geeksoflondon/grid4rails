@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     @new_user = users(:one)
-    @new_user['username'] = 'SteveDoe'
+    @new_user['email'] = 'SteveDoe@goal.com'
     assert_difference('User.count') do
       post :create, :user => @new_user.attributes
     end

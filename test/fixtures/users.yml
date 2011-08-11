@@ -1,1 +1,9 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  name: John Doe
+  email: john@doe.com
+  website: www.bbc.co.uk
+
+two:
+  name: Jane Doe
+  email: jane@doe.com
+  website: www.cnn.com
