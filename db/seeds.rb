@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+slots = Slot.generate!
+
+Slot.all.each do |slot|
+
+  if rand(4) == 3
+    t = Talk.new(:slot_id => slot.id, :title => "Data protection myths and misses (privacy not security)", :speaker => "John Smith")
+    t.save
+  end
+
+end
