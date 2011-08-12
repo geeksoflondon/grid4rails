@@ -27,7 +27,7 @@
 									</h3>
 									<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
 									<p class="options">
-										<%= link_to 'Edit', edit_talk_path(@talk) %>
+										<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
 									</p>	
 								</div>			
 							<% end %>
