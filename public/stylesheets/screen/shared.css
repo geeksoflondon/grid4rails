@@ -57,6 +57,16 @@ img[alt]{
 	font-size: small;
 }
 
+/* Basic form rules
+-----------------------------*/
+form fieldset {
+    margin-bottom: 10px;
+}
+
+form .actions {
+    text-align: right;
+}
+
 
 /* PAGE: the grid
 -----------------------------*/

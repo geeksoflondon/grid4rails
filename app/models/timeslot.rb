@@ -32,4 +32,8 @@ class Timeslot < ActiveRecord::Base
     Timeslot.where('start < ?', Time.now).find(:all, :order => 'start DESC')
   end
 
+  def self.find_empty
+    Timeslot.all # Incomplete. Needs to return list of unique timeslots that have at least one empty slot
+  end
+
 end

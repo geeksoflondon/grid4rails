@@ -2,7 +2,9 @@
 	<tr> 
 		<td>&nbsp;</td> 
 		<% @timeslots.each do |timeslot| %>
-			<th class="timeslot"><%= timeslot.start.strftime("%H:%M") %> <%= timeslot.end.strftime("%H:%M") %></th>
+			<th class="timeslot">
+				<%= timeslot.start.strftime("%H:%M") %> <%= timeslot.end.strftime("%H:%M") %>
+			</th>
 		<% end %>
 	</tr> 
 	<% @rooms.each do |room| %>
@@ -13,13 +15,21 @@
 					<% if (slot.timeslot.id == timeslot.id) %>
 						<td class="slot">
 							<% if (slot.talk.nil?) %>
-								<p>Empty</p>
+								<p>Empty</p>	
 							<% else %>
+								<% @talk = slot.talk %>
 								<div class="talk"> 					
-									<h2 class="heading title"><%= slot.talk.title unless slot.talk.title.nil? %></h2> 
-									<h3 class="heading speaker"><%= slot.talk.speaker unless slot.talk.speaker.nil? %></h3>
-									<p class="description"><%= slot.talk.description unless slot.talk.description.nil? %></p>									
-								</div>				
+									<h2 class="heading title">	
+										<%= @talk.title unless @talk.title.nil? %>										
+									</h2> 
+									<h3 class="heading speaker">
+										<%= @talk.speaker unless @talk.speaker.nil? %>
+									</h3>
+									<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
+									<p class="options">
+										<%= link_to 'Edit', edit_talk_path(@talk) %>
+									</p>	
+								</div>			
 							<% end %>
 						</td>
 					<% end %> 

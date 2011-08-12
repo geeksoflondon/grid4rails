@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @talk.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @talk.description %>
-</p>
-
-<p>
-  <b>Slot:</b>
-  <%= @talk.slot_id %>
-</p>
-
+<div class="talk">
+	<%= render 'shared/talk_details' %>
+	<% if (@talk.slot_id.nil?) %>
+		<%# render 'form_schedule' %>
+	<% else %>
+		<div class="when">
+			<p class="start"><span class="label">Start: </span><%= @talk.slot.timeslot.start.strftime("%H:%M") %></p>
+			<p class="end"><span class="label">End: </span><%= @talk.slot.timeslot.end.strftime("%H:%M") %></p>
+		</div>	
+		<p class="where">
+			<span class="label">Room: </span>
+			<%= @talk.slot.room.name %>
+		</p>	
+	<% end %>
+</div>
 
 <%= link_to 'Edit', edit_talk_path(@talk) %> |
 <%= link_to 'Back', talks_path %>

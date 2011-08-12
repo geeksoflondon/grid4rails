@@ -19,14 +19,11 @@
 		<%= f.label :description %><br />
 		<%= f.text_field :description %>
 	</div>
-	<!-- div class="field">
-		<%# f.label :speaker %><br />
-		<%# f.text_field :speaker %>
-	</div -->
-	<!-- div class="field">
-		<%# f.label :slot_id %><br />
-		<%# f.text_field :slot_id %>
-	</div -->
+	<div class="field">
+		<%= f.label :speaker %><br />
+		<%= f.text_field :speaker %>
+	</div>
+	
 	<fieldset class="actions">		
 		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
 		<span class="submit"><%= f.submit %></span>		

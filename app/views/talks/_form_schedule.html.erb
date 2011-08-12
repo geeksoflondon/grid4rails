@@ -1,0 +1,32 @@
+<%= form_for(@talk) do |f| %>
+ 	
+	<% if @talk.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being scheduled:</h2>
+			<ul>
+				<% @talk.errors.full_messages.each do |msg| %>
+	        		<li><%= msg %></li>
+	      		<% end %>
+	      	</ul>
+	    </div>
+	<% end %>
+
+	<% if (@slots.nil?) %>
+		<p>Wow, it looks as though all the slots have been taken!</p>
+	<% else %>
+		<div class="field">
+			<label for="slot">Slot:</label>
+			<% @timeslots.each do |timeslot| %>
+			
+			
+				<p><%= timeslot.start %></p>			
+			<% end %>
+		</div>
+	<% end %>
+
+	<fieldset class="actions">		
+		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
+		<span class="submit"><%= f.submit %></span>		
+	</fieldset>
+	
+<% end %>

@@ -8,7 +8,7 @@ Griddy::Application.routes.draw do
   resources :timeslots
 
   resources :rooms
-
+  
   resources :slots, :only => [:index]
 
   match 'grid/now' => "grid#now"

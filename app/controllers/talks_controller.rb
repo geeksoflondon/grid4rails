@@ -12,6 +12,8 @@ class TalksController < ApplicationController
 
   def show
     @talk = Talk.find(params[:id])
+    @slots = Slot.find_empty
+    @timeslots = Timeslot.find_empty
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,6 +34,7 @@ class TalksController < ApplicationController
 
   def edit
     @talk = Talk.find(params[:id])
+    @slots = Slot.find_empty
   end
 
   def create
@@ -75,6 +78,12 @@ class TalksController < ApplicationController
       format.xml  { head :ok }
       format.json  { head :ok }
     end
+  end
+  
+  def schedule
+    @talks = Talk.find(params[:id])
+    @slots = Slot.find_empty
+    @timeslots = Timeslot.find_empty
   end
 
 end
