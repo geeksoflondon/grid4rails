@@ -8,6 +8,11 @@ class GridController < ApplicationController
     
   def now
     @timeslot = Timeslot.now
+    
+    if @timeslot.nil?
+      @timeslot = Timeslot.first
+    end
+    
     @timeslots = Array.wrap(@timeslot) 
     @rooms = Array.wrap(Room.all)
     @description = "What's on now."
