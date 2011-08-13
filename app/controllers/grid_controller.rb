@@ -4,6 +4,7 @@ class GridController < ApplicationController
     @timeslots = Timeslot.all
     @rooms = Room.all
     @description = "All talks."
+    response.headers['Cache-Control'] = 'public, max-age=300'
   end
     
   def now
