@@ -38,7 +38,7 @@
 	<div id="header">
 		<h1 class="heading page-title"><a href="/"><span class="hide">Griddy</span></a></h1>
 		<ul class="nav">
-			<li><a href="/grid/now">Now</a></li>
+			<li><%= link_to "Now", grid_now_path unless @talks_taking_place %></li>
 			<li><a href="/grid/next">Next</a></li>
 			<li><a href="/grid">View Grid</a></li>
 			<li><a href="/talks/new">Add Talk</a></li>
