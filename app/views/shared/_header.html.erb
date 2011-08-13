@@ -11,11 +11,11 @@
 	
 	<!-- Style -->	
 	<% if (cookies[:version] == "high") %> 
-			<%= stylesheet_link_tag "global", "screen/shared", "screen/med", "screen/high", :cache => 'cache/main/display' %>
+			<%= stylesheet_link_tag "global", "screen/shared", "screen/med", "screen/high" %>
 	<% elsif (cookies[:version] == "med") %>
-			<%= stylesheet_link_tag "global", "screen/shared", "screen/med", :cache => 'cache/main/display'  %>
+			<%= stylesheet_link_tag "global", "screen/shared", "screen/med" %>
 	<% else  %>
-			<%= stylesheet_link_tag "global", "screen/shared", "screen/low", :cache => 'cache/main/display'  %>
+			<%= stylesheet_link_tag "global", "screen/shared", "screen/low"  %>
 	<% end  %>
 	
 	<!-- CSRF -->
