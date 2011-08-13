@@ -2,14 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "rake", ">= 0.8.7"
 
+#Frontendy stuff
 gem "jquery-rails", "~> 1.0.12"
+gem 'compass'
+gem 'haml' # for SASS
 
 gem "clearance"
 
@@ -19,4 +19,8 @@ end
 
 group :test do 
   gem 'timecop'
+end
+
+group :production do
+  gem 'pg'
 end
