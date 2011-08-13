@@ -14,7 +14,6 @@ class Slot < ActiveRecord::Base
   end
 
   def self.generate!
-    # KP/Leeky - We are refactoring this sorry Tom
 
     timeslots = Timeslot.order(:start).all
     rooms = Room.all

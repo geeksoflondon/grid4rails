@@ -3,6 +3,7 @@
 		<td>&nbsp;</td> 
 		<% @timeslots.each do |timeslot| %>
 			<th class="timeslot">
+				<%= timeslot.start.strftime("%a") %><br/>
 				<%= timeslot.start.strftime("%H:%M") %> <%= timeslot.end.strftime("%H:%M") %>
 			</th>
 		<% end %>
