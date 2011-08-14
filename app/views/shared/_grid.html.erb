@@ -11,31 +11,27 @@
 	<% @rooms.each do |room| %>
 		<tr> 
 			<th class="room"><%= room.name %></th>
-			<% @timeslots.each do |timeslot| %>								
 				<% room.slots.each do |slot| %>
-					<% if (slot.timeslot.id == timeslot.id) %>
-						<td class="slot">
-							<% if (slot.talk.nil?) %>
-								<p>Empty</p>	
-							<% else %>
-								<% @talk = slot.talk %>
-								<div class="talk"> 					
-									<h2 class="heading title">	
-										<%= @talk.title unless @talk.title.nil? %>										
-									</h2> 
-									<h3 class="heading speaker">
-										<%= @talk.speaker unless @talk.speaker.nil? %>
-									</h3>
-									<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
-									<p class="options">
-										<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
-									</p>	
-								</div>			
-							<% end %>
-						</td>
-					<% end %> 
-				<% end %>
-			<% end %>
+				<td class="slot">
+					<% if (slot.talk.nil?) %>
+						<p>Empty</p>	
+					<% else %>
+						<% @talk = slot.talk %>
+						<div class="talk"> 					
+							<h2 class="heading title">	
+								<%= @talk.title unless @talk.title.nil? %>										
+							</h2> 
+							<h3 class="heading speaker">
+								<%= @talk.speaker unless @talk.speaker.nil? %>
+							</h3>
+							<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
+							<p class="options">
+								<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
+							</p>	
+						</div>			
+					<% end %>
+				</td>
+			<% end %> 
 		</tr>
 	<% end %>
 </table>
