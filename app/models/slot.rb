@@ -39,8 +39,12 @@ class Slot < ActiveRecord::Base
     Slot.joins("left join talks on (slots.id = talks.slot_id)").where("talks.slot_id is null")
   end
 
-  def slots_by_timeslot(timeslot)
-    Slot.joins(:timeslot).where('timeslots.start = ?', timeslot)
+  def self.by_timeslot(timeslot)
+    Slot.joins(:timeslot).where('timeslots.id = ?', timeslot)
+  end
+  
+  def self.by_room(room)
+    Slot.joins(:room).where('rooms.short_code = ?', room)
   end
 
   def self.now
