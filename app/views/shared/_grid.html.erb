@@ -17,9 +17,9 @@
 						<p>Empty</p>	
 					<% else %>
 						<% @talk = slot.talk %>
-						<div class="talk"> 					
-							<h2 class="heading title">	
-								<%= @talk.title unless @talk.title.nil? %>										
+						<div class="talk">
+							<h2 class="heading title">
+								<%= @talk.title unless @talk.title.nil? %>
 							</h2> 
 							<h3 class="heading speaker">
 								<%= @talk.speaker unless @talk.speaker.nil? %>
