@@ -62,6 +62,7 @@ body,
     background-color: #ffffff;
     border-radius: 3px;
     -moz-border-radius: 3px;
+    padding-bottom: 0.5em;
 }
 .version-switcher .selected {
     border: 2px solid orange;
