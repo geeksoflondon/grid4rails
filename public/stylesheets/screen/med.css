@@ -126,7 +126,7 @@ h1 {
 
 #gridTable .slot,
 #gridTable p {
-    width: 8em; 
+    width: 8.5em; 
 }
 
 #gridTable .slot {
@@ -163,8 +163,7 @@ h1 {
 }
 
 .where-when span {
-    display: block;
-    float: left;
+    display: inline;
     background-color: #eFf3FF;
     color: #666699;
     margin-right: 2px;
