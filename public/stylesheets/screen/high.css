@@ -86,15 +86,6 @@ body,
      /* Inherited from med.css*/
 }
 
-#gridTable tr:nth-child(even) {
-   background-color: rgba(229, 223, 255, .25); 
-}
-
-#gridTable tr td:nth-child(even),
-#gridTable tr th:nth-child(even) {
-   background-color: rgba(224, 239, 232, .3);
-}
-
 #gridTable .timeslot {
     border-bottom: 2px solid #6678B1;
     color: #003399;

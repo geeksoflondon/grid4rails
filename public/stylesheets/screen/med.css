@@ -161,3 +161,13 @@ h1 {
 #gridTable th p {
     padding: 5px;
 }
+
+.where-when span {
+    display: block;
+    float: left;
+    background-color: #eFf3FF;
+    color: #666699;
+    margin-right: 2px;
+    padding: 2px;
+    margin-bottom: 3px;
+}
