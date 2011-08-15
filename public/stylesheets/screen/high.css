@@ -87,8 +87,9 @@ body,
    background-color: rgba(229, 223, 255, .25); 
 }
 
-#gridTable tr td:nth-child(even) {
-   background-color: rgba(234, 224, 239, .25); 
+#gridTable tr td:nth-child(even),
+#gridTable tr th:nth-child(even) {
+   background-color: rgba(224, 239, 232, .3);
 }
 
 #gridTable .timeslot {
