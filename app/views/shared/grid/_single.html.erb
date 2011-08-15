@@ -1,0 +1,10 @@
+<% @rooms.each do |@room| %>
+	<tr> 
+		<th class="room"><p><%= @room.name %></p></th>
+		<% @room.slots.each do |@slot| %>
+			<% if (@slot.timeslot.id == @timeslot.id) %>
+				<%= render 'shared/grid/slot' %>
+			<% end %>		
+		<% end %> 
+	</tr>
+<% end %>

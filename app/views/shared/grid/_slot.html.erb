@@ -1,0 +1,22 @@
+<td>
+	<div class="slot">
+		<% if (@slot.nil? || @slot.talk.nil?) %>
+			<p class="empty">Empty</p>	
+		<% else %>
+			<% @talk = @slot.talk %>
+			<div class="talk">
+				<h2 class="heading title">
+					<%= @talk.title unless @talk.title.nil? %>
+				</h2> 
+				<h3 class="heading speaker">
+					<%= @talk.speaker unless @talk.speaker.nil? %>
+				</h3>
+				<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
+				<p class="options">
+					<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
+				</p>
+				<p class="where-when"><span class="day"><%= @slot.timeslot.start.strftime("%a") %></span><span class="delimiter hide"> </span><span class="start"><%= @slot.timeslot.start.strftime("%H:%M") %></span><span class="delimiter hide">, </span><span class="room"><%= @room.short_code.upcase %></span></p>								
+			</div>			
+		<% end %>
+	</div>
+</td>

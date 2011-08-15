@@ -1,0 +1,8 @@
+<% @rooms.each do |@room| %>
+	<tr> 
+		<th class="room"><p><%= @room.name %></p></th>
+		<% @room.slots.each do |@slot| %>
+			<%= render 'shared/grid/slot' %>
+		<% end %> 
+	</tr>
+<% end %>
