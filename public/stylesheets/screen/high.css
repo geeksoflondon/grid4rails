@@ -5,7 +5,8 @@
 -----------------------------*/
 
 /* Custom hides */
-.version-switcher .skip {
+.version-switcher .skip,
+.version-switcher .heading {
 	margin: 0 0 0 -5000px;
 	position: absolute;
 	top: 0;	
@@ -59,6 +60,8 @@ body,
     top: 0;
     right: 0;
     background-color: #ffffff;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
 }
 .version-switcher .selected {
     border: 2px solid orange;
