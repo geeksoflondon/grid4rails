@@ -1,7 +1,7 @@
 <h1>Next</h1> 
 <%= render 'shared/timeslot_scroll_nav' %>
-<% if (@timeslots.nil?) %>
+<% if (@timeslot.nil?) %>
 	<p>That's all folks!</p>
 <% else %>
-	<%= render 'shared/grid' %>
+	<%= render 'shared/grid/headings' %>
 <% end %>
