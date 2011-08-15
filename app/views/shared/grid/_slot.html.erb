@@ -1,7 +1,10 @@
 <td>
 	<div class="slot">
 		<% if (@slot.nil? || @slot.talk.nil?) %>
-			<p class="empty">Empty</p>	
+			<div class="empty">
+				<p>Empty</p>
+				<%= render '/shared/grid/where_when' %>
+			</div>	
 		<% else %>
 			<% @talk = @slot.talk %>
 			<div class="talk">
@@ -15,7 +18,7 @@
 				<p class="options">
 					<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
 				</p>
-				<p class="where-when"><span class="day"><%= @slot.timeslot.start.strftime("%a") %></span><span class="delimiter hide"> </span><span class="start"><%= @slot.timeslot.start.strftime("%H:%M") %></span><span class="delimiter hide">, </span><span class="room"><%= @room.short_code.upcase %></span></p>								
+				<%= render '/shared/grid/where_when' %>								
 			</div>			
 		<% end %>
 	</div>
