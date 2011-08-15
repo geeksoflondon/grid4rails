@@ -1,7 +1,9 @@
-<% @rooms.each do |@room| %>
+<% @rooms.each do | room| %>
+	<% @room = room %>
 	<tr> 
 		<th class="room"><p><%= @room.name %></p></th>
-		<% @room.slots.each do |@slot| %>
+		<% @room.slots.each do | slot| %>
+			<% @slot = slot %>
 			<% if (@slot.timeslot.id == @timeslot.id) %>
 				<%= render 'shared/grid/slot' %>
 			<% end %>		
