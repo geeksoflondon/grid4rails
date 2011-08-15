@@ -1,28 +1,19 @@
 <%= form_for(@slot) do |f| %>
-			
-	<fieldset class="what">
-		<div class="field">
-			<%# f.label :room %><br />
-			<%# f.select_tag :room, [['Test', 1],['ing', 2]]) %>
-		</div>
-	</fieldset>
 	
-	<fieldset class="when">
-		<legend>When</legend>
-		<p><%= @slot.timeslot.name %>
-		<p>Start: <%= @slot.timeslot.start %></p>
-		<p>End: <%= @slot.timeslot.end %></p>	
-	</fieldset>
+	<% @talk_id = @talk.id%>
+	<%= hidden_field_tag('talk', value = @talk_id)  %>
+				
+	<!-- Populate with data from params
+		 and simply ask user to confirm choices -->	
 	
-	<fieldset class="where">
-		<legend>When</legend>
-		<p>Room: <%= @slot.room.name %>	
-	</fieldset>
+	<%= render '/shared/talk_details' %>	
+	<%= render '/shared/talk_slot_details' %>	 
+		  
 	
 	<fieldset class="actions">	
 		<legend>Options</legend>	
 		<span class="cancel"><%= link_to 'Cancel', slots_path %></span>
-		<span class="submit"><%= f.submit %></span>		
+		<span class="submit"><%= f.submit('Confirm') %></span>		
 	</fieldset>
 	
 <% end %>

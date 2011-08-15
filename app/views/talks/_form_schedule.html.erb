@@ -1,4 +1,6 @@
-<%= form_for(@talk) do |f| %>
+<p id="notice"><%= notice %></p>
+
+<%= form_tag('/slots/confirm') do |f| %>
  	
 	<% if @talk.errors.any? %>
 		<div id="error_explanation">
@@ -11,22 +13,16 @@
 	    </div>
 	<% end %>
 
-	<% if (@slots.nil?) %>
+	<% if (@empty_slots.nil?) %>
 		<p>Wow, it looks as though all the slots have been taken!</p>
 	<% else %>
-		<div class="field">
-			<label for="slot">Slot:</label>
-			<% @timeslots.each do |timeslot| %>
-			
-			
-				<p><%= timeslot.start %></p>			
-			<% end %>
-		</div>
+		<%= hidden_field_tag('talk', value = @talk.id)  %>
+		<%= render '/shared/grid/headings' %>
 	<% end %>
 
 	<fieldset class="actions">		
-		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
-		<span class="submit"><%= f.submit %></span>		
+		<span class="cancel"><%= link_to 'Schedule Later', talks_path %></span>
+		<span class="submit">  <%= submit_tag("Submit") %></span>		
 	</fieldset>
 	
 <% end %>

@@ -12,8 +12,6 @@ class TalksController < ApplicationController
 
   def show
     @talk = Talk.find(params[:id])
-    @slots = Slot.find_empty
-    @timeslots = Timeslot.find_empty
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,18 +29,13 @@ class TalksController < ApplicationController
       format.json  { render :json => @talk }
     end
   end
-
-  def edit
-    @talk = Talk.find(params[:id])
-    @slots = Slot.find_empty
-  end
-
+  
   def create
     @talk = Talk.new(params[:talk])
 
     respond_to do |format|
-      if @talk.save
-        format.html { redirect_to(@talk, :notice => 'Talk was successfully created.') }
+      if @talk.save        
+        format.html { redirect_to(:action => 'schedule', :controller => 'talks', :notice => 'Talk was successfully created.', :id => @talk.id, :method => 'post') }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
         format.json  { render :json => @talk, :status => :created, :location => @talk }
       else
@@ -52,12 +45,30 @@ class TalksController < ApplicationController
       end
     end
   end
+  
+  def schedule
+    @talk = Talk.find(params[:id])      
+    @empty_slots = Slot.find_empty
+    @timeslots = Timeslot.all
+    @rooms = Room.all
+    @description = "The grid, showing empty slots"
+      
+    respond_to do |format|
+      format.html # schedule.html.erb
+      format.xml  { render :xml => @talk }
+      format.json  { render :json => @talk }
+    end    
+  end
+
+  def edit
+    @talk = Talk.find(params[:id])
+  end
 
   def update
     @talk = Talk.find(params[:id])
 
     respond_to do |format|
-      if @talk.update_attributes(params[:talk])
+      if @talk.update_attributes(params[:id])
         format.html { redirect_to(@talk, :notice => 'Talk was successfully updated.') }
         format.xml  { head :ok }
         format.json  { head :ok }
@@ -80,10 +91,4 @@ class TalksController < ApplicationController
     end
   end
   
-  def schedule
-    @talks = Talk.find(params[:id])
-    @slots = Slot.find_empty
-    @timeslots = Timeslot.find_empty
-  end
-
 end

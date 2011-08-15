@@ -1,18 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <div class="talk">
-	<%= render 'shared/talk_details' %>
-	<% if (@talk.slot_id.nil?) %>
-		<%# render 'form_schedule' %>
-	<% else %>
-		<div class="when">
-			<p class="start"><span class="label">Start: </span><%= @talk.slot.timeslot.start.strftime("%H:%M") %></p>
-			<p class="end"><span class="label">End: </span><%= @talk.slot.timeslot.end.strftime("%H:%M") %></p>
-		</div>	
-		<p class="where">
-			<span class="label">Room: </span>
-			<%= @talk.slot.room.name %>
-		</p>	
+	<%= render '/shared/talk_details' %>
+	<% if (!@talk.slot_id.nil?) %>
+		<% @slot = @talk.slot %>		
+		<%= render '/shared/talk_slot_details' %>
+	<% elsif (!@slot.nil?) %>
+		<%= render '/shared/talk_slot_details' %>
 	<% end %>
 </div>
 
