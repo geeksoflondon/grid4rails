@@ -27,7 +27,6 @@
 -----------------------------*/
 
 body {
-    font-family: serif;
     padding: 3px;
 }
 
@@ -91,6 +90,7 @@ h1 {
 /* Main page title */
 #main h1 {
     font-size: 200%;
+    margin: 1em 0px;
 }
 
 /* VIEW: the grid
@@ -99,7 +99,7 @@ h1 {
 #gridTable td, 
 #gridTable th {
     border-color: #ffffff;
-    border-width: 0px 30px 0px 0px;
+    border-width: 2px 30px 2px 2px;
     border-style: solid;
     font-family: Verdana;
     font-size: 100%;
@@ -115,7 +115,6 @@ h1 {
     color: #003399;
     font-size: larger;
     font-weight: normal;
-    padding: 8px 2px;
 }
 
 #gridTable .timeslot {
@@ -125,13 +124,40 @@ h1 {
     padding: 8px 2px;
 }
 
+#gridTable .slot,
+#gridTable p {
+    width: 8em; 
+}
+
 #gridTable .slot {
     color: #666699;
-    padding: 6px 2px;
+}
+
+#gridTable td .heading {
+    font-weight: normal;
+}
+
+#gridTable .speaker {
+    font-style: normal;
+    color: #000000;
+}
+.talk .options a,
+.talk .options a:link,
+.talk .options a:visited,
+.talk .options a:hover,
+.talk .options a:focus,
+.talk .options a:active {
+    color: #9f9f9f;
 }
 
 .slot p,
 .slot .heading {
     margin-top: 6px;
     margin-bottom: 6px;
+}
+
+#gridTable .talk,
+#gridTable .empty,
+#gridTable th p {
+    padding: 5px;
 }

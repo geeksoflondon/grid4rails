@@ -4,17 +4,17 @@
 *  Don't try to use positioning
 *  Probably only one typeface per page
 *  Probably won't respect typeface specified
+*  Keep tables ~very~ simple: no border-collapse, 
+*  thead, tbody or varying border widths/colours/styles.
+*  No image-replacement
+*  Avoid using large and/or wide images in content
+*  (viewport is likely to be relatively narrow and shallow)
 -----------------------------*/
 
 
 /* Basic text rules
 -----------------------------*/
 
-body,
-h1, h2, h3, h4, h5, h6,
-div, p, li, th, td { 
-    font-family: Verdana, sans-serif;
-}
 
 /* Layout
 -----------------------------*/

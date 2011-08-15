@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Email:</b>
+<h1>
+  <span class="label">Name:</span>
+  <%= @user.name %>
+</h1>
+
+<p class="email">
+  <span class="label">Email:</span>
   <%= @user.email %>
 </p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Website:</b>
+<p class="website">
+  <span class="label">Website:</span>
   <%= @user.website %>
 </p>
 

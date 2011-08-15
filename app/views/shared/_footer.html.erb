@@ -1,12 +1,11 @@
 		<div id="footer"> 
 			<ul class="nav">
-				<li><%= link_to 'Home', root_path() %></li> 
+				<li<% if (request.request_uri == url_for(:action => 'index', :controller => 'grid')) %> class="selected"<% end %>><a href="/grid">Home</a></li>
 				<li><a href="/admin">TEMP:ADMIN</a></li>
 				<li><a href="/feedback">Feedback</a></li>
 				<li><a href="/help">Help</a></li>		
 			</ul> 
-		</div> 
-		
+		</div> 		
 		
 		<%= javascript_include_tag :all %>
 		

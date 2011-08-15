@@ -3,33 +3,37 @@
 		<td>&nbsp;</td> 
 		<% @timeslots.each do |timeslot| %>
 			<th class="timeslot">
-				<%= timeslot.start.strftime("%a") %><br/>
-				<%= timeslot.start.strftime("%H:%M") %> <%= timeslot.end.strftime("%H:%M") %>
+				<p>
+					<%= timeslot.start.strftime("%a") %><br/>
+					<%= timeslot.start.strftime("%H:%M") %> <%= timeslot.end.strftime("%H:%M") %>
+				</p>
 			</th>
 		<% end %>
 	</tr> 
 	<% @rooms.each do |room| %>
 		<tr> 
-			<th class="room"><%= room.name %></th>
-				<% room.slots.each do |slot| %>
-				<td class="slot">
-					<% if (slot.talk.nil?) %>
-						<p>Empty</p>	
-					<% else %>
-						<% @talk = slot.talk %>
-						<div class="talk">
-							<h2 class="heading title">
-								<%= @talk.title unless @talk.title.nil? %>
-							</h2> 
-							<h3 class="heading speaker">
-								<%= @talk.speaker unless @talk.speaker.nil? %>
-							</h3>
-							<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
-							<p class="options">
-								<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
-							</p>	
-						</div>			
-					<% end %>
+			<th class="room"><p><%= room.name %></p></th>
+			<% room.slots.each do |slot| %>
+				<td>
+					<div class="slot">
+						<% if (slot.talk.nil?) %>
+							<p class="empty">Empty</p>	
+						<% else %>
+							<% @talk = slot.talk %>
+							<div class="talk">
+								<h2 class="heading title">
+									<%= @talk.title unless @talk.title.nil? %>
+								</h2> 
+								<h3 class="heading speaker">
+									<%= @talk.speaker unless @talk.speaker.nil? %>
+								</h3>
+								<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
+								<p class="options">
+									<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
+								</p>	
+							</div>			
+						<% end %>
+					</div>
 				</td>
 			<% end %> 
 		</tr>

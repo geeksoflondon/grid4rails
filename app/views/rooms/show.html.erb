@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @room.name %>
-</p>
+<h1><span class="label">Name: </span><%= @room.name %></h1>
 
-<p>
-  <b>Description:</b>
-  <%= @room.description %>
-</p>
+<h2 class="label">Description:</h2>
+ <p><%= @room.description %></p>
 
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
