@@ -38,18 +38,7 @@
 	<div id="header">
 		<h1 class="heading page-title"><a href="/"><span class="hide">Griddy</span></a></h1>
 		<span class="spacer">&nbsp;</span>		
-		<ul class="nav">
-			<li<% if (request.request_uri == url_for(:action => 'now', :controller => 'grid')) %> class="selected"<% end %>><%= link_to "Now", grid_now_path unless @talks_taking_place %></li>
-			<li<% if (request.request_uri == url_for(:action => 'next', :controller => 'grid')) %> class="selected"<% end %>><a href="/grid/next">Next</a></li>
-			<li<% if (request.request_uri == url_for(:action => 'index', :controller => 'grid')) %> class="selected"<% end %>><a href="/grid">View Grid</a></li>
-			<li<% if (request.request_uri == url_for(:action => 'new', :controller => 'talks')) %> class="selected"<% end %>><a href="/talks/new">Add Talk</a></li>
-			<li><a href="/feedback">Feedback</a></li>
-		</ul>
-		<% if (cookies[:avail] == "true") %>
-			<div class="version-switcher">
-				<h2 class="heading">Versions <span class="skip">[<a href="#header-end">skip</a>]</span></h2>
-				<p class="options"><a href="<%= url_for() %>" <% if (cookies[:version] != 'med' && cookies[:version] != 'high') %>class="selected" <% end %>onClick="setVersion('low');">Bare</a> | <a href="<%= url_for() %>"<% if (cookies[:version] == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Simple</a> | <a href="<%= url_for() %>"<% if (cookies[:version] == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Shiny</a></p>
-			</div>
-		<% end %>
+		<%= render '/shared/nav/global_header' %>
+		<%= render '/shared/nav/version' %>
 		<span id="header-end"></span>		
 	</div>

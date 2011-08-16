@@ -1,27 +1,29 @@
-<h1>Listing timeslots</h1>
+<div class="timeslots">
+	<h1 class="heading">All Timeslots</h1>
+	<% if (@timeslots.count > 0) %>
+		<table>
+			<tr>
+				<th><p>Name</p></th>
+				<th><p>Start</p></th>
+				<th><p>End</p></th>
+				<th colspan="3"><p>Options</p></th>
+			</tr>		
+			<% @timeslots.each do |timeslot| %>
+				<tr class="timeslot">
+				<td><p><%= timeslot.name %></p></td>
+				<td><p><%= timeslot.start %></p></td>
+				<td><p><%= timeslot.end %></p></td>
+				<td><p><%= link_to 'Show', timeslot %></p></td>
+				<td><p><%= link_to 'Edit', edit_timeslot_path(timeslot) %></p></td>
+				<td><p><%= link_to 'Destroy', timeslot, :confirm => 'Are you sure?', :method => :delete %></p></td>
+				</tr>
+			<% end %>
+		</table>
+	<% else %>
+		<p>So, when's it all happening..?</p>
+	<% end %>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Start</th>
-    <th>End</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @timeslots.each do |timeslot| %>
-  <tr>
-    <td><%= timeslot.name %></td>
-    <td><%= timeslot.start %></td>
-    <td><%= timeslot.end %></td>
-    <td><%= link_to 'Show', timeslot %></td>
-    <td><%= link_to 'Edit', edit_timeslot_path(timeslot) %></td>
-    <td><%= link_to 'Destroy', timeslot, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Timeslot', new_timeslot_path %>
+<p class="options">
+	<%= link_to 'Add Timeslot', new_timeslot_path %>
+</p>

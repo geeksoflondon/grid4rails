@@ -1,20 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>
-  <span class="label">Name:</span>
-  <%= @user.name %>
-</h1>
-
-<p class="email">
-  <span class="label">Email:</span>
-  <%= @user.email %>
+<div class="user">
+	<h1 class="heading"><span class="label">Name:</span> <%= @user.name %></h1>
+	<p class="email"><span class="label">Email:</span> <%= @user.email %></p>
+	<p class="website"><span class="label">Website:</span> <%= @user.website %></p>
+</div>
+<p class="options">
+	<%= link_to 'Edit', edit_user_path(@user) unless @user.locked? %>
 </p>
 
-<p class="website">
-  <span class="label">Website:</span>
-  <%= @user.website %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

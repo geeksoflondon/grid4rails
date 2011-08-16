@@ -1,11 +1,10 @@
-<h2 class="heading title">	
-	<span class="label">Title: </span>
-	<%= @talk.title unless @talk.title.nil? %>
-</h2> 
-<h3 class="heading speaker">
+<h1 class="heading">		
+	<% if (@talk.title.nil?) %>[Untitled]<% else %><%= @talk.title %><% end %>
+</h1> 
+<p class="speaker">
 	<span class="label">Speaker: </span>
 	<%= @talk.speaker unless @talk.speaker.nil? %>
-</h3>
+</p>
 <% if (!@talk.description.nil?) %>
 	<p class="description"><%= @talk.description %></p>
 <% end %>		

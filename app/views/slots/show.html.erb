@@ -1,13 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="slot">
+	
+	<h1 class="heading"><%= @slot.id %></h1>
+	
+	<p class="room">
+	  <span class="label">Room:</span>
+	  <%= @slot.room.name %>
+	</p>
+	
+	<p class="timeslot">
+	  <span class="label">Timeslot:</span>
+	  <%= @slot.timeslot.start %>
+	</p>
+	
+</div>
 
-<h1><span class="label">Talk: </span><%= @slot.talk_id %></h1>
-
-<p class="room">
-  <span class="label">Room:</span>
-  <%# @slot.room_id %>
-</p>
-
-<p class="timeslot">
-  <span class="label">Timeslot:</span>
-  <%# @slot.slot_id %>
+<p class="options">
+	<%= link_to 'All Slots', slots_path %>
 </p>

@@ -1,26 +1,27 @@
-<h1>Listing slots</h1>
+<div class="slots">
+	<h1 class="heading">All Slots</h1>
+	<% if (@slots.count > 0) %>
+		<table>
+			<tr>
+				<th><p>Timeslot</p></th>
+				<th><p>Room</p></th>
+				<th><p>Talk</p></th>
+				<th><p>Options</p></th>
+			</tr>			
+			<% @slots.each do |slot| %>
+				<tr class="slot">
+					<td class="timeslot"><p><%= slot.timeslot.name %></p></td>
+					<td class="room"><p><%= slot.room.name %></p></td>
+					<td class="talk"><p><% if (slot.talk.nil?) %>Empty<% else %><%= slot.talk.title %><% end %></p></td>
+					<td class="option"><p><%= link_to 'Show', slot %></p></td>				
+				</tr>
+			<% end %>
+		</table>
+	<% else %>
+		<p>Can someone hit populate, please?</p>
+	<% end %>
+</div>
 
-<table>
-  <tr>
-    <th>Session</th>
-    <th>Room</th>
-    <th>Talk</th>
-  </tr>
-
-<% @slots.each do |slot| %>
-  <tr>
-    <td><%= slot.timeslot['name'] %></td>
-    <td><%= slot.room['name'] %></td>
-    <td><%= unless slot.talk.nil?
-				slot.talk['title']
-			else
-				"No Talk Yet"
-			end
-		%></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Room', new_room_path %>
+<p class="options">
+	<%= link_to 'Add Room', new_room_path %>
+</p>

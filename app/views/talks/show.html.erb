@@ -1,14 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <div class="talk">
-	<%= render '/shared/talk_details' %>
+	<%= render '/shared/talk/details' %>
 	<% if (!@talk.slot_id.nil?) %>
 		<% @slot = @talk.slot %>		
-		<%= render '/shared/talk_slot_details' %>
-	<% elsif (!@slot.nil?) %>
-		<%= render '/shared/talk_slot_details' %>
 	<% end %>
+	<%= render '/shared/talk/slot' %>
 </div>
 
-<%= link_to 'Edit', edit_talk_path(@talk) %> |
-<%= link_to 'Back', talks_path %>
+<p class="options">
+	<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
+</p>

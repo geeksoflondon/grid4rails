@@ -1,29 +1,28 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  	<% if @user.errors.any? 
+		@errors = @user.errors
+		@context = "prohibited this user from being saved:"
+	%><%= render '/shared/error' %>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="field">
+		<%= f.label :email %><br />
+		<%= f.text_field :email %>
+	</div>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :website %><br />
+		<%= f.text_field :website %>
+	</div>
+	
+	<fieldset class="actions">	
+		<legend>Options</legend>		
+		<span class="cancel"><%= link_to 'Cancel', users_path %></span>
+		<span class="delimiter"> </span>
+		<span class="submit"><%= f.submit %></span>		
+	</fieldset>
 <% end %>

@@ -1,34 +1,32 @@
 <%= form_for(@room) do |f| %>
-  <% if @room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+  
+  	<% if @room.errors.any? 
+		@errors = @room.errors
+		@context = "prohibited this room from being saved:"
+	%><%= render '/shared/error' %>
+	<% end %>
 
-      <ul>
-      <% @room.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_field :description %>
+	</div>
+	<div class="field">
+		<%= f.label :short_code %><br />
+		<%= f.text_field :short_code %>
+	</div>
+	<div class="field">
+		<%= f.label :weighting %><br />
+		<%= f.text_field :weighting %>
+	</div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :short_code %><br />
-    <%= f.text_field :short_code %>
-  </div>
-  <div class="field">
-    <%= f.label :weighting %><br />
-    <%= f.text_field :weighting %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<fieldset class="actions">	
+		<legend>Options</legend>			
+		<span class="cancel"><%= link_to 'Cancel', rooms_path %></span>
+		<span class="delimiter"> </span>
+		<span class="submit"><%= f.submit %></span>		
+	</fieldset>
 <% end %>

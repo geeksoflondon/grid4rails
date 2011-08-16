@@ -26,6 +26,10 @@ class SlotsController < ApplicationController
       format.json  { render :json => @slots }
     end    
   end
+  
+  def show
+    @slot = Slot.find(params[:id])    
+  end
 
   def update
     @slot = Slot.find(params[:id])

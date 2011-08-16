@@ -1,10 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="room">
+	<h1 class="heading"><% if (@room.name.nil?) %><%= @room.id %><% else %><%= @room.name %><% end %></h1>
+	<div class="description">
+		<h2 class="label">Description:</h2>
+ 		<p><%= @room.description %></p>
+	</div>
+</div>
 
-<h1><span class="label">Name: </span><%= @room.name %></h1>
-
-<h2 class="label">Description:</h2>
- <p><%= @room.description %></p>
-
-
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<p class="options">
+	<%= link_to 'Edit', edit_talk_path(@room) %>
+</p>

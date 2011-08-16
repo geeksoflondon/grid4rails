@@ -1,20 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="timeslot">
+	<h1 class="heading"><%= @timeslot.name %></h1>
+	<p><span class="label">Start:</span> <%= @timeslot.start %></p>
+	<p><span class="label">End:</span> <%= @timeslot.end %></p>
+</div>
 
-<h1>
-  <span class="label">Name:</span>
-  <%= @timeslot.name %>
-</h1>
-
-<p>
-  <span class="label">Start:</span>
-  <%= @timeslot.start %>
+<p class="options">
+	<%= link_to 'Edit', edit_timeslot_path(@timeslot) %>
 </p>
-
-<p>
-  <span class="label">End:</span>
-  <%= @timeslot.end %>
-</p>
-
-
-<%= link_to 'Edit', edit_timeslot_path(@timeslot) %> |
-<%= link_to 'Back', timeslots_path %>

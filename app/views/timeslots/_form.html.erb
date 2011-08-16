@@ -1,29 +1,28 @@
 <%= form_for(@timeslot) do |f| %>
-  <% if @timeslot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@timeslot.errors.count, "error") %> prohibited this timeslot from being saved:</h2>
+  
+  	<% if @timeslot.errors.any? 
+		@errors = @timeslot.errors
+		@context = "prohibited this timeslot from being saved:"
+	%><%= render '/shared/error' %>
+	<% end %>
 
-      <ul>
-      <% @timeslot.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :start %><br />
+		<%= f.datetime_select :start %>
+	</div>
+	<div class="field">
+		<%= f.label :end %><br />
+		<%= f.datetime_select :end %>
+	</div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :start %><br />
-    <%= f.datetime_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br />
-    <%= f.datetime_select :end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<fieldset class="actions">	
+		<legend>Options</legend>		
+		<span class="cancel"><%= link_to 'Cancel', timeslots_path %></span>
+		<span class="delimiter"> </span>
+		<span class="submit"><%= f.submit %></span>		
+	</fieldset>
 <% end %>
