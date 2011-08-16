@@ -68,6 +68,16 @@ form .actions {
 }
 
 
+/* Custom features
+-----------------------------*/
+
+/* Global navigation */
+#header .nav li,
+#footer .nav li {
+    white-space: nowrap;
+}
+
+
 /* PAGE: the grid
 -----------------------------*/
 

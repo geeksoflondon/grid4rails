@@ -63,10 +63,17 @@ h1 {
     background-image: url('/images/bcl8_logo.png');    
 }
 
+/* Gloval nav */
+#header .nav li,
+#footer .nav li {
+    line-height: 2em;
+}
+
 /* Global nav in header */
 #header .nav li {
     font-size: medium;
 }
+
 
 /* Version switcher */
 .version-switcher .heading {
