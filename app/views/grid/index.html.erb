@@ -1,2 +1,4 @@
 <h1>The Grid</h1> 
-<%= render 'shared/grid/headings' %>
+<% cache('the_grid') do %>
+  <%= render 'shared/grid/headings' %>
+<% end %>

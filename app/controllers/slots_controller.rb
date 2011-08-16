@@ -18,7 +18,7 @@ class SlotsController < ApplicationController
 
   def confirm
     @slot = Slot.find(params[:id])
-    @talk = Talk.find(params[:talk])    
+    @talk = Talk.find(params[:talk])
 
     respond_to do |format|
       format.html
@@ -34,6 +34,7 @@ class SlotsController < ApplicationController
 
     respond_to do |format|
       if @slot.update_attributes(params[:id])
+        expire_fragment('the_grid')
         format.html { redirect_to(@talk, :notice => 'Talk was successfully scheduled.') }
         format.xml  { head :ok }
         format.json  { head :ok }
