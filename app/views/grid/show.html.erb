@@ -2,7 +2,10 @@
 	<% if (@timeslots.nil?) %>
 		<p>You seem to be lost in time.</p>
 	<% else %>	
-		<h1 class="heading"><%= @timeslot.start.strftime("%H:%M") %> - <%= @timeslot.end.strftime("%H:%M") %></h1>
+		<h1 class="heading">
+			<%= @timeslot.start.strftime("%a") %><br />
+			<%= @timeslot.start.strftime("%H:%M") %> - <%= @timeslot.end.strftime("%H:%M") %>
+		</h1>
 		<%= render 'shared/nav/timeslot' %>
 		<%= render 'shared/grid/headings' %>
 	<% end %>
