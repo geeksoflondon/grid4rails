@@ -7,5 +7,9 @@
 </div>
 
 <p class="options">
-	<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
+	<% if (@talk.locked?) %>
+		<%= link_to 'All Talks', talks_path %>
+	<% else %>
+		<%= link_to 'Edit', edit_talk_path(@talk) %>
+	<% end %>
 </p>
