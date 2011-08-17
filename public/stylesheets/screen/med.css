@@ -60,7 +60,7 @@ h1 {
     display: block;
     height: 127px;
     width: 360px;
-    background-image: url('/images/bcl8_logo.png');    
+    background-image: url('/images/barcampmediacity-360.png');    
 }
 
 /* Gloval nav */
@@ -82,9 +82,21 @@ h1 {
 .version-switcher .options {
     color: #cccccc;
 }
+
+.version-switcher .options a
+{
+    z-index:10;
+    position:relative;
+}
+
 .version-switcher .selected {
-    background-color: orange;
-    border: 2px solid orange;
+    /* for bcl9:
+       background-color: orange;
+       border: 2px solid orange;
+    */
+    /* for media city, turn off after the event */
+    background-color:#E03E3A;
+    border: 2px solid #E03E3A;
     font-weight: bold;
     color: white;
 }

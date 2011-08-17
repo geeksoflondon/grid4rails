@@ -1,7 +1,10 @@
 <% @rooms.each do | room| %>
 	<% @room = room %>
 	<tr> 
-		<th class="room"><p><%= @room.name %></p></th>
+		<th class="room">
+			<p><%= @room.name %></p>
+			<p class="where-when"><span><%= @room.short_code.upcase %></span></p>
+		</th>
 		<% @room.slots.each do | slot| %>
 			<% @slot = slot %>
 			<%= render 'shared/grid/slot' %>

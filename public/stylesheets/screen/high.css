@@ -49,7 +49,19 @@ body,
     padding: 2px;
     background-color: #ffffff;
 }
-#header .nav li.selected a {    
+
+.nav li a { 
+    padding-bottom:4px;
+}
+
+#header .nav li a:hover,
+#footer .nav li a:hover { 
+    text-decoration:none;
+    border-bottom: 2px solid #666699;
+}
+
+#header .nav li.selected a,
+#footer .nav li.selected a {    
     border-bottom: 2px solid #666699;
 }
 
@@ -65,7 +77,11 @@ body,
     padding-bottom: 0.5em;
 }
 .version-switcher .selected {
-    border: 2px solid orange;
+    /* for bcl9
+       border: 2px solid orange;
+    */
+    /* for media city, switch off after the event */
+    border:2px solid #E03E3A;
     border-radius: 3px;
     -moz-border-radius: 3px;
 }
