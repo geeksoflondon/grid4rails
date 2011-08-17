@@ -27,7 +27,7 @@ Room.create(:name => 'Charing Cross', :description => 'southbank mess', :short_c
 
 ##Today at 9am
 time = Time.now
-start_time = Time.local(time.strftime("%Y"), time.strftime("%b"), time.strftime("%d"), 9,00,00)
+start_time = Time.now(time.strftime("%Y"), time.strftime("%b"), time.strftime("%d"), 9,00,00)
 end_time = start_time + 1.hour
 
 Timeslot.create(:name => 'Opening Talk', :start => start_time, :end => end_time)
