@@ -114,19 +114,15 @@ h1 {
 
 /* VIEW: the grid
 -----------------------------*/
-
 #gridTable td, 
 #gridTable th {
-    border-color: #ffffff;
-    border-width: 2px 30px 2px 2px;
-    border-style: solid;
     font-family: Verdana;
     font-size: 100%;
     font-style: inherit;
     font-weight: inherit;
     margin: 0;
     outline: 0 none;
-    padding: 0;
+    padding: 2px 16px;
     vertical-align: baseline;
 }
 
@@ -136,11 +132,19 @@ h1 {
     font-weight: normal;
 }
 
+#gridTable tr.even{
+	background-color: #fbfbfb;
+}
+
 #gridTable .timeslot {
-    border-bottom: 2px solid #6678B1;
     color: #003399;
     font-size: 14px;
-    padding: 8px 2px;
+    padding: 8px 16px 2px 16px;
+}
+
+#gridTable .timeslot p{
+	border-bottom: 2px solid #6678B1;
+	padding: 5px 5px 13px 5px;
 }
 
 #gridTable .slot,
