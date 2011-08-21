@@ -35,7 +35,7 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.save
-        format.html { redirect_to(:action => 'schedule', :controller => 'talks', :notice => 'Talk was successfully created.', :id => @talk.id, :method => 'post') }
+        format.html { redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id) }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
         format.json  { render :json => @talk, :status => :created, :location => @talk }
       else
