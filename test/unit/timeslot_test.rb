@@ -41,4 +41,12 @@ class TimeslotTest < ActiveSupport::TestCase
     
   end
   
+  test "can get the previous time slot" do
+    ts1 = Timeslot.all.third
+    ts2 = Timeslot.all.second
+    
+    assert ts1.prev == ts2
+    
+  end
+  
 end
