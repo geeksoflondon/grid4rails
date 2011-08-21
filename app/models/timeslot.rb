@@ -21,7 +21,7 @@ class Timeslot < ActiveRecord::Base
   end
   
   def prev
-    Timeslot.where('start < ?', self.start).find(:all, :order => 'start DESC').first
+    Timeslot.where('start < ?', self.start).last
   end
 
   def self.upcoming
