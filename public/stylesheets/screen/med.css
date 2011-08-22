@@ -112,6 +112,7 @@ h1 {
     margin: 1em 0px;
 }
 
+
 /* VIEW: the grid
 -----------------------------*/
 #gridTable td, 
@@ -192,4 +193,92 @@ h1 {
     margin-right: 2px;
     padding: 2px;
     margin-bottom: 3px;
+}
+
+
+/* forms general rules */
+fieldset
+{
+	border:none;
+}
+
+.field
+{
+	margin-bottom:1.6em;
+}
+
+
+
+/* add a talk */
+.addtalk .actions,
+.slot .actions
+{
+	width: 292px;
+}
+
+.addtalk .actions legend
+{
+	height:0;
+	font-size:0;
+	line-height:0;
+	text-indent: -99999px;
+}
+
+.addtalk .delimiter,
+.talk .cancel,
+.slot .delimiter
+{
+	margin:0 1em;
+}
+
+.submit input
+{
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #dd0000;
+}
+
+.submit input:hover
+{
+	text-decoration: none;
+	background: #ff6666;
+}
+
+.submit input:active 
+{
+	position: relative;
+	top: 1px;
+	color: #fcd3a5;
+}
+
+
+
+/* submit talk */
+.slot .label
+{
+	font-weight:bold;
+	margin-right:0.3em;
+	min-width:73px;
+	display: inline-block;
+}
+
+.slot p.speaker,
+.slot p.where,
+.slot div.when,
+.slot p.description
+{
+	margin-bottom:1.5em;
+}
+
+.slot p.description
+{
+	padding-left:73px;
+	margin-left:0.3em;
 }
