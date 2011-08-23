@@ -1,4 +1,15 @@
 <div class="talk">
 	<h1 class="heading">Schedule Talk</h1>
-	<%= render 'form_schedule' %>
+	<% if @talk.errors.any? 
+		@errors = @talk.errors
+		@context = "prohibited this talk from being scheduled:"
+	%><%= render '/shared/error' %>
+	<% end %>	
+
+	<% if (@empty_slots.nil?) %>
+		<p>Wow, it looks as though all the slots have been taken!</p>
+	<% else %>
+		<p class="instructions">To add your talk to the grid, find an empty slot, click to select and hit submit.</p>
+		<%= render '/shared/grid/headings' %>
+	<% end %>
 </div>
