@@ -46,20 +46,6 @@ class TalksController < ApplicationController
     end
   end
 
-  def schedule
-    @talk = Talk.find(params[:id])
-    @empty_slots = Slot.find_empty
-    @timeslots = Timeslot.all
-    @rooms = Room.all
-    @description = "The grid, showing empty slots"
-
-    respond_to do |format|
-      format.html # schedule.html.erb
-      format.xml  { render :xml => @talk }
-      format.json  { render :json => @talk }
-    end
-  end
-
   def edit
     @talk = Talk.find(params[:id])
   end
@@ -80,15 +66,25 @@ class TalksController < ApplicationController
     end
   end
 
-  def destroy
-    @talk = Talk.find(params[:id])
-    @talk.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(talks_url) }
-      format.xml  { head :ok }
-      format.json  { head :ok }
-    end
-  end
   
+  def schedule
+     @unscheduled = Talk.find(params[:id])
+     @empty_slots = Slot.find_empty
+     @timeslots = Timeslot.all
+     @rooms = Room.all
+     @description = "The grid, showing empty slots"
+     
+  end
+
+  def assign_slot
+    @talk = Talk.find(params[:talk][:id])
+    
+    if @talk.schedule_in(params[:talk][:slot_id])
+      redirect_to(grid_index_path, :notice => 'Talk was scheduled updated.')
+    else
+      redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id, :notice => 'There was an issue scheduling your talk')
+    end
+    
+  end
+
 end
