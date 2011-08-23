@@ -58,16 +58,16 @@ slots = Slot.generate!
 #Generate Talks
 
 talks = [
-  {:title => 'LifestyleLinking Open Source Project', :speaker => 'aboynejames'},
-  {:title => 'Simple Data', :speaker => 'John Doe'},
-  {:title => 'Set, Suguru, and Fluxx', :speaker => 'Ryan Alexander'},
-  {:title => 'Hack 3D', :speaker => 'Ketan Majmudar'},
-  {:title => 'What network APIs would you like from giffgaff', :speaker => 'Vincent Boon'},
-  {:title => 'JQuery tips & tricks: all sorts of awesome', :speaker => 'Jack Franklin'},
-  {:title => 'Control your remote control 40mph car from your iPhone or iPad', :speaker => 'Jack Black'},
-  {:title => 'One year running it all on the cloud', :speaker => 'Alistair Hann'},
-  {:title => 'Running Meetups using Social Networks', :speaker => 'Nathan O\'Hanlon'},
-  {:title => 'Simple node.js apps without web sockets', :speaker => 'Robbie Clutton'},
+  {:title => 'LifestyleLinking Open Source Project', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'aboynejames'},
+  {:title => 'Simple Data', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'John Doe'},
+  {:title => 'Set, Suguru, and Fluxx', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Ryan Alexander'},
+  {:title => 'Hack 3D', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Ketan Majmudar'},
+  {:title => 'What network APIs would you like from giffgaff', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Vincent Boon'},
+  {:title => 'JQuery tips & tricks: all sorts of awesome', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Jack Franklin'},
+  {:title => 'Control your remote control 40mph car from your iPhone or iPad', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Jack Black'},
+  {:title => 'One year running it all on the cloud', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Alistair Hann'},
+  {:title => 'Running Meetups using Social Networks', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Nathan O\'Hanlon'},
+  {:title => 'Simple node.js apps without web sockets', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Robbie Clutton'},
 ]
 
 Slot.all.each do |slot|
