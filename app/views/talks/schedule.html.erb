@@ -1,10 +1,5 @@
 <div class="talk">
 	<h1 class="heading">Schedule Talk</h1>
-	<% if @talk.errors.any? 
-		@errors = @talk.errors
-		@context = "prohibited this talk from being scheduled:"
-	%><%= render '/shared/error' %>
-	<% end %>	
 
 	<% if (@empty_slots.nil?) %>
 		<p>Wow, it looks as though all the slots have been taken!</p>
