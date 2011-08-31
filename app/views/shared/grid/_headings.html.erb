@@ -4,6 +4,7 @@
 		<% @timeslots.each do |timeslot| %>
 			<th class="timeslot">
 				<p>
+					<a href="/grid/<%= timeslot.id %>">
 					<%= timeslot.start.strftime("%a") %><br/>
 					<%= timeslot.start.strftime("%H:%M") %> <%= timeslot.end.strftime("%H:%M") %>
 				</p>

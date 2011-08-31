@@ -26,8 +26,9 @@ body,
 -----------------------------*/
 
 #footer .nav {
-    text-align: center;
+    text-align: left;
 }
+
 #main {
     clear: left;
 }
@@ -49,7 +50,24 @@ body,
     padding: 2px;
     background-color: #ffffff;
 }
-#header .nav li.selected a {    
+
+#footer .nav li
+{
+	font-size:1em;
+}
+
+.nav li a { 
+    padding-bottom:4px;
+}
+
+#header .nav li a:hover,
+#footer .nav li a:hover { 
+    text-decoration:none;
+    border-bottom: 2px solid #666699;
+}
+
+#header .nav li.selected a,
+#footer .nav li.selected a {    
     border-bottom: 2px solid #666699;
 }
 
@@ -65,7 +83,11 @@ body,
     padding-bottom: 0.5em;
 }
 .version-switcher .selected {
-    border: 2px solid orange;
+    /* for bcl9
+       border: 2px solid orange;
+    */
+    /* for media city, switch off after the event */
+    border:2px solid #E03E3A;
     border-radius: 3px;
     -moz-border-radius: 3px;
 }
@@ -87,8 +109,52 @@ body,
      /* Inherited from med.css*/
 }
 
+/*
 #gridTable .timeslot {
     border-bottom: 2px solid #6678B1;
     color: #003399;
     font-size: 14px;
 }   
+*/
+
+
+
+
+/* forms*/
+.field input:active
+{
+	border:1px solid red;
+}
+
+
+
+/*add talk */
+.submit input
+{
+	padding: 0.2em 0.6em 0.25em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	
+	background: -webkit-gradient(linear, left top, left bottom, from(#dd0000), to(#990000));
+	background: -moz-linear-gradient(top,  #dd0000,  #990000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#dd0000', endColorstr='#990000');
+}
+
+.submit input:hover
+{
+	background: -webkit-gradient(linear, left top, left bottom, from(#ff6666), to(#dd0000));
+	background: -moz-linear-gradient(top,  #ff6666,  #dd0000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6666', endColorstr='#dd0000');
+}
+
+.submit input:active 
+{
+	background: -webkit-gradient(linear, left top, left bottom, from(#dd0000), to(#990000));
+	background: -moz-linear-gradient(top,  #dd0000,  #990000);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#dd0000', endColorstr='#990000');
+}

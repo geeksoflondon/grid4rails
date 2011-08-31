@@ -1,31 +1,31 @@
-<td>
+<% slotIsEmpty=(@slot.nil? || @slot.talk.nil?) %>
+<td data-slot_id="<%= @slot.id %>">
 	<div class="slot">
-		<% if (@slot.nil? || @slot.talk.nil?) %>
+		<% if (slotIsEmpty) %>
 			<div class="empty">				
 				<% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
-					<p><input type="radio" name="id" value="<%= @slot.id %>" /></p>
+					<%= form_tag('/talks/assign_slot') do |f| %>
+						<%= hidden_field('talk', 'slot_id', :value => @slot.id) %>
+						<%= hidden_field('talk', 'id', :value => @unscheduled.id) %>
+						<span class="submit"><%= submit_tag("Add here") %></span>
+					<% end %>
 				<% else %>
 					<p>Empty</p> 
 				<% end %>				
 				<%= render '/shared/grid/where_when' %>
-				<% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
-					<fieldset class="actions">								
-						<span class="submit">  <%= submit_tag("Submit") %></span>		
-					</fieldset>
-				<% end %>				
 			</div>	
 		<% else %>
-			<% @talk = @slot.talk %>
+			<% talk = @slot.talk %>
 			<div class="talk">
 				<h2 class="heading title">
-					<%= @talk.title unless @talk.title.nil? %>
+					<%= link_to talk.title, talk_path(talk) unless talk.title.nil? %>
 				</h2> 
 				<h3 class="heading speaker">
-					<%= @talk.speaker unless @talk.speaker.nil? %>
+					<%= talk.speaker unless talk.speaker.nil? %>
 				</h3>
-				<p class="description"><%= @talk.description unless @talk.description.nil? %></p>
+				<!--<p class="description"><%= talk.description unless talk.description.nil? %></p>-->
 				<p class="options">
-					<%= link_to 'Edit', edit_talk_path(@talk) unless @talk.locked? %>
+					<%= link_to 'Edit', edit_talk_path(talk) unless talk.locked? %>
 				</p>
 				<%= render '/shared/grid/where_when' %>								
 			</div>			

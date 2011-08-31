@@ -1,7 +1,12 @@
+<% @odd = false %>
 <% @rooms.each do | room| %>
 	<% @room = room %>
-	<tr> 
-		<th class="room"><p><%= @room.name %></p></th>
+	<% @odd = !@odd %>
+	<tr class="<%= @odd?'odd':'even' %>">
+		<th class="room">
+			<p><%= @room.name %></p>
+			<p class="where-when"><span><%= @room.short_code.upcase %></span></p>
+		</th>
 		<% @room.slots.each do | slot| %>
 			<% @slot = slot %>
 			<% if (@slot.timeslot.id == @timeslot.id) %>

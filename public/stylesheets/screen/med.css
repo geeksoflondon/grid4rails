@@ -60,7 +60,7 @@ h1 {
     display: block;
     height: 127px;
     width: 360px;
-    background-image: url('/images/bcl8_logo.png');    
+    background-image: url('/images/barcampmediacity-360.png');    
 }
 
 /* Gloval nav */
@@ -82,9 +82,21 @@ h1 {
 .version-switcher .options {
     color: #cccccc;
 }
+
+.version-switcher .options a
+{
+    z-index:10;
+    position:relative;
+}
+
 .version-switcher .selected {
-    background-color: orange;
-    border: 2px solid orange;
+    /* for bcl9:
+       background-color: orange;
+       border: 2px solid orange;
+    */
+    /* for media city, turn off after the event */
+    background-color:#E03E3A;
+    border: 2px solid #E03E3A;
     font-weight: bold;
     color: white;
 }
@@ -100,21 +112,18 @@ h1 {
     margin: 1em 0px;
 }
 
+
 /* VIEW: the grid
 -----------------------------*/
-
 #gridTable td, 
 #gridTable th {
-    border-color: #ffffff;
-    border-width: 2px 30px 2px 2px;
-    border-style: solid;
     font-family: Verdana;
     font-size: 100%;
     font-style: inherit;
     font-weight: inherit;
     margin: 0;
     outline: 0 none;
-    padding: 0;
+    padding: 2px 16px;
     vertical-align: baseline;
 }
 
@@ -124,11 +133,19 @@ h1 {
     font-weight: normal;
 }
 
+#gridTable tr.even{
+	background-color: #fbfbfb;
+}
+
 #gridTable .timeslot {
-    border-bottom: 2px solid #6678B1;
     color: #003399;
     font-size: 14px;
-    padding: 8px 2px;
+    padding: 8px 16px 2px 16px;
+}
+
+#gridTable .timeslot p{
+	border-bottom: 2px solid #6678B1;
+	padding: 5px 5px 13px 5px;
 }
 
 #gridTable .slot,
@@ -176,4 +193,92 @@ h1 {
     margin-right: 2px;
     padding: 2px;
     margin-bottom: 3px;
+}
+
+
+/* forms general rules */
+fieldset
+{
+	border:none;
+}
+
+.field
+{
+	margin-bottom:1.6em;
+}
+
+
+
+/* add a talk */
+.addtalk .actions,
+.slot .actions
+{
+	width: 292px;
+}
+
+.addtalk .actions legend
+{
+	height:0;
+	font-size:0;
+	line-height:0;
+	text-indent: -99999px;
+}
+
+.addtalk .delimiter,
+.talk .cancel,
+.slot .delimiter
+{
+	margin:0 1em;
+}
+
+.submit input
+{
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #dd0000;
+}
+
+.submit input:hover
+{
+	text-decoration: none;
+	background: #ff6666;
+}
+
+.submit input:active 
+{
+	position: relative;
+	top: 1px;
+	color: #fcd3a5;
+}
+
+
+
+/* submit talk */
+.slot .label
+{
+	font-weight:bold;
+	margin-right:0.3em;
+	min-width:73px;
+	display: inline-block;
+}
+
+.slot p.speaker,
+.slot p.where,
+.slot div.when,
+.slot p.description
+{
+	margin-bottom:1.5em;
+}
+
+.slot p.description
+{
+	padding-left:73px;
+	margin-left:0.3em;
 }

@@ -21,14 +21,9 @@ class TalksControllerTest < ActionController::TestCase
       post :create, :talk => @talk.attributes
     end
 
-    assert_redirected_to talk_path(assigns(:talk))
+    assert_redirected_to talks_schedule_path+"?id=#{@talk.id+1}"
   end
-
-  test "should show talk" do
-    get :show, :id => @talk.to_param
-    assert_response :success
-  end
-
+  
   test "should get edit" do
     get :edit, :id => @talk.to_param
     assert_response :success
