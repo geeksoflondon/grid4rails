@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @page_id = "users"
     @users = User.all
 
     respond_to do |format|
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @page_id = "user"
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -21,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @page_id = "user-new"
     @user = User.new
 
     respond_to do |format|
@@ -31,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @page_id = "user-edit"
     @user = User.find(params[:id])
   end
 

@@ -1,6 +1,7 @@
 class TimeslotsController < ApplicationController
 
   def index
+    @page_id = "timeslots"
     @timeslots = Timeslot.order('start').all
 
     respond_to do |format|
@@ -11,6 +12,7 @@ class TimeslotsController < ApplicationController
   end
 
   def show
+    @page_id = "timeslot"
     @timeslot = Timeslot.find(params[:id])
 
     respond_to do |format|
@@ -21,6 +23,7 @@ class TimeslotsController < ApplicationController
   end
 
   def new
+    @page_id = "timeslot-new"
     @timeslot = Timeslot.new
 
     respond_to do |format|
@@ -31,6 +34,7 @@ class TimeslotsController < ApplicationController
   end
 
   def edit
+    @page_id = "timeslot-edit"
     @timeslot = Timeslot.find(params[:id])
   end
 

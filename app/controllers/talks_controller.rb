@@ -1,6 +1,7 @@
 class TalksController < ApplicationController
 
   def index
+    @page_id = "talks"
     @talks = Talk.all
 
     respond_to do |format|
@@ -11,6 +12,7 @@ class TalksController < ApplicationController
   end
 
   def show
+    @page_id = "talk"
     @talk = Talk.find(params[:id])
 
     respond_to do |format|
@@ -21,6 +23,7 @@ class TalksController < ApplicationController
   end
 
   def new
+    @page_id = "talk-new"
     @talk = Talk.new
 
     respond_to do |format|
@@ -47,6 +50,7 @@ class TalksController < ApplicationController
   end
 
   def edit
+    @page_id = "talk-edit"
     @talk = Talk.find(params[:id])
   end
 

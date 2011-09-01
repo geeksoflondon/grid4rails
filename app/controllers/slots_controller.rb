@@ -1,6 +1,7 @@
 class SlotsController < ApplicationController
 
   def index
+    @page_id = "slots"
     @slots = Slot.find(:all,
                        :joins => :timeslot,
                        :order => 'timeslots.start ASC')
@@ -13,6 +14,7 @@ class SlotsController < ApplicationController
   end
   
   def show
+    @page_id = "slot"
     @slot = Slot.find(params[:id])
   end
   

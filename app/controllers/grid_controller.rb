@@ -1,12 +1,14 @@
 class GridController < ApplicationController
 
   def index    
+    @page_id = "grid"
     @timeslots = Timeslot.all
     @rooms = Room.all
     @description = "All talks."
   end
     
   def now
+    @page_id = "now"
     @timeslot = Timeslot.now    
     @timeslots = Array.wrap(@timeslot) 
     @rooms = Array.wrap(Room.all)
@@ -14,6 +16,7 @@ class GridController < ApplicationController
   end
   
   def next
+    @page_id = "next"
     @timeslot = Timeslot.next
     @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
@@ -21,6 +24,7 @@ class GridController < ApplicationController
   end
   
   def show
+    @page_id = "timeslot"
     @timeslot = Timeslot.find(params[:id])
     @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)

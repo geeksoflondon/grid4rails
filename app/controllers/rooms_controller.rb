@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
 
   def index
+    @page_id = "rooms"
     @rooms = Room.all
 
     respond_to do |format|
@@ -11,6 +12,7 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @page_id = "room"
     @room = Room.find(params[:id])
 
     respond_to do |format|
@@ -21,6 +23,7 @@ class RoomsController < ApplicationController
   end
 
   def new
+    @page_id = "room-new"
     @room = Room.new
 
     respond_to do |format|
@@ -31,6 +34,7 @@ class RoomsController < ApplicationController
   end
 
   def edit
+    @page_id = "room-edit"
     @room = Room.find(params[:id])
   end
 
