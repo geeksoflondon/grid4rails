@@ -5,21 +5,21 @@
 .scroller a,
 .scroller a:link,
 .scroller a:visited {	
-	color: #000000;
-	border-color: #dddddd;
-	background: #ededed;
+	color: #4e1900; /* #000000 */
+	border-color: #ffd3bd; /* #dddddd */
+	background: #ffe8dd; /* #eeeeee */
 }
 
 .submit input:hover,
 .submit input:focus,
 .scroller a:hover,
 .scroller a:focus {
-	background: #dedede;
+	background: #ffd3bd; /* #dddddd */
 }
 
 .submit input:active,
 .scroller a:active {
-	color: #555555;
+	color: #c84200; /* #555555 */
 }
 
 
@@ -33,14 +33,14 @@
 
 /* Version Switcher */
 .version-switcher .selected {
-       background-color: orange;
-       border-color: orange;
-       color: #000000;
+     background-color: #4e1900; /* #000000 */
+     color: #ffffff; /* #ffffff */
+     border-color: #4e1900; /* #000000 */
 }
 
 /* Scroller */
 .scroller .arrows {
-    color: #777777;
+    color: #ff5906; /* #777777 */
 }
 
 
@@ -48,9 +48,9 @@
 -----------------------------*/
 
 #gridTable tr.even{
-	background-color: #fcfcfc;
+	background-color: #fff8f4; /* #fcfcfc */
 }
 
 .where-when span {
-    background-color: #f5f5f5;
+    background-color: #fff0e9; /* #f5f5f5 */
 }
