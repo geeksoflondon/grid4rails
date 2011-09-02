@@ -26,9 +26,13 @@ a:visited {
 -----------------------------*/
 
 /* Version switcher */
-.version-switcher .options {
+/* Footer nav options */
+.version-switcher .options,
+#footer .nav {
     color: #e4b0af;
 }
+
+/* Version switcher */
 .version-switcher .skip {
     color: #e4b0af;
 }
