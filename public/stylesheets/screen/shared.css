@@ -4,7 +4,6 @@
 
 body {
 	font-style: normal;
-	background-color: #ffffff;	
 }
 
 .title {
@@ -20,17 +19,7 @@ body {
 -----------------------------*/
 
 a:link,
-a:visited,
-a:hover,
-a:focus,
-a:active {
-	color: #0000ff;
-	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
-}
-
-a:link,
-a:visited {
-	color: #000080;
+a:visited {	
 	text-decoration: none;
 }
 

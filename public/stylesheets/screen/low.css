@@ -1,13 +1,13 @@
 /* NOTES: Low 
 -----------------------------
-*  Use names for font sizes
-*  Don't try to use positioning
-*  Probably only one typeface per page
-*  Probably won't respect typeface specified
-*  Keep tables ~very~ simple: no border-collapse, 
+** Use names for font sizes
+** Don't try to use positioning
+** Probably only one typeface per page
+** Probably won't respect typeface specified
+** Keep tables ~very~ simple: no border-collapse, 
 *  thead, tbody or varying border widths/colours/styles.
-*  No image-replacement
-*  Avoid using large and/or wide images in content
+** No image-replacement
+** Avoid using large and/or wide images in content
 *  (viewport is likely to be relatively narrow and shallow)
 -----------------------------*/
 
@@ -50,24 +50,15 @@ h1 {
 .version-switcher .heading {
     font-size: small;
 }
-.version-switcher .options,
-.scroller .options {
-    color: #cccccc;
-}
+
 .version-switcher .selected {
     text-decoration: underline;
     font-weight: bold;
 }
 .version-switcher .skip {
-    color: #cccccc;
     font-size: x-small;
     font-weight: normal;
 }
-.scroller a .arrows {
-    color: #cccccc;
-}
-
-
 
 /* Main page title */
 #main h1 {
@@ -80,7 +71,6 @@ h1 {
 
 #gridTable td, 
 #gridTable th {
-    border: 1px solid #cccccc;
     font-size: 100%;
     font-style: inherit;
     font-weight: inherit;
@@ -90,17 +80,8 @@ h1 {
     vertical-align: baseline;
 }
 
-#gridTable th {
-    color: #003399;
+#gridTable th {  
     font-weight: normal;
-}
-
-#gridTable .timeslot {
-    color: #003399;
-}
-
-#gridTable .slot {
-    color: #666699;
 }
 
 .slot p,

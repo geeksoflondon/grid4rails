@@ -1,3 +1,7 @@
+/*
+ * Rules that apply to all media
+ */
+
 /* Reset rules
 -----------------------------*/
 body,
@@ -14,8 +18,6 @@ ul, ol {
 }
 body {
     line-height: 1.25;
-    color: #000000;
-    background-color: #ffffff;
 }
 ol, ul {
     margin: 0; 

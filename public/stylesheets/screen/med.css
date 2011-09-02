@@ -16,7 +16,7 @@
 	clear: both;	
 }
 .hide {
-	margin: 0 0 0 -5000px;
+	margin: -5000px 0 0 -5000px;
 	position: absolute;
 	top: 0;	
 	left: 0;
@@ -52,6 +52,19 @@ h1 {
     margin-bottom: 1em;
 }
 
+
+/* Basic form rules
+-----------------------------*/
+
+fieldset {
+	border:none;
+}
+
+.field {
+	margin-bottom:1.6em;
+}
+
+
 /* Custom features
 -----------------------------*/
 
@@ -59,8 +72,7 @@ h1 {
 #header .page-title a {
     display: block;
     height: 127px;
-    width: 360px;
-    background-image: url('/images/barcampmediacity-360.png');    
+    width: 360px;    
 }
 
 /* Gloval nav */
@@ -79,29 +91,16 @@ h1 {
 .version-switcher .heading {
     margin-bottom: .25em;
 }
-.version-switcher .options {
-    color: #cccccc;
-}
 
-.version-switcher .options a
-{
+.version-switcher .options a {
     z-index:10;
     position:relative;
 }
 
 .version-switcher .selected {
-    /* for bcl9:
-       background-color: orange;
-       border: 2px solid orange;
-    */
-    /* for media city, turn off after the event */
-    background-color:#E03E3A;
-    border: 2px solid #E03E3A;
     font-weight: bold;
-    color: white;
 }
 .version-switcher .skip {
-    color: #cccccc;
     font-size: smaller;
     font-weight: normal;
 }
@@ -115,6 +114,7 @@ h1 {
 
 /* VIEW: the grid
 -----------------------------*/
+
 #gridTable td, 
 #gridTable th {
     font-family: Verdana;
@@ -128,23 +128,18 @@ h1 {
 }
 
 #gridTable th {
-    color: #003399;
     font-size: larger;
     font-weight: normal;
 }
 
-#gridTable tr.even{
-	background-color: #fbfbfb;
-}
-
-#gridTable .timeslot {
-    color: #003399;
+#gridTable .timeslot {   
     font-size: 14px;
     padding: 8px 16px 2px 16px;
 }
 
 #gridTable .timeslot p{
-	border-bottom: 2px solid #6678B1;
+	border-width: 0 0 2px 0;
+	border-style: solid;
 	padding: 5px 5px 13px 5px;
 }
 
@@ -153,25 +148,12 @@ h1 {
     width: 8.5em; 
 }
 
-#gridTable .slot {
-    color: #666699;
-}
-
 #gridTable td .heading {
     font-weight: normal;
 }
 
 #gridTable .speaker {
     font-style: normal;
-    color: #000000;
-}
-.talk .options a,
-.talk .options a:link,
-.talk .options a:visited,
-.talk .options a:hover,
-.talk .options a:focus,
-.talk .options a:active {
-    color: #9f9f9f;
 }
 
 .slot p,
@@ -188,36 +170,21 @@ h1 {
 
 .where-when span {
     display: inline;
-    background-color: #eFf3FF;
-    color: #666699;
     margin-right: 2px;
     padding: 2px;
     margin-bottom: 3px;
 }
 
 
-/* forms general rules */
-fieldset
-{
-	border:none;
-}
+/* VIEW: create talk
+-----------------------------*/
 
-.field
-{
-	margin-bottom:1.6em;
-}
-
-
-
-/* add a talk */
 .addtalk .actions,
-.slot .actions
-{
+.slot .actions {
 	width: 292px;
 }
 
-.addtalk .actions legend
-{
+.addtalk .actions legend {
 	height:0;
 	font-size:0;
 	line-height:0;
@@ -225,42 +192,36 @@ fieldset
 }
 
 .addtalk .delimiter,
-.talk .cancel,
-.slot .delimiter
-{
+.talk .cancel {
 	margin:0 1em;
 }
 
-.submit input
-{
+.submit input {
 	display: inline-block;
 	outline: none;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
-	font: 14px/100% Arial, Helvetica, sans-serif;
-	
-	color: #fef4e9;
-	border: solid 1px #da7c0c;
-	background: #dd0000;
+	font: 14px/100% Arial, Helvetica, sans-serif;	
+	border-width: 1px;
+	border-style: solid;
 }
 
-.submit input:hover
-{
+.submit input:hover {
 	text-decoration: none;
 	background: #ff6666;
 }
 
-.submit input:active 
-{
+.submit input:active {
 	position: relative;
 	top: 1px;
-	color: #fcd3a5;
 }
 
 
 
-/* submit talk */
+/* VIEW: assign talk
+-----------------------------*/
+
 .slot .label
 {
 	font-weight:bold;
