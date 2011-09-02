@@ -5,7 +5,7 @@
 .scroller a,
 .scroller a:link,
 .scroller a:visited {	
-	color: #0a0818; /* #000000 */
+	color: #000000; /* #000000 */
 	border-color: #cdc8ed; /* #dddddd */
 	background: #e6e4f6; /* #eeeeee */
 }
@@ -28,14 +28,14 @@
 
 /* Logo */
 #header .page-title a {    
-    background-image: url('/images/barcampmediacity-360.png');    
+    background-color: #3f3196;   
 }
 
 /* Version Switcher */
 .version-switcher .selected {
-     background-color: #0a0818; /* #000000 */
+     background-color: #3f3196; /* #000000 */
      color: #ffffff; /* #ffffff */
-     border-color: #0a0818; /* #000000 */
+     border-color: #5949c2; /* #000000 */
 }
 
 /* Scroller */

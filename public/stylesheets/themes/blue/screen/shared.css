@@ -13,13 +13,13 @@ a:visited,
 a:hover,
 a:focus,
 a:active {
-	color: #0a0818; /* #000000 */
+	color: #000000; /* #000000 */
 	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
 }
 
 a:link,
 a:visited {
-	color: #0a0818; /* #000000 */
+	color: #000000; /* #000000 */
 }
 
 /* Custom features

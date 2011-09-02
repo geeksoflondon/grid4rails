@@ -2,7 +2,7 @@
 -----------------------------*/
 
 body, td, th {
-    color: #963331;
+    color: #963331; /* #666666 */
 }
 
 /* Basic link rules
@@ -13,13 +13,13 @@ a:visited,
 a:hover,
 a:focus,
 a:active {
-	color: #000000;
+	color: #000000; /* #000000 */
 	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
 }
 
 a:link,
 a:visited {
-	color: #000000;
+	color: #000000; /* #000000 */
 }
 
 /* Custom features
@@ -29,12 +29,12 @@ a:visited {
 /* Footer nav options */
 .version-switcher .options,
 #footer .nav {
-    color: #e4b0af;
+    color: #e4b0af; /* #cccccc */
 }
 
 /* Version switcher */
 .version-switcher .skip {
-    color: #e4b0af;
+    color: #e4b0af; /* #cccccc */
 }
 
 
@@ -46,9 +46,9 @@ a:visited {
 .talk .options a:hover,
 .talk .options a:focus,
 .talk .options a:active {
-    color: #cb6664;
+    color: #cb6664; /* #999999 */
 }
 
 .where-when {
-    color: #7e2b29;
+    color: #7e2b29; /* #555555 */
 }

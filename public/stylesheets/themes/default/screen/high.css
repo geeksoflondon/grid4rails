@@ -30,23 +30,20 @@
 /* Global nav in header */
 #header .nav li a,
 #footer .nav li a {    
-    background-color: #ffffff;
+    background-color: #ffffff; /* #ffffff */
 }
 
 #header .nav li a:hover,
 #footer .nav li a:hover { 
-    border-color: #666666;
+    border-color: #666666; /* #666666 */
 }
 
 #header .nav li.selected a,
 #footer .nav li.selected a {    
-    border-color: #666666;
+    border-color: #666666; /* #666666 */
 }
 
 /* Version switcher */
 .version-switcher {    
-    background-color: #ffffff;    
-}
-.version-switcher .selected {
-    border-color: #555555;
+    background-color: #ffffff; /* #ffffff */
 }
