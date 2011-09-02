@@ -1,0 +1,49 @@
+/* Basic form rules
+-----------------------------*/
+
+.submit input {
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);	
+	background: -webkit-gradient(linear, left top, left bottom, from(#d0d0d0), to(#909090));
+	background: -moz-linear-gradient(top,  #d0d0d0,  #909090);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0d0d0', endColorstr='#909090');
+}
+
+.submit input:hover {
+	background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#d0d0d0));
+	background: -moz-linear-gradient(top,  #666666,  #d0d0d0);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#d0d0d0');
+}
+
+.submit input:active {
+	background: -webkit-gradient(linear, left top, left bottom, from(#d0d0d0), to(#909090));
+	background: -moz-linear-gradient(top,  #d0d0d0,  #909090);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0d0d0', endColorstr='#909090');
+}
+
+
+/* Custom features
+-----------------------------*/
+
+/* Global nav in header */
+#header .nav li a,
+#footer .nav li a {    
+    background-color: #ffffff;
+}
+
+#header .nav li a:hover,
+#footer .nav li a:hover { 
+    border-color: #963331;
+}
+
+#header .nav li.selected a,
+#footer .nav li.selected a {    
+    border-color: #963331;
+}
+
+/* Version switcher */
+.version-switcher {    
+    background-color: #ffffff;    
+}

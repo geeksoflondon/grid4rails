@@ -1,0 +1,16 @@
+/*
+ * Rules that apply to all media
+ */
+
+
+/* Reset rules
+-----------------------------*/
+
+body {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+h1 {
+    color: #7f221f;
+}
