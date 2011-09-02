@@ -1,0 +1,7 @@
+/* VIEW: the grid
+-----------------------------*/
+
+#gridTable td, 
+#gridTable th {
+    border-color: #cccccc;
+}

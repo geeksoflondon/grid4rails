@@ -1,0 +1,56 @@
+/* Basic form rules
+-----------------------------*/
+
+.submit input,
+.scroller a,
+.scroller a:link,
+.scroller a:visited {	
+	color: #000000;
+	border-color: #dddddd;
+	background: #ededed;
+}
+
+.submit input:hover,
+.submit input:focus,
+.scroller a:hover,
+.scroller a:focus {
+	background: #dedede;
+}
+
+.submit input:active,
+.scroller a:active {
+	color: #555555;
+}
+
+
+/* Custom features
+-----------------------------*/
+
+/* Logo */
+#header .page-title a {    
+    background-image: url('/images/barcampmediacity-360.png');    
+}
+
+/* Version Switcher */
+.version-switcher .selected {
+       background-color: orange;
+       border-color: orange;
+       color: #000000;
+}
+
+/* Scroller */
+.scroller .arrows {
+    color: #777777;
+}
+
+
+/* VIEW: the grid
+-----------------------------*/
+
+#gridTable tr.even{
+	background-color: #fcfcfc;
+}
+
+.where-when span {
+    background-color: #f5f5f5;
+}

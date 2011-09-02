@@ -1,0 +1,50 @@
+/* Basic text rules
+-----------------------------*/
+
+body, td, th {
+    color: #3f3196; /* #666666 */
+}
+
+/* Basic link rules
+-----------------------------*/
+
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+	color: #0a0818; /* #000000 */
+	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
+}
+
+a:link,
+a:visited {
+	color: #0a0818; /* #000000 */
+}
+
+/* Custom features
+-----------------------------*/
+
+/* Version switcher */
+.version-switcher .options {
+    color: #b6afe4; /* #cccccc */
+}
+.version-switcher .skip {
+    color: #b6afe4; /* #cccccc */
+}
+
+
+/* VIEW: the grid
+-----------------------------*/
+
+.talk .options a:link,
+.talk .options a:visited,
+.talk .options a:hover,
+.talk .options a:focus,
+.talk .options a:active {
+    color: #7264cb; /* #999999 */
+}
+
+.where-when {
+    color: #35297e; /* #555555 */
+}
