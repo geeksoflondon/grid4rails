@@ -10,15 +10,15 @@
 	<title>Griddy</title>
 	
 	<!-- Style -->	
-	<% if (cookies[:version] == "high") %> 
+	<% if (cookies[:version] == "high") %> 			
 			<%= stylesheet_link_tag "global", "screen/shared", "screen/med", "screen/high" %>
-			<%= stylesheet_link_tag "themes/default/global", "themes/default/screen/shared", "themes/default/screen/med", "themes/default/screen/high" %>
-	<% elsif (cookies[:version] == "med") %>
+			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med", "themes/#{theme}/screen/high" %>			
+	<% elsif (cookies[:version] == "med") %>			
 			<%= stylesheet_link_tag "global", "screen/shared", "screen/med" %>
-			<%= stylesheet_link_tag "themes/default/global", "themes/default/screen/shared", "themes/default/screen/med" %>
-	<% else  %>			
+			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med" %>			
+	<% else  %>						
 			<%= stylesheet_link_tag "global", "screen/shared", "screen/low"  %>
-			<%= stylesheet_link_tag "themes/default/global", "themes/default/screen/shared", "themes/default/screen/low"  %>			
+			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/low"  %>						
 	<% end  %>
 	
 	<!-- CSRF -->
@@ -33,7 +33,7 @@
 	<meta name="author" content=""> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head> 
-<body id="<%= @page_id %>"> 	
+<body id="<%= @page_id %>">
 	<div id="header">
 		<h1 class="heading page-title"><a href="/"><span class="hide">Griddy</span></a></h1>
 		<span class="spacer">&nbsp;</span>		
