@@ -5,9 +5,6 @@ class GridController < ApplicationController
     @timeslots = Timeslot.all
     @rooms = Room.all
     @description = "All talks."
-
-    response.headers['Cache-Control'] = 'public, max-age=1' #Storing in varnish for 1 second
-
   end
 
   def now
@@ -16,9 +13,6 @@ class GridController < ApplicationController
     @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
     @description = "What's on now."
-
-    response.headers['Cache-Control'] = 'public, max-age=30' #Storing in varnish for 30 seconds
-
   end
 
   def next
@@ -27,9 +21,6 @@ class GridController < ApplicationController
     @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
     @description = "What's on next."
-
-    response.headers['Cache-Control'] = 'public, max-age=30' #Storing in varnish for 30 seconds
-
   end
 
   def show
@@ -38,9 +29,6 @@ class GridController < ApplicationController
     @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
     @description = "At this time."
-
-    response.headers['Cache-Control'] = 'public, max-age=30' #Storing in varnish for 30 seconds
-
   end
 
 end
