@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :talks_taking_place
+  before_filter :which_stylesheet
 
   def talks_taking_place
     @talks_taking_place = Timeslot.now.nil?
