@@ -10,10 +10,10 @@
 	<title>Griddy</title>
 	
 	<!-- Style -->	
-	<% if (cookies[:version] == "high") %> 			
+	<% if (@style == "high") %> 			
 			<%= stylesheet_link_tag "global", "screen/shared", "screen/med", "screen/high" %>
 			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med", "themes/#{theme}/screen/high" %>			
-	<% elsif (cookies[:version] == "med") %>			
+	<% elsif (@style == "med") %>			
 			<%= stylesheet_link_tag "global", "screen/shared", "screen/med" %>
 			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med" %>			
 	<% else  %>						
