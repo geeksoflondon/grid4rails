@@ -11,8 +11,10 @@
                     <% end %>
                 <% else %>
                     <p class="heading title">Empty</p> 
-                <% end %>               
-                <%= render '/shared/grid/where_when' %>
+                <% end %>
+                <% cache("where_when_#{@slot.id}") do %>
+                    <%= render '/shared/grid/where_when' %>
+                <% end %>
             </div>  
         <% else %>
             <% talk = @grid.talk(@slot.id)%>
@@ -23,11 +25,12 @@
                 <h3 class="heading speaker">
                     <%= talk.speaker unless talk.speaker.nil? %>
                 </h3>
-                <!--<p class="description"><%= talk.description unless talk.description.nil? %></p>-->
                 <p class="options">
                     <%= link_to 'Edit', edit_talk_path(talk) unless talk.locked? %>
                 </p>
-                <%= render '/shared/grid/where_when' %>
+                <% cache("where_when_#{@slot.id}") do %>
+                    <%= render '/shared/grid/where_when' %>
+                <% end %>
             </div>          
         <% end %>
     </div>
