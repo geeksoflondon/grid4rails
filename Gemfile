@@ -16,7 +16,6 @@ gem "clearance"
 
 #Redis Caching
 gem 'redis'
-gem 'SystemTimer' #Provides better connection support
 
 group :development do 
   gem 'heroku'
