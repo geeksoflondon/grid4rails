@@ -42,7 +42,7 @@ class Slot < ActiveRecord::Base
   def self.by_timeslot(timeslot)
     Slot.joins(:timeslot).where('timeslots.id = ?', timeslot)
   end
-  
+
   def self.by_room(room)
     Slot.joins(:room).where('rooms.short_code = ?', room)
   end
