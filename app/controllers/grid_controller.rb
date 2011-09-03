@@ -1,9 +1,11 @@
 class GridController < ApplicationController
 
+  before_filter :load_grid
+
   def index
     @page_id = "grid"
-    @timeslots = Timeslot.all
-    @rooms = Room.all
+    @timeslots = @grid.timeslots
+    @rooms = @grid.rooms
     @description = "All talks."
   end
 
@@ -29,6 +31,12 @@ class GridController < ApplicationController
     @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
     @description = "At this time."
+  end
+
+  private
+
+  def load_grid
+    @grid = Grid.new
   end
 
 end

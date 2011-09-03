@@ -70,14 +70,14 @@ class TalksController < ApplicationController
     end
   end
 
-  
   def schedule
-     @unscheduled = Talk.find(params[:id])
-     @empty_slots = Slot.find_empty
-     @timeslots = Timeslot.all
-     @rooms = Room.all
-     @description = "The grid, showing empty slots"
-     
+    @grid = Grid.new
+    @unscheduled = Talk.find(params[:id])
+    @empty_slots = Slot.find_empty
+    @timeslots = @grid.timeslots
+    @rooms = @grid.rooms
+    @description = "The grid, showing empty slots"
+
   end
 
   def assign_slot
