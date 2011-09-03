@@ -8,7 +8,9 @@
 		</th>
 		<% @room.slots.each do |slot| %>
 			<% @slot = slot %>
-			<%= render 'shared/grid/slot' %>
+			<%= cache("slot-#{@slot.id}") do %>
+				<%= render 'shared/grid/slot' %>
+			<% end %>
 		<% end %> 
 	</tr>
 <% end %>
