@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-	def theme	
-		"default"
+	def theme
+		"mediacity"
 	end
 end
