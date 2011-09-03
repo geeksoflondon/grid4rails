@@ -11,7 +11,12 @@ gem "jquery-rails", "~> 1.0.12"
 gem 'compass'
 gem 'haml' # for SASS
 
+#Passwords and login
 gem "clearance"
+
+#Redis Caching
+gem 'redis'
+gem 'SystemTimer' #Provides better connection support
 
 group :development do 
   gem 'heroku'
