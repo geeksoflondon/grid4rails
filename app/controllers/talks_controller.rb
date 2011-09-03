@@ -77,18 +77,17 @@ class TalksController < ApplicationController
     @timeslots = @grid.timeslots
     @rooms = @grid.rooms
     @description = "The grid, showing empty slots"
-
   end
 
   def assign_slot
     @talk = Talk.find(params[:talk][:id])
-    
+
     if @talk.schedule_in(params[:talk][:slot_id])
       redirect_to(grid_index_path, :notice => 'Talk was scheduled updated.')
     else
       redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id, :notice => 'There was an issue scheduling your talk')
     end
-    
+
   end
 
 end
