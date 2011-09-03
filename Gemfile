@@ -14,8 +14,9 @@ gem 'haml' # for SASS
 #Passwords and login
 gem "clearance"
 
-#Redis Caching
-gem 'redis'
+gem 'redis' #queueing
+gem 'dalli' #memcached layer
+
 
 group :development do 
   gem 'heroku'
@@ -26,5 +27,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg' #production db
 end
