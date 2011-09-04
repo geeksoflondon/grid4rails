@@ -1,1 +1,11 @@
-<p class="where-when"><% if (current_page?(:action => 'schedule', :controller => 'talks')) %><label for="slot"><% end %><span class="day"><%= @slot.timeslot.start.strftime("%a") %></span><span class="delimiter hide"> </span><span class="start"><%= @slot.timeslot.start.strftime("%H:%M") %></span><span class="delimiter hide">, </span><span class="room"><%= @room.short_code.upcase %></span><% if (current_page?(:action => 'schedule', :controller => 'talks')) %></label><% end %></p>
+<p class="where-when">
+	<% if (current_page?(:action => 'schedule', :controller => 'talks')) %><label for="slot"><% end %>
+	<span class="day"><%= @slot.timeslot.start.strftime("%a") %></span>
+	<span class="delimiter hide"> </span>
+	<span class="start"><%= @slot.timeslot.start.strftime("%H:%M") %></span>
+	<span class="delimiter hide">, </span>
+	<span class="room"><%= link_to @room.short_code.upcase, :controller => "grid", :action => "room", :id => @room.id %></span>
+	<% if (current_page?(:action => 'schedule', :controller => 'talks')) %></label>
+	<% end %>
+</p>
+

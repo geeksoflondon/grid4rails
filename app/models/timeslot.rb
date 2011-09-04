@@ -1,6 +1,9 @@
 class Timeslot < ActiveRecord::Base
   has_many :slots
   validates :end, :uniqueness => {:scope => :start}
+  
+  scope :past, where('start < ?', Time.now).order("start DESC")
+  scope :upcoming, where('start >= ?', Time.now).order("start ASC")
 
   default_scope order('start')
 
@@ -22,14 +25,6 @@ class Timeslot < ActiveRecord::Base
   
   def prev
     Timeslot.where('start < ?', self.start).last
-  end
-
-  def self.upcoming
-    Timeslot.where('start >= ?', Time.now).find(:all, :order => 'start ASC')
-  end
-
-  def self.past
-    Timeslot.where('start < ?', Time.now).find(:all, :order => 'start DESC')
   end
 
 end

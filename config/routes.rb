@@ -15,7 +15,9 @@ Griddy::Application.routes.draw do
 
   match 'grid/now' => "grid#now"
   match 'grid/next' => "grid#next"
+  match "grid/room/:id" => "grid#room"
   resources :grid
+  	
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

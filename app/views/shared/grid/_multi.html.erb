@@ -4,7 +4,7 @@
 	<% @odd = !@odd %>
 	<tr class="<%= @odd?'odd':'even' %>">
 		<th class="room">
-			<p><%= @room.name %></p>
+			<p><%= link_to @room.name, :controller => "grid", :action => "room", :id => @room.id %></p>
 			<p class="where-when"><span><%= @room.short_code.upcase %></span></p>
 		</th>
 		<% @room.slots.each do | slot| %>

@@ -31,4 +31,13 @@ class GridController < ApplicationController
     @description = "At this time."
   end
 
+  def room
+  	@page_id = "room-grid"
+  	@room = Room.find(params[:id])
+  	@timeslots = Timeslot.all
+  	@rooms = Array.wrap(@room)
+  	@description = "What's happening in this room."
+  end
+
+
 end
