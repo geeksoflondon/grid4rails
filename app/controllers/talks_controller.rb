@@ -1,5 +1,7 @@
 class TalksController < ApplicationController
 
+  after_filter :expire_cache, :only => ['create', 'update', 'assign_slot']
+
   def index
     @page_id = "talks"
     @talks = Talk.all
@@ -72,12 +74,12 @@ class TalksController < ApplicationController
 
   
   def schedule
-     @unscheduled = Talk.find(params[:id])
-     @empty_slots = Slot.find_empty
-     @timeslots = Timeslot.all
-     @rooms = Room.all
-     @description = "The grid, showing empty slots"
-     
+    @grid = Grid.new
+    @unscheduled = Talk.find(params[:id])
+    @empty_slots = Slot.find_empty
+    @timeslots = @grid.timeslots
+    @rooms = @grid.rooms
+    @description = "The grid, showing empty slots"
   end
 
   def assign_slot
@@ -88,7 +90,13 @@ class TalksController < ApplicationController
     else
       redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id, :notice => 'There was an issue scheduling your talk')
     end
-    
+
+  end
+
+  private
+
+  def expire_cache
+      expire_fragment('the_grid')
   end
 
 end
