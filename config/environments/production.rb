@@ -13,7 +13,7 @@ Griddy::Application.configure do
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # For nginx:
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
   # If you have no front-end server that supports something like X-Sendfile,
   # just comment this out and Rails will serve the files
@@ -32,7 +32,7 @@ Griddy::Application.configure do
   config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = "http://d3oqzz4kjc1a3h.cloudfront.net"
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
