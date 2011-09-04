@@ -4,6 +4,7 @@
 *  med.css applied first.
 -----------------------------*/
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url(/stylesheets/buttons.css);
 
 
 /* Custom hides */
@@ -12,6 +13,18 @@
 	position: absolute;
 	top: 0;	
 	left: 0;
+}
+
+.instructions {
+  padding: 20px;
+  background-color: #C9E2AE;
+  color: #111;
+}
+
+.warning {
+  padding: 20px;
+  color: #7E2B29;
+  background-color: #F9EEEE;
 }
 
 /* Basic text rules
@@ -30,6 +43,7 @@ html, body {
 
 #main {
     clear: left;
+    margin-top: 40px;
 }
 
 
@@ -150,7 +164,7 @@ html, body {
 
 /* Scroller */
 .scroller {
-  margin-top: 40px;
+/*  margin-top: 40px;*/
   width: 100%;
   background-color: #eee;
   height: 15px;
@@ -172,7 +186,7 @@ html, body {
 /* Grid styles */
 
 #gridTable {
-  margin-top: 40px;
+/*  margin-top: 40px;*/
   border-bottom: 1px solid #ddd;
 }
 
@@ -296,7 +310,7 @@ html, body {
 
 /* Talk view */
 #talk .talk {
-  margin-top: 40px;
+/*  margin-top: 40px;*/
   padding: 5px 30px;
 }
 
@@ -340,11 +354,51 @@ html, body {
 /* VIEW: Create talk
 -----------------------------*/
 
-.submit input {
-	padding: 0.2em 0.6em 0.25em;
-	-webkit-border-radius: .5em; 
-	-moz-border-radius: .5em;
-	border-radius: .5em;
+.addtalk {
+  padding: 5px 20px;
+}
+
+.addtalk form label {
+  font-weight: bold;
+  line-height:1.1em;
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.addtalk form input[type=text] {
+  border: 1px solid #aaa;
+  padding: 5px 8px;
+  font-size: 1.4em;
+  width: 500px;
+  height: inherit;
+}
+
+.addtalk form textarea {
+  border: 1px solid #aaa;
+  padding: 3px 8px;
+  font-size: 1.1em;
+  line-height: 1.2em;
+  width: 500px;
+  height: 150px;
+}
+
+.addtalk .actions {
+  width: 508px;
+}
+
+.addtalk .actions  a {
+  color: #333;
+  background-color: #ddd;
+  padding: 3px 5px;
+  text-decoration: underline;
+}
+
+.addtalk .actions  input {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  padding: 5px 10px;
 }
 
 
@@ -366,14 +420,8 @@ html, body {
   #gridTable {
     margin-top: 0px;
   }
-  
-  
-  /* Scroller */
-  .scroller {
-    margin-top: 60px;
-  }
-  
-  #talk .talk {
+
+  #main {
     margin-top: 60px;
   }
 }	 

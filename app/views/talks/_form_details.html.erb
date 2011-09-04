@@ -7,23 +7,23 @@
 	<% end %>
 
 	<div class="field">
-		<%= f.label :title %><br />
-		<%= f.text_field :title %>
+		<%= f.label :title %>
+		<%= f.text_field :title, :placeholder => "e.g. My awesome talk" %>
 	</div>
 	<div class="field">
-		<%= f.label :description %><br />
-		<%= f.text_field :description %>
+		<%= f.label :description %>
+		<%= f.text_area :description %>
 	</div>
 	<div class="field">
-		<%= f.label :speaker %><br />
-		<%= f.text_field :speaker %>
+		<%= f.label :speaker, "Speaker name(s)" %>
+		<%= f.text_field :speaker, :placeholder => "e.g. Bob and Alice" %>
 	</div>
 	
 	<fieldset class="actions">		
 		<legend>Options</legend>	
 		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
 		<span class="delimiter"> </span>
-		<span class="submit"><%= f.submit %></span>		
+		<span class="submit"><%= f.submit "Create and pick a slot", :class => "botton green" %></span>		
 	</fieldset>
 	
 <% end %>
