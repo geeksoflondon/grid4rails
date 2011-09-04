@@ -1,8 +1,7 @@
-<div class="when">
-	<p class="start"><span class="label">Start: </span><%= @slot.timeslot.start.strftime("%a") %> <%= @slot.timeslot.start.strftime("%H:%M") %></p>
-	<p class="end"><span class="label">End: </span><%= @slot.timeslot.start.strftime("%a") %> <%= @slot.timeslot.end.strftime("%H:%M") %></p>
-</div>	
-<p class="where">
-	<span class="label">Room: </span>
+<span class="when">
+	<%= @slot.timeslot.start.strftime("%A %H:%M") %> -
+	<%= @slot.timeslot.end.strftime("%H:%M") %>
+</span>	
+<span class="where">
 	<%= @slot.room.name %>
-</p>	
+</span>	

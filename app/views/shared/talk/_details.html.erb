@@ -2,7 +2,6 @@
 	<% if (@talk.title.nil?) %>[Untitled]<% else %><%= @talk.title %><% end %>
 </h1> 
 <p class="speaker">
-	<span class="label">Speaker: </span>
 	<%= @talk.speaker unless @talk.speaker.nil? %>
 </p>
 <% if (!@talk.description.nil?) %>
