@@ -2,9 +2,13 @@
 -----------------------------*/
 
 /* Logo */
+
+#header .page-title {
+  width: 200px;
+}
+
 #header .page-title a {    
     background-image: url('/images/barcampmediacity-360.png');
-    background-repeat: no-repeat;    
 }
 
 
@@ -12,5 +16,13 @@
 -----------------------------*/
 
 .where-when span {
-    background-color: #f9eeee; /* #f5f5f5 */
+    padding: 3px;
+    background-color: #f9eeee; 
+    color: #7e2b29;
+}
+
+td .options a {
+  padding: 3px;
+  background-color: #eee; 
+  color: #555;
 }
