@@ -1,14 +1,12 @@
-<% @odd = false %>
 <% @rooms.each do | room| %>
 	<% @room = room %>
-	<% @odd = !@odd %>
-	<tr class="<%= @odd?'odd':'even' %>">
+    <tr class="<%= cycle("odd", "even") %>">
 		<th class="room">
 			<p><%= link_to @room.name, :controller => "grid", :action => "room", :id => @room.id %></p>
 			<p class="where-when"><span><%= @room.short_code.upcase %></span></p>
 		</th>
 		<% @room.slots.each do | slot| %>
-			<% @slot = slot %>
+            <% @slot = @grid.slot(slot.id) %>
 			<%= render 'shared/grid/slot' %>
 		<% end %> 
 	</tr>
