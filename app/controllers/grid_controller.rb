@@ -18,14 +18,16 @@ class GridController < ApplicationController
 
   def next
     @page_id = "next"
-    @timeslots = Array.wrap(Timeslot.next)
+    @timeslot = Timeslot.next
+    @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
     @description = "What's on next."
   end
 
   def show
     @page_id = "timeslot"
-    @timeslots = Array.wrap(Timeslot.find(params[:id]))
+    @timeslot = Timeslot.find(params[:id])
+    @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
     @description = "At this time."
   end
