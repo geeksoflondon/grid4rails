@@ -5,8 +5,7 @@
 -----------------------------*/
 
 /* Custom hides */
-.version-switcher .skip,
-.version-switcher .heading {
+.version-switcher .skip {
 	margin: -5000px 0 0 -5000px;
 	position: absolute;
 	top: 0;	
@@ -16,11 +15,9 @@
 /* Basic text rules
 -----------------------------*/
 
-body,
-.version-switcher {
-    padding: 1em;
+html, body {
+  padding: 0px;
 }
-
 
 /* Layout
 -----------------------------*/
@@ -37,17 +34,51 @@ body,
 /* Custom features
 -----------------------------*/
 
+#header {
+  background-color: black;
+  height: 40px;
+  overflow: hidden;
+  border-bottom: 3px solid #888;
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  position:fixed;
+  right: 0px;
+}
+
+#header h1 {
+  float: left;
+  width: 200px;
+  height: 40px;
+}
+
+#header .spacer {
+  height: 0px;
+}
+
+
 /* Global nav in header */
+
+#header .nav {
+  float: left;
+  color: white;
+  height: 28px;
+  margin-top: 12px;
+  margin-left: 30px;
+}
+
 #header .nav li,
 #footer .nav li {
     display: inline;
-    margin: 2px; 
-    font-size: 1.4em;
+    margin: 0px 10px; 
+    font-size: 1.2em;
+    line-height: 1.3em;
 }
 #header .nav li a,
 #footer .nav li a {
     display: inline;
-    padding: 2px;
+    padding-top: 15px;
+    color: white;
 }
 
 #footer .nav li
@@ -55,9 +86,6 @@ body,
 	font-size:1em;
 }
 
-.nav li a { 
-    padding-bottom:4px;
-}
 
 #header .nav li a:hover,
 #footer .nav li a:hover { 
@@ -76,17 +104,32 @@ body,
 /* Version switcher */
 .version-switcher {
     position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+    top: 10px;
+    right: 10px;
     padding-bottom: 0.5em;
 }
-.version-switcher .selected {
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+
+.version-switcher {
+  color: #fff;
+}
+
+.version-switcher a {
+  color: #fff;
+}
+
+.version-switcher h2 {
+  display: inline;
+  height: 10px;
+  font-size: 1.2em;
+}
+
+.version-switcher p {
+  display: inline;
+}
+
+.version-switcher a.selected {
+  font-weight: normal;
+  border-bottom: 1px solid #fff;
 }
 
 /* Scroller */

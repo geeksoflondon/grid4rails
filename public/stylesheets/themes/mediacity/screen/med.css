@@ -28,14 +28,8 @@
 
 /* Logo */
 #header .page-title a {    
-    background-image: url('/images/barcampmediacity-360.png');    
-}
-
-/* Version Switcher */
-.version-switcher .selected {
-    background-color:#b13c3b; /* #000000 */
-    color: #ffffff; /* #ffffff */
-    border-color: #cb6664; /* #000000 */
+    background-image: url('/images/barcampmediacity-360.png');
+    background-repeat: no-repeat;    
 }
 
 /* Scroller */

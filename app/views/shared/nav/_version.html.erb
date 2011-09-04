@@ -1,6 +1,6 @@
 <% if (cookies[:avail] == "true") %>
 	<div class="version-switcher">
-		<h2 class="heading">Versions <span class="skip">[<a href="#header-end">skip</a>]</span></h2>
+		<h2 class="heading">Themes: <span class="skip">[<a href="#header-end">skip</a>]</span></h2>
 		<p class="options"><a href="<%= url_for() %>" <% if (cookies[:version] != 'med' && cookies[:version] != 'high') %>class="selected" <% end %>onClick="setVersion('low');">Bare</a> | <a href="<%= url_for() %>"<% if (cookies[:version] == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Simple</a> | <a href="<%= url_for() %>"<% if (cookies[:version] == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Shiny</a></p>
 	</div>
 <% end %>
