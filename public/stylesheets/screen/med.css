@@ -64,33 +64,6 @@ fieldset {
 	margin-bottom: 1.6em;
 }
 
-.submit input,
-.scroller a,
-.scroller a:link,
-.scroller a:visited {
-	display: inline-block;
-	outline: none;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	font: 14px/100% Arial, Helvetica, sans-serif;	
-	border-width: 1px;
-	border-style: solid;
-}
-
-.submit input:hover,
-.submit input:focus,
-.scroller a:hover,
-.scroller a:focus {
-	text-decoration: none;
-}
-
-.submit input:active,
-.scroller a:active {
-	position: relative;
-	top: 1px;
-}
-
 
 /* Custom features
 -----------------------------*/

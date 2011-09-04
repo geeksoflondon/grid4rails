@@ -27,6 +27,7 @@
                 </h3>
                 <p class="options">
                     <%= link_to 'Edit', edit_talk_path(talk) unless talk.locked? %>
+                	  <%= link_to 'View', talk  %>
                 </p>
                 <% cache("where_when_#{@slot.id}") do %>
                     <%= render '/shared/grid/where_when' %>

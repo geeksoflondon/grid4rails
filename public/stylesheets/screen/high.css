@@ -44,9 +44,13 @@ html, body {
   width: 100%;
   position:fixed;
   top: 0px;  
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(60, 60, 60, 0.5);
+  -moz-box-shadow: 0px 5px 10px 0px rgba(60, 60, 60, 0.5);
+  box-shadow: 0px 5px 10px 0px rgba(60, 60, 60, 0.5);
 }
 
 #header h1 {
+  margin-left: 10px;
   float: left;
   width: 200px;
   height: 40px;
@@ -81,6 +85,13 @@ html, body {
     color: white;
 }
 
+#header a.add {
+  background-image: url("/images/add.png");
+  background-repeat: no-repeat;
+  background-position: 0px 16px;
+  padding-left: 22px;
+}
+
 #footer .nav li
 {
 	font-size:1em;
@@ -104,7 +115,7 @@ html, body {
 /* Version switcher */
 .version-switcher {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 10px;
     padding-bottom: 0.5em;
 }
@@ -132,13 +143,26 @@ html, body {
   border-bottom: 1px solid #fff;
 }
 
+
 /* Scroller */
+.scroller {
+  margin-top: 40px;
+  width: 100%;
+  background-color: #eee;
+  height: 15px;
+  padding: 10px 0px;
+}
+
 .scroller a {
-    padding: 2px;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+  margin: 0px 10px;
+  border: 0px;
+  color: #333;
+  font-weight: bold;
+}
+
+.scroller .arrows {
+  font-size: 0.6em;
+  color: #999;
 }
 
 /* Grid styles */
@@ -146,6 +170,15 @@ html, body {
 #gridTable {
   margin-top: 40px;
   border-bottom: 1px solid #ddd;
+}
+
+#now #gridTable, #next #gridTable , #timeslot #gridTable {
+  width: 100%;
+  margin-top: 0px;
+}
+
+#now #gridTable p, #next #gridTable p, #timeslot p {
+  text-align: left;
 }
 
 #gridTable tr {
@@ -165,6 +198,16 @@ html, body {
   min-width: 170px;
 }
 
+#gridTable tr td:nth-child(even) {
+  background: -moz-linear-gradient(top, #fafafa 0%, #f0f0f0 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#f0f0f0)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#f0f0f0',GradientType=0 ); /* IE6-9 */
+  background: linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* W3C */
+}
+
 #gridTable th {
   min-width: 100px;
   border-right: 1px solid #ddd;
@@ -181,6 +224,11 @@ html, body {
   width: 100%;
 }
 
+#gridTable th.room {
+  width: 200px;
+}
+
+
 #gridTable th.room p {
   font-size: 1.1em;
   font-weight: bold;
@@ -192,7 +240,14 @@ html, body {
 
 #gridTable .where-when {
   margin-top: 10px;
-  width: 10em
+  width: 10em;
+}
+
+
+#gridTable th.room .where-when {
+  margin-top: 0px;
+  font-size: 0.8em !important;
+  margin-bottom: 10px;
 }
 
 #gridTable .options {
@@ -206,6 +261,7 @@ html, body {
   font-family: 'Droid Sans', sans-serif;
 }
 
+
 #footer {
   background-color: black;
   border-top: 3px solid #888;
@@ -214,6 +270,9 @@ html, body {
   font-size: 0.9em;
   width: 100%;
   bottom: 0px;
+  -webkit-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
+  -moz-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
+  box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
 }
 
 #footer .nav{
@@ -238,3 +297,30 @@ html, body {
 	-moz-border-radius: .5em;
 	border-radius: .5em;
 }
+
+
+/* Narrow UI fix */
+
+@media all and (max-width: 740px) { 
+  #header {
+    height: 60px;
+  }
+  
+  .version-switcher {
+    top: 35px;
+  }
+  
+  .version-switcher a, .version-switcher .heading {
+    font-size: 0.8em;
+  }
+  
+  #gridTable {
+    margin-top: 0px;
+  }
+  
+  
+  /* Scroller */
+  .scroller {
+    margin-top: 60px;
+  }
+}	 
