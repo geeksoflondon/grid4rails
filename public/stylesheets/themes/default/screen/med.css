@@ -27,8 +27,13 @@
 -----------------------------*/
 
 /* Logo */
+#header .page-title {
+  width: 84px;
+}
+
 #header .page-title a {    
-    background-color: #666666;    
+    background-image: url('/images/griddy.png');
+    background-repeat: no-repeat;    
 }
 
 /* Version Switcher */

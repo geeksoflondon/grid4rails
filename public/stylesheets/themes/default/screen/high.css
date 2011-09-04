@@ -22,28 +22,3 @@
 	background: -moz-linear-gradient(top,  #d0d0d0,  #909090);
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0d0d0', endColorstr='#909090');
 }
-
-
-/* Custom features
------------------------------*/
-
-/* Global nav in header */
-#header .nav li a,
-#footer .nav li a {    
-    background-color: #ffffff; /* #ffffff */
-}
-
-#header .nav li a:hover,
-#footer .nav li a:hover { 
-    border-color: #666666; /* #666666 */
-}
-
-#header .nav li.selected a,
-#footer .nav li.selected a {    
-    border-color: #666666; /* #666666 */
-}
-
-/* Version switcher */
-.version-switcher {    
-    background-color: #ffffff; /* #ffffff */
-}

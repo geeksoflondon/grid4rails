@@ -40,6 +40,16 @@ body {
     margin-bottom: 1em;
 }
 
+/* Logo */
+#header .page-title {
+  width: 84px;
+}
+
+#header .page-title a {    
+    background-image: url('/images/griddy.png');
+    background-repeat: no-repeat;    
+}
+
 #header {
     margin-bottom: 2em;
 }
@@ -179,6 +189,7 @@ fieldset {
     margin-right: 2px;
     padding: 2px;
     margin-bottom: 3px;
+    background-color: #D6D6D6; 
 }
 
 

@@ -5,22 +5,6 @@ body, td, th {
     color: #666666; /* #666666 */
 }
 
-/* Basic link rules
------------------------------*/
-
-a:link,
-a:visited,
-a:hover,
-a:focus,
-a:active {
-	color: #000000; /* #000000 */
-	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
-}
-
-a:link,
-a:visited {
-	color: #000000; /* #000000 */
-}
 
 /* Custom features
 -----------------------------*/
