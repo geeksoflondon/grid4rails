@@ -1,5 +1,7 @@
 class TalksController < ApplicationController
 
+  after_filter :expire_cache, :only => ['create', 'update', 'assign_slot']
+
   def index
     @page_id = "talks"
     @talks = Talk.all
@@ -88,6 +90,12 @@ class TalksController < ApplicationController
       redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id, :notice => 'There was an issue scheduling your talk')
     end
 
+  end
+
+  private
+
+  def expire_cache
+      expire_fragment('the_grid')
   end
 
 end
