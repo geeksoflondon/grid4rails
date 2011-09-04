@@ -73,6 +73,7 @@ class TalksController < ApplicationController
   end
 
   def schedule
+    @page_id = "grid"
     @grid = Grid.new
     @unscheduled = Talk.find(params[:id])
     @empty_slots = Slot.find_empty

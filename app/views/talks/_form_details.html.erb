@@ -7,7 +7,7 @@
 	<% end %>
 
 	<div class="field">
-		<%= f.label :title %>
+		<%= f.label :title, "Title <span>required</span>".html_safe %>
 		<%= f.text_field :title, :placeholder => "e.g. My awesome talk" %>
 	</div>
 	<div class="field">
@@ -15,12 +15,12 @@
 		<%= f.text_area :description %>
 	</div>
 	<div class="field">
-		<%= f.label :speaker, "Speaker name(s)" %>
+		<%= f.label :speaker, "Speaker name(s) <span>required</span>".html_safe %>
 		<%= f.text_field :speaker, :placeholder => "e.g. Bob and Alice" %>
 	</div>
 	
-	<fieldset class="actions">		
-		<legend>Options</legend>	
+	<fieldset class="actions">	
+		<span class="show"><%= link_to 'Show', talk_path(@talk) unless @talk.new_record? %></span>	
 		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
 		<span class="delimiter"> </span>
 		<span class="submit"><%= f.submit "Create and pick a slot", :class => "botton green" %></span>		

@@ -1,6 +1,9 @@
 class Talk < ActiveRecord::Base
   belongs_to :slot
 
+  validates :title, :presence => true
+  validates :speaker, :presence => true
+
   before_save :expire_cache
   after_save :rebuild_cache
 

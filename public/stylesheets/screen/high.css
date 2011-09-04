@@ -16,15 +16,46 @@
 }
 
 .instructions {
-  padding: 20px;
+  padding: 20px 20px 20px 60px;
   background-color: #C9E2AE;
-  color: #111;
+  background-image: url("/images/info.png");
+  background-repeat: no-repeat;
+  background-position: 20px 17px;
+  color: #444;
+  font-weight: bold;
+  font-size: 1.3em;
+  display: inline-block;
+  margin: auto;
+  border-right: 10px solid #ddd;
 }
 
+.notice {
+  padding: 20px 20px 20px 60px;
+  background-color: #C9E2AE;
+  background-image: url("/images/accept.png");
+  background-repeat: no-repeat;
+  background-position: 20px 17px;
+  color: #444;
+  font-weight: bold;
+  font-size: 1.3em;
+  display: inline-block;
+  margin: auto;
+  border-right: 10px solid #ddd;
+}
+
+
 .warning {
-  padding: 20px;
+  padding: 20px 20px 20px 60px;
   color: #7E2B29;
   background-color: #F9EEEE;
+  background-image: url("/images/info.png");
+  background-repeat: no-repeat;
+  background-position: 20px 17px;
+  font-weight: bold;
+  font-size: 1.3em;
+  display: inline-block;
+  margin: auto;
+  border-right: 10px solid #ddd;
 }
 
 /* Basic text rules
@@ -44,6 +75,7 @@ html, body {
 #main {
     clear: left;
     margin-top: 40px;
+    margin-bottom: 33px;
 }
 
 
@@ -354,11 +386,11 @@ html, body {
 /* VIEW: Create talk
 -----------------------------*/
 
-.addtalk {
+.talk_form {
   padding: 5px 20px;
 }
 
-.addtalk form label {
+.talk_form form label {
   font-weight: bold;
   line-height:1.1em;
   font-size: 1.1em;
@@ -366,7 +398,12 @@ html, body {
   margin-bottom: 5px;
 }
 
-.addtalk form input[type=text] {
+.talk_form form label span {
+  font-size: 0.8em;
+  color: #a00;
+}
+
+.talk_form form input[type=text] {
   border: 1px solid #aaa;
   padding: 5px 8px;
   font-size: 1.4em;
@@ -374,7 +411,11 @@ html, body {
   height: inherit;
 }
 
-.addtalk form textarea {
+.talk_form form .field_with_errors input[type=text] {
+  border: 1px solid #a00;
+}
+
+.talk_form form textarea {
   border: 1px solid #aaa;
   padding: 3px 8px;
   font-size: 1.1em;
@@ -383,45 +424,40 @@ html, body {
   height: 150px;
 }
 
-.addtalk .actions {
+.talk_form .actions {
   width: 508px;
 }
 
-.addtalk .actions  a {
+.talk_form .actions  a {
   color: #333;
   background-color: #ddd;
   padding: 3px 5px;
   text-decoration: underline;
 }
 
-.addtalk .actions  input {
+.talk_form .actions  input {
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   padding: 5px 10px;
 }
 
+#error_explanation ul {
+  list-style: disc inside;
+}
+
+#error_explanation li {
+  color: #a00;
+  margin: 10px 0px;
+}
+
 
 /* Narrow UI fix */
 
 @media all and (max-width: 740px) { 
-  #header {
-    height: 60px;
-  }
   
   .version-switcher {
-    top: 35px;
+    display: none;
   }
   
-  .version-switcher a, .version-switcher .heading {
-    font-size: 0.8em;
-  }
-  
-  #gridTable {
-    margin-top: 0px;
-  }
-
-  #main {
-    margin-top: 60px;
-  }
 }	 
