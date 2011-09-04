@@ -11,7 +11,8 @@ class GridController < ApplicationController
 
   def now
     @page_id = "now"
-    @timeslots = Array.wrap(Timeslot.now)
+    @timeslot = Timeslot.now
+    @timeslots = Array.wrap(@timeslot)
     @rooms = Array.wrap(Room.all)
     @description = "What's on now."
   end
