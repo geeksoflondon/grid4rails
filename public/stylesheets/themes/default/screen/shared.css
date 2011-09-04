@@ -49,6 +49,12 @@ a:visited {
     color: #999999; /* #999999 */
 }
 
-.where-when {
+.where-when,
+.where-when a,
+.where-when a:link,
+.where-when a:visited,
+.where-when a:hover,
+.where-when a:focus,
+.where-when a:active {
     color: #555555; /* #555555 */
 }
