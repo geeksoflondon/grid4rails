@@ -1,12 +1,12 @@
 <table summary="<%= @description %>" id="gridTable" cellpadding="0" cellspacing="0" border="0"> 
 	<tr> 
-		<td>&nbsp;</td> 
+		<th>&nbsp;</th> 
 		<% @timeslots.each do |timeslot| %>
 			<th class="timeslot">
 				<p>
 					<a href="/grid/<%= timeslot.id %>">
-					<%= timeslot.start.strftime("%a") %><br/>
-					<%= timeslot.start.strftime("%H:%M") %> <%= timeslot.end.strftime("%H:%M") %>
+					<%= timeslot.start.strftime("%A") %><br/>
+					<%= timeslot.start.strftime("%H:%M") %>-<%= timeslot.end.strftime("%H:%M") %>
 				</p>
 			</th>
 		<% end %>
