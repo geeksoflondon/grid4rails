@@ -1,29 +1,34 @@
 <%= form_for(@talk) do |f| %>
  	
-	<% if @talk.errors.any? 
-		@errors = @talk.errors
-		@context = "prohibited this talk from being saved:"
-	%><%= render '/shared/error' %>
-	<% end %>
-
-	<div class="field">
-		<%= f.label :title, "Title <span>required</span>".html_safe %>
-		<%= f.text_field :title, :placeholder => "e.g. My awesome talk" %>
-	</div>
-	<div class="field">
-		<%= f.label :description %>
-		<%= f.text_area :description %>
-	</div>
-	<div class="field">
-		<%= f.label :speaker, "Speaker name(s) <span>required</span>".html_safe %>
-		<%= f.text_field :speaker, :placeholder => "e.g. Bob and Alice" %>
-	</div>
+		<% if @talk.errors.any? 
+			@errors = @talk.errors
+			@context = "prohibited this talk from being saved:"
+		%><%= render '/shared/error' %>
+		<% end %>
+	
+	 	<fieldset class="details">
+			<div class="field">
+				<p><%= f.label :title, "Title".html_safe %></p>
+				<%= f.text_field :title, :placeholder => "e.g. My awesome talk" %>
+			</div>
+			<div class="field">
+				<p><%= f.label :description %></p>
+				<%= f.text_area :description, :rows => 10 %>
+			</div>
+			<div class="field">
+				<p><%= f.label :speaker, "Speaker name(s)".html_safe %></p>
+				<%= f.text_field :speaker, :placeholder => "e.g. Bob and Alice" %>
+			</div>
+		</fieldset>
 	
 	<fieldset class="actions">	
-		<span class="show"><%= link_to 'Show', talk_path(@talk) unless @talk.new_record? %></span>	
+		<% if (!@talk.new_record?) %>
+			<span class="show"><%= link_to 'Show', talk_path(@talk) %></span>
+		<% end %>	
 		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
 		<span class="delimiter"> </span>
-		<span class="submit"><%= f.submit "Create and pick a slot", :class => "botton green" %></span>		
+		<% label = ((@talk.new_record?) ? "Create talk and select slot" : "Save changes") %>
+		<span class="submit"><%= f.submit label, :class => "botton green" %></span>		
 	</fieldset>
 	
 <% end %>
