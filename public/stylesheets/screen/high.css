@@ -70,7 +70,7 @@ html, body {
 }
 
 #footer {
-  position: fixed;
+/*  position: fixed;*/
 }
 
 #grid #footer, #now #footer, #next #footer, #timeslot #footer {
