@@ -15,54 +15,116 @@
 /* Basic text rules
 -----------------------------*/
 
+/* Basic form rules
+-----------------------------*/
+fieldset {    
+    border: none;
+    padding: 0 6px 0 0;
+}
+
+.field {
+    margin-top: 6px;
+}
+.field p {
+    margin-bottom: 3px;
+}
+.field input,
+.field textarea {
+  width: 100%;
+}
+
+form .actions a {
+    background-color: #DDDDDD;
+    color: #333333;
+    padding: 3px 5px;    
+}
+
+
 
 /* Layout
 -----------------------------*/
 
-body {
+#main, 
+#header .page-title,
+#header .nav,
+#header .version-switcher {
     padding: 3px;
 }
 
 #header {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 #footer {
-    margin-top: 20px;
-}
-
-h1 {
-    margin-bottom: 10px;
+    margin-top: 18px;
 }
 
 
-/* Custom features
+/* FEATURE: Header
 -----------------------------*/
 
-/* Version switcher */
-/* Single timeslot grid view scroller */
-.version-switcher {
-    margin-top: 10px;
+/* Header */
+#header .page-title {
+    background-color: #000000;
 }
-.scroller {
-    margin-bottom: 12px;   
+#header .nav .heading,
+#header .version-switcher .heading {
+    margin-bottom: 3px;   
+}
+
+/* FEATURE: Version Switcher
+-----------------------------*/
+
+.version-switcher {
+    margin-top: 9px;
 }
 .version-switcher .heading {
     font-size: small;
 }
-
 .version-switcher .selected {
     text-decoration: underline;
     font-weight: bold;
 }
-.version-switcher .skip {
+
+/* FEATURE: Timeslot scroller
+-----------------------------*/
+
+.scroller {
+    margin-bottom: 12px;   
+}
+
+
+/* FEATURE: Skipper
+-----------------------------*/
+
+.skip {
     font-size: x-small;
     font-weight: normal;
 }
 
-/* Main page title */
+
+/* FEATURE: Page Title
+-----------------------------*/
+
 #main h1 {
     font-size: larger;
+}
+
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {      
+    padding: 6px;    
+    margin: 0 6px 9px 6px;
+    background-color: #C9E2AE;
+    color: #444;    
+    font-weight: bold;
+    font-size: medium;                   
+}
+
+.warning {
+  color: #7E2B29;
+  background-color: #F9EEEE;
 }
 
 
