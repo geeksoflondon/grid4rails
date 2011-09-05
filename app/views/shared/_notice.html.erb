@@ -1,1 +1,1 @@
-<% if flash[:notice] || flash[:warning]  %><p class="<%= flash[:warning] ? "warning" : "notice" %>"><%= flash[:notice] %> <%= flash[:warning] %></p><% end %>
+<% if flash[:notice] || flash[:warning]  %><p class="message <%= flash[:warning] ? "warning" : "notice" %>"><%= flash[:notice] %> <%= flash[:warning] %></p><% end %>
