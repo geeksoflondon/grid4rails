@@ -1,7 +1,8 @@
 /* NOTES: High
 -----------------------------
-*  Go for it. CSS3, the lot.
-*  med.css applied first.
+** Go for it. CSS3, the lot.
+** med.css applied first.  
+** mouseless equivalent of :hover is :focus
 -----------------------------*/
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 @import url(/stylesheets/buttons.css);
@@ -13,49 +14,6 @@
 	position: absolute;
 	top: 0;	
 	left: 0;
-}
-
-.instructions {
-  padding: 20px 20px 20px 60px;
-  background-color: #C9E2AE;
-  background-image: url("/images/info.png");
-  background-repeat: no-repeat;
-  background-position: 20px 17px;
-  color: #444;
-  font-weight: bold;
-  font-size: 1.3em;
-  display: inline-block;
-  margin: auto;
-  border-right: 10px solid #ddd;
-}
-
-.notice {
-  padding: 20px 20px 20px 60px;
-  background-color: #C9E2AE;
-  background-image: url("/images/accept.png");
-  background-repeat: no-repeat;
-  background-position: 20px 17px;
-  color: #444;
-  font-weight: bold;
-  font-size: 1.3em;
-  display: inline-block;
-  margin: auto;
-  border-right: 10px solid #ddd;
-}
-
-
-.warning {
-  padding: 20px 20px 20px 60px;
-  color: #7E2B29;
-  background-color: #F9EEEE;
-  background-image: url("/images/info.png");
-  background-repeat: no-repeat;
-  background-position: 20px 17px;
-  font-weight: bold;
-  font-size: 1.3em;
-  display: inline-block;
-  margin: auto;
-  border-right: 10px solid #ddd;
 }
 
 /* Basic text rules
@@ -79,7 +37,7 @@ html, body {
 }
 
 
-/* Custom features
+/* FEATURE: Header
 -----------------------------*/
 
 #header {
@@ -98,7 +56,6 @@ html, body {
   box-shadow: 0px 5px 10px 0px rgba(60, 60, 60, 0.5);
 }
 
-
 #header h1 {
   margin-left: 10px;
   float: left;
@@ -111,7 +68,40 @@ html, body {
 }
 
 
-/* Global nav in header */
+/* FEATURE: Footer
+-----------------------------*/
+
+#footer {
+  background-color: black;
+  border-top: 3px solid #888;
+  position: fixed;
+  height: 30px;
+  font-size: 0.9em;
+  width: 100%;
+  bottom: 0px;
+}
+
+#grid #footer, #now #footer, #next #footer, #timeslot #footer {
+  -webkit-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
+  -moz-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
+  box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
+}
+
+#footer .nav{
+  margin-top: 8px;
+}
+
+#footer .nav li {
+  margin-right: 5px;
+}
+
+#footer .nav li a {
+  color : #aaa;
+}
+
+
+/* FEATURE: Global navigation
+-----------------------------*/
 
 #header .nav {
   float: left;
@@ -142,14 +132,14 @@ html, body {
   padding-left: 22px;
 }
 
-#footer .nav li
-{
+#footer .nav li {
 	font-size:1em;
 }
 
-
 #header .nav li a:hover,
-#footer .nav li a:hover { 
+#header .nav li a:focus,
+#footer .nav li a:hover,
+#footer .nav li a:focus { 
     text-decoration:none;
     border-width: 0 0 2px 0;
     border-style: solid;
@@ -162,7 +152,9 @@ html, body {
 }
 
 
-/* Version switcher */
+/* FEATURE: Version Switcher
+-----------------------------*/
+
 .version-switcher {
     position: absolute;
     top: 12px;
@@ -170,15 +162,18 @@ html, body {
     padding-bottom: 0.5em;
 }
 
-.version-switcher {
+.version-switcher,
+.version-switcher .heading,
+.version-switcher a,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
   color: #fff;
 }
 
-.version-switcher a {
-  color: #fff;
-}
-
-.version-switcher h2 {
+.version-switcher .heading {
   display: inline;
   height: 10px;
   font-size: 1.2em;
@@ -194,7 +189,9 @@ html, body {
 }
 
 
-/* Scroller */
+/* FEATURE: Timeslot scroller
+-----------------------------*/
+
 .scroller {
 /*  margin-top: 40px;*/
   width: 100%;
@@ -215,19 +212,58 @@ html, body {
   color: #999;
 }
 
-/* Grid styles */
 
-#gridTable {
-/*  margin-top: 40px;*/
-  border-bottom: 1px solid #ddd;
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {
+    display: inline-block;
+    margin: auto;
+	padding: 20px;
+    background-position: 20px 17px;
+    background-repeat: no-repeat;
+    background-color: #C9E2AE;
+	color: #444;
+    font-weight: bold;
+    font-size: 1.3em;                 
+    border-right-width: 10px;
+    border-right-style: solid;
+    border-right-color: #ddd;    
 }
 
-#now #gridTable, #next #gridTable , #timeslot #gridTable {
+.instructions {  
+  background-image: url("/images/info.png");   
+  padding-right: 60px;
+  background-color: #C9E2AE;
+  color: #111;  
+}
+
+.notice { 
+  background-image: url("/images/accept.png");      
+}
+
+.warning {
+  color: #7E2B29;
+  background-color: #F9EEEE;
+  background-image: url("/images/info.png");    
+}
+
+
+/* VIEW: Grid
+-----------------------------*/
+
+#gridTable {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #ddd;
+}
+
+.single-timeslot {
   width: 100%;
   margin-top: 0px;
 }
 
-#now #gridTable p, #next #gridTable p, #timeslot p {
+.single-timeslot p {
   text-align: left;
 }
 
@@ -304,7 +340,7 @@ html, body {
   margin-top: 10px;
 }
 
-#gridTable .talk .title a{
+#talk-assign #gridTable .title a{
   font-size: 1.2em;
   line-height: 1.5em;
   color: black;
@@ -312,35 +348,9 @@ html, body {
 }
 
 
-#footer {
-  background-color: black;
-  border-top: 3px solid #888;
-  position: fixed;
-  height: 30px;
-  font-size: 0.9em;
-  width: 100%;
-  bottom: 0px;
-}
+/* VIEW: Talk
+-----------------------------*/
 
-#grid #footer, #now #footer, #next #footer, #timeslot #footer {
-  -webkit-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
-  -moz-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
-  box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
-}
-
-#footer .nav{
-  margin-top: 8px;
-}
-
-#footer .nav li {
-  margin-right: 5px;
-}
-
-#footer .nav li a {
-  color : #aaa;
-}
-
-/* Talk view */
 #talk .talk {
 /*  margin-top: 40px;*/
   padding: 5px 30px;
