@@ -43,6 +43,8 @@ html, body {
 
 #footer {
   position: fixed;
+  position:static;
+  bottom: 0px;
 }
 
 
@@ -89,14 +91,12 @@ html, body {
   color : #aaa;
 }
 
-
-
 /* Narrow UI fix */
 
 @media all and (max-width: 740px) { 
   
-  .version-switcher {
+/*  .version-switcher {
     display: none;
-  }
+  }*/
   
 }	 

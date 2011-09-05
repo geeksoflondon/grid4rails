@@ -31,6 +31,7 @@ html {
 
 html, body { 
   height: 100%;
+  width: 100%;
   padding: 0px;
   margin: 0px;
 }
@@ -50,11 +51,12 @@ html, body {
 -----------------------------*/
 
 #header {
-  background-color: black;
   height: 40px;
   overflow: hidden;
+  min-width: 500px;
   width: 100%;
   top: 0px;  
+  background-color: black;
 }
 
 
@@ -77,10 +79,10 @@ html, body {
 /* Global nav in header */
 
 #header .nav {
-  float: left;
+  display: block;
   color: white;
   height: 28px;
-  margin-top: 3px;
+  margin-top: 7px;
   margin-left: 30px;
 }
 
@@ -141,10 +143,9 @@ html, body {
 
 /* Version switcher */
 .version-switcher {
-    position: absolute;
-    top: 9px;
-    right: 10px;
-    padding-bottom: 0.5em;
+  margin-top: 5px;
+  margin-right: 15px;
+  float: right;
 }
 
 .version-switcher {
@@ -172,11 +173,13 @@ html, body {
 
 
 #gridTable {
+  background-color: #fff;
 /*  margin-top: 40px;*/
   border-bottom: 1px solid #ddd;
 }
 
 #now #gridTable, #next #gridTable , #timeslot #gridTable {
+  display: block;
   width: 100%;
   margin-top: 0px;
 }
@@ -192,7 +195,11 @@ html, body {
 
 #gridTable td {
   border-right: 1px solid #ddd;
-  min-width: 170px;
+  min-width: 30%;
+}
+
+#gridTable tr td:nth-child(even), #gridTable tr th:nth-child(even) {
+  background-color: #f7f7f7;
 }
 
 #gridTable th {
@@ -266,8 +273,7 @@ fieldset {
 /* Logo */
 #header .page-title a {
     display: block;
-    height: 127px;
-    width: 360px;    
+    height: 40px;
 }
 
 /* Gloval nav */
@@ -308,7 +314,7 @@ fieldset {
 
 /* Main page title */
 #main {
-  background-color: #fff;  
+  background-color: white;  
 }
 
 #main h1 {
@@ -545,6 +551,7 @@ fieldset {
 .scroller {
 /*  margin-top: 40px;*/
   width: 100%;
+  display: block;
   background-color: #eee;
   height: 15px;
   padding: 10px 0px;

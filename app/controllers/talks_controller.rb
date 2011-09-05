@@ -86,7 +86,7 @@ class TalksController < ApplicationController
     @talk = Talk.find(params[:talk][:id])
 
     if @talk.schedule_in(params[:talk][:slot_id])
-      redirect_to(grid_index_path, :notice => 'Talk was scheduled updated.')
+      redirect_to(grid_index_path, :notice => 'Talk was scheduled added.')
     else
       redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id, :notice => 'There was an issue scheduling your talk')
     end
