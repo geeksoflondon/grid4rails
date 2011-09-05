@@ -1,3 +1,14 @@
+/* Basic link rules
+-----------------------------*/
+a,
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+    color: #000000; /* #000000 */
+}
+
 
 /* VIEW: the grid
 -----------------------------*/
