@@ -26,8 +26,10 @@
                     <%= talk.speaker unless talk.speaker.nil? %>
                 </h3>
                 <p class="options">
-                    <%= link_to 'Edit', edit_talk_path(talk) unless talk.locked? %>
-                	  <%= link_to 'View', talk  %>
+                	<% if (talk.description != '') %>
+                		<%= link_to 'More', talk_path(talk)  %>
+                	<% end %>
+                    <%= link_to 'Edit', edit_talk_path(talk) unless talk.locked? %>                	  
                 </p>
                 <% cache("where_when_#{@slot.id}") do %>
                     <%= render '/shared/grid/where_when' %>
