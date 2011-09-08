@@ -1,7 +1,7 @@
-<td data-slot_id="<%= @slot.id %>"<% if (@slot.timeslot == Timeslot.now) %> class="now"<% end %>>
+<td data-slot_id="<%= @slot.id %>" class="<%= "now" if (@slot.timeslot == Timeslot.now) %> <%= "empty" if (@slot.is_empty?) %>">
     <div class="slot">
         <% if (@slot.is_empty?) %>
-            <div class="empty">             
+
                 <% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
                     <%= form_tag('/talks/assign_slot') do |f| %>
                         <%= hidden_field('talk', 'slot_id', :value => @slot.id) %>
@@ -9,12 +9,11 @@
                         <span class="submit"><%= submit_tag("Add here", :class => "button green medium") %></span>
                     <% end %>
                 <% else %>
-                    <p class="heading title">Empty</p> 
+                    <span class='submit'><%= link_to("Add a talk", "/talks/new", :class => "button green medium") %></span>
                 <% end %>
                 <% cache("where_when_#{@slot.id}") do %>
                     <%= render '/shared/grid/where_when' %>
                 <% end %>
-            </div>  
         <% else %>
             <% talk = @grid.talk(@slot.id)%>
             <div class="talk">

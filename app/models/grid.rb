@@ -15,14 +15,8 @@ class Grid
     end
   end
 
-  def timeslots_containing_empty_slot				
-    timeslots = Array.new()
-    timeslots.each do |timeslot|
-      if (timeslot.contains_empty_slot)
-        timeslots << timeslot
-      end
-    end 
-    return timeslots
+  def timeslots_containing_empty_slot
+    timeslots.select(&:contains_empty_slot)
   end
 
   def rooms

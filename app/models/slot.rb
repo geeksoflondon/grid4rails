@@ -37,20 +37,21 @@ class Slot < ActiveRecord::Base
 
   def self.find_empty
     # Slot.joins("left join talks on (slots.id = talks.slot_id)").where("talks.slot_id is null")
-	slots = Array.new()
+	@slots = Array.new()
 	Slot.all.each do | slot |
 		if (slot.is_empty)
-			slots << slot
+			@slots << slot
 		end
 	end 
   	return @slots
   end
   
   def is_empty?
-    if (talk.nil?)
-      true
+    if (self.talk.nil?)
+      return true
+    else 
+      return false
     end
-    false
   end
 
   def self.by_timeslot(timeslot)

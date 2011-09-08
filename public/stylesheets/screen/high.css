@@ -121,8 +121,8 @@ html {
 #header #options ul {
     display: block;
     margin: 0;
-    padding: 9px 0 0 0;
-    width: 382px;
+    padding: 12px 0 0 0;
+    width: 400px;
 }
 
 #header .nav li {
@@ -215,10 +215,10 @@ html {
 -----------------------------*/
 
 .scroller {
-  background-color: #999999;
-  padding: 6px 0 3px 0;
-  border: 1px solid #888888;
+  background-color: #000;
+  padding: 0px 0 3px 0;
   color: #cccccc;
+  height: 20px;
 }
 
 .scroller a {
@@ -231,6 +231,17 @@ html {
 .scroller .arrows {
   color: #cccccc;
 }
+
+.scroller .delimiter {
+  display: none;
+}
+
+.scroller span {
+  background-color: #666;
+  margin: 0px 5px;
+  padding: 6px 10px !important;
+}
+
 
 
 /* FEATURE: Page Title
