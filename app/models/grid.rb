@@ -17,7 +17,7 @@ class Grid
 
 	def timeslots_containing_empty_slot				
 		@timeslots = Array.new()
-		timeslots.each do | @timeslot |
+		timeslots.each do | timeslot |
 			if (@timeslot.contains_empty_slot)
 				@timeslots << @timeslot
 			end

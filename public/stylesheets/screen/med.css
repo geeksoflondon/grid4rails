@@ -332,6 +332,14 @@ table.grid th.odd {
     background-color: #eeeeee;
 }
 
+table.grid tr.even {
+  background-color: #fafafa;
+}
+
+table.grid tr.odd {
+  background-color: #ffffff;
+}
+
 table.grid td {
     min-width: 30%;
 }
@@ -407,26 +415,30 @@ table.grid .where-when span {
 
 table.grid .empty {
     padding: 3px;
-    background-color: #C9E2AE;
+/*    background-color: #ddd;*/
     margin: 6px;
 }
 
-table.grid .empty .where-when {     
+table.grid .empty .where-when {   
     margin: 0;
     padding: 6px 2px;
     white-space: nowrap;
 }
 
-table.grid .slot .empty,
-table.grid .slot .empty .heading,
-table.grid .slot .empty .where-when,
-table.grid .slot .empty a,
-table.grid .slot .empty a:link,
-table.grid .slot .empty a:visited,
-table.grid .slot .empty a:hover,
-table.grid .slot .empty a:focus,
-table.grid .slot .empty a:active {
-    color: #444;    
+table.grid .empty .heading {
+  margin: 5px;
+  background-color: #C9E2AE;
+  padding: 5px 0px;
+  color: #000;
+}
+
+table.grid .empty .submit {
+  margin: 5px 0px;
+  display: block;
+}
+
+table.grid .empty .submit a {
+  color: #fff;
 }
 
 /* On now */
@@ -456,6 +468,10 @@ table.single-timeslot .empty .heading {
 
 table.single-timeslot td.now {
     background-color: #ffffff;
+}
+
+table.single-timeslot .empty .submit {
+  text-align: left;
 }
 
 

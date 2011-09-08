@@ -81,9 +81,9 @@ class Timeslot < ActiveRecord::Base
   def self.dates
   	@dates = Array.new()
   	@dates << Timeslot.start_date
-	Timeslot.all.each do | @timeslot |
-		if (!@dates.include?(@timeslot.start.to_date))
-			@dates << @timeslot.start.to_date
+	Timeslot.all.each do | timeslot |
+		if (!@dates.include?(timeslot.start.to_date))
+			@dates << timeslot.start.to_date
 		end
 	end 
   	return @dates
@@ -101,8 +101,8 @@ class Timeslot < ActiveRecord::Base
   
   def contains_empty_slot 
   	@empty_slots = Slot.find_empty
-  	slots.each do | @slot |
-  		if (@empty_slots.include?(@slot)) 
+  	slots.each do | slot |
+  		if (@empty_slots.include?(slot)) 
   			return true
   		end
   	end
