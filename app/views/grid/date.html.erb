@@ -9,7 +9,8 @@
 			%>	
 			<% @dates.each do | date | %>
 				<span>
-					<%= link_to date.strftime("%a").upcase, "/grid/date/#{date}", :class => "selected" %>
+					<% class_name = "selected" if @date == date %>
+					<%= link_to date.strftime("%A"), "/grid/date/#{date}", :class => class_name %>
 				</span>
 				<% if (date != @dates.last) %>
 					<span class="delimiter"> | </span>

@@ -39,7 +39,7 @@ class Slot < ActiveRecord::Base
     # Slot.joins("left join talks on (slots.id = talks.slot_id)").where("talks.slot_id is null")
 	@slots = Array.new()
 	Slot.all.each do | slot |
-		if (slot.is_empty)
+		if (slot.is_empty?)
 			@slots << slot
 		end
 	end 

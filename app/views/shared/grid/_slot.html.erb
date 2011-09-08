@@ -1,4 +1,5 @@
-<td data-slot_id="<%= @slot.id %>" class="<%= "now" if (@slot.timeslot == Timeslot.now) %> <%= "empty" if (@slot.is_empty?) %>">
+<td data-slot_id="<%= @slot.id %>" class="<%= "now" if (@slot.timeslot == Timeslot.now) %> 
+		<%= "empty" if (@slot.is_empty?) %>">
     <div class="slot">
         <% if (@slot.is_empty?) %>
 
@@ -15,7 +16,7 @@
                     <%= render '/shared/grid/where_when' %>
                 <% end %>
         <% else %>
-            <% talk = @grid.talk(@slot.id)%>
+            <% talk = @grid.talk(@slot.id) %>
             <div class="talk">
                 <h2 class="heading title">
                 	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>

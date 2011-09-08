@@ -222,7 +222,7 @@ html {
 }
 
 .scroller a {
-  margin: 0px 10px;
+  margin: 0px 0px;
   border: 0px;
   color: #333;
   font-weight: bold;
@@ -232,14 +232,9 @@ html {
   color: #cccccc;
 }
 
-.scroller .delimiter {
-  display: none;
-}
-
 .scroller span {
-  background-color: #666;
-  margin: 0px 5px;
-  padding: 6px 10px !important;
+  margin: 0px 0px;
+  padding:5px !important;
 }
 
 
@@ -258,11 +253,11 @@ html {
 .message {
     display: inline-block;
     margin: auto;
-	padding: 20px;
+	  padding: 20px 20px 20px 60px;
     background-position: 20px 17px;
     background-repeat: no-repeat;
     background-color: #C9E2AE;
-	color: #444;
+	  color: #444;
     font-weight: bold;
     font-size: 1.3em;                 
     border-right-width: 10px;
@@ -347,71 +342,3 @@ html {
   text-decoration: underline;
 }
 
-
-/* VIEW: Create talk
------------------------------*/
-
-.talk_form {
-  padding: 5px 20px;
-}
-
-.talk_form form label {
-  font-weight: bold;
-  line-height:1.1em;
-  font-size: 1.1em;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.talk_form form label span {
-  font-size: 0.8em;
-  color: #a00;
-}
-
-.talk_form form input[type=text] {
-  border: 1px solid #aaa;
-  padding: 5px 8px;
-  font-size: 1.4em;
-  width: 500px;
-  height: inherit;
-}
-
-.talk_form form .field_with_errors input[type=text] {
-  border: 1px solid #a00;
-}
-
-.talk_form form textarea {
-  border: 1px solid #aaa;
-  padding: 3px 8px;
-  font-size: 1.1em;
-  line-height: 1.2em;
-  width: 500px;
-  height: 150px;
-}
-
-.talk_form .actions {
-  width: 508px;
-}
-
-.talk_form .actions  a {
-  color: #333;
-  background-color: #ddd;
-  padding: 3px 5px;
-  text-decoration: underline;
-}
-
-.talk_form .actions  input {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  padding: 5px 10px;
-}
-
-#error_explanation ul {
-  list-style: disc inside;
-}
-
-#error_explanation li {
-  color: #a00;
-  margin: 10px 0px;
-} 
