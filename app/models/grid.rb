@@ -6,7 +6,7 @@ class Grid
 
   def timeslots
     timeslots = Rails.cache.read('timeslots')
-    if !timeslots.nil?
+    unless timeslots.nil?
       return timeslots
     else
       timeslots = Timeslot.all
@@ -15,19 +15,19 @@ class Grid
     end
   end
 
-	def timeslots_containing_empty_slot				
-		@timeslots = Array.new()
-		timeslots.each do | @timeslot |
-			if (@timeslot.contains_empty_slot)
-				@timeslots << @timeslot
-			end
-		end 
-	  	return @timeslots
-	end
+  def timeslots_containing_empty_slot				
+    @timeslots = Array.new()
+    timeslots.each do | @timeslot |
+      if (@timeslot.contains_empty_slot)
+        @timeslots << @timeslot
+      end
+    end 
+    return @timeslots
+  end
 
   def rooms
     rooms = Rails.cache.read('rooms')
-    if !rooms.nil?
+    unless rooms.nil?
       return rooms
     else
       rooms = Room.all
@@ -38,7 +38,7 @@ class Grid
 
   def slot(slot_id)
     slot = Rails.cache.read("slot_#{slot_id}")
-    if !slot.nil?
+    unless slot.nil?
       return slot
     else
       slot = Slot.find(slot_id)
@@ -50,7 +50,7 @@ class Grid
 
   def talk(slot_id)
     talk = Rails.cache.read("talk_#{slot_id}")
-    if !talk.nil?
+    unless talk.nil?
       return talk
     else
       talk = Talk.find_by_slot_id(slot_id)
