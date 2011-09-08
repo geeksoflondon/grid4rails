@@ -47,10 +47,11 @@ class Slot < ActiveRecord::Base
   end
   
   def is_empty?
-    if (talk.nil?)
-      true
+    if (self.talk.nil?)
+      return true
+    else 
+      return false
     end
-    false
   end
 
   def self.by_timeslot(timeslot)
