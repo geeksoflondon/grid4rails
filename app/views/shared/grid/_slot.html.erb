@@ -1,6 +1,6 @@
 <td data-slot_id="<%= @slot.id %>"<% if (@slot.timeslot == Timeslot.now) %> class="now"<% end %>>
     <div class="slot">
-        <% if (@slot.is_empty) %>
+        <% if (@slot.is_empty?) %>
             <div class="empty">             
                 <% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
                     <%= form_tag('/talks/assign_slot') do |f| %>
