@@ -1,6 +1,6 @@
-<% if (@timeslots.nil?) %>
-	<p>You seem to be lost in time.</p>
-<% else %>	
+<% if (@timeslots.nil?) %>	
+	<p class="message information">You seem to be lost in time.</p>
+<% else %>		
 	<%= render 'shared/nav/timeslot' %>
-	<%= render 'shared/grid/headings' %>
+	<%= render 'shared/grid/grid'  %>
 <% end %>

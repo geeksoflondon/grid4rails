@@ -1,7 +1,6 @@
-<% slotIsEmpty=(@slot.nil? || @grid.talk(@slot.id).nil?) %>
-<td data-slot_id="<%= @slot.id %>">
+<td data-slot_id="<%= @slot.id %>"<% if (@slot.timeslot == Timeslot.now) %> class="now"<% end %>>
     <div class="slot">
-        <% if (slotIsEmpty) %>
+        <% if (@slot.is_empty) %>
             <div class="empty">             
                 <% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
                     <%= form_tag('/talks/assign_slot') do |f| %>
@@ -20,17 +19,14 @@
             <% talk = @grid.talk(@slot.id)%>
             <div class="talk">
                 <h2 class="heading title">
-                    <%= link_to talk.title, talk_path(talk) unless talk.title.nil? %>
+                	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>
+                    <%= link_to talk_title, talk_path(talk) unless talk.title.nil? %>                    
                 </h2> 
-                <h3 class="heading speaker">
-                    <%= talk.speaker unless talk.speaker.nil? %>
-                </h3>
-                <p class="options">
-                	<% if (talk.description != '') %>
-                		<%= link_to 'More', talk_path(talk)  %>
-                	<% end %>
-                    <%= link_to 'Edit', edit_talk_path(talk) unless talk.locked? %>                	  
-                </p>
+                <% if ((!talk.speaker.nil?) && talk.speaker.strip != "") %>
+	                <h3 class="heading speaker">
+	                    <%= talk.speaker %>
+	                </h3>
+	            <% end %>
                 <% cache("where_when_#{@slot.id}") do %>
                     <%= render '/shared/grid/where_when' %>
                 <% end %>

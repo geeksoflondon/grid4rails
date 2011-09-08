@@ -1,5 +1,9 @@
-<div class="grid">
-    <% cache('the_grid') do %>  
-	<%= render 'shared/grid/headings'  %>
+<% cache('the_grid') do %>  
+
+	<% @dates = Timeslot.dates %>
+	<% @dates.each do | date | %>
+		<p><%= date.strftime("%a").upcase %></p>
 	<% end %>
-</div>
+    
+	<%= render 'shared/grid/grid'  %>
+<% end %>

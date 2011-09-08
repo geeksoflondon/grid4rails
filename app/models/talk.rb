@@ -1,15 +1,19 @@
 class Talk < ActiveRecord::Base
   belongs_to :slot
 
-  validates :title, :presence => true
-  validates :speaker, :presence => true
-
   before_save :expire_cache
   after_save :rebuild_cache
 
   def self.unscheduled
     Talk.where("slot = ?", false)
   end
+
+	def is_unscheduled
+		if (slot_id == nil)
+			return true
+		end
+		return false
+	end
 
   def schedule_in(slot_id = nil)
     unless self.slot_id == nil

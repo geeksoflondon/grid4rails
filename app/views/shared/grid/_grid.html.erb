@@ -1,0 +1,33 @@
+<% @is_single_timeslot = (@timeslots.count == 1) %>
+<table summary="<%= @description %>" cellpadding="0" cellspacing="0" border="0"<% if (@is_single_timeslot) %> width="100%"<% end %> class="grid <% if (@is_single_timeslot) %>single-timeslot<% else %>multi-timeslot<% end %>"> 
+	<tr> 
+		<% if (@show_room_col) %><th>&nbsp;</th><% end %> 
+		<% @timeslots.each do | timeslot | %>
+				<th class="timeslot <%= cycle("odd", "even") %><% if (timeslot == Timeslot.now) %> now<% end %>">
+					<p>
+						<% if (!@is_single_timeslot) %><a href="/grid/<%= timeslot.id %>"><% end %>
+							<% if (@page_id != "date-grid") %><%= timeslot.start.strftime("%A") %><br/><% end %>
+							<%= timeslot.start.strftime("%H:%M") %>-<%= timeslot.end.strftime("%H:%M") %>
+						<% if (!@is_single_timeslot) %></a><% end %>
+					</p>
+				</th>
+		<% end %>
+	</tr> 			
+	<% @rooms.each do |room| %>
+	    <% @room = room %>
+	    <tr class="<%= cycle("odd", "even") %>">
+	    	<% if (@show_room_col) %>
+		        <th class="room">
+					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :id => @room.id %></p>
+		            <p class="where-when"><span><%= @room.short_code.upcase %></span></p>
+		        </th>      
+	        <% end %>                 
+	        <% @room.slots.each do |slot| %>
+	        	<% if (@timeslots.include?(slot.timeslot)) %>
+	            	<% @slot = @grid.slot(slot.id) %>
+	           		<%= render 'shared/grid/slot' %>
+	           	<% end %>
+	        <% end %> 
+	    </tr>
+	<% end %>
+</table>

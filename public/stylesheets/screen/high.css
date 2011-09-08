@@ -2,38 +2,61 @@
 -----------------------------
 ** Go for it. CSS3, the lot.
 ** med.css applied first.  
-** mouseless equivalent of :hover is :focus
+** Mouse and touchscreen navigation
+** Screen resolution likely to range
+*  from 320x480 to 1920x1080
 -----------------------------*/
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
-@import url(/stylesheets/buttons.css);
+@import url(../buttons.css);
 
 
-/* Custom hides */
-.version-switcher .skip {
+/* Custom hides (screenreader-friendly)
+-----------------------------*/
+.skip {
 	margin: -5000px 0 0 -5000px;
 	position: absolute;
 	top: 0;	
 	left: 0;
 }
 
-/* Basic text rules
+/* Basic background rules
 -----------------------------*/
 
-html, body {
-  padding: 0px;
+html {
+  background-color: black;
 }
+
+
+/* Basic text rules
+-----------------------------*/
 
 /* Layout
 -----------------------------*/
 
-#footer .nav {
-    text-align: left;
+#header {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    overflow: hidden;
+    border-bottom-color: #888;
+    border-bottom-style: solid;   
+    top: 0;
+    height: 40px;
+    border-width: 0 0 3px 0;
 }
 
 #main {
-    clear: left;
-    margin-top: 40px;
-    margin-bottom: 33px;
+    margin: 40px 0 0 0;
+    padding: 0;
+}
+
+#header {
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+  box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
 }
 
 
@@ -42,29 +65,15 @@ html, body {
 
 #header {
   background-color: black;
-  height: 40px;
-  overflow: hidden;
-  border-bottom: 3px solid #888;
-  width: 100%;
-  position:fixed;
-  top: 0px;  
 }
 
-#grid #header, #now #header, #next #header, #timeslot #header {
-  -webkit-box-shadow: 0px 5px 10px 0px rgba(60, 60, 60, 0.5);
-  -moz-box-shadow: 0px 5px 10px 0px rgba(60, 60, 60, 0.5);
-  box-shadow: 0px 5px 10px 0px rgba(60, 60, 60, 0.5);
-}
-
-#header h1 {
-  margin-left: 10px;
-  float: left;
-  width: 200px;
-  height: 40px;
-}
-
-#header .spacer {
-  height: 0px;
+#header .branding { 
+    display: block;
+    width: 210px;
+    height: 40px;    
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 
@@ -73,18 +82,14 @@ html, body {
 
 #footer {
   background-color: black;
-  border-top: 3px solid #888;
-  position: fixed;
-  height: 30px;
+  border-top: 3px solid #888;  
   font-size: 0.9em;
-  width: 100%;
-  bottom: 0px;
 }
 
-#grid #footer, #now #footer, #next #footer, #timeslot #footer {
-  -webkit-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
-  -moz-box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
-  box-shadow: 0px -5px 10px 0px rgba(60, 60, 60, 0.5);
+
+
+#footer .nav {
+    text-align: left;
 }
 
 #footer .nav{
@@ -103,32 +108,48 @@ html, body {
 /* FEATURE: Global navigation
 -----------------------------*/
 
-#header .nav {
-  float: left;
-  color: white;
-  height: 28px;
-  margin-top: 12px;
-  margin-left: 30px;
+#header #options {  
+  display: block;
+  margin: 0 80px 0 210px;
+  padding: 0;
+  width: auto;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
-#header .nav li,
+#header #options ul {
+    display: block;
+    margin: 0;
+    padding: 9px 0 0 0;
+    width: 382px;
+}
+
+#header .nav li {
+    padding: 0 12px;
+    float: left;
+    whitespace: nowrap;   
+    font-size: 15px;
+}
+
 #footer .nav li {
     display: inline;
-    margin: 0px 10px; 
+    margin: 0px 12px; 
+}
+
+.nav li {
     font-size: 1.2em;
     line-height: 1.3em;
 }
 #header .nav li a,
 #footer .nav li a {
-    display: inline;
-    padding-top: 15px;
     color: white;
 }
 
 #header a.add {
   background-image: url("/images/add.png");
   background-repeat: no-repeat;
-  background-position: 0px 16px;
+  background-position: center left;
   padding-left: 22px;
 }
 
@@ -151,15 +172,15 @@ html, body {
     border-style: solid;
 }
 
+/* FEATURE: Footer
+-----------------------------*/
+
 
 /* FEATURE: Version Switcher
 -----------------------------*/
 
 .version-switcher {
-    position: absolute;
-    top: 12px;
-    right: 10px;
-    padding-bottom: 0.5em;
+    padding: 6px 3px;
 }
 
 .version-switcher,
@@ -175,17 +196,18 @@ html, body {
 
 .version-switcher .heading {
   display: inline;
-  height: 10px;
-  font-size: 1.2em;
 }
 
 .version-switcher p {
   display: inline;
 }
 
-.version-switcher a.selected {
-  font-weight: normal;
-  border-bottom: 1px solid #fff;
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+    color: #cccccc;
 }
 
 
@@ -193,11 +215,10 @@ html, body {
 -----------------------------*/
 
 .scroller {
-/*  margin-top: 40px;*/
-  width: 100%;
-  background-color: #eee;
-  height: 15px;
-  padding: 10px 0px;
+  background-color: #999999;
+  padding: 6px 0 3px 0;
+  border: 1px solid #888888;
+  color: #cccccc;
 }
 
 .scroller a {
@@ -208,8 +229,15 @@ html, body {
 }
 
 .scroller .arrows {
-  font-size: 0.6em;
-  color: #999;
+  color: #cccccc;
+}
+
+
+/* FEATURE: Page Title
+-----------------------------*/
+
+#main h1 {    
+    padding-top: 12px;
 }
 
 
@@ -261,90 +289,6 @@ html, body {
 .single-timeslot {
   width: 100%;
   margin-top: 0px;
-}
-
-.single-timeslot p {
-  text-align: left;
-}
-
-#gridTable tr {
-  background: #ffffff; /* Old browsers */
-  background: -moz-linear-gradient(top, #ffffff 0%, #fafafa 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#fafafa)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #ffffff 0%,#fafafa 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #ffffff 0%,#fafafa 100%); /* Opera11.10+ */
-  background: -ms-linear-gradient(top, #ffffff 0%,#fafafa 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fafafa',GradientType=0 ); /* IE6-9 */
-  background: linear-gradient(top, #ffffff 0%,#fafafa 100%); /* W3C */
-  border-top: 1px solid #ddd;
-}
-
-#gridTable td {
-  border-right: 1px solid #ddd;
-  min-width: 170px;
-}
-
-#gridTable tr td:nth-child(even) {
-  background: -moz-linear-gradient(top, #fafafa 0%, #f0f0f0 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#f0f0f0)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* Opera11.10+ */
-  background: -ms-linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#f0f0f0',GradientType=0 ); /* IE6-9 */
-  background: linear-gradient(top, #fafafa 0%,#f0f0f0 100%); /* W3C */
-}
-
-#gridTable th {
-  min-width: 100px;
-  border-right: 1px solid #ddd;
-}
-
-#gridTable th a {
-  color: black;
-  font-size: 1.3em;
-  font-weight: bold;
-}
-
-#gridTable th.timeslot p {
-  border-bottom: 0px;
-  width: 100%;
-}
-
-#gridTable th.room {
-  width: 200px;
-}
-
-
-#gridTable th.room p {
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
-#gridTable .delimiter {
-  float: left;
-}
-
-#gridTable .where-when {
-  margin-top: 10px;
-  width: 10em;
-}
-
-
-#gridTable th.room .where-when {
-  margin-top: 0px;
-  font-size: 0.8em !important;
-  margin-bottom: 10px;
-}
-
-#gridTable .options {
-  margin-top: 10px;
-}
-
-#talk-assign #gridTable .title a{
-  font-size: 1.2em;
-  line-height: 1.5em;
-  color: black;
-  font-family: 'Droid Sans', sans-serif;
 }
 
 
@@ -459,15 +403,4 @@ html, body {
 #error_explanation li {
   color: #a00;
   margin: 10px 0px;
-}
-
-
-/* Narrow UI fix */
-
-@media all and (max-width: 740px) { 
-  
-  .version-switcher {
-    display: none;
-  }
-  
-}	 
+} 

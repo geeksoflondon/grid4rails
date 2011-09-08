@@ -8,7 +8,10 @@
 *  thead, tbody or varying border widths/colours/styles.
 ** No image-replacement
 ** Avoid using large and/or wide images in content
-*  (viewport is likely to be relatively narrow and shallow)
+** Screen resolution is likely to be relatively narrow and shallow,
+*  eg. 176x144
+** KEYBOARD NAVIGATION
+*  (remember :focus as well as :hover)
 -----------------------------*/
 
 
@@ -33,6 +36,17 @@ fieldset {
   width: 100%;
 }
 
+form .actions span {
+    line-height: 2.5;
+}
+
+form .actions {
+    margin-top: 18px;
+    padding: 0;
+    border: 1px solid #f5f5f5;
+    padding: 3px 6px;
+}
+
 form .actions a {
     background-color: #DDDDDD;
     color: #333333;
@@ -44,39 +58,99 @@ form .actions a {
 /* Layout
 -----------------------------*/
 
-#main, 
-#header .page-title,
-#header .nav,
-#header .version-switcher {
-    padding: 3px;
-}
-
 #header {
-    margin-bottom: 18px;
+    margin-bottom: 0;
+    padding-bottom: 3px;
+    border-bottom: 3px solid #000000;
 }
 
 #footer {
-    margin-top: 18px;
+    margin: 0;    
+}
+
+#options,
+.version-switcher {
+    padding: 3px;
 }
 
 
 /* FEATURE: Header
 -----------------------------*/
 
-/* Header */
-#header .page-title {
-    background-color: #000000;
+#header .branding {
+    background-color: #000000; /* #000000 */
 }
-#header .nav .heading,
-#header .version-switcher .heading {
+
+
+/* FEATURE: Footer
+-----------------------------*/
+
+#footer {
+    border-top: 12px solid #000000;    
+    padding-top: 6px;
+}
+
+.nav .heading,
+.version-switcher .heading {
     margin-bottom: 3px;   
 }
+
+
+/* FEATURE: Global Navigation
+-----------------------------*/
+
+.nav .heading {
+    font-size: medium;
+}
+.nav li {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 18px;
+    padding-left: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+
+/* FEATURE: Scrollers
+-----------------------------*/
+
+.scroller {
+    width: 100%;
+    background-color: #000000; /* #f5f5f5 */
+    font-size: small;   
+    margin: 0;
+    color: #fcfcfc;
+    border-style: solid;
+    /* border-color: #D37F7E; */
+    border-color: #000000; /* #555555 */
+    border-width: 0 0 3px 0;
+}
+.scroller p {
+    text-align: center;
+}
+.scroller .selected {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.scroller a,
+.scroller a:link,
+.scroller a:visited,
+.scroller a:hover,
+.scroller a:focus,
+.scroller a:active {
+    color: #ffffff;
+}
+
 
 /* FEATURE: Version Switcher
 -----------------------------*/
 
 .version-switcher {
-    margin-top: 9px;
+    margin-top: 0;
+    padding: 6px 12px 18px 12px;
+    background-color: #000000; /* #000000 */
+    color: #ffffff; /* #ffffff */
 }
 .version-switcher .heading {
     font-size: small;
@@ -86,15 +160,17 @@ form .actions a {
     font-weight: bold;
 }
 
-/* FEATURE: Timeslot scroller
------------------------------*/
-
-.scroller {
-    margin-bottom: 12px;   
+.version-switcher .heading,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+    color: #ffffff; /* #ffffff */
 }
 
 
-/* FEATURE: Skipper
+/* FEATURE: Skippers
 -----------------------------*/
 
 .skip {
@@ -102,12 +178,34 @@ form .actions a {
     font-weight: normal;
 }
 
+.skip-up,
+.skip-down {
+    padding-left: 3px;
+}
+
+.skip-up {
+    margin: 12px 0 0 0;
+    padding-bottom: 0;
+    border-bottom-width: 6px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000; /* #000000 */
+}
+.skip-up img,
+.skip-down img {
+    margin-right: 3px;
+}
+.skip-up img {
+    margin-bottom: -6px;
+
+}
 
 /* FEATURE: Page Title
 -----------------------------*/
 
 #main h1 {
-    font-size: larger;
+    font-size: large;
+	margin-top: 6px;
+    margin-bottom: 12px;
 }
 
 /* FEATURE: Informational messages
@@ -131,8 +229,8 @@ form .actions a {
 /* VIEW: the grid
 -----------------------------*/
 
-#gridTable td, 
-#gridTable th {
+table.grid td, 
+table.grid th {
     font-size: 100%;
     font-style: inherit;
     font-weight: inherit;
@@ -142,14 +240,73 @@ form .actions a {
     vertical-align: baseline;
     border-width: 1px;
     border-style: solid;
+    border-color: #cccccc;
 }
 
-#gridTable th {  
+table.grid th {  
     font-weight: normal;
+    background-color: #f5f5f5;
+    color: #000000;
+    padding: 3px;    
+}
+
+table.grid tr.even th,
+table.grid th.odd {
+    background-color: #eeeeee;
+}
+
+table.grid th .where-when {
+    color: #b13c3b;
+}
+
+table.grid .slot .empty {
+    padding: 3px;
+    background-color: #C9E2AE;
+    margin: 6px 0;
+}
+
+table.grid .slot .empty,
+table.grid .slot .empty .heading,
+table.grid .slot .empty .where-when,
+table.grid .slot .empty a,
+table.grid .slot .empty a:link,
+table.grid .slot .empty a:visited,
+table.grid .slot .empty a:hover,
+table.grid .slot .empty a:focus,
+table.grid .slot .empty a:active {
+    color: #444;    
 }
 
 .slot p,
 .slot .heading {
     margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+table.grid td.now {
+    background-color: #e0efe1;
+}
+body#now table.grid td.now {
+    background-color: #ffffff;
+}
+
+
+/* VIEW: Talk
+-----------------------------*/
+
+body.talks #main {
+    padding: 0 6px;
+}
+
+body.talks #main h1 {
+    margin-bottom: 0;
+}
+
+body.talks .description,
+body.talks .slot-details {
+    margin-top: 12px;
+}
+
+body.talks .slot-details p {
     margin-bottom: 6px;
 }

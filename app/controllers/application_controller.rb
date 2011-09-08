@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :talks_taking_place
-  before_filter :which_stylesheet
+  before_filter :version
 
   # Flag for checking whether a timeslot matching now, exists.
   # Equals false if no timeslot matching now exists; otherwise will be true.
@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   	@talks_taking_place = Timeslot.now.nil? == true ? false : true 
   end
 
-  def which_stylesheet
-    @style = cookies[:version]
+  def version
+    @version = cookies[:version]
   end
 
 end

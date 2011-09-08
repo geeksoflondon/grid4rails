@@ -1,37 +1,10 @@
-<!doctype html> 
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--> 
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--> 
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--> 
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]--> 
-<head>  
-	<meta charset="UTF-8"> 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	
-	<title>Griddy</title>
-	
-	<!-- Style -->	
-	<% if (@style == "high") %> 			
-			<%= stylesheet_link_tag "global", "screen/shared", "screen/med", "screen/high" %>
-			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med", "themes/#{theme}/screen/high" %>			
-	<% elsif (@style == "med") %>			
-			<%= stylesheet_link_tag "global", "screen/shared", "screen/med" %>
-			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med" %>			
-	<% else  %>						
-			<%= stylesheet_link_tag "global", "screen/shared", "screen/low"  %>
-			<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/low"  %>						
-	<% end  %>
-	
-	<!-- CSRF -->
-	<%= csrf_meta_tag %>	
-	
-	<meta name="description" content="">
-	<meta name="author" content=""> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-</head> 
-<body id="<%= @page_id %>">
 	<div id="header">
-		<h1 class="heading page-title"><a href="/"><img src="/images/themes/<%= theme %>/logo.png" /></a></h1>
-		<%= render '/shared/nav/global_header' %>
-		<%= render '/shared/nav/version' %>
+		<p class="branding"><a href="/"><img src="/images/themes/<%= theme %>/logo.png" /></a></h1>
+		<% if (@version == "low") %>
+			<p class="skip-down hide"><span class="icon"><img src="/images/arrow_down.png" width="28" height="15" /></span><a href="#options">Skip to options</a></p>
+		<% else %>
+			<p class="skip-to-versions"><a href="#version-switcher">Version</a></p>
+			<%= render '/shared/nav/global' %>
+		<% end %>
 		<span id="header-end"></span>		
 	</div>

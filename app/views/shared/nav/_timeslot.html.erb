@@ -3,7 +3,7 @@
 		timeslot_prev = @timeslot.prev
 		timeslot_next = @timeslot.next
 	%>
-	<div class="scroller">
+	<div class="scroller timeslot-scroller">
 		<p class="options">
 			<% if (timeslot_prev) %>
 				<a href="<%= timeslot_prev.id %>"><span class="arrows">&lt;&lt </span>Earlier</a>

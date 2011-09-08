@@ -6,10 +6,11 @@
 	<%= render '/shared/talk/slot' %>
 </div>
 
-<p class="options">
-	<% if (@talk.locked?) %>
-		<%= link_to 'All Talks', talks_path %>
-	<% else %>
-		<%= link_to 'Edit', edit_talk_path(@talk) %>
-	<% end %>
-</p>
+<form method="post" action="<%= url_for(:controller => 'talks', :action => 'edit', :id => @talk) %>">
+	<fieldset class="actions">
+		<span class="edit">
+			<input id="talk_edit" class="button" type="submit" value="Edit" name="edit"<% if (@talk.locked?) %> disabled="disabled"<% end %>>
+		</span>
+		<%= token_tag %>
+	</fieldset>
+</form>

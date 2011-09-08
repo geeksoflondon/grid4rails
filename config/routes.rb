@@ -3,6 +3,7 @@ Griddy::Application.routes.draw do
 
   match 'talks/schedule' => "talks#schedule"
   match 'talks/assign_slot' => "talks#assign_slot"
+  match 'talks/:id/edit' => "talks#edit"
   resources :talks
   
   resources :users
@@ -15,6 +16,10 @@ Griddy::Application.routes.draw do
 
   match 'grid/now' => "grid#now"
   match 'grid/next' => "grid#next"
+  match "grid/room/:id" => "grid#room"
+  match "/grid/date/:id" => "grid#date"
+  # match "/grid" => redirect("/grid/date/#{Date.current()}")
+  match "grid" => "grid#date"
   resources :grid
 
   # The priority is based upon order of creation:
@@ -66,7 +71,7 @@ Griddy::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "grid#index"
+  root :to => "grid#date"
 
   # See how all your routes lay out with "rake routes"
 

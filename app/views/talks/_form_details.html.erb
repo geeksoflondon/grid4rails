@@ -22,10 +22,7 @@
 		</fieldset>
 	
 	<fieldset class="actions">	
-		<% if (!@talk.new_record?) %>
-			<span class="show"><%= link_to 'Show', talk_path(@talk) %></span>
-		<% end %>	
-		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
+		<span class="cancel"><%= link_to 'Cancel', :back %></span>
 		<span class="delimiter"> </span>
 		<% label = ((@talk.new_record?) ? "Create talk and select slot" : "Save changes") %>
 		<span class="submit"><%= f.submit label, :class => "botton green" %></span>		
