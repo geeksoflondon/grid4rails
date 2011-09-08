@@ -15,7 +15,6 @@ class Grid
     end
   end
 
-<<<<<<< HEAD
   def timeslots_containing_empty_slot				
     @timeslots = Array.new()
     timeslots.each do | @timeslot |
@@ -25,17 +24,6 @@ class Grid
     end 
     return @timeslots
   end
-=======
-	def timeslots_containing_empty_slot				
-		timeslots = Array.new()
-		timeslots.each do | timeslot |
-			if (timeslot.contains_empty_slot)
-				timeslots << timeslot
-			end
-		end 
-	  	return @timeslots
-	end
->>>>>>> 86b9d9d... fix 1.9.2 issues
 
   def rooms
     rooms = Rails.cache.read('rooms')
