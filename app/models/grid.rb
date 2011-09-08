@@ -16,13 +16,13 @@ class Grid
   end
 
   def timeslots_containing_empty_slot				
-    @timeslots = Array.new()
-    timeslots.each do | @timeslot |
-      if (@timeslot.contains_empty_slot)
-        @timeslots << @timeslot
+    timeslots = Array.new()
+    timeslots.each do |timeslot|
+      if (timeslot.contains_empty_slot)
+        timeslots << timeslot
       end
     end 
-    return @timeslots
+    return timeslots
   end
 
   def rooms
