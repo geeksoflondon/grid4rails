@@ -2,22 +2,25 @@
 		<%= "empty" if (@slot.is_empty?) %>">
     <div class="slot">
         <% if (@slot.is_empty?) %>
-
+								<% cache("where_when_#{@slot.id}") do %>
+                    <%= render '/shared/grid/where_when' %>
+                <% end %>
                 <% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
                     <%= form_tag('/talks/assign_slot') do |f| %>
                         <%= hidden_field('talk', 'slot_id', :value => @slot.id) %>
                         <%= hidden_field('talk', 'id', :value => @unscheduled.id) %>
-                        <span class="submit"><%= submit_tag("Add here", :class => "button green medium") %></span>
+                        <span class="submit"><%= submit_tag("Insert here", :class => "button orange medium") %></span>
                     <% end %>
                 <% else %>
                     <span class='submit'><%= link_to("Add a talk", "/talks/new", :class => "button green medium") %></span>
                 <% end %>
-                <% cache("where_when_#{@slot.id}") do %>
-                    <%= render '/shared/grid/where_when' %>
-                <% end %>
+                
         <% else %>
             <% talk = @grid.talk(@slot.id) %>
             <div class="talk">
+	            <% cache("where_when_#{@slot.id}") do %>
+                  <%= render '/shared/grid/where_when' %>
+              <% end %>
                 <h2 class="heading title">
                 	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>
                     <%= link_to talk_title, talk_path(talk) unless talk.title.nil? %>                    
@@ -27,9 +30,7 @@
 	                    <%= talk.speaker %>
 	                </h3>
 	            <% end %>
-                <% cache("where_when_#{@slot.id}") do %>
-                    <%= render '/shared/grid/where_when' %>
-                <% end %>
+
             </div>          
         <% end %>
     </div>

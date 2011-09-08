@@ -216,7 +216,7 @@ html {
 
 .scroller {
   background-color: #000;
-  padding: 0px 0 3px 0;
+  padding: 5px 0 3px 0;
   color: #cccccc;
   height: 20px;
 }
@@ -323,22 +323,3 @@ html {
   margin-bottom: 10px;
   max-width: 500px;
 }
-
-#talk .talk .when, #talk .talk .where {
-  color: #7E2B29;
-  background-color: #F9EEEE;
-  padding: 3px 5px;
-  margin-right: 5px;
-} 
-
-#talk .options {
-  padding: 10px 30px;
-}
-
-#talk .options a {
-  color: #333;
-  background-color: #ddd;
-  padding: 3px 5px;
-  text-decoration: underline;
-}
-

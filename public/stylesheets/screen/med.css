@@ -31,46 +31,6 @@ table.grid .where-when span.hide {
 }
 
 
-/* Basic text rules
------------------------------*/
-
-/* Basic form rules
------------------------------*/
-fieldset {    
-    border: none;
-    padding: 0 6px 0 0;
-}
-
-.field {
-    margin-top: 6px;
-}
-.field p {
-    margin-bottom: 3px;
-}
-.field input,
-.field textarea {
-  width: 100%;
-}
-
-form .actions span {
-    line-height: 2.5;
-}
-
-form .actions {
-    margin-top: 18px;
-    padding: 0;
-    border: 1px solid #cccccc;
-    padding: 3px 6px;
-}
-
-form .actions a {
-    background-color: #DDDDDD;
-    color: #333333;
-    padding: 3px 5px;    
-}
-
-
-
 /* Layout
 -----------------------------*/
 
@@ -372,6 +332,10 @@ table.grid th.room .where-when span {
     padding: 0;
 }
 
+table.grid .where-when  .room {
+  text-decoration: underline;
+}
+
 /* Talk */
 
 table.grid .talk {
@@ -503,6 +467,19 @@ body.talks .slot-details p {
   padding: 5px 20px;
 }
 
+.talk_form .field {
+    margin-top: 6px;
+}
+
+.talk_form .field p {
+    margin-bottom: 3px;
+}
+
+.talk_form .field input,
+.talk_form .field textarea {
+  width: 500px;
+}
+
 .talk_form form label {
   font-weight: bold;
   line-height:1.1em;
@@ -537,8 +514,22 @@ body.talks .slot-details p {
   height: 150px;
 }
 
-.talk_form .actions {
-  width: 508px;
+.actions {
+  width: 520px;
+  margin-top: 18px;
+  padding: 0;
+  border: 1px solid #aaa;
+  padding: 3px 6px;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.talk .actions a {
+  color: #fff;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  padding: 5px 10px;
 }
 
 .talk_form .actions  a {
@@ -553,6 +544,22 @@ body.talks .slot-details p {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   padding: 5px 10px;
+}
+
+.talk_form fieldset {    
+    border: none;
+    padding: 0 6px 0 0;
+}
+
+.actions span {
+    line-height: 2.5;
+}
+
+
+.talk_form .actions a {
+    background-color: #DDDDDD;
+    color: #333333;
+    padding: 3px 5px;    
 }
 
 #error_explanation ul {
