@@ -494,3 +494,72 @@ body.talks .slot-details {
 body.talks .slot-details p {
     margin-bottom: 6px;
 }
+
+
+/* VIEW: Create talk
+-----------------------------*/
+
+.talk_form {
+  padding: 5px 20px;
+}
+
+.talk_form form label {
+  font-weight: bold;
+  line-height:1.1em;
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.talk_form form label span {
+  font-size: 0.8em;
+  color: #a00;
+}
+
+.talk_form form input[type=text] {
+  border: 1px solid #aaa;
+  padding: 5px 8px;
+  font-size: 1.4em;
+  width: 500px;
+  height: inherit;
+}
+
+.talk_form form .field_with_errors input[type=text], .talk_form form .field_with_errors   textarea {
+  border: 1px solid #a00;
+}
+
+.talk_form form textarea {
+  border: 1px solid #aaa;
+  padding: 3px 8px;
+  font-size: 1.1em;
+  line-height: 1.2em;
+  width: 500px;
+  height: 150px;
+}
+
+.talk_form .actions {
+  width: 508px;
+}
+
+.talk_form .actions  a {
+  color: #333;
+  background-color: #ddd;
+  padding: 3px 5px;
+  text-decoration: underline;
+}
+
+.talk_form .actions  input {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  padding: 5px 10px;
+}
+
+#error_explanation ul {
+  list-style: disc inside;
+}
+
+#error_explanation li {
+  color: #a00;
+  margin: 10px 0px;
+} 

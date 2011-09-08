@@ -75,8 +75,8 @@ class TalksController < ApplicationController
   def schedule
     @page_id = "talk-assign"
     @grid = Grid.new
-    @unscheduled = Talk.find(params[:id])    
-    @timeslots = @grid.timeslots_containing_empty_slot
+    @unscheduled = Talk.find(params[:id])
+    @timeslots = Timeslot.all
     @rooms = @grid.rooms
     @show_room_col = true
     @description = "The grid, showing empty slots"
