@@ -6,7 +6,7 @@
 	<% if (cookies[:avail] == "true") %>
 		<div id="version-switcher" class="version-switcher">
 			<h2 class="heading">Versions:</h2>
-			<p class="options"><a href="<%= request.url %>" <% if (cookies[:version] != 'med' && cookies[:version] != 'high') %>class="selected" <% end %>onClick="setVersion('low');">Bare</a> | <a href="<%= request.url %>"<% if (cookies[:version] == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Simple</a> | <a href="<%= request.url %>"<% if (cookies[:version] == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Shiny</a></p>
+			<p class="options"><a href="<%= request.url %>" <% if (cookies[:version] != 'med' && cookies[:version] != 'high') %>class="selected" <% end %>onClick="setVersion('low');">Small</a> | <a href="<%= request.url %>"<% if (cookies[:version] == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Medium</a> | <a href="<%= request.url %>"<% if (cookies[:version] == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Large</a></p>
 		</div>
 	<% end %>
 </div> 		
