@@ -1,5 +1,6 @@
 <td data-slot_id="<%= @slot.id %>" class="<%= "now" if (@slot.timeslot == Timeslot.now) %> 
-		<%= "empty" if (@slot.is_empty?) %>">
+		<%= "empty" if @slot.is_empty? %>
+		<%= "break" if !@slot.is_empty? && @slot.talk.locked %>">
     <div class="slot">
         <% if (@slot.is_empty?) %>
 								<% cache("where_when_#{@slot.id}") do %>
@@ -16,10 +17,10 @@
                 <% end %>
                 
         <% else %>
-            <% talk = @grid.talk(@slot.id) %>
+            <% talk = @slot.talk %>
             <div class="talk">
 	            <% cache("where_when_#{@slot.id}") do %>
-                  <%= render '/shared/grid/where_when' %>
+                  <%= render '/shared/grid/where_when' unless @slot.talk.locked %>
               <% end %>
                 <h2 class="heading title">
                 	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>

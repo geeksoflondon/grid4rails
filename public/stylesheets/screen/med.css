@@ -378,6 +378,13 @@ table.grid .where-when span {
     background-color: #eeeeee; 
 }
 
+/* Break slots */
+
+table.grid .break {
+    background-color: rgba(241,	238,	230, 0.8);
+}
+
+
 /* Empty slots */
 
 table.grid .empty {
