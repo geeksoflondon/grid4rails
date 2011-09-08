@@ -79,14 +79,15 @@ class Timeslot < ActiveRecord::Base
   
   # Returns an array of the dates for which there are timeslots
   def self.dates
-  	@dates = Array.new()
-  	@dates << Timeslot.start_date
-	Timeslot.all.each do | timeslot |
-		if (!@dates.include?(timeslot.start.to_date))
-			@dates << timeslot.start.to_date
-		end
-	end 
-  	return @dates
+  	dates = Array.new()
+  	dates << Timeslot.start_date
+  	Timeslot.all.each do |timeslot|
+  		if (!dates.include?(timeslot.start.to_date))
+  			dates << timeslot.start.to_date
+
+  		end
+  	end 
+  	return dates
   end
   
   # Returns date of first day of event
@@ -100,6 +101,7 @@ class Timeslot < ActiveRecord::Base
   end
   
   def contains_empty_slot 
+<<<<<<< HEAD
   	@empty_slots = Slot.find_empty
   	slots.each do | slot |
   		if (@empty_slots.include?(slot)) 
@@ -107,6 +109,15 @@ class Timeslot < ActiveRecord::Base
   		end
   	end
   	return false
+=======
+    empty_slots = Slot.find_empty
+    slots.each do |slot|
+      if (empty_slots.include?(slot)) 
+        true
+      end
+    end
+    false
+>>>>>>> 8df9795677a3dd41b9ef0bf9b6c5c42b09e6eb03
   end 
 
 end
