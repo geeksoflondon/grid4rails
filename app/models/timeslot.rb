@@ -15,12 +15,12 @@ class Timeslot < ActiveRecord::Base
   end
 
   # Returns the current timeslot (relative to the current date and time)
-  def self.now
+  def self.on_now
     Timeslot.past.last
   end
 
   # Returns the timeslot that will be next (relative to the current date and time)
-  def self.next
+  def self.on_next
     Timeslot.upcoming.first
   end
 
