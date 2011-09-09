@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   def version
     @version = cookies[:version]
+    @version ||= "low"
   end
 
 end

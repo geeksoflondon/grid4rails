@@ -7,12 +7,15 @@
 				prev_date = ((index_of_selected_date - 1) >= 0) ? @dates[(index_of_selected_date - 1)] : nil
 				next_date = ((index_of_selected_date + 1) < @dates.length) ? @dates[(index_of_selected_date + 1)] : nil 
 			%>	
-			<span class="prev"><% if (!prev_date.nil?) %><a href="/grid/date/<%= prev_date %>"><% end %><<<% if (!prev_date.nil?) %></a><% end %>&nbsp;</span>
 			<% @dates.each do | date | %>
-				<span><a href="/grid/date/<%= date %>"<% if (date == @date) %> class="selected"<% end %>><%= date.strftime("%a").upcase %></a></span>
-				<% if (date != @dates.last) %><span class="delimiter"> | </span><% end %>
+				<span>
+					<% class_name = "selected" if @date == date %>
+					<%= link_to date.strftime("%A"), "/grid/date/#{date}", :class => class_name %>
+				</span>
+				<% if (date != @dates.last) %>
+					<span class="delimiter"> | </span>
+				<% end %>
 			<% end %>
-			<span class="next">&nbsp;<% if (!next_date.nil?) %><a href="/grid/date/<%= next_date %>"><% end %>>><% if (!next_date.nil?) %></a><% end %></span>
 		</p>
 	</div>
 	    

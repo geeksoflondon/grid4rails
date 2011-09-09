@@ -1,4 +1,4 @@
-<table summary="<%= @description %>" cellpadding="0" cellspacing="0" border="0"<% if (@is_single_timeslot) %> width="100%"<% end %> class="grid <% if (@is_single_timeslot) %>single-timeslot<% else %>multi-timeslot<% end %>">
+<table summary="<%= @description %>" cellpadding="0" cellspacing="0" border="0"<% if (@is_single_timeslot) %> width="100%"<% end %> class="grid <%= (@is_single_timeslot ? "single-timeslot" : "multi-timeslot") %>">
 	<tr> 
 		<% if (@show_room_col) %><th>&nbsp;</th><% end %> 
 		<% @timeslots.each do | timeslot | %>
@@ -23,7 +23,10 @@
 	        	<% if (@timeslots.include?(slot.timeslot)) %>	        		
 	            	<% @slot = @grid.slot(slot.id) %>
 	            	<% @slots = @slot.timeslot.slots %>
-	            	<td <% if (@version != "low") %>data-slot_id="<%= @slot.id %>"<% end %><% if (@slot.timeslot == Timeslot.on_now) %> class="now"<% end %>>
+	            	<td <% if (@version != "low") %>data-slot_id="<%= @slot.id %>"<% end %> class="
+	            			<%= "now" if (@slot.timeslot == Timeslot.on_now) %>
+	            			<%= "empty" if @slot.is_empty? %>
+							<%= "break" if !@slot.is_empty? && @slot.talk.locked %>">
 	           			<%= render 'shared/grid/slot' %>
 	           		</td>
 	           	<% end %>

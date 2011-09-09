@@ -1,7 +1,7 @@
 <div id="slot-<%= @slot.id %>" class="slot<% if (@version == "low") %> <%= cycle("odd", "even") %><% end %>">
 	<% if ((current_page?(:action => 'schedule', :controller => 'talks')) && @version == "low") %>			    
 		<%			
-			if (@slot.is_empty)
+			if (@slot.is_empty?)
 				@empty_slot_index += 1 	
 			end					
 			  
@@ -39,21 +39,21 @@
 			<a href="#header" class="top">top</a>
 	 	</p>	 		
 	<% end %>	
-    <% if (@slot.is_empty) %>    	    	
-        <div id="empty-<%= @empty_slot_index %>" class="empty">             
+    <% if (@slot.is_empty?) %>    	    	
+        <div id="empty-<%= @empty_slot_index %>" class="empty">        
+            <% cache("where_when_#{@slot.id}") do %>
+                <%= render '/shared/grid/where_when' %>
+            <% end %>
             <% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
                 <%= form_tag('/talks/assign_slot') do |f| %>
                     <%= hidden_field('talk', 'slot_id', :value => @slot.id) %>
                     <%= hidden_field('talk', 'id', :value => @unscheduled.id) %>
-                    <span class="submit"><%= submit_tag("Add here", :class => "button green medium") %></span>
+                        <span class="submit"><%= submit_tag("Insert here", :class => "button orange medium") %></span>
                 <% end %>
             <% else %>
-                <p class="heading title">Empty
-                <% if (@version == "low" && @page_id == "talk-assign") %></a><% end %>
+                <p class="heading title">
+					<span class='submit'><%= link_to("Add a talk", "/talks/new", :class => "button green medium") %></span>
                 </p> 
-            <% end %>
-            <% cache("where_when_#{@slot.id}") do %>
-                <%= render '/shared/grid/where_when' %>
             <% end %>
             <% if ((current_page?(:action => 'schedule', :controller => 'talks')) && @version == "low") %>   
 	            <p class="skip skip-to-empty">
@@ -67,8 +67,11 @@
 	 		<% end %>
         </div>  
     <% else %>
-        <% talk = @grid.talk(@slot.id)%>
+        <% talk = @slot.talk %>
         <div class="talk">
+            <% cache("where_when_#{@slot.id}") do %>
+	        	<%= render '/shared/grid/where_when' unless @slot.talk.locked %>
+	        <% end %>
             <h2 class="heading title">
             	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>
                 <%= link_to talk_title, talk_path(talk) unless talk.title.nil? %>                    
@@ -77,9 +80,6 @@
                 <h3 class="heading speaker">
                     <%= talk.speaker %>
                 </h3>
-            <% end %>
-            <% cache("where_when_#{@slot.id}") do %>
-                <%= render '/shared/grid/where_when' %>
             <% end %>
         </div>          
     <% end %>
