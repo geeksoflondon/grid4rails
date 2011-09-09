@@ -1,0 +1,18 @@
+<div class="scroller date-scroller">
+	<p>
+		<% 
+			index_of_selected_date = @dates.index(@date)
+			prev_date = ((index_of_selected_date - 1) >= 0) ? @dates[(index_of_selected_date - 1)] : nil
+			next_date = ((index_of_selected_date + 1) < @dates.length) ? @dates[(index_of_selected_date + 1)] : nil 
+		%>	
+		<% @dates.each do | date | %>
+			<span>
+				<% class_name = "selected" if @date == date %>
+				<%= link_to date.strftime("%A"), "/grid/date/#{date}", :class => class_name %>
+			</span>
+			<% if (date != @dates.last) %>
+				<span class="delimiter"> | </span>
+			<% end %>
+		<% end %>
+	</p>
+</div>
