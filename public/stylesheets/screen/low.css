@@ -229,8 +229,8 @@ form .actions a {
 /* VIEW: the grid
 -----------------------------*/
 
-table.grid td, 
-table.grid th {
+.grid td, 
+.grid th {
     font-size: 100%;
     font-style: inherit;
     font-weight: inherit;
@@ -243,7 +243,8 @@ table.grid th {
     border-color: #cccccc;
 }
 
-table.grid th {  
+table.grid th,
+div.grid .timeslot .header {  
     font-weight: normal;
     background-color: #f5f5f5;
     color: #000000;
@@ -255,25 +256,25 @@ table.grid th.odd {
     background-color: #eeeeee;
 }
 
-table.grid th .where-when {
+.grid .header .where-when {
     color: #b13c3b;
 }
 
-table.grid .slot .empty {
+.grid .slot .empty {
     padding: 3px;
     background-color: #C9E2AE;
     margin: 6px 0;
 }
 
-table.grid .slot .empty,
-table.grid .slot .empty .heading,
-table.grid .slot .empty .where-when,
-table.grid .slot .empty a,
-table.grid .slot .empty a:link,
-table.grid .slot .empty a:visited,
-table.grid .slot .empty a:hover,
-table.grid .slot .empty a:focus,
-table.grid .slot .empty a:active {
+.grid .slot .empty,
+.grid .slot .empty .heading,
+.grid .slot .empty .where-when,
+.grid .slot .empty a,
+.grid .slot .empty a:link,
+.grid .slot .empty a:visited,
+.grid .slot .empty a:hover,
+.grid .slot .empty a:focus,
+.grid .slot .empty a:active {
     color: #444;    
 }
 
@@ -309,4 +310,33 @@ body.talks .slot-details {
 
 body.talks .slot-details p {
     margin-bottom: 6px;
+}
+
+/* VIEW: Schedule Talk
+-----------------------------*/
+
+#talk-assign .timeslot {
+    padding-top: 30px;
+}
+
+#talk-assign .timeslot .header .day {
+    font-size: medium;
+    font-weight: bold;
+}
+
+#talk-assign .timeslot .header .time {
+    margin-bottom: 6px;
+}
+
+#talk-assign .skip-to-empty {
+    
+}
+
+div.grid .slot {
+    margin-top: 18px;
+}
+
+div.grid .talk {
+    border: 1px solid #cccccc;
+    padding: 3px;
 }
