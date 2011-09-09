@@ -33,6 +33,11 @@
 	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">
 		<%= render 'shared/header' %>
 		<div id="main">
+			<% if (@scroller_date) %>				 
+				<%= render '/shared/nav/date' %>
+			<% elsif (@scroller_timeslot) %>
+				<%= render 'shared/nav/timeslot' %>	
+			<% end %>
 			<%= render '/shared/notice' %>
 			<%= yield %>
 		</div>
