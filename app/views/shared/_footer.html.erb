@@ -1,17 +1,10 @@
-		<div id="footer"> 
-			<%= render '/shared/nav/global_footer' %>
-		</div> 		
-		
-		<%= javascript_include_tag :all %>
-		<script type="text/javascript">
-			setCookiesAvail();
-		</script>
-		
-		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-		chromium.org/developers/how-tos/chrome-frame-getting-started --> 
-		<!--[if lt IE 7 ]>
-		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-		<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-		<![endif]--> 
-	</body> 
-</html>
+<div id="footer"> 
+	<% if (@version == "low") %>
+		<%= render '/shared/nav/global' %>
+		<p class="skip-up hide"><img src="/images/arrow_up.png" width="28" height="15" /><a href="#header">Skip to top</a></p>
+	<% end %>
+	<div id="version-switcher" class="version-switcher">
+		<h2 class="heading">Versions:</h2>
+		<p class="options"><a href="<%= request.url %>" <% if (@version == "low") %>class="selected" <% end %>onClick="setVersion('low');">Small</a> | <a href="<%= request.url %>"<% if (@version == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Medium</a> | <a href="<%= request.url %>"<% if (@version == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Large</a></p>
+	</div>
+</div> 		

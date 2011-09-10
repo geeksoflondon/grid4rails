@@ -1,8 +1,10 @@
-<div class="when">
-	<p class="start"><span class="label">Start: </span><%= @slot.timeslot.start.strftime("%a") %> <%= @slot.timeslot.start.strftime("%H:%M") %></p>
-	<p class="end"><span class="label">End: </span><%= @slot.timeslot.start.strftime("%a") %> <%= @slot.timeslot.end.strftime("%H:%M") %></p>
-</div>	
-<p class="where">
-	<span class="label">Room: </span>
-	<%= @slot.room.name %>
-</p>	
+<div class="slot-details">
+	<div class="when">
+		<h2 class="heading">When</h2>
+		<p><a href="/grid/<%= @slot.timeslot.id %>"><%= @slot.timeslot.start.strftime("%A") %>, <%= @slot.timeslot.start.strftime("%H:%M") %> - <% if (@slot.timeslot.start.to_date != @slot.timeslot.end.to_date) %><%= @slot.timeslot.end.strftime("%A") %>, <% end %><%= @slot.timeslot.end.strftime("%H:%M") %></a></p>
+	</div>	
+	<div class="where">
+		<h2 class="heading">Where</h2>
+		<p><a href="/grid/room/<%= @slot.room.id %>"><%= @slot.room.name %></a></p>
+	</div>	
+</div>

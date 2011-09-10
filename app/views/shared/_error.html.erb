@@ -1,8 +1,6 @@
 <div id="error_explanation">
-	<h2><%= pluralize(@errors.count, "error") %> <%= @context%></h2>
+	<h2 class="heading">Oops</h2>
 	<ul>
-		<% @errors.full_messages.each do |msg| %>
-    		<li><%= msg %></li>
-  		<% end %>
+    	<li>You need to fill in at least one field</li>
   	</ul>
 </div>

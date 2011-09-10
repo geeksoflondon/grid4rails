@@ -74,11 +74,13 @@ class TalksController < ApplicationController
 
   
   def schedule
+    @page_id = "talk-assign"
     @grid = Grid.new
-    @unscheduled = Talk.find(params[:id])
-    @empty_slots = Slot.find_empty
+    @unscheduled = Talk.find(params[:id])    
     @timeslots = @grid.timeslots
     @rooms = @grid.rooms
+    @show_room_col = true
+    @empty_slot_index = 0
     @description = "The grid, showing empty slots"
   end
 
@@ -86,7 +88,7 @@ class TalksController < ApplicationController
     @talk = Talk.find(params[:talk][:id])
     
     if @talk.schedule_in(params[:talk][:slot_id])
-      redirect_to(grid_index_path, :notice => 'Talk was scheduled updated.')
+      redirect_to(grid_index_path, :notice => 'Talk was updated.')
     else
       redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id, :notice => 'There was an issue scheduling your talk')
     end
