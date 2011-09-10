@@ -1,8 +1,13 @@
 /* NOTES: Med
 -----------------------------
-*  Can use px for font size
-*  Don't try to use positioning
-*  Typeface still unlikely to be the one you specify
+** Can use px for font size
+** Don't try to use complex positioning
+** Typeface still unlikely to be the one you specify
+** Default screen resolution still pretty narrow,
+*  eg. 320x480
+** No CSS3
+** Touchscreen navigation
+*  (:hover irrelevant)
 -----------------------------*/
 
 /* Workarounds
@@ -15,7 +20,10 @@
 	padding: 0;
 	clear: both;	
 }
-.hide {
+
+/* Screenreader-friendly but uses positioning... */
+.hide,
+table.grid .where-when span.hide {
 	margin: -5000px 0 0 -5000px;
 	position: absolute;
 	top: 0;	
@@ -23,233 +31,558 @@
 }
 
 
-/* Basic text rules
+/* Basic background rules
 -----------------------------*/
 
+html,
 body {
-    padding: 3px;
+  background-color: #000000;
+}
+
+#main {
+    background-color: #ffffff;
+}
+
+
+/* Basic form rules (inc. pseudo form elements)
+-----------------------------*/
+
+fieldset {    
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 3px 0;
+}
+
+form .actions input {
+    width: auto;
+}
+
+.field {
+    margin-top: 18px;
+}
+
+.field p {
+    margin-bottom: 3px;
+}
+
+form .label {
+    margin-bottom: 5px;
+    font-size: 110%;
+    font-weight: bold;
+    line-height: 110%;
+}
+
+form textarea {
+  padding: 3px 0;
+  font-size: 110%;
+  line-height: 120%;
+}
+
+.actions {
+  margin-top: 18px;
+  margin-bottom: 20px;
+  padding: 6px;
+  border: 1px solid #cccccc;
+  text-align: right; 
+}
+
+.actions span {
+    line-height: 2.5;
+}
+
+.actions a {
+    background-color: #DDDDDD;
+    color: #333333;
+    padding: 6px 9px;    
 }
 
 
 /* Layout
 -----------------------------*/
 
-#header .page-title,
-#header .nav,
-#header .version-switcher {
-    margin-bottom: 1em;
+#header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-width: 320px;
 }
+
+#header .nav {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    width: 310px;
+    text-align: center;
+}
+
+#header .nav,
+#header .branding {
+    padding-bottom: 6px;
+}
+
+#header .branding a {
+    margin-left: 3px;
+}
+
+#header .skip-to-versions {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+}
+
+.version-switcher {
+    padding: 3px;
+}
+
+
+/* FEATURE: Header
+-----------------------------*/
 
 #header {
-    margin-bottom: 2em;
+    background-color: #000000; /* #000000 */
 }
 
-#footer {
-    margin-top: 2em;
+#header .branding a {
+    display: block;   
 }
 
-h1 {
-    margin-bottom: 1em;
+#header .skip-to-versions a:link,
+#header .skip-to-versions a:visited,
+#header .skip-to-versions a:hover,
+#header .skip-to-versions a:focus,
+#header .skip-to-versions a:active {
+    background-color: inherit;
+    color: #dddddd;
+    padding: 3px 19px 3px 0;    
+    background: transparent url("/images/wrench.png") no-repeat right center;
 }
 
-
-/* Basic form rules
+/* FEATURE: Footer
 -----------------------------*/
 
-fieldset {
-	border: none;
-}
-
-.field {
-	margin-bottom: 1.6em;
-}
-
-.submit input,
-.scroller a,
-.scroller a:link,
-.scroller a:visited {
-	display: inline-block;
-	outline: none;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	font: 14px/100% Arial, Helvetica, sans-serif;	
-	border-width: 1px;
-	border-style: solid;
-}
-
-.submit input:hover,
-.submit input:focus,
-.scroller a:hover,
-.scroller a:focus {
-	text-decoration: none;
-}
-
-.submit input:active,
-.scroller a:active {
-	position: relative;
-	top: 1px;
+#footer .nav .heading,
+.version-switcher .heading {
+    margin-bottom: 3px;   
 }
 
 
-/* Custom features
+/* FEATURE: Global Navigation
 -----------------------------*/
 
-/* Logo */
-#header .page-title a {
-    display: block;
-    height: 127px;
-    width: 360px;    
+#header .nav,
+#header .nav a:link,
+#header .nav a:visited,
+#header .nav a:hover,
+#header .nav a:focus,
+#header .nav a:active {
+    background-color: #000000;
+    color: #ffffff;
 }
 
-/* Gloval nav */
-#header .nav li,
-#footer .nav li {
-    line-height: 2em;
-}
-
-/* Global nav in header */
 #header .nav li {
+    margin: 0;
+    padding: 0 6px;
+    display: inline;
+    font-size: 14px;
+}
+
+#footer .nav .heading {
     font-size: medium;
 }
 
-
-/* Version switcher */
-.version-switcher .heading {
-    margin-bottom: .25em;
-}
-
-.version-switcher .options a {
-    z-index:10;
-    position:relative;
-    padding: 2px;
-}
-
-.version-switcher .selected {
-    font-weight: bold;
-}
-.version-switcher .skip {
-    font-size: smaller;
-    font-weight: normal;
-}
-
-/* Scroller */
-.scroller a {
-    padding: 2px;
-}
-
-/* Main page title */
-#main h1 {
-    font-size: 200%;
-    margin: 1em 0px;
-}
-
-
-/* VIEW: the grid
------------------------------*/
-
-#gridTable td, 
-#gridTable th {
-    font-family: Verdana;
-    font-size: 100%;
-    font-style: inherit;
-    font-weight: inherit;
-    margin: 0;
-    outline: 0 none;
-    padding: 2px 16px;
-    vertical-align: baseline;
-}
-
-#gridTable th {
-    font-size: larger;
-    font-weight: normal;
-}
-
-#gridTable .timeslot {   
-    font-size: 14px;
-    padding: 8px 16px 2px 16px;
-}
-
-#gridTable .timeslot p{
-	border-width: 0 0 2px 0;
-	border-style: solid;
-	padding: 5px 5px 13px 5px;
-}
-
-#gridTable .slot,
-#gridTable p {
-    width: 8.5em; 
-}
-
-#gridTable td .heading {
-    font-weight: normal;
-}
-
-#gridTable .speaker {
-    font-style: normal;
-}
-
-.slot p,
-.slot .heading {
-    margin-top: 6px;
-    margin-bottom: 6px;
-}
-
-#gridTable .talk,
-#gridTable .empty,
-#gridTable th p {
-    padding: 5px;
-}
-
-.where-when span {
-    display: inline;
-    margin-right: 2px;
-    padding: 2px;
+#footer .nav li {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 18px;
+    padding-left: 3px;
+    margin-top: 3px;
     margin-bottom: 3px;
 }
 
 
-/* VIEW: create talk
+/* FEATURE: Scrollers
 -----------------------------*/
 
-.addtalk .actions,
-.slot .actions {
-	width: 292px;
+.scroller {
+    margin: 0;
+    padding: 3px 0 6px;
+    width: 100%;
+    background-color: #000000; /* #f5f5f5 */
+    color: #fcfcfc;
+    font-size: small;         
+    border-style: solid;
+    border-color: #555555; /* #555555 */
+    border-width: 3px 0 0 0;    
+}
+.scroller p {
+    text-align: center;
+}
+.scroller .selected {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.scroller a,
+.scroller a:link,
+.scroller a:visited,
+.scroller a:hover,
+.scroller a:focus,
+.scroller a:active {
+    background-color: inherit;
+    color: #ffffff;
+    padding: 0 6px;
 }
 
-.addtalk .actions legend {
-	height:0;
-	font-size:0;
-	line-height:0;
-	text-indent: -99999px;
-}
 
-.addtalk .delimiter,
-.talk .cancel {
-	margin:0 1em;
-}
-
-/* VIEW: assign talk
+/* FEATURE: Version Switcher
 -----------------------------*/
 
-.slot .label
-{
-	font-weight:bold;
-	margin-right:0.3em;
-	min-width:73px;
-	display: inline-block;
+.version-switcher {
+    margin-top: 0;
+    padding: 6px 12px 18px 12px;
+    background-color: #000000; /* #000000 */
+    color: #ffffff; /* #ffffff */
+}
+.version-switcher .heading {
+    font-size: small;
+}
+.version-switcher .selected {
+    text-decoration: underline;
+    font-weight: bold;
 }
 
-.slot p.speaker,
-.slot p.where,
-.slot div.when,
-.slot p.description
-{
-	margin-bottom:1.5em;
+.version-switcher .heading,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+    background-color: inherit;
+    color: #ffffff; /* #ffffff */
 }
 
-.slot p.description
-{
-	padding-left:73px;
-	margin-left:0.3em;
+
+/* FEATURE: Skippers
+-----------------------------*/
+
+.skip {
+    font-size: x-small;
+    font-weight: normal;
+}
+
+.skip-up,
+.skip-down {
+    padding-left: 3px;
+}
+
+.skip-up {
+    margin: 12px 0 0 0;
+    padding-bottom: 0;
+    border-bottom-width: 6px;
+    border-bottom-style: solid;
+    border-bottom-color: #000000; /* #000000 */
+}
+.skip-up img,
+.skip-down img {
+    margin-right: 3px;
+}
+.skip-up img {
+    margin-bottom: -6px;
+
+}
+
+#header .skip-to-versions {
+    font-size: xx-small;    
+}
+
+
+/* FEATURE: Page Title
+-----------------------------*/
+
+#main h1 {
+    font-size: 200%;
+    margin: 6px 0px;
+}
+
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {      
+    padding: 6px;    
+    margin: 0 6px 9px 6px;
+    background-color: #C9E2AE;
+    color: #444;    
+    font-weight: bold;
+    font-size: medium;                   
+}
+
+.warning {
+  color: #7E2B29;
+  background-color: #F9EEEE;
+}
+
+#error_explanation ul {
+  list-style: disc inside;
+}
+
+#error_explanation li {
+  color: #a00;
+  margin: 10px 0px;
+} 
+
+
+/* FEATURE: Grid
+-----------------------------*/
+
+table.grid td, 
+table.grid th {
+    margin: 0;
+    padding: 0;
+    outline: 0 none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #cccccc;
+}
+
+table.grid th {  
+    min-width: 100px;
+    font-weight: normal;    
+    background-color: #f5f5f5;
+    color: #000000;       
+}
+
+table.grid tr.even th,
+table.grid th.odd {
+    background-color: #eeeeee;
+}
+
+table.grid tr.even {
+  background-color: #fafafa;
+}
+
+table.grid tr.odd {
+  background-color: #ffffff;
+}
+
+table.grid td {
+    min-width: 30%;
+}
+
+/* Room headings */
+
+table.grid th.room {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: bold; 
+}
+
+table.grid th.room .heading a:link,
+table.grid th.room .heading a:visited,
+table.grid th.room .heading a:hover,
+table.grid th.room .heading a:focus,
+table.grid th.room .heading a:active {
+  background-color: inherit;
+  color: #660000;
+}
+
+table.grid th.room .where-when {
+    font-weight: normal;
+    font-size: 120%;
+    margin: 0;
+}
+
+table.grid th.room .where-when span {
+    margin: 0;
+    padding: 0;
+}
+
+table.grid .where-when  .room {
+  text-decoration: underline;
+}
+
+/* Talk */
+
+table.grid .talk {
+    padding: 3px 0;
+}
+
+table.grid .talk .heading,
+table.grid .talk p,
+table.grid .empty,
+table.grid th p {
+    padding: 3px 6px;
+}
+
+table.grid .talk .title a:link,
+table.grid .talk .title a:visited,
+table.grid .talk .title a:hover,
+table.grid .talk .title a:focus,
+table.grid .talk .title a:active {
+  background-color: inherit;
+  color: #000000;
+}
+
+table.grid .speaker {
+    font-style: normal;
+    font-weight: normal;
+}
+
+table.grid .talk .where-when {     
+    margin: 0;
+    padding: 6px 5px;
+}
+
+table.grid .where-when span {
+    display: inline;
+    padding: 2px 3px;
+    margin: 1px;
+    background-color: #eeeeee; 
+}
+
+/* Break slots */
+
+table.grid .break {
+    background-color: #ffffcc;
+}
+
+
+/* Empty slots */
+
+table.grid div.empty {
+    margin: 0;
+    padding: 0;
+}
+
+table.grid .empty .actions {
+    padding: 0;
+    margin: 0;
+    border: none;
+    text-align: center;
+}
+
+table.grid .empty .actions .submit a {     
+    /* background-color: #f78d1d; *//* Orange */
+    background-color: #99cc33; /* Green */    
+}
+
+#talk-assign table.grid .empty {
+    background-color: #C9E2AE;
+}
+
+#talk-assign table.grid .empty .where-when,
+#talk-assign table.grid .empty a:link,
+#talk-assign table.grid .empty a:visited,
+#talk-assign table.grid .empty a:hover,
+#talk-assign table.grid .empty a:focus,
+#talk-assign table.grid .empty a:active {
+    color: #444444; 
+}
+
+table.grid .empty .where-when {   
+    margin: 0;
+    padding: 6px 2px;
+    white-space: nowrap;
+}
+
+table.grid .empty .heading {
+  margin: 5px;
+  background-color: #C9E2AE;
+  padding: 5px 0px;
+  color: #000;
+}
+
+table.grid .empty .submit {
+  margin: 5px 0px;
+  display: block;
+}
+
+table.grid .empty .submit a:link,
+table.grid .empty .submit a:visited,
+table.grid .empty .submit a:hover,
+table.grid .empty .submit a:focus,
+table.grid .empty .submit a:active {
+  color: #fff;
+}
+
+/* On now */
+
+table.grid td.now {
+    background-color: #e0efe1;
+}
+
+/* Single time-slot view */
+
+table.single-timeslot th p {
+    text-align: center;
+}
+
+table.single-timeslot .slot {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+table.single-timeslot p {
+  text-align: left;
+}
+
+table.single-timeslot .empty .heading {
+    padding-left: 3px;
+}
+
+table.single-timeslot td.now {
+    background-color: #ffffff;
+}
+
+table.single-timeslot .empty .submit {
+  text-align: left;
+}
+
+
+/* VIEW: Schedule Talk
+-----------------------------*/
+
+#talk-assign #main {
+    padding: 6px 0 0 0;
+}
+
+
+/* VIEW: Talk
+-----------------------------*/
+
+body.talks #main {
+    padding: 6px 3px;
+}
+
+body.talks #main h1 {
+    margin-bottom: 0;
+}
+
+body.talks .description,
+body.talks .slot-details {
+    margin-top: 12px;
+}
+
+body.talks .slot-details p {
+    margin-bottom: 6px;
+}
+
+
+/* FEATURE: Create/Edit Talk Form
+-----------------------------*/
+
+form.talk {
+    margin-top: 18px;
+}
+
+body.talks #main fieldset {
+    padding-right: 6px;
 }

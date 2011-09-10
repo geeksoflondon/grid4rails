@@ -67,26 +67,24 @@ form .actions {
 }
 
 
-/* PAGE: the grid
+/* VIEW: Grid
 -----------------------------*/
 
-#gridTable {
+table.grid,
+table.grid td,
+table.grid th {
    border-collapse: collapse;
    font-family: typeface;
-   font-size: 12px;
+   font-size: small;
    text-align: left;
+   vertical-align: top;
 }
 
-#gridTable .room, 
-#gridTable .talk {
+table.grid .room, 
+table.grid .talk {
     text-align: left;
 }
-#gridTable .timeslot, 
-#gridTable .slot {
+table.grid .timeslot, 
+table.grid .slot {
     text-align: center;
-}
-
-.talk .speaker {
-    font-weight: normal;
-    font-style: italic;
 }

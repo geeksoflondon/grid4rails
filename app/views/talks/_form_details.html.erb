@@ -1,29 +1,33 @@
-<%= form_for(@talk) do |f| %>
+<%= form_for(@talk, :html => {:class => "talk"}) do |f| %>
  	
-	<% if @talk.errors.any? 
-		@errors = @talk.errors
-		@context = "prohibited this talk from being saved:"
-	%><%= render '/shared/error' %>
-	<% end %>
-
-	<div class="field">
-		<%= f.label :title %><br />
-		<%= f.text_field :title %>
-	</div>
-	<div class="field">
-		<%= f.label :description %><br />
-		<%= f.text_field :description %>
-	</div>
-	<div class="field">
-		<%= f.label :speaker %><br />
-		<%= f.text_field :speaker %>
-	</div>
+		<% if @talk.errors.any? 
+			@errors = @talk.errors
+			@context = "prohibited this talk from being saved:"
+		%><%= render '/shared/error' %>
+		<% end %>
 	
-	<fieldset class="actions">		
-		<legend>Options</legend>	
-		<span class="cancel"><%= link_to 'Cancel', talks_path %></span>
-		<span class="delimiter"> </span>
-		<span class="submit"><%= f.submit %></span>		
+	 	<fieldset class="details">
+			<div class="field">
+				<p class="label"><%= f.label :title, "Title".html_safe %></p>
+				<p><%= f.text_field :title, :placeholder => "e.g. My awesome talk", :autofocus => true %></p>
+			</div>
+			<div class="field">
+				<p class="label"><%= f.label :description %></p>
+				<p><%= f.text_area :description, :rows => 10 %></p>
+			</div>
+			<div class="field">
+				<p class="label"><%= f.label :speaker, "Speaker name(s)".html_safe %></p>
+				<p><%= f.text_field :speaker, :placeholder => "e.g. Bob and Alice" %></p>
+			</div>
+		</fieldset>
+	
+	<fieldset class="actions">	
+		<p>
+			<span class="cancel"><%= link_to 'Cancel', :back %></span>
+			<span class="delimiter"> </span>
+			<% label = ((@talk.new_record?) ? "Create talk and select slot" : "Save changes") %>
+			<span class="submit"><%= f.submit label, :class => "botton green" %></span>
+		</p>		
 	</fieldset>
 	
 <% end %>

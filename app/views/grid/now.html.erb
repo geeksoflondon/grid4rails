@@ -1,9 +1,5 @@
-<div class="grid">
-	<h1 class="heading">Now</h1> 
-	<%= render '/shared/nav/timeslot' %>
-	<% if (@timeslot.nil?) %>
-		<p>Nothing doing.</p>
-	<% else %>
-		<%= render 'shared/grid/headings' %>
-	<% end %>
-</div>
+<% if (@timeslot.nil?) %>
+	<p class="message information">Nothing doing.</p>
+<% else %>
+	<%= render 'shared/grid/grid'  %>
+<% end %>

@@ -1,40 +1,12 @@
-/* Basic text rules
------------------------------*/
-
-body, td, th {
-    color: #963331; /* #666666 */
-}
-
 /* Basic link rules
 -----------------------------*/
-
+a,
 a:link,
 a:visited,
 a:hover,
 a:focus,
 a:active {
-	color: #000000; /* #000000 */
-	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
-}
-
-a:link,
-a:visited {
-	color: #000000; /* #000000 */
-}
-
-/* Custom features
------------------------------*/
-
-/* Version switcher */
-/* Footer nav options */
-.version-switcher .options,
-#footer .nav {
-    color: #e4b0af; /* #cccccc */
-}
-
-/* Version switcher */
-.version-switcher .skip {
-    color: #e4b0af; /* #cccccc */
+    color: #000000; /* #000000 */
 }
 
 
@@ -46,7 +18,8 @@ a:visited {
 .talk .options a:hover,
 .talk .options a:focus,
 .talk .options a:active {
-    color: #cb6664; /* #999999 */
+    background-color: #ddd; /* #999999 */
+    color: #7e2b29;
 }
 
 .where-when,

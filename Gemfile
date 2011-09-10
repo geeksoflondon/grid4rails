@@ -4,7 +4,7 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem "rake", ">= 0.8.7"
+gem "rake", ">= 0.9.2"
 
 #Frontendy stuff
 gem "jquery-rails", "~> 1.0.12"
@@ -29,3 +29,4 @@ end
 group :production do
   gem 'pg' #production db
 end
+
