@@ -23,10 +23,7 @@
 	        	<% if (@timeslots.include?(slot.timeslot)) %>	        		
 	            	<% @slot = @grid.slot(slot.id) %>
 	            	<% @slots = @slot.timeslot.slots %>
-	            	<td <% if (@version != "low") %>data-slot_id="<%= @slot.id %>"<% end %> class="
-	            			<%= "now" if (@slot.timeslot == Timeslot.on_now) %>
-	            			<%= "empty" if @slot.is_empty? %>
-							<%= "break" if !@slot.is_empty? && @slot.talk.locked %>">
+	            	<td <% if (@version != "low") %>data-slot_id="<%= @slot.id %>"<% end %><% if (classnames(@slot).length > 0) %>class="<%= classnames(@slot).join(" ") %>"<% end %>
 	           			<%= render 'shared/grid/slot' %>
 	           		</td>
 	           	<% end %>

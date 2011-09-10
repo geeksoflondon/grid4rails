@@ -1,10 +1,10 @@
 <% if (@page_id != "date-grid") %>
 	<p class="day">
-		<% if (@version == "low" && @page_id == "talk-assign") %>
+		<% if (@version == "low") %>
 			<a id="timeslot-<%= @timeslot.id %>">
 		<% end %>
 		<%= @timeslot.start.strftime("%A") %>
-		<% if (@version == "low" && @page_id == "talk-assign") %>
+		<% if (@version == "low") %>
 			</a>
 		<% end %>		
 	</p>

@@ -64,6 +64,6 @@ class Slot < ActiveRecord::Base
 
   def self.on_next
     Timeslot.on_next.slots
-  end
+  end   
 
 end

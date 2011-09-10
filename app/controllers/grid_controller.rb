@@ -9,6 +9,7 @@ class GridController < ApplicationController
     @timeslots = Array.wrap(@timeslot)
     @is_single_timeslot = (@timeslots.count == 1)
     @scroller_timeslot = true
+    @empty_slot_index = 0
     @rooms = Array.wrap(Room.all)
     @description = "What's on now."
   end
@@ -20,6 +21,7 @@ class GridController < ApplicationController
     @timeslots = Array.wrap(@timeslot)
     @is_single_timeslot = (@timeslots.count == 1)
     @scroller_timeslot = true
+    @empty_slot_index = 0
     @rooms = Array.wrap(Room.all)
     @description = "What's on next."
   end
@@ -31,6 +33,7 @@ class GridController < ApplicationController
     @timeslots = Array.wrap(@timeslot)
     @is_single_timeslot = (@timeslots.count == 1)
     @scroller_timeslot = true
+    @empty_slot_index = 0
     @rooms = Array.wrap(Room.all)
     @description = "At this time."
   end
@@ -47,6 +50,7 @@ class GridController < ApplicationController
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
     @is_single_timeslot = (@timeslots.count == 1)
+    @empty_slot_index = 0
     @rooms = @grid.rooms
     @description = "All talks."
   end
@@ -56,6 +60,7 @@ class GridController < ApplicationController
     @show_room_col = true
     @timeslots = Timeslot.by_day(params[:id])
     @is_single_timeslot = (@timeslots.count == 1)
+    @empty_slot_index = 0
     @rooms = Array.wrap(Room.all)
     @description = "On this day."
   end
@@ -66,6 +71,7 @@ class GridController < ApplicationController
   	@room = Room.find(params[:id])
   	@timeslots = Timeslot.all
   	@is_single_timeslot = (@timeslots.count == 1)
+  	@empty_slot_index = 0
   	@rooms = Array.wrap(@room)
   	@description = "What's happening in this room."
   end

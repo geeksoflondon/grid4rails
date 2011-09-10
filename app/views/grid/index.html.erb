@@ -1,9 +1,10 @@
-<% cache('the_grid') do %>  
+<% @dates = Timeslot.dates %>
+<% @dates.each do | date | %>
+	<p><%= date.strftime("%a").upcase %></p>
+<% end %>
 
-	<% @dates = Timeslot.dates %>
-	<% @dates.each do | date | %>
-		<p><%= date.strftime("%a").upcase %></p>
-	<% end %>
-    
-	<%= render 'shared/grid/grid'  %>
+<% if (@version == "low") %>		
+	<%= render "shared/grid/grid_vertical" %>
+<% else %>
+	<%= render "shared/grid/grid" %>
 <% end %>

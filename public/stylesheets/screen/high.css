@@ -96,9 +96,13 @@ form .submit input {
     border-width: 0 0 3px 0;
 }
 
-#main {
+#body {
     margin: 40px 0 0 0;
-    border-top: 1px solid #888888;
+    padding: 0;
+    border-top: 1px solid #888888;      
+}
+
+#main {
     padding-left: 12px;
     padding-right: 12px;
 }

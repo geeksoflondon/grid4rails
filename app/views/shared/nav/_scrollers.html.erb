@@ -1,0 +1,9 @@
+<% if (@scroller_date || @scroller_timeslot) %>
+	<div class="scrollers">	
+		<% if (@scroller_date) %>				 
+			<%= render '/shared/nav/date' %>
+		<% elsif (@scroller_timeslot) %>
+			<%= render 'shared/nav/timeslot' %>	
+		<% end %>
+	</div>
+<% end %>
