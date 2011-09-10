@@ -1,3 +1,5 @@
-<% cache('the_grid') do %>  	    
-	<%= render 'shared/grid/grid'  %>
+<% if (@version == "low") %>			
+	<%= render "shared/grid/grid_vertical" %>
+<% else %>
+	<%= render "shared/grid/grid" %>
 <% end %>

@@ -1,5 +1,5 @@
-<div id="slot-<%= @slot.id %>" class="slot<% if (@version == "low") %> <%= cycle("odd", "even") %><% end %>">
-	<% if ((current_page?(:action => 'schedule', :controller => 'talks')) && @version == "low") %>			    
+<div id="slot-<%= @slot.id %>" class="slot">
+	<% if (@version == "low") %>			    
 		<%			
 			if (@slot.is_empty?)
 				@empty_slot_index += 1 	
@@ -31,8 +31,10 @@
 	 		<% if (!slot_next_id.nil?) %>
 	 			<a href="#slot-<%= slot_next_id %>">next</a>
 	 		<% end %>
-	 		<% if (!slot_prev_id.nil?) %>
+	 		<% if (!slot_next_id.nil? && !slot_prev_id.nil?) %>
 	 			<span class="delimiter"> | </span>
+	 		<% end %>
+	 		<% if (!slot_prev_id.nil?) %>
 	 			<a href="#slot-<%= slot_prev_id %>">prev</a>
 	 		<% end %>
 	 		<span class="delimiter"> | </span>
@@ -55,7 +57,7 @@
 					<span class='submit'><%= link_to("Add a talk", "/talks/new", :class => "button green medium") %></span>
                 </p> 
             <% end %>
-            <% if ((current_page?(:action => 'schedule', :controller => 'talks')) && @version == "low") %>   
+            <% if (@version == "low") %>   
 	            <p class="skip skip-to-empty">
 			 		<span class="label">Empty: </span>
 			 		<a href="#empty-<%= (@empty_slot_index + 1) %>">next</a>

@@ -36,21 +36,22 @@ fieldset {
   width: 100%;
 }
 
-form .actions span {
+.actions span {
     line-height: 2.5;
 }
 
-form .actions {
+.actions {
     margin-top: 18px;
+    margin-bottom: 6px;
     padding: 0;
     border: 1px solid #f5f5f5;
     padding: 3px 6px;
 }
 
-form .actions a {
+.actions a {
     background-color: #DDDDDD;
     color: #333333;
-    padding: 3px 5px;    
+    padding: 6px 6px;    
 }
 
 
@@ -73,6 +74,9 @@ form .actions a {
     padding: 3px;
 }
 
+#main {
+    padding: 0 6px;
+}
 
 /* FEATURE: Header
 -----------------------------*/
@@ -148,7 +152,7 @@ form .actions a {
 
 .version-switcher {
     margin-top: 0;
-    padding: 6px 12px 18px 12px;
+    padding: 6px 6px 18px 6px;
     background-color: #000000; /* #000000 */
     color: #ffffff; /* #ffffff */
 }
@@ -195,8 +199,12 @@ form .actions a {
     margin-right: 3px;
 }
 .skip-up img {
-    margin-bottom: -6px;
+    margin-bottom: -3px;
+}
 
+.skip-to-empty-last {
+    margin-top: 18px;
+    margin-bottom: 6px;
 }
 
 /* FEATURE: Page Title
@@ -213,7 +221,7 @@ form .actions a {
 
 .message {      
     padding: 6px;    
-    margin: 0 6px 9px 6px;
+    margin: 0 0px 9px 0px;
     background-color: #C9E2AE;
     color: #444;    
     font-weight: bold;
@@ -228,7 +236,7 @@ form .actions a {
 
 /* VIEW: the grid
 -----------------------------*/
-
+/*
 .grid td, 
 .grid th {
     font-size: 100%;
@@ -290,14 +298,11 @@ table.grid td.now {
 body#now table.grid td.now {
     background-color: #ffffff;
 }
+*/
 
 
 /* VIEW: Talk
 -----------------------------*/
-
-body.talks #main {
-    padding: 0 6px;
-}
 
 body.talks #main h1 {
     margin-bottom: 0;
@@ -312,23 +317,30 @@ body.talks .slot-details p {
     margin-bottom: 6px;
 }
 
-/* VIEW: Schedule Talk
+/* FEATURE: Grid
 -----------------------------*/
 
-#talk-assign .timeslot {
+div.grid .timeslot .header {  
+    font-weight: normal;
+    background-color: #f5f5f5;
+    color: #000000;
+    padding: 3px;    
+}
+
+div.grid .timeslot {
     padding-top: 30px;
 }
 
-#talk-assign .timeslot .header .day {
+div.grid .timeslot .header .day {
     font-size: medium;
     font-weight: bold;
 }
 
-#talk-assign .timeslot .header .time {
+div.grid .timeslot .header .time {
     margin-bottom: 6px;
 }
 
-#talk-assign .skip-to-empty {
+.skip-to-empty {
     
 }
 
@@ -336,7 +348,46 @@ div.grid .slot {
     margin-top: 18px;
 }
 
-div.grid .talk {
+div.grid .talk,
+div.grid .empty {
     border: 1px solid #cccccc;
     padding: 3px;
 }
+
+.slot p,
+.slot .heading {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.grid .header .where-when {
+    color: #b13c3b;
+}
+
+.grid .slot .empty {
+    background-color: #C9E2AE;
+    margin: 6px 0;
+}
+
+.grid .slot .empty,
+.grid .slot .empty .heading,
+.grid .slot .empty .where-when,
+.grid .slot .empty a,
+.grid .slot .empty a:link,
+.grid .slot .empty a:visited,
+.grid .slot .empty a:hover,
+.grid .slot .empty a:focus,
+.grid .slot .empty a:active {
+    color: #444;    
+}
+
+.grid .slot .empty .actions {
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 3px;
+    background-color: #ffffff;
+    border: 1px solid #444444;
+}
+
+/* VIEW: Schedule Talk
+-----------------------------*/

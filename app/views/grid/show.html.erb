@@ -1,5 +1,7 @@
 <% if (@timeslots.nil?) %>	
 	<p class="message information">You seem to be lost in time.</p>
-<% else %>		
-	<%= render 'shared/grid/grid'  %>
+<% elsif (@version == "low") %>		
+	<%= render "shared/grid/grid_vertical" %>
+<% else %>
+	<%= render "shared/grid/grid" %>
 <% end %>
