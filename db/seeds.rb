@@ -36,18 +36,18 @@ num_timeslots = 28
 
 i = 0
 while i < num_timeslots
-  
+
   start_time = start_time + 1.hour
   end_time = start_time + 1.hour
-  
+
   if (i == 4 || i == 8 || i == 12 || i == 16 || i == 20 || i == 24)
     Timeslot.create(:name => "Break", :start => start_time, :end => end_time)
   else
     Timeslot.create(:name => "Session #{i}", :start => start_time, :end => end_time)
   end
-  
+
   i = i+1
-  
+
 end
 
 Timeslot.create(:name => "Closing Talk", :start => start_time+1.hour, :end => end_time+1.hour)
@@ -73,15 +73,25 @@ talks = [
 Slot.all.each do |slot|
 
   if slot.timeslot.name == 'Break'
-    Talk.create(:title => 'Break', :locked => true, :slot_id => slot.id)
+    t = Talk.create(:title => 'Break')
+    slot.locked = true
+    slot.talk_id = t.id
+    slot.save
   elsif slot.timeslot.name == 'Opening Talk'
-    Talk.create(:title => 'Opening Talk', :locked => true, :slot_id => slot.id)
+    t = Talk.create(:title => 'Opening Talk')
+    slot.locked = true
+    slot.talk_id = t.id
+    slot.save
   elsif slot.timeslot.name == 'Closing Talk'
-    Talk.create(:title => 'Closing Talk', :locked => true, :slot_id => slot.id)
+    t =Talk.create(:title => 'Closing Talk')
+    slot.locked = true
+    slot.talk_id = t.id
+    slot.save
   elsif rand(4) < 2
     talk = talks[rand(9)]
-    talk['slot_id'] = slot.id
     t = Talk.create(talk)
+    slot.talk_id = t.id
+    slot.save
   end
 
 end

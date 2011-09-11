@@ -49,13 +49,13 @@ class Grid
     end
   end
 
-  def talk(slot_id)
-    talk = Rails.cache.read("talk_#{slot_id}")
+  def talk(talk_id)
+    talk = Rails.cache.read("talk_#{talk_id}")
     unless talk.nil?
       return talk
     else
-      talk = Talk.find_by_slot_id(slot_id)
-      Rails.cache.write("talk_#{slot_id}", talk)
+      talk = Talk.find(talk_id)
+      Rails.cache.write("talk_#{talk_id}", talk)
       return talk
     end
   end

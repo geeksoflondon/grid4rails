@@ -12,7 +12,7 @@
 				<tr class="talk">
 					<td><p><%= talk.title %></p></td>
 					<td><p><%= talk.description %></p></td>
-					<td><p><%= talk.slot_id %></p></td>
+					<td><p><%= talk.slot.id %></p></td>
 					<td><p><%= link_to 'Show', talk %></p></td>
 					<td><p><%= link_to 'Edit', edit_talk_path(talk) %></p></td>
 					<td><p><%= link_to 'Destroy', talk, :confirm => 'Are you sure?', :method => :delete %></p></td>

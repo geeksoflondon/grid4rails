@@ -1,6 +1,6 @@
 <div class="talk">
 	<%= render '/shared/talk/details' %>
-	<% if (!@talk.slot_id.nil?) %>
+	<% if (!@talk.slot.nil?) %>
 		<% @slot = @talk.slot %>		
 	<% end %>
 	<%= render '/shared/talk/slot' %>

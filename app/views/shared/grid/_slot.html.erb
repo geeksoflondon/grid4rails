@@ -69,10 +69,10 @@
 	 		<% end %>
         </div>  
     <% else %>
-        <% talk = @slot.talk %>
+        <% talk = @grid.talk(@slot.talk_id) %>
         <div class="talk">
             <% cache("where_when_#{@slot.id}") do %>
-	        	<%= render '/shared/grid/where_when' unless @slot.talk.locked %>
+	        	<%= render '/shared/grid/where_when' unless @slot.locked %>
 	        <% end %>
             <h2 class="heading title">
             	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>

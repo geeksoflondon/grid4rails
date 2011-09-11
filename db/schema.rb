@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110810214224) do
+ActiveRecord::Schema.define(:version => 20110911172041) do
 
   create_table "rooms", :force => true do |t|
     t.string   "name"
@@ -36,16 +36,17 @@ ActiveRecord::Schema.define(:version => 20110810214224) do
     t.integer  "timeslot_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "talk_id"
+    t.boolean  "locked",      :default => false
+    t.boolean  "global",      :default => false
   end
 
   create_table "talks", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.integer  "slot_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "speaker"
-    t.boolean  "locked",      :default => false
   end
 
   create_table "timeslots", :force => true do |t|
