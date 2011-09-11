@@ -50,7 +50,7 @@
                 <%= form_tag('/talks/assign_slot') do |f| %>
                     <%= hidden_field('talk', 'slot_id', :value => @slot.id) %>
                     <%= hidden_field('talk', 'id', :value => @unscheduled.id) %>
-                        <span class="submit"><%= submit_tag("Insert here", :class => "button orange medium") %></span>
+                        <p class="actions"><span class="submit"><%= submit_tag("Insert here", :class => "button orange medium") %></span></p>
                 <% end %>
             <% else %>
                 <p class="actions">
