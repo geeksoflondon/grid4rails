@@ -46,6 +46,7 @@ fieldset {
     padding: 0;
     border: 1px solid #f5f5f5;
     padding: 3px 6px;
+    text-align: right;
 }
 
 .actions a {
@@ -329,6 +330,10 @@ div.grid .timeslot .header {
 
 div.grid .timeslot {
     padding-top: 30px;
+}
+
+div.grid .first {
+    padding-top: 12px;
 }
 
 div.grid .timeslot .header .day {

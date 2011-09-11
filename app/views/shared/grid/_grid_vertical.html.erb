@@ -3,7 +3,7 @@
 		<% @timeslots.each do | timeslot | %>
 			<% @timeslot = timeslot %>
 			<% @slots = @timeslot.slots %>
-			<div class="timeslot">
+			<div class="timeslot<% if (@timeslot == @timeslots.first) %> first<% end %>">
 				<div class="header">
 					<%= render "shared/grid/timeslot_heading" %>
 					<p class="skip">
