@@ -31,44 +31,77 @@ table.grid .where-when span.hide {
 }
 
 
-/* Basic text rules
+/* Basic background rules
 -----------------------------*/
 
-/* Basic form rules
+html,
+body {
+  background-color: #000000;
+}
+
+#main {
+    background-color: #ffffff;
+}
+
+
+/* Basic form rules (inc. pseudo form elements)
 -----------------------------*/
+
 fieldset {    
     border: none;
-    padding: 0 6px 0 0;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 3px 0;
+}
+
+form .actions input {
+    width: auto;
 }
 
 .field {
-    margin-top: 6px;
+    margin-top: 18px;
 }
+
 .field p {
     margin-bottom: 3px;
 }
-.field input,
-.field textarea {
-  width: 100%;
+
+form .label {
+    margin-bottom: 5px;
+    font-size: 110%;
+    font-weight: bold;
+    line-height: 110%;
 }
 
-form .actions span {
+form textarea {
+  padding: 3px 0;
+  font-size: 110%;
+  line-height: 120%;
+}
+
+.actions {
+  margin-top: 18px;
+  margin-bottom: 20px;
+  padding: 6px;
+  border: 1px solid #cccccc;
+  text-align: right; 
+}
+
+.actions span {
     line-height: 2.5;
 }
 
-form .actions {
-    margin-top: 18px;
-    padding: 0;
-    border: 1px solid #cccccc;
-    padding: 3px 6px;
-}
-
-form .actions a {
+.actions a {
     background-color: #DDDDDD;
     color: #333333;
-    padding: 3px 5px;    
+    padding: 6px 9px;    
 }
-
 
 
 /* Layout
@@ -304,10 +337,10 @@ form .actions a {
 #error_explanation li {
   color: #a00;
   margin: 10px 0px;
-}
+} 
 
 
-/* VIEW: Grid
+/* FEATURE: Grid
 -----------------------------*/
 
 table.grid td, 
@@ -372,6 +405,10 @@ table.grid th.room .where-when span {
     padding: 0;
 }
 
+table.grid .where-when  .room {
+  text-decoration: underline;
+}
+
 /* Talk */
 
 table.grid .talk {
@@ -411,12 +448,43 @@ table.grid .where-when span {
     background-color: #eeeeee; 
 }
 
+/* Break slots */
+
+table.grid .break {
+    background-color: #ffffcc;
+}
+
+
 /* Empty slots */
 
-table.grid .empty {
-    padding: 3px;
-/*    background-color: #ddd;*/
-    margin: 6px;
+table.grid div.empty {
+    margin: 0;
+    padding: 0;
+}
+
+table.grid .empty .actions {
+    padding: 0;
+    margin: 0;
+    border: none;
+    text-align: center;
+}
+
+table.grid .empty .actions .submit a {     
+    /* background-color: #f78d1d; *//* Orange */
+    background-color: #99cc33; /* Green */    
+}
+
+#talk-assign table.grid .empty {
+    background-color: #C9E2AE;
+}
+
+#talk-assign table.grid .empty .where-when,
+#talk-assign table.grid .empty a:link,
+#talk-assign table.grid .empty a:visited,
+#talk-assign table.grid .empty a:hover,
+#talk-assign table.grid .empty a:focus,
+#talk-assign table.grid .empty a:active {
+    color: #444444; 
 }
 
 table.grid .empty .where-when {   
@@ -437,7 +505,11 @@ table.grid .empty .submit {
   display: block;
 }
 
-table.grid .empty .submit a {
+table.grid .empty .submit a:link,
+table.grid .empty .submit a:visited,
+table.grid .empty .submit a:hover,
+table.grid .empty .submit a:focus,
+table.grid .empty .submit a:active {
   color: #fff;
 }
 
@@ -475,11 +547,19 @@ table.single-timeslot .empty .submit {
 }
 
 
+/* VIEW: Schedule Talk
+-----------------------------*/
+
+#talk-assign #main {
+    padding: 6px 0 0 0;
+}
+
+
 /* VIEW: Talk
 -----------------------------*/
 
 body.talks #main {
-    padding: 0 6px;
+    padding: 6px 3px;
 }
 
 body.talks #main h1 {
@@ -496,70 +576,13 @@ body.talks .slot-details p {
 }
 
 
-/* VIEW: Create talk
+/* FEATURE: Create/Edit Talk Form
 -----------------------------*/
 
-.talk_form {
-  padding: 5px 20px;
+form.talk {
+    margin-top: 18px;
 }
 
-.talk_form form label {
-  font-weight: bold;
-  line-height:1.1em;
-  font-size: 1.1em;
-  display: block;
-  margin-bottom: 5px;
+body.talks #main fieldset {
+    padding-right: 6px;
 }
-
-.talk_form form label span {
-  font-size: 0.8em;
-  color: #a00;
-}
-
-.talk_form form input[type=text] {
-  border: 1px solid #aaa;
-  padding: 5px 8px;
-  font-size: 1.4em;
-  width: 500px;
-  height: inherit;
-}
-
-.talk_form form .field_with_errors input[type=text], .talk_form form .field_with_errors   textarea {
-  border: 1px solid #a00;
-}
-
-.talk_form form textarea {
-  border: 1px solid #aaa;
-  padding: 3px 8px;
-  font-size: 1.1em;
-  line-height: 1.2em;
-  width: 500px;
-  height: 150px;
-}
-
-.talk_form .actions {
-  width: 508px;
-}
-
-.talk_form .actions  a {
-  color: #333;
-  background-color: #ddd;
-  padding: 3px 5px;
-  text-decoration: underline;
-}
-
-.talk_form .actions  input {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  padding: 5px 10px;
-}
-
-#error_explanation ul {
-  list-style: disc inside;
-}
-
-#error_explanation li {
-  color: #a00;
-  margin: 10px 0px;
-} 

@@ -1,10 +1,10 @@
-	<div id="header">
-		<p class="branding"><a href="/"><img src="/images/themes/<%= theme %>/logo.png" /></a></h1>
-		<% if (@version == "low") %>
-			<p class="skip-down hide"><span class="icon"><img src="/images/arrow_down.png" width="28" height="15" /></span><a href="#options">Skip to options</a></p>
-		<% else %>
-			<p class="skip-to-versions"><a href="#version-switcher">Version</a></p>
-			<%= render '/shared/nav/global' %>
-		<% end %>
-		<span id="header-end"></span>		
-	</div>
+<div id="header">
+	<p class="branding"><a href="/"><img src="/images/themes/<%= theme %>/logo.png" /></a></h1>
+	<% if (@version == "low") %>
+		<p class="skip-down hide"><span class="icon"><img src="/images/arrow_down.png" width="28" height="15" /></span><a href="#options">Skip to options</a></p>
+	<% else %>
+		<p class="skip-to-versions"><a href="#version-switcher">Version</a></p>
+		<%= render '/shared/nav/global' %>
+	<% end %>
+	<span id="header-end"></span>		
+</div>

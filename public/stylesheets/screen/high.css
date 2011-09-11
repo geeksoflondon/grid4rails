@@ -9,7 +9,6 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 @import url(../buttons.css);
 
-
 /* Custom hides (screenreader-friendly)
 -----------------------------*/
 .skip {
@@ -29,6 +28,55 @@ html {
 
 /* Basic text rules
 -----------------------------*/
+
+
+/* Basic form rules (inc. pseudo form elements)
+-----------------------------*/
+
+form input,
+form textarea,
+.actions {
+    max-width: 500px;
+}
+
+form p {
+    padding-right: 6px;
+}
+
+form .label {
+  line-height:1.1em;
+  font-size: 1.1em;
+}
+
+form .field_with_errors input[type=text], 
+form .field_with_errors textarea {
+  border: 1px solid #aa0000;
+}
+
+form input[type=text],
+form textarea {  
+  padding: 6px;
+  border: 1px solid #aaa;
+  height: inherit;
+  font-size: 18px;   
+}
+
+.actions {
+    padding: 6px 12px;
+}
+
+.actions input,
+.actions a {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+form .submit input {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
 
 /* Layout
 -----------------------------*/
@@ -50,6 +98,13 @@ html {
 
 #main {
     margin: 40px 0 0 0;
+    border-top: 1px solid #888888;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#main h1 {
+    margin: 12px;
     padding: 0;
 }
 
@@ -180,7 +235,7 @@ html {
 -----------------------------*/
 
 .version-switcher {
-    padding: 6px 3px;
+    padding: 6px 15px;
 }
 
 .version-switcher,
@@ -216,9 +271,8 @@ html {
 
 .scroller {
   background-color: #000;
-  padding: 0px 0 3px 0;
+  padding: 6px 0 6px 0;
   color: #cccccc;
-  height: 20px;
 }
 
 .scroller a {
@@ -234,16 +288,7 @@ html {
 
 .scroller span {
   margin: 0px 0px;
-  padding:5px !important;
-}
-
-
-
-/* FEATURE: Page Title
------------------------------*/
-
-#main h1 {    
-    padding-top: 12px;
+  padding: 6px !important;
 }
 
 
@@ -251,18 +296,14 @@ html {
 -----------------------------*/
 
 .message {
-    display: inline-block;
-    margin: auto;
-	  padding: 20px 20px 20px 60px;
-    background-position: 20px 17px;
+    margin: 12px;
+	padding: 18px 18px 18px 60px;
+    background-position: 18px 17px;
     background-repeat: no-repeat;
     background-color: #C9E2AE;
-	  color: #444;
+	color: #444;
     font-weight: bold;
-    font-size: 1.3em;                 
-    border-right-width: 10px;
-    border-right-style: solid;
-    border-right-color: #ddd;    
+    font-size: 1.3em;                        
 }
 
 .instructions {  
@@ -283,13 +324,11 @@ html {
 }
 
 
-/* VIEW: Grid
+/* FEATURE: Grid
 -----------------------------*/
 
-#gridTable {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #ddd;
+body.grid #main {
+    padding: 0;
 }
 
 .single-timeslot {
@@ -298,12 +337,23 @@ html {
 }
 
 
+/* VIEW: Schedule Talk
+-----------------------------*/
+
+#talk-assign table.grid tr.even .empty {
+  background-color: #fafafa;
+}
+
+#talk-assign table.grid tr.odd .empty {
+  background-color: #ffffff;
+}
+
+
 /* VIEW: Talk
 -----------------------------*/
 
 #talk .talk {
-/*  margin-top: 40px;*/
-  padding: 5px 30px;
+  padding: 6px 30px;
 }
 
 #talk .talk h1 {
@@ -324,21 +374,27 @@ html {
   max-width: 500px;
 }
 
-#talk .talk .when, #talk .talk .where {
-  color: #7E2B29;
-  background-color: #F9EEEE;
-  padding: 3px 5px;
-  margin-right: 5px;
-} 
+/* FEATURE: Create/Edit Talk Form
+-----------------------------*/
 
-#talk .options {
-  padding: 10px 30px;
+body.talks #main {
+    padding: 0 12px;
 }
 
-#talk .options a {
-  color: #333;
-  background-color: #ddd;
-  padding: 3px 5px;
-  text-decoration: underline;
+body.talks #main h1 {
+    margin-left: 0;
+    margin-right: 0;
 }
+
+body.talks #main fieldset {
+    padding-right: 0;
+}
+
+
+
+
+
+
+
+
 

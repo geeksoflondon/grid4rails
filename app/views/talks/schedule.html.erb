@@ -2,5 +2,46 @@
 	<p class='message warning'>Wow, it looks as though all the slots have been taken!</p>
 <% else %>
 	<p class="message instructions">To add your talk to the grid, find an empty slot, click to select and hit submit.</p>
-	<%= render 'shared/grid/grid'  %>
+	<% if (@version == "low") %>
+		<p class="skip-to-empty"><a id="empty-0" href="#empty-1">Skip to first empty slot</a></p>
+		<div class="grid">
+			<% @timeslots.each do | timeslot | %>
+				<% @timeslot = timeslot %>
+				<% @slots = @timeslot.slots %>
+				<div class="timeslot">
+					<div class="header">
+						<%= render "shared/grid/timeslot_heading" %>
+						<p class="skip">
+							<span class="label">Timeslot: </span>
+							<% if (@timeslot != @timeslots.last) %>
+								<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) + 1].id %>" class="next">next</a>
+							<% end %>
+							<% if (@timeslot != @timeslots.first && @timeslot != @timeslots.last) %>
+								<span class="delimiter"> | </span>
+							<% end %>
+							<% if (@timeslot != @timeslots.first) %>
+								<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) - 1].id %>" class="prev">prev</a>
+							<% end %>
+							<span class="delimiter"> | </span>
+							<a href="#header" class="top">top</a>
+						</p>
+					</div>
+					<div class="slots">
+						<% @timeslot.slots.each do |slot| %>							
+							<% @slot = @grid.slot(slot.id) %>
+							<% @room = @slot.room %>
+				           	<%= render 'shared/grid/slot' %>
+						<% end %>	
+					</div>	
+				</div>										
+			<% end %>					
+		</div>
+		<p id="empty-<%= @empty_slot_index %>" class="skip skip-to-empty">
+			<a href="#empty-0 %>">first empty</a>
+			<span class="delimiter"> | </span>
+			<a href="#empty-<%= @empty_slot_index - 1 %>">prev empty</a>
+		</p>
+	<% else %>
+		<%= render 'shared/grid/grid'  %>
+	<% end %>
 <% end %>

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Flag for checking whether a timeslot matching now, exists.
   # Equals false if no timeslot matching now exists; otherwise will be true.
   def talks_taking_place
-  	@talks_taking_place = Timeslot.now.nil? == true ? false : true 
+  	@talks_taking_place = Timeslot.on_now.nil? == true ? false : true 
   end
 
   def version

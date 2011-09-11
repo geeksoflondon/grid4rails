@@ -58,12 +58,12 @@ class Slot < ActiveRecord::Base
     Slot.joins(:timeslot).where('timeslots.id = ?', timeslot)
   end
 
-  def self.now
-    Timeslot.now.slots
+  def self.on_now
+    Timeslot.on_now.slots
   end
 
-  def self.next
-    Timeslot.next.slots
+  def self.on_next
+    Timeslot.on_next.slots
   end
 
 end

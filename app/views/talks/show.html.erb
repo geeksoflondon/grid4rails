@@ -4,13 +4,9 @@
 		<% @slot = @talk.slot %>		
 	<% end %>
 	<%= render '/shared/talk/slot' %>
+	
+	<div class='actions'>
+		<p><span class="submit"><%= link_to "Edit", edit_talk_path(@talk), :class => "button green" %></span></p>
+	</div>
 </div>
 
-<form method="post" action="<%= url_for(:controller => 'talks', :action => 'edit', :id => @talk) %>">
-	<fieldset class="actions">
-		<span class="edit">
-			<input id="talk_edit" class="button" type="submit" value="Edit" name="edit"<% if (@talk.locked?) %> disabled="disabled"<% end %>>
-		</span>
-		<%= token_tag %>
-	</fieldset>
-</form>
