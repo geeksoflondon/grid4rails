@@ -1,6 +1,9 @@
 class Talk < ActiveRecord::Base
   has_one :slot
-
+  
+  before_save :expire_cache
+  after_save :rebuild_cache
+  
   validates_presence_of :title, :if => proc{|obj| obj.description.blank? && obj.speaker.blank? }
   validates_presence_of :description, :if => proc{|obj| obj.title.blank? && obj.speaker.blank? }
   validates_presence_of :speaker, :if => proc{|obj| obj.title.blank? && obj.description.blank? }
@@ -20,15 +23,11 @@ class Talk < ActiveRecord::Base
   private
 
   def expire_cache
-    unless self.slot_id.nil?
-       Rails.cache.delete("talk_#{self.slot_id}")
-    end
+    Rails.cache.delete("talk_#{self.id}")
   end
 
   def rebuild_cache
-    unless self.slot_id.nil?
-      Rails.cache.write("talk_#{self.slot_id}", self)
-    end
+    Rails.cache.write("talk_#{self.id}", self)
   end
 
 end

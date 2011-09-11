@@ -2,6 +2,9 @@ class Slot < ActiveRecord::Base
   belongs_to :room
   belongs_to :timeslot
   has_one :talk
+  
+  before_save :expire_cache
+  after_save :rebuild_cache
 
   validates_presence_of :timeslot_id
 
@@ -64,5 +67,16 @@ class Slot < ActiveRecord::Base
   def self.on_next
     Timeslot.on_next.slots
   end
+
+  private
+
+  def expire_cache
+    Rails.cache.delete("slot_#{self.id}")
+  end
+
+  def rebuild_cache
+    Rails.cache.write("slot_#{self.id}", self)
+  end
+
 
 end
