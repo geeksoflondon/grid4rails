@@ -85,12 +85,14 @@ class TalksController < ApplicationController
   end
 
   def assign_slot
-    @talk = Talk.find(params[:talk][:id])
+    talk = Talk.find(params[:talk][:id])
+    slot = Slot.find(params[:talk][:slot_id])
+    slot.talk_id = talk.id
     
-    if @talk.schedule_in(params[:talk][:slot_id])
+    if slot.save
       redirect_to(grid_index_path, :notice => 'Talk was updated.')
     else
-      redirect_to(:action => 'schedule', :controller => 'talks', :id => @talk.id, :notice => 'There was an issue scheduling your talk')
+      redirect_to(:action => 'schedule', :controller => 'talks', :id => talk.id, :notice => 'There was an issue scheduling your talk')
     end
 
   end

@@ -15,6 +15,17 @@ class Grid
     end
   end
 
+  def timeslot(timeslot_id)
+    timeslot = Rails.cache.read("timeslot_#{timeslot_id}")
+    unless timeslot.nil?
+      return timeslot
+    else
+      timeslot = Timeslot.find(timeslot_id)
+      Rails.cache.write("timeslot_#{timeslot_id}", timeslot)
+      return timeslot
+    end
+  end
+
 	def timeslots_containing_empty_slot				
 		@timeslots = Array.new()
 		start = Time.now
@@ -49,13 +60,13 @@ class Grid
     end
   end
 
-  def talk(slot_id)
-    talk = Rails.cache.read("talk_#{slot_id}")
+  def talk(talk_id)
+    talk = Rails.cache.read("talk_#{talk_id}")
     unless talk.nil?
       return talk
     else
-      talk = Talk.find_by_slot_id(slot_id)
-      Rails.cache.write("talk_#{slot_id}", talk)
+      talk = Talk.find(talk_id)
+      Rails.cache.write("talk_#{talk_id}", talk)
       return talk
     end
   end

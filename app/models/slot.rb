@@ -2,6 +2,9 @@ class Slot < ActiveRecord::Base
   belongs_to :room
   belongs_to :timeslot
   has_one :talk
+  
+  before_save :expire_cache
+  after_save :rebuild_cache
 
   validates_presence_of :timeslot_id
 
@@ -36,20 +39,19 @@ class Slot < ActiveRecord::Base
   end
 
   def self.find_empty
-    # Slot.joins("left join talks on (slots.id = talks.slot_id)").where("talks.slot_id is null")
 	@slots = Array.new()
 	Slot.all.each do | slot |
 		if (slot.is_empty?)
 			@slots << slot
 		end
-	end 
+	end
   	return @slots
   end
-  
+
   def is_empty?
-    if (self.talk.nil?)
+    if (self.talk_id.nil?)
       return true
-    else 
+    else
       return false
     end
   end
@@ -64,6 +66,17 @@ class Slot < ActiveRecord::Base
 
   def self.on_next
     Timeslot.on_next.slots
-  end   
+  end
+
+  private
+
+  def expire_cache
+    Rails.cache.delete("slot_#{self.id}")
+  end
+
+  def rebuild_cache
+    Rails.cache.write("slot_#{self.id}", self)
+  end
+
 
 end
