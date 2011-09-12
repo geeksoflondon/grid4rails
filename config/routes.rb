@@ -17,7 +17,7 @@ Griddy::Application.routes.draw do
   match 'grid/now' => "grid#now"
   match 'grid/next' => "grid#next"
   match "grid/room/:id" => "grid#room"
-  match "/grid/date/:id" => "grid#date"
+  match "grid/date/:id" => "grid#date"
   match "grid" => "grid#date"
 
   resources :grid
@@ -73,6 +73,7 @@ Griddy::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => "grid#now"
+
 
   # See how all your routes lay out with "rake routes"
 
