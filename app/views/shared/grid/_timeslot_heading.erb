@@ -3,7 +3,7 @@
 <% end %>
 <p class="time">
 	<% if (@version == "low" && !@is_single_timeslot) %>
-		<a href="<%= url_for :controller => "grid", :action => "show", :timeslot => @timeslot %>">
+		<a href="<%= url_for :controller => "grid", :action => "show", :timeslot => @timeslot.id, :date => @date %>">
 	<% end %>
 	<%= @timeslot.start.strftime("%H:%M") %>-<%= @timeslot.end.strftime("%H:%M") %>
 	<% if (@version == "low" && !@is_single_timeslot) %>
