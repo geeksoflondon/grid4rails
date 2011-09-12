@@ -107,7 +107,7 @@ class TalksController < ApplicationController
     # http://www.ruby-forum.com/topic/830332
     if slot.save      
       flash[:notice] = "Talk was updated" 
-      redirect_to :controller => "grid", :action => "date", :date => "2011-09-12"
+      redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date
     else
       flash[:warning] = "There was an issue scheduling your talk"
       redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id
