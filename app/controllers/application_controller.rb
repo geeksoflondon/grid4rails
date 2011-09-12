@@ -21,4 +21,15 @@ class ApplicationController < ActionController::Base
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "GET"
   end
+  
+  private
+  
+	before_filter :instantiate_controller_and_action_names
+	
+	def instantiate_controller_and_action_names
+		@current_action = action_name
+		@current_controller = controller_name
+	end
+
+  
 end

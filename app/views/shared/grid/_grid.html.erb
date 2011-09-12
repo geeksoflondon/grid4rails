@@ -4,7 +4,7 @@
 		<% @timeslots.each do | timeslot | %>
 			<% @timeslot = timeslot %>
 			<th class="timeslot header <%= cycle("odd", "even") %><% if (@timeslot == Timeslot.on_now) %> now<% end %>">
-				<% if (!@is_single_timeslot) %><a href="/grid/<%= @timeslot.id %>"><% end %>
+				<% if (!@is_single_timeslot) %><a href="<%= url_for :controller => "grid", :action => "show", :date => @timeslot.start.to_date, :timeslot => @timeslot.id %>"><% end %>				
 					<%= render "shared/grid/timeslot_heading" %>
 				<% if (!@is_single_timeslot) %></a><% end %>
 			</th>
@@ -15,7 +15,7 @@
 	    <tr class="<%= cycle("odd", "even") %>">
 	    	<% if (@show_room_col) %>
 		        <th class="room header">
-					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :id => @room.id %></p>
+					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.id %></p>
 		            <p class="where-when"><span><%= @room.short_code.upcase %></span></p>
 		        </th>      
 	        <% end %>                 

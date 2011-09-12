@@ -1,9 +1,9 @@
-<% if (@version == "low" || (@page_id != "date-grid")) %>
+<% if (@version == "low") %>
 	<p class="day"><%= @timeslot.start.strftime("%A") %></p>
 <% end %>
 <p class="time">
 	<% if (@version == "low" && !@is_single_timeslot) %>
-		<a href="/grid/<%= @timeslot.id %>">
+		<a href="<%= url_for :controller => "grid", :action => "show", :timeslot => @timeslot %>">
 	<% end %>
 	<%= @timeslot.start.strftime("%H:%M") %>-<%= @timeslot.end.strftime("%H:%M") %>
 	<% if (@version == "low" && !@is_single_timeslot) %>

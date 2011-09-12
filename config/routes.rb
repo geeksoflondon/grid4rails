@@ -14,11 +14,12 @@ Griddy::Application.routes.draw do
 
   resources :slots
 
-  match 'grid/now' => "grid#now"
-  match 'grid/next' => "grid#next"
-  match "grid/room/:id" => "grid#room"
-  match "grid/date/:id" => "grid#date"
-  match "grid" => "grid#date"
+  match "grid", :to => "grid#date"
+  match 'grid/now', :to => "grid#now"
+  match 'grid/next', :to => "grid#next"
+  match "grid/:date/room/:room", :to => "grid#room"
+  match "grid/:date", :to => "grid#date"
+  match "grid/:date/session/:timeslot", :to => "grid#show"  
 
   resources :grid
 

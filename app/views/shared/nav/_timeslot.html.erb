@@ -6,11 +6,11 @@
 	<div class="scroller timeslot-scroller">
 		<p class="options">
 			<% if (timeslot_prev) %>
-				<a href="<%= url_for(:controller => "grid", :action => "show", :id => timeslot_prev.id) %>"><span class="arrows">&lt;&lt </span>Earlier</a>
+				<a href="<%= url_for(:controller => "grid", :action => "show", :date => timeslot_prev.start.to_date, :timeslot => timeslot_prev.id) %>"><span class="arrows">&lt;&lt </span>Earlier</a>
 			<% end %>
 			<% if (timeslot_prev && timeslot_next) %> | <% end %>
 			<% if (timeslot_next) %>
-				<a href="<%= url_for(:controller => "grid", :action => "show", :id => timeslot_next.id) %>">Later<span class="arrows"> &gt;&gt</span></a>
+				<a href="<%= url_for(:controller => "grid", :action => "show", :date => timeslot_next.start.to_date, :timeslot => timeslot_next.id) %>">Later<span class="arrows"> &gt;&gt</span></a>
 			<% end %>
 		</p>
 	</div>
