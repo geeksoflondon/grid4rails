@@ -4,28 +4,16 @@ class GridController < ApplicationController
 
   def now
     @page_id = "now"
-    @show_room_col = false
     @timeslot = Timeslot.on_now
-    @timeslots = Array.wrap(@timeslot)
-	@date = @timeslots.first.start.to_date
-    @is_single_timeslot = (@timeslots.count == 1)
-    @scroller_timeslot = true
-    @empty_slot_index = 0
-    @rooms = Array.wrap(Room.all)
-    @description = "What's on now."
+	@date = @timeslot.start.to_date
+    redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
   end
 
   def next
     @page_id = "next"
-    @show_room_col = false
     @timeslot = Timeslot.on_next
-    @timeslots = Array.wrap(@timeslot)
-	@date = @timeslots.first.start.to_date
-    @is_single_timeslot = (@timeslots.count == 1)
-    @scroller_timeslot = true
-    @empty_slot_index = 0
-    @rooms = Array.wrap(Room.all)
-    @description = "What's on next."
+    @date = @timeslot.start.to_date
+    redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
   end
 
   def show
@@ -38,7 +26,7 @@ class GridController < ApplicationController
     @scroller_timeslot = true
     @empty_slot_index = 0
     @rooms = Array.wrap(Room.all)
-    @description = "At this time."
+    @description = @timeslot.name
   end
 
   def date
