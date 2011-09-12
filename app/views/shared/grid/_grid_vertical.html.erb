@@ -1,11 +1,17 @@
-	<p class="skip-to-empty"><a id="empty-0" href="#empty-1">Skip to first empty slot</a></p>
+	<% if (@grid.contains_empty_slot? unless @grid.nil?) %>
+		<p class="skip-to-empty skip-down hide">		
+			<img class="icon" width="14" height="7" src="/images/arrow_down.png">
+			<a name="empty-0" href="#empty-1" title="Skip to the first empty slot">first empty slot</a>
+		</p>
+	<% end %>
 	<div class="grid">
 		<% @timeslots.each do | timeslot | %>
 			<% @timeslot = timeslot %>
 			<% @slots = @timeslot.slots %>
-			<div class="timeslot<% if (@timeslot == @timeslots.first) %> first<% end %>">
+			<div id="timeslot-<%= @timeslot.id %>" class="timeslot<% if (@timeslot == @timeslots.first) %> first<% end %>">
 				<div class="header">
 					<%= render "shared/grid/timeslot_heading" %>
+					<% if (!@is_single_timeslot) %>
 					<p class="skip">
 						<span class="label">Timeslot: </span>
 						<% if (@timeslot != @timeslots.last) %>
@@ -20,6 +26,7 @@
 						<span class="delimiter"> | </span>
 						<a href="#header" class="top">top</a>
 					</p>
+					<% end %>
 				</div>
 				<div class="slots">
 					<% @timeslot.slots.each do |slot| %>
@@ -31,8 +38,11 @@
 			</div>										
 		<% end %>					
 	</div>
-	<p id="empty-<%= @empty_slot_index %>" class="skip skip-to-empty skip-to-empty-last">
-		<a href="#empty-0 %>">first empty</a>
-		<span class="delimiter"> | </span>
-		<a href="#empty-<%= @empty_slot_index - 1 %>">last empty</a>
-	</p>
+	<% if (@timeslot.contains_empty_slot?) %>
+		<p id="empty-<%= @empty_slot_index %>" class="skip skip-to-empty skip-to-empty-last">
+			<img class="icon" width="14" height="7" src="/images/arrow_up.png">		
+			<a href="#empty-0 %>">first empty</a>
+			<span class="delimiter"> | </span>
+			<a href="#empty-<%= @empty_slot_index - 1 %>">last empty</a>
+		</p>
+	<% end %>

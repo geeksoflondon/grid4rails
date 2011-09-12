@@ -60,4 +60,14 @@ class Grid
     end
   end
 
+	def contains_empty_slot?		
+		self.timeslots.each do |timeslot|
+			if (timeslot.contains_empty_slot?)
+				return true 
+			end
+		end
+		return false
+	end
+
+
 end

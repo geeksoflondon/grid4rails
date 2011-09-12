@@ -100,7 +100,7 @@ class Timeslot < ActiveRecord::Base
   	Timeslot.all.last.start.to_date
   end
   
-  def contains_empty_slot 
+  def contains_empty_slot?
   	@empty_slots = Slot.find_empty
   	slots.each do | slot |
   		if (@empty_slots.include?(slot)) 

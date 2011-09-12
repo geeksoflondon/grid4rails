@@ -188,6 +188,15 @@ fieldset {
     padding-left: 3px;
 }
 
+#main .skip-up,
+#main .skip-down {
+    padding-left: 0;
+}
+
+.grid .skip img {
+    margin-right: 2px;
+}
+
 .skip-up {
     margin: 12px 0 0 0;
     padding-bottom: 0;
@@ -204,7 +213,7 @@ fieldset {
 }
 
 .skip-to-empty-last {
-    margin-top: 18px;
+    margin-top: 0;
     margin-bottom: 6px;
 }
 
@@ -320,6 +329,10 @@ body.talks .slot-details p {
 
 /* FEATURE: Grid
 -----------------------------*/
+
+div.grid {
+    padding-bottom: 12px;
+}
 
 div.grid .timeslot .header {  
     font-weight: normal;
