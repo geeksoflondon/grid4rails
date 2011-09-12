@@ -3,9 +3,7 @@
 one:
   title: MyString
   description: MyString
-  slot_id: 1
 
 two:
   title: MyString
   description: MyString
-  slot_id: 1
