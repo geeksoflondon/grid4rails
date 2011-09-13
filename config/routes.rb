@@ -1,10 +1,12 @@
 Griddy::Application.routes.draw do
   get "home/index"
 
+  match "talks/unscheduled", :to => "talks#unscheduled"
   match "talks/schedule", :to => "talks#schedule"
   match "talks/schedule/:date", :to => "talks#schedule"
   match "talks/assign_slot", :to => "talks#assign_slot"
   match "talks/:id/edit", :to => "talks#edit"
+  
   
   resources :talks
 

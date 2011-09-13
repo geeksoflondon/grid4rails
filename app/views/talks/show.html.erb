@@ -6,7 +6,13 @@
 	<%= render '/shared/talk/slot' %>
 	
 	<div class='actions'>
-		<p><span class="submit"><%= link_to "Edit", edit_talk_path(@talk), :class => "button green" %></span></p>
+		<p>
+			<% if (@talk.slot.nil?) %>
+				<span class="schedule"><%= link_to "Move to Grid", url_options = { :controller => "talks", :action => "schedule", :id => @talk.id }, html_options = { :class => "button green" } %></span>
+			<% end %>
+			<span class="destroy"><%= link_to 'Destroy', @talk, :confirm => 'Are you sure?', :method => :delete %></span>
+			<span class="submit"><%= link_to "Edit", edit_talk_path(@talk), :class => "button green" %></span>			
+		</p>
 	</div>
 </div>
 

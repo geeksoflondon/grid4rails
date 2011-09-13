@@ -1,9 +1,10 @@
-<h1 class="heading">
-  <%= ((@talk.title.strip == "") ? "[Untitled]" : @talk.title) %>
-</h1> 
-<% if (!@talk.speaker.nil?) %>
+<% if (@current_controller == "talks" && @current_action == "unscheduled") then heading_element = "h2" else heading_element = "h1" end %>
+<<%= heading_element %> class="heading">
+  <%= ((@talk.title.blank?) ? "[Untitled]" : @talk.title) %>
+</<%= heading_element %>> 
+<% if (!@talk.speaker unless @talk.speaker.blank?) %>
   <p class="speaker"><%= @talk.speaker %></p>	
 <% end %>
-<% if (!@talk.description.nil?) %>
+<% if (@talk.description unless @talk.description.blank?) %>
   <p class="description"><%= @talk.description %></p>
 <% end %>

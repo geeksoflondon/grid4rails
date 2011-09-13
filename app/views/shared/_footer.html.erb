@@ -1,10 +1,22 @@
+<% @footer = true %>
+<% if (@version == "low") %>
+	<p class="skip-up hide"><img src="/images/arrow_up.png" class="icon" width="28" height="15" /><a href="#header" title="Skip to the top of the page">top</a></p>
+<% end %>
 <div id="footer"> 
 	<% if (@version == "low") %>
-		<%= render '/shared/nav/global' %>
-		<p class="skip-up hide"><img src="/images/arrow_up.png" class="icon" width="28" height="15" /><a href="#header">Skip to top</a></p>
+		<p class="skip-down hide"><img src="/images/arrow_down.png" class="icon" width="28" height="15" /><a href="#version-switcher" title="Skip to the version switcher">versions</a></p>
+	<% end %>
+	<%= render '/shared/nav/global' %>
+	<% if (@version == "low") %>		
+		<p class="skip-up hide"><img src="/images/arrow_up.png" class="icon" width="28" height="15" /><a href="#header" title="Skip to the top of the page">top</a></p>
 	<% end %>
 	<div id="version-switcher" class="version-switcher">
 		<h2 class="heading">Versions:</h2>
-		<p class="options"><a href="<%= request.url %>" <% if (@version == "low") %>class="selected" <% end %>onClick="setVersion('low');">Small</a> | <a href="<%= request.url %>"<% if (@version == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Medium</a> | <a href="<%= request.url %>"<% if (@version == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Large</a></p>
+		<p class="options">
+			<span class="option"><a href="<%= request.url %>" <% if (@version == "low") %>class="selected" <% end %>onClick="setVersion('low');">Small</a><span class="delimiter"></span></span>
+			<span class="option"><a href="<%= request.url %>"<% if (@version == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Medium</a><span class="delimiter"></span></span>
+			<span class="option"><a href="<%= request.url %>"<% if (@version == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Large</a></span>
+		</p>
 	</div>
-</div> 		
+</div>
+<% @footer = false %> 		

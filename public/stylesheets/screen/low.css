@@ -66,8 +66,16 @@ fieldset {
     border-bottom: 3px solid #000000;
 }
 
+#body {
+    margin-bottom: 18px;
+}
+
 #footer {
     margin: 0;    
+}
+
+#options {
+    margin-top: 12px;
 }
 
 #options,
@@ -92,7 +100,6 @@ fieldset {
 
 #footer {
     border-top: 12px solid #000000;    
-    padding-top: 6px;
 }
 
 .nav .heading,
@@ -174,6 +181,17 @@ fieldset {
     color: #ffffff; /* #ffffff */
 }
 
+#footer .version-switcher .option {
+    padding-right: 3px;
+}
+
+#footer .version-switcher .delimiter {
+    border-width: 0 1px 0 0; 
+    border-style: solid;
+    border-color: #555555;
+    padding-left: 6px;
+}
+
 
 /* FEATURE: Skippers
 -----------------------------*/
@@ -209,7 +227,7 @@ fieldset {
     margin-right: 3px;
 }
 .skip-up img {
-    margin-bottom: -3px;
+    margin-bottom: -4px;
 }
 
 .skip-to-empty-last {

@@ -145,27 +145,85 @@ form .submit input {
   font-size: 0.9em;
 }
 
-
-
-#footer .nav {
-    text-align: left;
+#footer .heading,
+#footer ul {
+    display: inline;
 }
 
-#footer .nav{
-  margin-top: 8px;
+#footer .nav,
+#footer .version-switcher,
+#footer .heading {
+    color: #cccccc;
 }
 
 #footer .nav li {
-  margin-right: 5px;
+    border-color: #cccccc;
 }
 
-#footer .nav li a {
-  color : #aaa;
+#footer .nav .heading {
+    display: none;    
+}
+
+#footer .nav,
+#footer .version-switcher {
+    float: none;
+    text-align: left;
+}
+
+
+@media all and (min-width: 300px) {
+    
+    #footer .nav {
+        float: left;
+        text-align: left;
+    }
+    
+    #footer .version-switcher {
+        float: right;
+        text-align: right;
+    }
+
+}
+
+@media all and (max-width: 300px) {
+
+    #footer .nav,
+    #footer .version-switcher {
+        float: none;
+        text-align: center;
+    }
+
 }
 
 
 /* FEATURE: Global navigation
 -----------------------------*/
+
+#header .nav li a:hover,
+#header .nav li a:focus,
+#footer .nav li a:hover,
+#footer .nav li a:focus,
+#header .nav li.add-talk a:hover .label,
+#header .nav li.add-talk a:focus .label { 
+    text-decoration: none;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+}
+
+#header .nav li.selected a,
+#header .nav li.selected a .label,
+#footer .nav li.selected a {    
+    border-width: 0 0 2px 0;
+    border-style: solid;
+}
+
+#header .nav li.add-talk a:hover,
+#header .nav li.add-talk a:focus,
+#header .nav li.add-talk a {
+    border: none;
+}
+
+/* In header */
 
 #header #options {  
   display: block;
@@ -189,20 +247,15 @@ form .submit input {
     float: left;
     whitespace: nowrap;   
     font-size: 15px;
-}
-
-#footer .nav li {
-    display: inline;
-    margin: 0px 12px; 
-}
-
-.nav li {
-    font-size: 1.2em;
     line-height: 1.3em;
 }
-#header .nav li a,
-#footer .nav li a {
-    color: white;
+
+#header .nav li a:link,
+#header .nav li a:visited,
+#header .nav li a:hover,
+#header .nav li a:focus,
+#header .nav li a:active {
+    color: #ffffff;
 }
 
 #header a.add {
@@ -212,24 +265,6 @@ form .submit input {
   padding-left: 22px;
 }
 
-#footer .nav li {
-	font-size:1em;
-}
-
-#header .nav li a:hover,
-#header .nav li a:focus,
-#footer .nav li a:hover,
-#footer .nav li a:focus { 
-    text-decoration:none;
-    border-width: 0 0 2px 0;
-    border-style: solid;
-}
-
-#header .nav li.selected a,
-#footer .nav li.selected a {    
-    border-width: 0 0 2px 0;
-    border-style: solid;
-}
 
 /* FEATURE: Footer
 -----------------------------*/
@@ -259,14 +294,6 @@ form .submit input {
 
 .version-switcher p {
   display: inline;
-}
-
-.version-switcher a:link,
-.version-switcher a:visited,
-.version-switcher a:hover,
-.version-switcher a:focus,
-.version-switcher a:active {
-    color: #cccccc;
 }
 
 

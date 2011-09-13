@@ -2,6 +2,8 @@ class TalksController < ApplicationController
 
   after_filter :expire_cache, :only => ['create', 'update', 'assign_slot']
 
+
+  # A view listing all talks
   def index
     @page_id = "talks"
     @talks = Talk.all
@@ -13,6 +15,8 @@ class TalksController < ApplicationController
     end
   end
 
+
+  # A view of the talk specified
   def show
     @page_id = "talk"
     @talk = Talk.find(params[:id])
@@ -24,6 +28,8 @@ class TalksController < ApplicationController
     end
   end
 
+
+  # A view for entering details about a new talk
   def new
     @page_id = "talk-new"
     @talk = Talk.new
@@ -34,7 +40,10 @@ class TalksController < ApplicationController
       format.json  { render :json => @talk }
     end
   end
+  
 
+  # Creates a new talk in the DB using the data specified
+  # and then redirects to the "schedule" view
   def create
     @talk = Talk.new(params[:talk])
 
@@ -51,11 +60,16 @@ class TalksController < ApplicationController
     end
   end
 
+
+  # An editable view of the specified talk
   def edit
     @page_id = "talk-edit"
     @talk = Talk.find(params[:id])
   end
 
+
+  # Updates the details of the specified talk, in the DB
+  # and then redirects to the "show" view of that talk
   def update
     @talk = Talk.find(params[:id])
 
@@ -72,7 +86,15 @@ class TalksController < ApplicationController
     end
   end
 
+
+  # A view displaying all talks that aren't been assigned to a slot
+  def unscheduled
+	@page_id = "talks"
+    @talks = Talk.unscheduled  
+  end
+
   
+  # A view of the grid for the purpose of assigning a talk to a slot
   def schedule
     @page_id = "talk-assign"
     @grid = Grid.new
@@ -98,6 +120,9 @@ class TalksController < ApplicationController
     @description = "The grid, showing empty slots"
   end
 
+
+  # Assigns the specified talk to the specified slot
+  # and then redirects to a view of the grid on the date that the slot belongs to
   def assign_slot
     talk = Talk.find(params[:talk][:id])
     slot = Slot.find(params[:talk][:slot_id])

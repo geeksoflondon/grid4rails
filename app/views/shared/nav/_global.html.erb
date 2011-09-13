@@ -1,30 +1,26 @@
 <div id="options" class="nav">
-	<h2 class="heading hide">Options: <span class="skip">[Skip: <a href="#header">up</a><span class="delimiter"> | </span><a href="#version-switcher">down</a>]</span></h2>
+	<h2 class="heading<% if (@header) %> hide<% end %>">Options:</h2>
 	<ul>
-		<li<% if (current_page?(:action => 'index', :controller => 'grid') || request.url == root_url) %> class="selected"<% end %>>
-			<a href="/grid">View Grid</a>
-		</li>
-		<% if (@talks_taking_place) %>
-			<li<% if (current_page?(:action => 'now', :controller => 'grid')) %> class="selected"<% end %>>
-				<a href="<%= url_for grid_now_path %>">On Now</a>
+		<% if ((@header && @version != "low") || (@footer && @version == "low")) %>
+			<li<% if (current_page?(:action => 'index', :controller => 'grid') || request.url == root_url) %> class="selected"<% end %>>
+				<a href="/grid">View Grid</a>
+			</li>
+			<% if (@talks_taking_place) %>
+				<li<% if (current_page?(:action => 'now', :controller => 'grid')) %> class="selected"<% end %>>
+					<a href="<%= url_for grid_now_path %>">On Now</a>
+				</li>
+			<% end %>
+			<li<% if (current_page?(:action => 'next', :controller => 'grid')) %> class="selected"<% end %>>
+				<a href="/grid/next">On Next</a>
+			</li>
+			<li class="add-talk<% if (current_page?(:action => 'new', :controller => 'talks')) %> selected<% end %>">
+				<a href="/talks/new" class="add"><span class="label">Add a Talk</span></a>
 			</li>
 		<% end %>
-		<li<% if (current_page?(:action => 'next', :controller => 'grid')) %> class="selected"<% end %>>
-			<a href="/grid/next">On Next</a>
-		</li>
-		<li<% if (current_page?(:action => 'new', :controller => 'talks')) %> class="selected"<% end %>>
-			<a href="/talks/new" class="add">Add a Talk</a>
-		</li>
-		<% if (@version == "low") %>
-			<li>
-				<a href="/admin">TEMP:ADMIN</a><% if (cookies[:version] == 'high') %> | <% end %>
-			</li>		
-			<li>
-				<a href="/feedback">Feedback</a><% if (cookies[:version] == 'high') %> | <% end %>
-			</li>
-			<li>
-				<a href="/help">Help</a>
-			</li>	
+		<% if (@footer) %>
+			<li<% if (current_page?(:action => 'unscheduled', :controller => 'talks')) %> class="selected"<% end %>><%= link_to "Unscheduled Talks", :controller => "talks", :action => "unscheduled" %><span class="delimiter"></span></li>
+			<li><a href="/feedback">Feedback</a><span class="delimiter"></span></li>
+			<li class="last"><a href="/help">Help</a></li class="last">	
 		<% end %>	
 	</ul>	
 </div>
