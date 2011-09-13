@@ -45,8 +45,10 @@ class Timeslot < ActiveRecord::Base
   end
 
   # Returns all timeslots that begin during date specified
-  def self.by_date(date)
-  	Timeslot.where('date(start) == ?', date).order("start ASC")
+  def self.by_date(date_string)
+  	# Timeslot.where('date(start) == ?', date).order("start ASC")
+  	date = Date.strptime(date_string, "%Y-%m-%d")
+  	Timeslot.where("start between ? and ?", date.beginning_of_day().utc, date.end_of_day().utc)  	
   end
   
   # Returns all timeslots that begin either on the current date,
