@@ -10,7 +10,7 @@
 			<p>
 				<span class="cancel"><%= link_to 'Cancel', :back %></span>
 				<span class="delimiter"> </span>
-				<span class="unschedule"><%= link_to "Remove Talk from Grid", url_options = { :controller => "talks", :action => "unschedule", :talk => @unscheduled.id }, html_options = { :class => "button green" } %></span>
+				<span class="unschedule"><%= link_to "Remove Talk from Grid", url_options = { :controller => "talks", :action => "unschedule", :id => @unscheduled.id }, html_options = { :class => "button green" } %></span>
 			</p>
 		</fieldset>
 	<% end %>	

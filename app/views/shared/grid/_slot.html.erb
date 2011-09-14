@@ -47,9 +47,8 @@
                 <%= render '/shared/grid/where_when' %>
             <% end %>
             <% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
-                <%= form_tag(:controller => "talks", :action => "assign_slot") do |f| %>
+                <%= form_tag(:controller => "talks", :action => "assign_slot", :id => @unscheduled.id) do |f| %>
 					<input type="hidden" name="slot" value="<%= @slot.id %>" />
-					<input type="hidden" name="talk" value="<%= @unscheduled.id %>" />
 					<% if (@page_id == "talk-assign") %>
 						<p class="actions"><span class="submit"><%= submit_tag("Insert here", :class => "button orange medium") %></span></p>
 					<% else %>
@@ -78,6 +77,12 @@
             <% cache("where_when_#{@slot.id}") do %>
 	        	<%= render '/shared/grid/where_when' unless @slot.locked %>
 	        <% end %>
+	        <% if (@page_id == "talk-move" unless @slot.locked?) %>
+	            <%= form_tag(:controller => "talks", :action => "swap_slot", :id => @unscheduled.id) do |f| %>
+					<input type="hidden" name="talk_2" value="<%= talk.id %>" />
+					<p class="actions"><span class="submit"><%= submit_tag("Swap", :class => "button orange medium") %></span></p>
+	            <% end %>
+	        <% end %>  	        
             <h2 class="heading title">
             	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>
                 <%= link_to talk_title, talk_path(talk) unless talk.title.nil? %>                    
@@ -87,6 +92,6 @@
                     <%= talk.speaker %>
                 </h3>
             <% end %>          
-        </div>         
+        </div>       
     <% end %>
 </div>

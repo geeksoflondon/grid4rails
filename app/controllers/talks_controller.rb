@@ -152,7 +152,7 @@ class TalksController < ApplicationController
   # Assigns the specified talk to the specified slot
   # and then redirects to a view of the grid on the date that the slot belongs to
   def assign_slot        
-    talk = Talk.find(params[:talk])
+    talk = Talk.find(params[:id])
     slot = Slot.find(params[:slot])
     
     # Reset the original slot (if there was one)
@@ -179,11 +179,55 @@ class TalksController < ApplicationController
   end
   
   
+  # Swaps the two talks specified
+  # and then redirects to a view of the grid on the date that initiating talk is now on
+  def swap_slot        
+    
+    # Check that an ID has been provided for both talks
+    if (!params[:id] || !params[:talk_2])
+      redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
+    end
+    
+    # Check that the talk IDs aren't the same
+    if (params[:id] == params[:talk_2])
+      redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
+    end
+    
+    # Find the specified talks
+    talk_1 = Talk.find(params[:id])
+    talk_2 = Talk.find(params[:talk_2])
+        
+    # Find their existing slots
+    slot_1 = Slot.find(talk_1.slot)
+    slot_2 = Slot.find(talk_2.slot)
+	    
+	# Check that both slots have been found
+    if (slot_1.nil? || slot_2.nil?)
+      redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
+    end
+	  
+    # Swap the talks
+    slot_1.talk_id = talk_2.id
+    slot_2.talk_id = talk_1.id        
+            
+    # Bug means that notice won't show if defined in redirect_to statement
+    # http://www.ruby-forum.com/topic/830332
+    if (slot_1.save && slot_2.save)      
+      flash[:notice] = "Talks were successfully swapped" 
+      redirect_to :controller => "grid", :action => "date", :date => slot_2.timeslot.start.to_date
+    else
+      flash[:warning] = "There was an issue swapping those talks."
+      redirect_to :controller => 'talks', :action => 'move', :id => talk_1.id, :date => slot_1.timeslot.start.to_date
+    end
+
+  end
+  
+  
   # De-assigns the specified talk from the specified slot
   # and then redirects to a view of the grid on the date that the slot belongs to
   def unschedule        
 
-	talk = Talk.find(params[:talk])	
+	talk = Talk.find(params[:id])	
 
 	# Reset the original slot	
 	slot = Slot.find(talk.slot)
