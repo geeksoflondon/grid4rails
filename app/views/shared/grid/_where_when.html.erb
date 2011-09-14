@@ -1,5 +1,5 @@
 <p class="where-when">
-	<% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
+	<% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
 		<label for="slot">
 	<% end %>
 	
@@ -20,7 +20,7 @@
 		<%= link_to (@show_room_col ? @room.short_code.upcase : @room.name), :controller => "grid", :action => "room", :date => @date, :room => @room.id %></span>
 	<% end %>
 	
-	<% if (current_page?(:action => 'schedule', :controller => 'talks')) %>
+	<% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
 		</label>
 	<% end %>
 </p>
