@@ -7,6 +7,10 @@
 		<h2 class="heading">Capacity</h2>
 		<p><%= @room.capacity %></p>
 	</div>
+	<div class="facilities">
+		<h2 class="heading">Facilities</h2>
+		<p><% if (@room.facilities.blank?) %>Nothing special<% else %><%= @room.facilities %><% end %></p>
+	</div>	
 	<div class="shortcode">
 		<h2 class="heading">Shortcode</h2>
 		<p><%= @room.short_code.upcase %></p>

@@ -6,10 +6,10 @@
 			next_date = ((index_of_selected_date + 1) < @dates.length) ? @dates[(index_of_selected_date + 1)] : nil 
 		%>	
 		<% @dates.each do | date | %>
-			<span>
-			 	<% classname = "selected" if @date == date %>
-				<%= link_to date.strftime("%A"), url_options = { :controller => @current_controller, :action => @current_action, :id => params[:id], :date => date }, html_options = { :class => classname } %>
-			</span>
+		 	<% classname = "selected" if @date == date %>
+			<a href="<%= url_for :controller => @current_controller, :action => @current_action, :id => params[:id], :date => date %>" class="<%=classname %>">
+				<span><%= date.strftime("%A") %></span>
+			</a>
 			<% if (date != @dates.last) %>
 				<span class="delimiter"> | </span>
 			<% end %>

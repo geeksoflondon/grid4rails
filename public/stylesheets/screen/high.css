@@ -55,10 +55,6 @@ form textarea {
   font-size: 18px;   
 }
 
-.actions {
-    padding: 6px 12px;
-}
-
 .actions input,
 .actions a {
   border-radius: 3px;
@@ -112,15 +108,18 @@ form .submit input {
   box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
 }
 
-form input,
-form textarea,
-.actions,
+form,
 body#room #main {
     max-width: 500px;
 }
 
 .message .actions {
 	max-width: none;
+}
+
+body.talks #main {
+	padding-left: 12px;
+	padding-right: 12px;
 }
 
 
@@ -204,30 +203,6 @@ body#room #main {
 /* FEATURE: Global navigation
 -----------------------------*/
 
-#header .nav li a:hover,
-#header .nav li a:focus,
-#footer .nav li a:hover,
-#footer .nav li a:focus,
-#header .nav li.add-talk a:hover .label,
-#header .nav li.add-talk a:focus .label { 
-    text-decoration: none;
-    border-width: 0 0 2px 0;
-    border-style: solid;
-}
-
-#header .nav li.selected a,
-#header .nav li.selected a .label,
-#footer .nav li.selected a {    
-    border-width: 0 0 2px 0;
-    border-style: solid;
-}
-
-#header .nav li.add-talk a:hover,
-#header .nav li.add-talk a:focus,
-#header .nav li.add-talk a {
-    border: none;
-}
-
 /* In header */
 
 #header #options {  
@@ -307,7 +282,7 @@ body#room #main {
 
 .scroller {
   background-color: #000;
-  padding: 6px 0 6px 0;
+  padding: 6px 0 9px 0;
   color: #cccccc;
 }
 
@@ -324,7 +299,6 @@ body#room #main {
 
 .scroller span {
   margin: 0px 0px;
-  padding: 6px !important;
 }
 
 
@@ -358,6 +332,10 @@ body#room #main {
   background-image: url("/images/info.png");    
 }
 
+.message form {
+	max-width: none;
+}
+
 
 /* FEATURE: Grid
 -----------------------------*/
@@ -387,9 +365,6 @@ body.grid #main {
 /* VIEW: Talk
 -----------------------------*/
 
-#talk .talk {
-  padding: 6px 30px;
-}
 
 #talk .talk h1 {
   margin-bottom: 5px;
@@ -412,24 +387,16 @@ body.grid #main {
 /* FEATURE: Create/Edit Talk Form
 -----------------------------*/
 
-body.talks #main {
-    padding: 0 12px;
-}
-
 body.talks #main h1 {
     margin-left: 0;
     margin-right: 0;
 }
 
-body.talks #main fieldset {
-    padding-right: 0;
+body.talks #main fieldset.actions {
+    padding: 0;
+    border: 1px solid #cccccc;
 }
 
-
-
-
-
-
-
-
-
+body.talks #main fieldset.actions p {
+	border: none;
+}

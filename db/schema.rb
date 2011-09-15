@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915130600) do
+ActiveRecord::Schema.define(:version => 20110915172700) do
 
   create_table "rooms", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110915130600) do
     t.string   "short_code"
     t.integer  "weighting"
     t.integer  "capacity"
+    t.string   "facilities"
   end
 
   create_table "sessions", :force => true do |t|

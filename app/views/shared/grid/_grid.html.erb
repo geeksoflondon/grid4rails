@@ -3,10 +3,8 @@
 		<% if (@show_room_col) %><th>&nbsp;</th><% end %> 
 		<% @timeslots.each do | timeslot | %>
 			<% @timeslot = timeslot %>
-			<th class="timeslot header <%= cycle("odd", "even") %><% if (@timeslot == Timeslot.on_now) %> now<% end %>">
-				<% if (!@is_single_timeslot) %><a href="<%= url_for :controller => "grid", :action => "show", :date => @timeslot.start.to_date, :timeslot => @timeslot.id %>"><% end %>				
-					<%= render "shared/grid/timeslot_heading" %>
-				<% if (!@is_single_timeslot) %></a><% end %>
+			<th class="timeslot header <%= cycle("odd", "even") %><% if (@timeslot == Timeslot.on_now) %> now<% end %>">				
+				<%= render "shared/grid/timeslot_heading" %>
 			</th>
 		<% end %>
 	</tr> 			
@@ -17,7 +15,10 @@
 		        <th class="room header">
 					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></p>
 		            <p class="shortcode"><%= @room.short_code.upcase %></p>
-		            <p class="capacity"><span class="label">Holds: </span><%= @room.capacity %></p>		            
+		            <div class="details">
+		            	<p class="capacity"><span class="label">Holds: </span><%= @room.capacity %></p>
+		            	<p class="facilities"><span class="label">Facilities: </span><% if (@room.facilities.blank?) %>Nothing special<% else %><%= @room.facilities %><% end %></p>
+		            </div>		  		            
 		        </th>      
 	        <% end %>                 
 	        <% @room.slots.each do |slot| %>

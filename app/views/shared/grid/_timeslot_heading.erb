@@ -4,11 +4,11 @@
 	<p class="context"><% if (@timeslot.on_now?) %>Now<% else %>Next<% end %></p>
 <% end %>
 <p class="time">
-	<% if (@version == "low" && !@is_single_timeslot) %>
-		<a href="<%= url_for :controller => "grid", :action => "show", :timeslot => @timeslot.id, :date => @date %>">
-	<% end %>
+	<% if (!@is_single_timeslot) %>		
+		<a href="<% if (@version == "low") %><%= url_for :controller => "grid", :action => "show", :timeslot => @timeslot.id, :date => @date %><% else %><%= url_for :controller => "grid", :action => "show", :date => @timeslot.start.to_date, :timeslot => @timeslot.id %><% end %>">
+	<% end %>			
 	<%= @timeslot.start.strftime("%H:%M") %>-<%= @timeslot.end.strftime("%H:%M") %>
-	<% if (@version == "low" && !@is_single_timeslot) %>
+	<% if (!@is_single_timeslot) %>
 		</a>
 	<% end %>
 </p>

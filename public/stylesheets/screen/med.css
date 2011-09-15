@@ -44,6 +44,23 @@ body {
 }
 
 
+/* Basic link rules
+-----------------------------*/
+
+a:link,
+a:visited {	
+	text-decoration: none;	
+    border-bottom: 1px dotted #999999;
+}
+
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;	
+	border-bottom: 1px solid #999999;
+}
+
+
 /* Basic form rules (inc. pseudo form elements)
 -----------------------------*/
 
@@ -58,6 +75,7 @@ form input,
 form textarea {
   width: 100%;
   padding: 3px 0;
+  border: 1px solid #cccccc;
 }
 
 form .actions input {
@@ -85,12 +103,19 @@ form textarea {
   line-height: 120%;
 }
 
+body.talks #main fieldset.actions {
+	padding-right: 5px;
+}
+
 .actions {
   margin-top: 18px;
   margin-bottom: 20px;
-  padding: 6px;
-  border: 1px solid #cccccc;
   text-align: right; 
+}
+
+.actions p {
+  border: 1px solid #cccccc;
+  padding: 6px;
 }
 
 .actions span {
@@ -189,6 +214,7 @@ input.orange,
 
 #header .branding a {
     display: block;   
+    border: none;
 }
 
 #header .skip-to-versions a:link,
@@ -202,18 +228,28 @@ input.orange,
     background: transparent url("/images/wrench.png") no-repeat right center;
 }
 
-#header .nav li a {
+#header .nav li a,
+#header .nav li a.add span {
     border-bottom: 2px solid #000000;
 }
 
-#header .nav li.selected a {
+#header .nav li.selected a,
+#header .nav li.selected a.add span {
     border-bottom: 2px solid #ffffff;
 }
 
 #header .nav li a:hover,
-#header .nav li a:focus {
+#header .nav li a:focus,
+#header .nav li a.add:hover span,
+#header .nav li a.add:focus span {
     border-bottom-color: red;
     text-decoration: none;
+}
+
+#header .nav li.add-talk a:hover,
+#header .nav li.add-talk a:focus,
+#header .nav li.add-talk a {
+    border: none;
 }
 
 
@@ -249,7 +285,7 @@ input.orange,
 
 #footer a.selected,
 #footer .selected a {
-    text-decoration: underline;
+    border-bottom-style: solid;
     font-weight: bold;
 }
 
@@ -321,11 +357,7 @@ input.orange,
 .scroller p {
     text-align: center;
 }
-.scroller .selected {
-    font-weight: bold;
-    text-decoration: underline;
-}
-.scroller a,
+
 .scroller a:link,
 .scroller a:visited,
 .scroller a:hover,
@@ -334,6 +366,23 @@ input.orange,
     background-color: inherit;
     color: #ffffff;
     padding: 0 6px;
+    text-decoration: none;
+    border: none;
+}
+
+.scroller a span {
+    border-bottom: 2px solid #000000;
+}
+
+.scroller a.selected span {
+    border-bottom: 2px solid #ffffff;
+    font-weight: bold;
+}
+
+.scroller a:hover span,
+.scroller a:focus span {
+    border-bottom-color: red;
+    text-decoration: none;
 }
 
 
@@ -430,6 +479,10 @@ body.grid .message {
 	padding: 3px;	
 }
 
+body.talks #main .message fieldset.actions {
+	padding-right: 3px;
+}
+
 .message .actions p {
 	font-size: small;
 	font-weight: normal;
@@ -480,6 +533,10 @@ table.grid td {
     min-width: 30%;
 }
 
+table.multi-timeslot th.timeslot {
+	padding-bottom: 3px;
+}
+
 /* Room headings */
 
 table.grid th.room {
@@ -504,12 +561,8 @@ table.grid th.room .shortcode {
     margin: 0;
 }
 
-table.grid th.room .capacity {
+table.grid th.room .details {
 	font-weight: normal;
-}
-
-table.grid .where-when  .room {
-  text-decoration: underline;
 }
 
 /* Talk */
@@ -573,7 +626,12 @@ table.grid .actions {
     text-align: center;
 }
 
-table.grid .empty .where-when {
+table.grid .empty .where-when,
+table.grid .empty .where-when a:link,
+table.grid .empty .where-when a:visited,
+table.grid .empty .where-when a:hover,
+table.grid .empty .where-when a:focus,
+table.grid .empty .where-when a:active {
     color: #444444; 
 }
 
@@ -634,6 +692,23 @@ table.single-timeslot td.now {
 
 table.single-timeslot .empty .submit {
   text-align: left;
+}
+
+table.single-timeslot .where-when span,
+#room .grid .timeslot .header .context {
+	background-color: transparent;
+	color: #000000;
+	font-size: medium;
+	padding: 0;
+}
+
+#room .grid .timeslot .header .context,
+table.single-timeslot .empty .where-when a:link,
+table.single-timeslot .empty .where-when a:visited,
+table.single-timeslot .empty .where-when a:hover,
+table.single-timeslot .empty .where-when a:focus,
+table.single-timeslot .empty .where-when a:active {
+	color: #7E2B29
 }
 
 
@@ -709,8 +784,7 @@ body.talks #main fieldset {
 }
 
 #room .grid .timeslot .header .context {
-    font-size: medium;
-    font-weight: bold;
+	margin-bottom: 3px;
 }
 
 #room .grid .timeslot .header .time {
