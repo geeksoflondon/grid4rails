@@ -1,7 +1,0 @@
-<% if (@timeslot.nil?) %>
-	<p class="message information">That's all folks!</p>
-<% elsif (@version == "low") %>		
-	<%= render "shared/grid/grid_vertical" %>
-<% else %>
-	<%= render "shared/grid/grid" %>
-<% end %>
