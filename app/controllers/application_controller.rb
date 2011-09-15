@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
+  
   include Clearance::Authentication
+  
   protect_from_forgery
   
   before_filter :enable_cors
@@ -12,9 +14,25 @@ class ApplicationController < ActionController::Base
   	@talks_taking_place = Timeslot.on_now.nil? == true ? false : true 
   end
 
-  def version
-    @version = cookies[:version]
+  def version 
+    if (cookies[:version] && !cookies[:version].blank?)
+    	@version = cookies[:version] unless (cookies[:version] != "low" && cookies[:version] != "med" && cookies[:version] != "high")    	
+    end
     @version ||= "low"
+    if (cookies[:version] != @version)
+    	cookies[:version] = @version
+    end
+  end
+  
+  def set_version
+    @version = params[:version] unless (params[:version] != "low" && params[:version] != "med" && params[:version] != "high")
+    @version ||= "low"
+    cookies[:version] = @version
+    if (params[:url])
+        redirect_to params[:url]	
+    else 
+    	redirect_to "/"
+    end
   end
 
   def enable_cors

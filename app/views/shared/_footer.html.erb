@@ -13,9 +13,9 @@
 	<div id="version-switcher" class="version-switcher">
 		<h2 class="heading">Versions:</h2>
 		<p class="options">
-			<span class="option"><a href="<%= request.url %>" <% if (@version == "low") %>class="selected" <% end %>onClick="setVersion('low');">Small</a><span class="delimiter"></span></span>
-			<span class="option"><a href="<%= request.url %>"<% if (@version == 'med') %>class="selected" <% end %> onClick="setVersion('med');">Medium</a><span class="delimiter"></span></span>
-			<span class="option"><a href="<%= request.url %>"<% if (@version == 'high') %>class="selected" <% end %> onClick="setVersion('high');">Large</a></span>
+			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "low", :url => request.url %>" <% if (@version == "low") %>class="selected"<% end %>>Small</a><span class="delimiter"></span></span>
+			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "med", :url => request.url %>" <% if (@version == 'med') %>class="selected"<% end %>>Medium</a><span class="delimiter"></span></span>
+			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "high", :url => request.url %>" <% if (@version == 'high') %>class="selected"<% end %>>Large</a></span>
 		</p>
 	</div>
 </div>

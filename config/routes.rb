@@ -1,5 +1,8 @@
 Griddy::Application.routes.draw do
+  
   get "home/index"
+
+  match "versions/:version", :to => "application#set_version"
 
   match "talks/unscheduled", :to => "talks#unscheduled"
   match "talks/:id/schedule", :to => "talks#schedule"
