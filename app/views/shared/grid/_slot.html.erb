@@ -1,12 +1,12 @@
 <div id="slot-<%= @slot.id %>" class="slot">
-	<% if (@version == "low") %>			    
-		<%			
-			if (@slot.is_empty?)
-				@empty_slot_index += 1 	
-			end					
-			  
-			slot_index = @slots.index(@slot)
-			
+	<%
+		if (@slot.is_empty?)
+			@empty_slot_index += 1 	
+		end			
+		slot_index = @slots.index(@slot)
+	%>
+	<% if (@version == "low" && @page_id != "room") %>			    
+		<%												
 			# Determine the id of the next slot in the current timeslot
  			if (@slot != @slots.last)
  				slot_next_id = @slots[slot_index + 1].id				
@@ -42,9 +42,11 @@
 	 	</p>	 		
 	<% end %>	
     <% if (@slot.is_empty?) %>    	    	
-        <div id="empty-<%= @empty_slot_index %>" class="empty">        
-            <% cache("where_when_#{@slot.id}") do %>
-                <%= render '/shared/grid/where_when' %>
+        <div id="empty-<%= @empty_slot_index %>" class="empty">    
+        	<% if (@page_id != "room") %>    
+	            <% cache("where_when_#{@slot.id}") do %>
+	                <%= render '/shared/grid/where_when' %>
+	            <% end %>
             <% end %>
             <% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
                 <%= form_tag(:controller => "talks", :action => "assign_slot", :id => @unscheduled.id) do |f| %>
@@ -60,7 +62,7 @@
 					<span class='submit'><%= link_to("Add a talk", url_options = { :controller => "talks", :action => "new"}, html_options = { :class => "button green medium" }) %></span>
                 </p> 
             <% end %>
-            <% if (@version == "low") %>   
+            <% if (@version == "low" && @page_id != "room") %>   
 	            <p class="skip skip-to-empty">
 			 		<span class="label">Empty: </span>
 			 		<a href="#empty-<%= (@empty_slot_index + 1) %>">next</a>
@@ -72,11 +74,13 @@
 	 		<% end %>
         </div>  
     <% else %>
-        <% talk = @grid.talk(@slot.talk_id) %>
+        <% talk = Talk.find(@slot.talk_id) %>
         <div class="talk">
-            <% cache("where_when_#{@slot.id}") do %>
-	        	<%= render '/shared/grid/where_when' unless @slot.locked %>
-	        <% end %>
+	        <% if (@page_id != "room") %>
+	            <% cache("where_when_#{@slot.id}") do %>
+		        	<%= render '/shared/grid/where_when' unless @slot.locked %>
+		        <% end %>
+		    <% end %>
 	        <% if (@page_id == "talk-move" unless (@slot.locked? || talk == @unscheduled)) %>
 	            <%= form_tag(:controller => "talks", :action => "swap_slot", :id => @unscheduled.id) do |f| %>
 					<input type="hidden" name="talk_2" value="<%= talk.id %>" />

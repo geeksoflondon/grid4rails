@@ -1,4 +1,4 @@
-	<% if (@grid.contains_empty_slot? unless @grid.nil?) %>
+	<% if (@page_id != "room" && @grid.contains_empty_slot? unless @grid.nil?) %>
 		<p class="skip-to-empty skip-down hide">		
 			<img class="icon" width="14" height="7" src="/images/arrow_down.png">
 			<a name="empty-0" href="#empty-1" title="Skip to the first empty slot">first empty slot</a>
@@ -11,34 +11,36 @@
 			<div id="timeslot-<%= @timeslot.id %>" class="timeslot<% if (@timeslot == @timeslots.first) %> first<% end %>">
 				<div class="header">
 					<%= render "shared/grid/timeslot_heading" %>
-					<% if (!@is_single_timeslot) %>
-					<p class="skip">
-						<span class="label">Session: </span>
-						<% if (@timeslot != @timeslots.last) %>
-							<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) + 1].id %>" class="next">next</a>
-						<% end %>
-						<% if (@timeslot != @timeslots.first && @timeslot != @timeslots.last) %>
+					<% if ((@version == "low") && !@is_single_timeslot) %>
+						<p class="skip">
+							<span class="label">Session: </span>
+							<% if (@timeslot != @timeslots.last) %>
+								<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) + 1].id %>" class="next">next</a>
+							<% end %>
+							<% if (@timeslot != @timeslots.first && @timeslot != @timeslots.last) %>
+								<span class="delimiter"> | </span>
+							<% end %>
+							<% if (@timeslot != @timeslots.first) %>
+								<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) - 1].id %>" class="prev">prev</a>
+							<% end %>
 							<span class="delimiter"> | </span>
-						<% end %>
-						<% if (@timeslot != @timeslots.first) %>
-							<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) - 1].id %>" class="prev">prev</a>
-						<% end %>
-						<span class="delimiter"> | </span>
-						<a href="#header" class="top">top</a>
-					</p>
+							<a href="#header" class="top">top</a>
+						</p>
 					<% end %>
 				</div>
-				<div class="slots">
-					<% @timeslot.slots.each do |slot| %>
-						<% @slot = @grid.slot(slot.id) %>									
-						<% @room = @slot.room %>
-			           	<%= render 'shared/grid/slot' %>
+				<div class="slots">					
+					<% @timeslot.slots.each do |slot| %>						
+						<% if (@page_id != "room" || (@page_id == "room" && slot.room == @room)) %>
+							<% @slot = slot %>									
+							<% @room = @slot.room %>												
+			           		<%= render 'shared/grid/slot' %>
+			           	<% end %>
 					<% end %>	
 				</div>	
 			</div>										
 		<% end %>					
 	</div>
-	<% if (@timeslot.contains_empty_slot?) %>
+	<% if (@page_id != "room" && @timeslot.contains_empty_slot?) %>
 		<p id="empty-<%= @empty_slot_index %>" class="skip skip-to-empty skip-to-empty-last">
 			<img class="icon" width="14" height="7" src="/images/arrow_up.png">		
 			<a href="#empty-0 %>">first empty</a>

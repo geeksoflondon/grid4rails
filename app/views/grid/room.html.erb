@@ -1,8 +1,0 @@
-<h1 class="heading"><%= @room.name %></h1>
-<% if (@timeslots.nil?) %>
-	<p class="message information">Nothing doing.</p>
-<% elsif (@version == "low") %>		
-	<%= render "shared/grid/grid_vertical" %>
-<% else %>
-	<%= render "shared/grid/grid" %>
-<% end %>

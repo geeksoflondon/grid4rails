@@ -1,11 +1,15 @@
-<div class="room">
-	<h1 class="heading"><% if (@room.name.nil?) %><%= @room.id %><% else %><%= @room.name %><% end %></h1>
+<h1 class="heading"><%= @room.name  %></h1>
+<div class="details">
 	<div class="description">
-		<h2 class="label">Description:</h2>
- 		<p><%= @room.description %></p>
+		<p><%= @room.description %></p>
+	</div>		
+	<div class="capacity">
+		<h2 class="heading">Capacity</h2>
+		<p><%= @room.capacity %></p>
 	</div>
+	<div class="shortcode">
+		<h2 class="heading">Shortcode</h2>
+		<p><%= @room.short_code.upcase %></p>
+	</div>	
 </div>
-
-<p class="options">
-	<%= link_to 'Edit', edit_talk_path(@room) %>
-</p>
+<%=	render "shared/grid/grid_vertical" %> 	

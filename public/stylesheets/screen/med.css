@@ -175,6 +175,10 @@ input.orange,
     padding-bottom: 18px;
 }
 
+#main {
+    padding: 6px;
+}
+
 
 /* FEATURE: Header
 -----------------------------*/
@@ -390,7 +394,7 @@ input.orange,
 -----------------------------*/
 
 .message {          
-    margin: 0 6px 9px 6px;
+    margin: 6px 6px 9px 6px;
     padding: 6px;
     background-color: #C9E2AE;         
 }
@@ -435,6 +439,12 @@ body.grid .message {
 
 /* FEATURE: Grid
 -----------------------------*/
+
+body.grid #main,
+#talk-assign #main,
+#talk-move #main {
+	padding: 0;
+}
 
 table.grid td, 
 table.grid th {
@@ -630,9 +640,7 @@ table.single-timeslot .empty .submit {
 /* VIEW: Schedule Talk
 -----------------------------*/
 
-#talk-assign #main {
-    padding: 6px 0 0 0;
-}
+
 
 
 /* VIEW: Talk
@@ -673,4 +681,71 @@ body.talks #main fieldset {
 
 .talks li {
     margin-top: 6px; 
+}
+
+
+/* VIEW: Room
+-----------------------------*/
+
+#room .details .heading {
+	margin-top: 6px;
+	margin-bottom: 3px;
+}
+
+#room .grid {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+#room .grid .timeslot {
+	padding-top: 18px;
+}
+
+#room .grid .timeslot .header {
+	background-color: #F5F5F5;
+    color: #000000;
+    font-weight: normal;
+    padding: 3px;
+}
+
+#room .grid .timeslot .header .context {
+    font-size: medium;
+    font-weight: bold;
+}
+
+#room .grid .timeslot .header .time {
+    margin-bottom: 6px;
+}    
+
+#room .grid .slot {
+    margin-top: 18px;
+}
+
+#room .grid .slot p, 
+#room .grid .slot .heading {
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+
+#room .grid .slot .heading {
+    color: #666666;
+    font-weight: bold;
+}
+
+#room .grid .actions {
+	text-align: center;
+}
+
+#room .grid a, 
+#room .grid a:link, 
+#room .grid a:visited,
+#room .grid a:hover, 
+#room .grid a:focus, 
+#room .grid a:active {
+    color: #000000;
+}
+
+#room .grid a:link, 
+#room .grid a:visited {
+    text-decoration: none;
 }

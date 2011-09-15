@@ -319,7 +319,8 @@ div.grid .first {
     padding-top: 12px;
 }
 
-div.grid .timeslot .header .day {
+div.grid .timeslot .header .day,
+div.grid .timeslot .header .context {
     font-size: medium;
     font-weight: bold;
 }
@@ -378,5 +379,14 @@ div.grid .empty {
 }
 
 
-/* VIEW: Schedule Talk
+/* VIEW: Room
 -----------------------------*/
+
+#room .details .heading {
+	margin-top: 6px;
+	margin-bottom: 3px;
+}
+
+#room .grid {
+	margin-top: 12px;
+}

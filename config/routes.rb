@@ -9,15 +9,14 @@ Griddy::Application.routes.draw do
   match "talks/:id/move/:date", :to => "talks#move", :as => :move_talk  
   match "talks/:id/assign_slot", :to => "talks#assign_slot"
   match "talks/:id/swap_slot", :to => "talks#swap_slot"
-  match "talks/:id/edit", :to => "talks#edit"
-  
-  
+  match "talks/:id/edit", :to => "talks#edit"  
   resources :talks
 
   resources :users
 
   resources :timeslots
 
+  match "rooms/:room", :to => "rooms#show"
   resources :rooms
 
   resources :slots
@@ -28,7 +27,6 @@ Griddy::Application.routes.draw do
   match "grid/:date/rooms/:room", :to => "grid#room"
   match "grid/:date", :to => "grid#date"
   match "grid/:date/sessions/:timeslot", :to => "grid#show"  
-
   resources :grid
 
 

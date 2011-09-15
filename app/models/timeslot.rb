@@ -23,6 +23,14 @@ class Timeslot < ActiveRecord::Base
   def self.on_next
     Timeslot.upcoming.first
   end
+  
+  def on_now?
+  	self == Timeslot.on_now
+  end
+  
+  def on_next?
+  	self == Timeslot.on_next
+  end
 
   # Returns the timeslot that immediately follows the current timeslot
   def next

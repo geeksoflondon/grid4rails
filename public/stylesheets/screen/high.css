@@ -33,12 +33,6 @@ html {
 /* Basic form rules (inc. pseudo form elements)
 -----------------------------*/
 
-form input,
-form textarea,
-.actions {
-    max-width: 500px;
-}
-
 form p {
     padding-right: 6px;
 }
@@ -108,7 +102,7 @@ form .submit input {
 }
 
 #main h1 {
-    margin: 12px;
+    margin: 12px 0;
     padding: 0;
 }
 
@@ -116,6 +110,17 @@ form .submit input {
   -webkit-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
   -moz-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
   box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+}
+
+form input,
+form textarea,
+.actions,
+body#room #main {
+    max-width: 500px;
+}
+
+.message .actions {
+	max-width: none;
 }
 
 

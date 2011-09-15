@@ -13,7 +13,19 @@ class RoomsController < ApplicationController
 
   def show
     @page_id = "room"
-    @room = Room.find(params[:id])
+    @room = Room.by_short_code(params[:room])
+   
+  	if (@room.nil?)
+  		flash[:warning] = "Unable to find room requested" 
+  		redirect_to :controller => "rooms" and return
+  	end
+  	
+  	@timeslots = Array.new()
+  	@timeslots << Timeslot.on_now
+  	@timeslots << Timeslot.on_next
+  	@date = @timeslots.first.start.to_date
+  	@rooms = Array.wrap(@room)
+  	@empty_slot_index = 0
 
     respond_to do |format|
       format.html # show.html.erb

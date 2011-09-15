@@ -65,30 +65,8 @@ class GridController < ApplicationController
 
   def room
   	@page_id = "room-grid"
-  	
-  	@room = Room.by_short_code(params[:room])
-  	if (@room.nil?)
-  		flash[:warning] = "Unable to find room requested" 
-  		redirect_to "/" and return
-  	end
-  	
-  	@show_room_col = false
-  	if (params[:date])
-    	@timeslots = Timeslot.by_date(params[:date])
-    else
-    	@timeslots = Timeslot.auto_date    	
-    end
-    @date = @timeslots.first.start.to_date
-    if (params[:date].nil?) 
-    	flash.keep
-    	redirect_to :controller => "grid", :action => "room", :id => params[:id], :date => @date
-    end
-    @dates = Array.wrap(Timeslot.dates)
-  	@scroller_date = true
-  	@is_single_timeslot = (@timeslots.count == 1)
-  	@empty_slot_index = 0
-  	@rooms = Array.wrap(@room)
-  	@description = "What's happening in this room."
+  	flash.keep
+    redirect_to :controller => "rooms", :action => "show", :room => params[:room]
   end
 
   private

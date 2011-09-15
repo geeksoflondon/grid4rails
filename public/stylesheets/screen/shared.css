@@ -32,6 +32,12 @@ a:active {
 /* Basic List rules
 -----------------------------*/
 
+.bulleted {
+	list-style: disc;
+	list-position: outside;
+	margin-left: 12px;
+	padding-left: 6px;
+}
 
 
 
@@ -88,3 +94,4 @@ table.grid .timeslot,
 table.grid .slot {
     text-align: center;
 }
+
