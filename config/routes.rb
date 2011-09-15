@@ -25,9 +25,9 @@ Griddy::Application.routes.draw do
   match "grid", :to => "grid#date"
   match 'grid/now', :to => "grid#now"
   match 'grid/next', :to => "grid#next"
-  match "grid/:date/room/:room", :to => "grid#room"
+  match "grid/:date/rooms/:room", :to => "grid#room"
   match "grid/:date", :to => "grid#date"
-  match "grid/:date/session/:timeslot", :to => "grid#show"  
+  match "grid/:date/sessions/:timeslot", :to => "grid#show"  
 
   resources :grid
 

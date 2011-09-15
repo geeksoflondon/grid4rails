@@ -6,6 +6,7 @@ class GridController < ApplicationController
     @page_id = "now"
     @timeslot = Timeslot.on_now
 	@date = @timeslot.start.to_date
+	flash.keep
     redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
   end
 
@@ -13,6 +14,7 @@ class GridController < ApplicationController
     @page_id = "next"
     @timeslot = Timeslot.on_next
     @date = @timeslot.start.to_date
+    flash.keep
     redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
   end
 
@@ -39,6 +41,7 @@ class GridController < ApplicationController
     end
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?) 
+    	flash.keep
     	redirect_to :controller => "grid", :action => "date", :date => @date
     end
     @dates = Array.wrap(Timeslot.dates)
@@ -62,6 +65,13 @@ class GridController < ApplicationController
 
   def room
   	@page_id = "room-grid"
+  	
+  	@room = Room.by_short_code(params[:room])
+  	if (@room.nil?)
+  		flash[:warning] = "Unable to find room requested" 
+  		redirect_to "/" and return
+  	end
+  	
   	@show_room_col = false
   	if (params[:date])
     	@timeslots = Timeslot.by_date(params[:date])
@@ -70,10 +80,10 @@ class GridController < ApplicationController
     end
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?) 
+    	flash.keep
     	redirect_to :controller => "grid", :action => "room", :id => params[:id], :date => @date
     end
     @dates = Array.wrap(Timeslot.dates)
-  	@room = Room.find(params[:room])
   	@scroller_date = true
   	@is_single_timeslot = (@timeslots.count == 1)
   	@empty_slot_index = 0

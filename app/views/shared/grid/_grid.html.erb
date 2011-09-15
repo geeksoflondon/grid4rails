@@ -15,7 +15,7 @@
 	    <tr class="<%= cycle("odd", "even") %>">
 	    	<% if (@show_room_col) %>
 		        <th class="room header">
-					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.id %></p>
+					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></p>
 		            <p class="where-when"><span><%= @room.short_code.upcase %></span></p>
 		        </th>      
 	        <% end %>                 

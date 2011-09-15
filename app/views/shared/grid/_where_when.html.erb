@@ -17,7 +17,7 @@
 	
 	<% if (@page_id != "room-grid") %>
 		<span class="room">
-		<%= link_to (@show_room_col ? @room.short_code.upcase : @room.name), :controller => "grid", :action => "room", :date => @date, :room => @room.id %></span>
+		<%= link_to (@show_room_col ? @room.short_code.upcase : @room.name), :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></span>
 	<% end %>
 	
 	<% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
