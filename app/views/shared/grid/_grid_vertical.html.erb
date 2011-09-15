@@ -13,7 +13,7 @@
 					<%= render "shared/grid/timeslot_heading" %>
 					<% if (!@is_single_timeslot) %>
 					<p class="skip">
-						<span class="label">Timeslot: </span>
+						<span class="label">Session: </span>
 						<% if (@timeslot != @timeslots.last) %>
 							<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) + 1].id %>" class="next">next</a>
 						<% end %>
