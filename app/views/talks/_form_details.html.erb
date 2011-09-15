@@ -25,7 +25,7 @@
 		<p>
 			<span class="cancel"><%= link_to 'Cancel', :back %></span>
 			<span class="delimiter"> </span>
-			<% label = ((@talk.new_record?) ? "Create talk and select slot" : "Save changes") %>
+			<% label = ((@talk.new_record?) ? "Create talk" : "Save changes") %>
 			<span class="submit"><%= f.submit label, :class => "button green" %></span>
 		</p>		
 	</fieldset>

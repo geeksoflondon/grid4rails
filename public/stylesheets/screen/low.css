@@ -53,6 +53,9 @@ fieldset {
     background-color: #DDDDDD;
     color: #333333;
     padding: 6px 6px;    
+    font-size: small;
+    font-weight: normal;
+    white-space: nowrap;
 }
 
 
@@ -251,82 +254,31 @@ fieldset {
     padding: 6px;    
     margin: 0 0px 9px 0px;
     background-color: #C9E2AE;
-    color: #444;    
-    font-weight: bold;
-    font-size: medium;                   
-}
-
+}    
+    
 .warning {
   color: #7E2B29;
   background-color: #F9EEEE;
 }
 
-
-/* VIEW: the grid
------------------------------*/
-/*
-.grid td, 
-.grid th {
-    font-size: 100%;
-    font-style: inherit;
-    font-weight: inherit;
-    margin: 0;
-    outline: 0 none;
-    padding: 0px 6px;
-    vertical-align: baseline;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #cccccc;
-}
-
-table.grid th,
-div.grid .timeslot .header {  
-    font-weight: normal;
-    background-color: #f5f5f5;
-    color: #000000;
-    padding: 3px;    
-}
-
-table.grid tr.even th,
-table.grid th.odd {
-    background-color: #eeeeee;
-}
-
-.grid .header .where-when {
-    color: #b13c3b;
-}
-
-.grid .slot .empty {
-    padding: 3px;
-    background-color: #C9E2AE;
-    margin: 6px 0;
-}
-
-.grid .slot .empty,
-.grid .slot .empty .heading,
-.grid .slot .empty .where-when,
-.grid .slot .empty a,
-.grid .slot .empty a:link,
-.grid .slot .empty a:visited,
-.grid .slot .empty a:hover,
-.grid .slot .empty a:focus,
-.grid .slot .empty a:active {
+.message,
+.message p {    
     color: #444;    
+    font-weight: bold;
+    font-size: medium;                   
 }
 
-.slot p,
-.slot .heading {
-    margin-top: 6px;
-    margin-bottom: 6px;
+.message .actions {
+	background-color: #ffffff;
+	margin: 6px 0 0 0;	
+	padding: 3px;	
 }
 
-table.grid td.now {
-    background-color: #e0efe1;
+.message .actions p {
+	font-size: small;
+	font-weight: normal;
+	text-align: center;
 }
-body#now table.grid td.now {
-    background-color: #ffffff;
-}
-*/
 
 
 /* VIEW: Talk
@@ -417,13 +369,14 @@ div.grid .empty {
     color: #444;    
 }
 
-.grid .slot .empty .actions {
+.grid .slot .actions {
     text-align: center;
     margin-top: 6px;
     margin-bottom: 3px;
     background-color: #ffffff;
-    border: 1px solid #444444;
+    border: 1px solid #444444; 
 }
+
 
 /* VIEW: Schedule Talk
 -----------------------------*/

@@ -1,10 +1,22 @@
-<% if (@timeslots.count() < 1) %>
-	<p class='message warning'>Wow, it looks as though all the slots have been taken!</p>
-<% else %>
-	<p class="message instructions">To add your talk to the grid, find an empty slot, click to select and hit submit.</p>
-	<% if (@version == "low") %>
-		<%= render "shared/grid/grid_vertical" %>
+<div class="message <% if (@timeslots.count() < 1) %>warning<% else %>instructions<% end %>">
+	<% if (@timeslots.count() < 1) %>
+		<p>Wow, it looks as though all the slots have been taken!</p>
 	<% else %>
-		<%= render "shared/grid/grid" %>
+		<p>To add your talk to the grid, find an empty slot, click to select and hit submit.</p>
 	<% end %>
+	<%= form_tag(:controller => "talks", :action => "unschedule") do |f| %>
+		<%= hidden_field('talk', :value => @unscheduled.id) %>
+		<fieldset class="actions">
+			<p>
+				<span class="cancel"><%= link_to "Cancel", url_options = { :controller => "talks", :action => "show", :id => @unscheduled.id } %></span>
+				<span class="delimiter"> </span>
+				<span class="unschedule"><%= link_to "Schedule Later", url_options = { :controller => "grid", :action => "date" } %></span>
+			</p>
+		</fieldset>
+	<% end %>
+</div>		
+<% if (@version == "low") %>
+	<%= render "shared/grid/grid_vertical" %>
+<% else %>
+	<%= render "shared/grid/grid" %>
 <% end %>

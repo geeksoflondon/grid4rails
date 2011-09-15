@@ -50,14 +50,14 @@
                 <%= form_tag(:controller => "talks", :action => "assign_slot", :id => @unscheduled.id) do |f| %>
 					<input type="hidden" name="slot" value="<%= @slot.id %>" />
 					<% if (@page_id == "talk-assign") %>
-						<p class="actions"><span class="submit"><%= submit_tag("Insert here", :class => "button orange medium") %></span></p>
+						<p class="actions"><span class="submit"><%= submit_tag("Insert here", options = { :class => "button green medium" }) %></span></p>
 					<% else %>
-						<p class="actions"><span class="submit"><%= submit_tag("Move here", :class => "button orange medium") %></span></p>
+						<p class="actions"><span class="submit"><%= submit_tag("Move here", options = { :class => "button green medium" }) %></span></p>
 					<% end %>
                 <% end %>
             <% else %>
                 <p class="actions">
-					<span class='submit'><%= link_to("Add a talk", :controller => "talks", :action => "new", :class => "button green medium") %></span>
+					<span class='submit'><%= link_to("Add a talk", url_options = { :controller => "talks", :action => "new"}, html_options = { :class => "button green medium" }) %></span>
                 </p> 
             <% end %>
             <% if (@version == "low") %>   
@@ -77,7 +77,7 @@
             <% cache("where_when_#{@slot.id}") do %>
 	        	<%= render '/shared/grid/where_when' unless @slot.locked %>
 	        <% end %>
-	        <% if (@page_id == "talk-move" unless @slot.locked?) %>
+	        <% if (@page_id == "talk-move" unless (@slot.locked? || talk == @unscheduled)) %>
 	            <%= form_tag(:controller => "talks", :action => "swap_slot", :id => @unscheduled.id) do |f| %>
 					<input type="hidden" name="talk_2" value="<%= talk.id %>" />
 					<p class="actions"><span class="submit"><%= submit_tag("Swap", :class => "button orange medium") %></span></p>

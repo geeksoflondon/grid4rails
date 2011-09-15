@@ -339,7 +339,6 @@ form .submit input {
 
 .instructions {  
   background-image: url("/images/info.png");   
-  padding-right: 60px;
   background-color: #C9E2AE;
   color: #111;  
 }

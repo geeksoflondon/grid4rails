@@ -97,11 +97,42 @@ form textarea {
     line-height: 2.5;
 }
 
-.actions a {
-    background-color: #DDDDDD;
-    color: #333333;
-    padding: 6px 9px;    
+input,
+.actions a:link,
+.actions a:visited,
+.actions a:hover,
+.actions a:focus,
+.actions a:active {
+	border: none;	
 }
+
+.actions input,
+.actions a {
+	font-size: small;
+}
+
+.actions input {
+	padding: 5px 6px;
+}
+
+.actions a {
+	padding: 6px 9px;
+    background-color: #DDDDDD;
+    color: #333333;    
+}
+
+input.green,
+.actions a.green {     
+    background-color: #99cc33; /* Green */
+    color: #ffffff;    
+}
+
+input.orange,
+.actions a.orange {
+    background-color: #f78d1d; /* Orange */
+    color: #ffffff;
+}
+
 
 
 /* Layout
@@ -358,18 +389,19 @@ form textarea {
 /* FEATURE: Informational messages
 -----------------------------*/
 
-.message {      
-    padding: 6px;    
+.message {          
     margin: 0 6px 9px 6px;
-    background-color: #C9E2AE;
-    color: #444;    
-    font-weight: bold;
-    font-size: medium;                   
+    padding: 6px;
+    background-color: #C9E2AE;         
+}
+
+body.grid .message {
+	margin-top: 6px;
 }
 
 .warning {
-  color: #7E2B29;
-  background-color: #F9EEEE;
+	color: #7E2B29;
+  	background-color: #F9EEEE;
 }
 
 #error_explanation ul {
@@ -379,7 +411,26 @@ form textarea {
 #error_explanation li {
   color: #a00;
   margin: 10px 0px;
-} 
+}
+
+.message,
+.message p {
+    color: #444;    
+    font-weight: bold;
+    font-size: medium;
+}
+
+.message .actions {
+	background-color: #ffffff;
+	margin: 6px 0 0 0;	
+	padding: 3px;	
+}
+
+.message .actions p {
+	font-size: small;
+	font-weight: normal;
+	text-align: center;
+}
 
 
 /* FEATURE: Grid
@@ -505,28 +556,14 @@ table.grid div.empty {
     padding: 0;
 }
 
-table.grid .empty .actions {
+table.grid .actions {
     padding: 0;
     margin: 0;
     border: none;
     text-align: center;
 }
 
-table.grid .empty .actions .submit a {     
-    /* background-color: #f78d1d; *//* Orange */
-    background-color: #99cc33; /* Green */    
-}
-
-#talk-assign table.grid .empty {
-    background-color: #C9E2AE;
-}
-
-#talk-assign table.grid .empty .where-when,
-#talk-assign table.grid .empty a:link,
-#talk-assign table.grid .empty a:visited,
-#talk-assign table.grid .empty a:hover,
-#talk-assign table.grid .empty a:focus,
-#talk-assign table.grid .empty a:active {
+table.grid .empty .where-when {
     color: #444444; 
 }
 

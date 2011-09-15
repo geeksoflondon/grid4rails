@@ -13,7 +13,7 @@
 			<% else %>
 				<span class="schedule"><%= link_to "Move", url_options = { :controller => "talks", :action => "move", :id => @talk.id }, html_options = { :class => "button green" } %></span>
 			<% end %>
-			<span class="submit"><%= link_to "Edit", edit_talk_path(@talk), :class => "button green" %></span>			
+			<span class="submit"><%= link_to "Edit", edit_talk_path(@talk), html_options = { :class => "button green" } %></span>			
 		</p>
 	</div>
 </div>
