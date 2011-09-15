@@ -14,14 +14,14 @@ Talk.delete_all
 User.delete_all
 
 #Generate Rooms
-Room.create(:name => 'London Bridge', :description => 'The horrible skanky room that smells of piss.', :short_code => 'lbg')
-Room.create(:name => 'Paddington', :description => 'A room.', :short_code => 'pad')
-Room.create(:name => 'Kings Cross', :description => 'A room.', :short_code => 'kgx')
-Room.create(:name => 'Marylebone', :description => 'A room.', :short_code => 'mar')
-Room.create(:name => 'Euston', :description => 'Has a roof', :short_code => 'eus')
-Room.create(:name => 'Victoria', :description => 'old station from the 80s', :short_code => 'vic')
-Room.create(:name => 'Waterloo', :description => 'the wet station', :short_code => 'wat')
-Room.create(:name => 'Charing Cross', :description => 'southbank mess', :short_code => 'chx')
+Room.create(:name => 'London Bridge', :description => 'The horrible skanky room that smells of piss.', :short_code => 'lbg', :capacity => 10)
+Room.create(:name => 'Paddington', :description => 'A room.', :short_code => 'pad', :capacity => 10)
+Room.create(:name => 'Kings Cross', :description => 'A room.', :short_code => 'kgx', :capacity => 10)
+Room.create(:name => 'Marylebone', :description => 'A room.', :short_code => 'mar', :capacity => 10)
+Room.create(:name => 'Euston', :description => 'Has a roof', :short_code => 'eus', :capacity => 10)
+Room.create(:name => 'Victoria', :description => 'old station from the 80s', :short_code => 'vic', :capacity => 10)
+Room.create(:name => 'Waterloo', :description => 'the wet station', :short_code => 'wat', :capacity => 10)
+Room.create(:name => 'Charing Cross', :description => 'southbank mess', :short_code => 'chx', :capacity => 10)
 
 #Generate Timeslots
 

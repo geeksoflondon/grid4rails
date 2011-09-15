@@ -478,6 +478,7 @@ table.grid th.room {
     font-weight: bold; 
 }
 
+table.grid th.room .shortcode,
 table.grid th.room .heading a:link,
 table.grid th.room .heading a:visited,
 table.grid th.room .heading a:hover,
@@ -487,15 +488,14 @@ table.grid th.room .heading a:active {
   color: #660000;
 }
 
-table.grid th.room .where-when {
+table.grid th.room .shortcode {
     font-weight: normal;
     font-size: 120%;
     margin: 0;
 }
 
-table.grid th.room .where-when span {
-    margin: 0;
-    padding: 0;
+table.grid th.room .capacity {
+	font-weight: normal;
 }
 
 table.grid .where-when  .room {

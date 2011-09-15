@@ -16,7 +16,8 @@
 	    	<% if (@show_room_col) %>
 		        <th class="room header">
 					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></p>
-		            <p class="where-when"><span><%= @room.short_code.upcase %></span></p>
+		            <p class="shortcode"><%= @room.short_code.upcase %></p>
+		            <p class="capacity"><span class="label">Holds: </span><%= @room.capacity %></p>		            
 		        </th>      
 	        <% end %>                 
 	        <% @room.slots.each do |slot| %>
