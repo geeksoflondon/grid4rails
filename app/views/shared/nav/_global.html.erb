@@ -20,7 +20,7 @@
 		<% if (@footer) %>
 			<li<% if (current_page?(:action => 'unscheduled', :controller => 'talks')) %> class="selected"<% end %>><%= link_to "Unscheduled Talks", :controller => "talks", :action => "unscheduled" %><span class="delimiter"></span></li>
 			<li><a href="/feedback">Feedback</a><span class="delimiter"></span></li>
-			<li class="last"><a href="/help">Help</a></li class="last">	
+			<li class="last"><a href="/help">Help</a></li>	
 		<% end %>	
 	</ul>	
 </div>
