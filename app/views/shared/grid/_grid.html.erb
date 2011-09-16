@@ -16,14 +16,14 @@
 					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></p>
 		            <p class="shortcode"><%= @room.short_code.upcase %></p>
 		            <div class="details">
-		            	<p class="capacity"><span class="label">Holds: </span><%= @room.capacity %></p>
+		            	<p class="capacity"><span class="label">Holds: </span><%= @room.capacity unless @room.capacity.blank? %></p>
 		            	<p class="facilities"><span class="label">Facilities: </span><% if (@room.facilities.blank?) %>Nothing special<% else %><%= @room.facilities %><% end %></p>
 		            </div>		  		            
 		        </th>      
 	        <% end %>                 
 	        <% @room.slots.each do |slot| %>
 	        	<% if (@timeslots.include?(slot.timeslot))	        		
-	            	@slot = @grid.slot(slot.id) 
+	            	@slot = slot 
 	            	@slots = @slot.timeslot.slots %>
 	            	<td <% if (@version != "low") %>data-slot_id="<%= @slot.id %>"<% end %><% if (classnames(@slot).length > 0) %>class="<%= classnames(@slot).join(" ") %>"<% end %>
 	           			<%= render 'shared/grid/slot' %>
