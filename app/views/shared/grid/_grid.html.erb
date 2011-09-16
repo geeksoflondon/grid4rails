@@ -14,10 +14,7 @@
 	    	<% if (@show_room_col) %>
 		        <th class="room header">
 					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></p>
-		            <p class="shortcode"><%= @room.short_code.upcase %></p>
-		            <div class="details">		            	
-		            	<p class="facilities"><span class="label">Facilities: </span><% if (@room.facilities.blank?) %>Nothing special<% else %><%= @room.facilities %><% end %></p>
-		            </div>		  		            
+		            <p class="shortcode"><%= @room.short_code.upcase %></p>		  		            
 		        </th>      
 	        <% end %>                 
 	        <% @room.slots.each do |slot| %>
