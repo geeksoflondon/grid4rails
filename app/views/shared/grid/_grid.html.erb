@@ -18,7 +18,10 @@
 		        </th>      
 	        <% end %>                 
 	        <% @room.slots.each do |slot| %>
-	        	<td><%= debug @room %></td>
+	        	<td>
+	        		HERE<br />
+	        		<%= debug @room %>
+	        	</td>
 	        	<% if (@timeslots.include?(slot.timeslot))	        		
 	            	@slot = slot 
 	            	@slots = @slot.timeslot.slots %>
