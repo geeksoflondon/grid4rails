@@ -14,14 +14,13 @@
 	    	<% if (@show_room_col) %>
 		        <th class="room header">
 					<p class="heading"><%= link_to @room.name, :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></p>
-		            <p class="shortcode"><%= @room.short_code.upcase %></p>		  		            
+		            <p class="shortcode"><%= @room.short_code.upcase %></p>
+		            		            
+	        		<%= debug @room %>
+		            		  		            
 		        </th>      
 	        <% end %>                 
 	        <% @room.slots.each do |slot| %>
-	        	<td>
-	        		HERE<br />
-	        		<%= debug @room %>
-	        	</td>
 	        	<% if (@timeslots.include?(slot.timeslot))	        		
 	            	@slot = slot 
 	            	@slots = @slot.timeslot.slots %>
