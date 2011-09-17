@@ -214,6 +214,12 @@ locked_slots << label
 
 #Generate Slots
 
-Slot.delete_all
+puts Timeslot.all.count
+puts Timeslot.all.first.id
+puts Room.all.count
+puts Room.all.first.id
+puts Slot.all.count   
 
-Slot.create    	   
+Slot.create(:room_id => 1, :timeslot_id => 1)
+
+puts Slot.all.count
