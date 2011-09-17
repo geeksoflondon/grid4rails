@@ -220,7 +220,17 @@ Timeslot.all.each do |timeslot|
 
 	rooms.each do |room|
   
-	    new_slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)    	  
+	    new_slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)    
+	    
+	    if locked_slots.include?(new_slot.timeslot.name)
+	    
+		    new_talk = Talk.create(:title => new_slot.timeslot.name)
+		
+		    new_slot.locked = true
+		    new_slot.talk_id = new_talk.id
+		    new_slot.save
+		      
+		end
     
 	end
   
