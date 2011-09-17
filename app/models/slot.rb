@@ -25,7 +25,8 @@ class Slot < ActiveRecord::Base
     timeslots.each do |timeslot|
     
       Room.all.each do |room|
-        Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
+        s = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
+        puts s.to_yaml
       end
     end
 

@@ -55,8 +55,7 @@ while i < num_timeslots
   start_time = end_time
   end_time = start_time + 20.minutes
 
-  t = Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-  puts t.to_yaml
+  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
 
   i = i+1
   session_no = session_no+1
