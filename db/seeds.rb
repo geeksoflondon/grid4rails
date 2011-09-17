@@ -211,27 +211,38 @@ label = 'Clean-up'
 Timeslot.create(:name => label, :start => start_time, :end => end_time)
 locked_slots << label
 
+
 #Generate Slots
 
 Slot.delete_all
 
-rooms = Room.all
 Timeslot.all.each do |timeslot|
 
-	rooms.each do |room|
+	Room.all.each do |room|
   
-	    new_slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)    
-	    
-	    if locked_slots.include?(new_slot.timeslot.name)
-	    
-		    new_talk = Talk.create(:title => new_slot.timeslot.name)
-		
-		    new_slot.locked = true
-		    new_slot.talk_id = new_talk.id
-		    new_slot.save
-		      
-		end
+	    Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)    	   
     
 	end
   
+end
+
+
+# Generate Talks for locked slots
+
+Timeslot.all.each do |timeslot|
+
+    if locked_slots.include?(timeslot.name)
+    
+	    new_talk = Talk.create(:title => timeslot.name)
+	
+		timeslot.slots.each do |slot|
+		
+	    	slot.locked = true
+	   		slot.talk_id = new_talk.id
+	    	slot.save
+	    
+	    end
+	      
+	end	
+	
 end
