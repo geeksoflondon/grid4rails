@@ -26,12 +26,6 @@ class Slot < ActiveRecord::Base
     timeslots.each do |timeslot|
       rooms.each do |room|
         new_slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
-
-        unless timeslot.assign_slots?
-          new_talk = Talk.create(:slot_id => new_slot.id, :title => timeslot.name, :locked => true)
-          logger.info new_slot.talk.inspect
-        end
-
         new_slot.save
       end
     end
