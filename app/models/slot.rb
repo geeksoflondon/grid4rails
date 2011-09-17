@@ -15,6 +15,21 @@ class Slot < ActiveRecord::Base
   def end
     timeslot.end
   end
+
+  def self.generate!
+
+    timeslots = Timeslot.order(:start).all
+
+    Slot.delete_all
+
+    timeslots.each do |timeslot|
+    
+      Room.all.each do |room|
+        Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
+      end
+    end
+
+  end
   
 
   def self.find_empty
