@@ -216,33 +216,4 @@ locked_slots << label
 
 Slot.delete_all
 
-Timeslot.all.each do |timeslot|
-
-	Room.all.each do |room|
-  
-	    Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)    	   
-    
-	end
-  
-end
-
-
-# Generate Talks for locked slots
-
-Timeslot.all.each do |timeslot|
-
-    if locked_slots.include?(timeslot.name)
-    
-	    new_talk = Talk.create(:title => timeslot.name)
-	
-		timeslot.slots.each do |slot|
-		
-	    	slot.locked = true
-	   		slot.talk_id = new_talk.id
-	    	slot.save
-	    
-	    end
-	      
-	end	
-	
-end
+Slot.create    	   
