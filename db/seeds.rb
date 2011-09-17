@@ -167,7 +167,6 @@ start_time = end_time
 end_time = start_time + 1.hour
 label = 'Lunch'
 Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
 
 
 ## Sunday Afternoon
