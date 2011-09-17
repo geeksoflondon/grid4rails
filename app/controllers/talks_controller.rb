@@ -97,10 +97,8 @@ class TalksController < ApplicationController
   # A view of the grid for the purpose of assigning a talk to a slot
   def schedule
     @page_id = "talk-assign"
-    @grid = Grid.new
     @unscheduled = Talk.find(params[:id])  
-    
-    # Need to change so that timeslots can be retrieved from @grid
+   
     if (params[:date])
     	@timeslots = Timeslot.by_date(params[:date])
     else
@@ -114,7 +112,7 @@ class TalksController < ApplicationController
  
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
-    @rooms = @grid.rooms
+    @rooms = Room.all
     @show_room_col = true
     @empty_slot_index = 0
     @description = "The grid, showing empty slots"
@@ -125,10 +123,8 @@ class TalksController < ApplicationController
   # to another slot or off the grid entirely
   def move
     @page_id = "talk-move"
-    @grid = Grid.new
     @unscheduled = Talk.find(params[:id])  
     
-    # Need to change so that timeslots can be retrieved from @grid
     if (params[:date])
     	@timeslots = Timeslot.by_date(params[:date])
     else
@@ -142,7 +138,7 @@ class TalksController < ApplicationController
  
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
-    @rooms = @grid.rooms
+    @rooms = Room.all
     @show_room_col = true
     @empty_slot_index = 0
     @description = "The grid, showing empty slots"

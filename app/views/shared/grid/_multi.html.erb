@@ -6,7 +6,7 @@
 			<p class="where-when"><span><%= @room.short_code.upcase %></span></p>
 		</th>
 		<% @room.slots.each do | slot| %>
-            <% @slot = @grid.slot(slot.id) %>
+            <% @slot = slot %>
 			<%= render 'shared/grid/slot' %>
 		<% end %> 
 	</tr>

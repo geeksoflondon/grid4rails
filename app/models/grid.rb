@@ -1,4 +1,5 @@
 class Grid
+
   def initialize
     @timeslots = self.timeslots
     @rooms = self.rooms

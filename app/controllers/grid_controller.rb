@@ -27,7 +27,7 @@ class GridController < ApplicationController
     @is_single_timeslot = (@timeslots.count == 1)
     @scroller_timeslot = true
     @empty_slot_index = 0
-    @rooms = Array.wrap(Room.all)
+    @rooms = Room.all
     @description = @timeslot.name
   end
 
@@ -48,7 +48,7 @@ class GridController < ApplicationController
     @scroller_date = true
     @is_single_timeslot = (@timeslots.count == 1)
     @empty_slot_index = 0
-    @rooms = @grid.rooms
+    @rooms = Room.all
     @description = "All talks."
   end
 
