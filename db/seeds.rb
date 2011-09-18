@@ -223,3 +223,20 @@ puts Slot.all.count
 Slot.generate!
 
 puts Slot.all.count
+
+Timeslot.all.each do |timeslot|
+
+	if (locked_slots.include?(timeslot.name))
+	
+		timeslot.slots.each do |slot|
+			
+			talk = Talk.create(:title => timeslot.name)
+			slot.talk_id = talk.id
+			slot.locked = true
+			slot.save
+		
+		end			
+	
+	end
+
+end
