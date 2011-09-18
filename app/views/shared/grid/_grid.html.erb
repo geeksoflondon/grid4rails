@@ -3,7 +3,7 @@
 		<% if (@show_room_col) %><th>&nbsp;</th><% end %> 
 		<% @timeslots.each do | timeslot | %>
 			<% @timeslot = timeslot %>
-			<th class="timeslot header <%= cycle("odd", "even") %><% if (@timeslot == Timeslot.on_now) %> now<% end %>">				
+			<th class="timeslot header <%= cycle("odd", "even") %><% if (@timeslot == Timeslot.on_now) %> now<% end %>">			
 				<%= render "shared/grid/timeslot_heading" %>
 			</th>
 		<% end %>
@@ -20,16 +20,19 @@
 		            	<p class="facilities"><span class="label">Facilities: </span><% if (@room.facilities.blank?) %>Nothing special<% else %><%= @room.facilities %><% end %></p>
 		            </div>		  		            
 		        </th>      
-	        <% end %>                 
-	        <% @room.slots.each do |slot| %>
-	        	<% if (@timeslots.include?(slot.timeslot))	        		
-	            	@slot = slot 
-	            	@slots = @slot.timeslot.slots %>
-	            	<td <% if (@version != "low") %>data-slot_id="<%= @slot.id %>"<% end %><% if (classnames(@slot).length > 0) %>class="<%= classnames(@slot).join(" ") %>"<% end %>
-	           			<%= render 'shared/grid/slot' %>
-	           		</td>
-	           	<% end %>
-	        <% end %> 
+	        <% end %>      
+	        <% @timeslots.each do |timeslot| %>
+	        	<% @timeslot = timeslot %>
+	        	<% @slots = @timeslot.slots %>
+	        	<% @slots.each do |slot|%>
+	        		<% @slot = slot %>
+	        		<% if (@slot.room_id == @room.id) %>
+		            	<td <% if (@version != "low") %>data-slot_id="<%= @slot.id %>"<% end %><% if (classnames(@slot).length > 0) %>class="<%= classnames(@slot).join(" ") %>"<% end %>
+		           			<%= render 'shared/grid/slot' %>
+		           		</td>	   
+	           		<% end %>     			        	
+	        	<% end %>
+	        <% end %>	      
 	    </tr>
 	<% end %>
 </table>
