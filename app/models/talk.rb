@@ -1,4 +1,5 @@
 class Talk < ActiveRecord::Base
+
   has_one :slot
   
   before_save :expire_cache

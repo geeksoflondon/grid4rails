@@ -153,9 +153,10 @@ class TalksController < ApplicationController
     
     # Reset the original slot (if there was one)
     if (talk.slot)  	
-		original_slot = Slot.find(talk.slot)
-		if (original_slot) 
+		original_slot = Slot.find(talk.slot.id)
+		if (!original_slot.nil?) 
 			original_slot.talk_id = nil
+			original_slot.save
 		end
 	end
     

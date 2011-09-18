@@ -6,7 +6,11 @@ class Slot < ActiveRecord::Base
   before_save :expire_cache
   after_save :rebuild_cache
 
-  validates_presence_of :timeslot_id
+  validates :timeslot_id,
+  	:presence => true
+
+  validates :room_id,
+  	:presence => true
 
   def start
     timeslot.start
@@ -25,9 +29,11 @@ class Slot < ActiveRecord::Base
     timeslots.each do |timeslot|
     
       Room.all.each do |room|
-        s = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
-        puts s.to_yaml
+        
+        Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)        
+        
       end
+      
     end
 
   end
