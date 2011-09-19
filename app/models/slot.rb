@@ -42,7 +42,7 @@ class Slot < ActiveRecord::Base
         
       end
       
-      puts "Total slots: " + Slot.all.to_s
+      puts "Total slots: " + Slot.all.count.to_s
       
     end
 
