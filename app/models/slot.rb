@@ -24,17 +24,17 @@ class Slot < ActiveRecord::Base
 
     timeslots = Timeslot.order(:start).all
 
-	puts "Total timeslots: " + timeslots.count
+	puts "Total timeslots: " + timeslots.count.to_s
 
     Slot.delete_all
 
     timeslots.each do |timeslot|
     
-      puts "Timeslot: " + timeslot.id
+      puts "Timeslot: " + timeslot.id.to_s
     
       Room.all.each do |room|
         
-        puts "Room: " + room.id
+        puts "Room: " + room.id.to_s
         
         Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)        
         
