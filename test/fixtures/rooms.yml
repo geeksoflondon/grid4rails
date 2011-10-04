@@ -3,34 +3,39 @@ chx:
   description: The big room upstairs.
   short_code: chx
   capacity: 10
+  facilities: A projector and TV
 
 lbg:
   name: London Bridge
   description: The horrible skanky room that smells of piss.
   short_code: lbg
   capacity: 10
+  facilities: Bouncy castle
 
 pad:
   name: Paddington
   description: A room.
   short_code: pad
   capacity: 10
+  facilities: Clown's outfit.
 
 kgx:
   name: Kings Cross
   description: Has a roof
   short_code: kgx
   capacity: 10
+  facilities: Power-drill and a can of silly string.
 
 mar:
   name: Marylebone
   description: Has a roof
   short_code: mar
   capacity: 10
+  facilities: Hoof-pick.
 
 eus:
   name: Euston
-  description: old station from the 80s
+  description: old station from the 80s with non-existent facilities.
   short_code: eus
   capacity: 10
 
@@ -39,9 +44,11 @@ vic:
   description: southbank mess
   short_code: vic
   capacity: 10
+  facilities: Lock-pick.
 
 wat:
   name: Waterloo
   description: the wet station
   short_code: wat
   capacity: 10
+  facilities: Snorkel, flippers and sea-sickness tablets.
