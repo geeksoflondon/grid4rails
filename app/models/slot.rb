@@ -36,16 +36,10 @@ class Slot < ActiveRecord::Base
         
         puts "Room: " + room.id.to_s
         
-        Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)      
+        Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)             
         
-        puts "Total slots in this timeslot: " + timeslot.slots.count.to_s  
-        
-      end
-      
-      puts "Total slots: " + Slot.all.count.to_s
-      
+      end           
     end
-
   end
   
 
