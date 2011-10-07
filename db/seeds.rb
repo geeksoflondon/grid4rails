@@ -14,229 +14,84 @@ Talk.delete_all
 User.delete_all
 
 #Generate Rooms
-Room.create(:name => 'Red Dwarf', :description => '5th Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'rdw', :capacity => 30, :facilities => 'TV')
-Room.create(:name => 'Doctor Who', :description => '5th Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'drw', :capacity => 100, :facilities => 'TV')
-Room.create(:name => 'Inside Out', :description => '5th Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'ino', :capacity => 20, :facilities => 'Projector')
-Room.create(:name => 'Attachments', :description => '5th Floor, in the front-left corner as you face Old Trafford.', :short_code => 'att', :capacity => 50, :facilities => 'Whiteboard')
-Room.create(:name => 'Torchwood', :description => '4th Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'twd', :capacity => 15, :facilities => 'Projector, whiteboard')
-Room.create(:name => 'Bagpuss', :description => '4th Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'bgp', :capacity => 20)
-Room.create(:name => 'Redhead', :description => '4th Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'rdh', :capacity => 30, :facilities => 'TV, whiteboard')
+Room.create(:name => 'London Bridge', :description => 'The horrible skanky room that smells of piss.', :short_code => 'lbg', :capacity => 10, :facilities => 'Projector, whiteboard')
+Room.create(:name => 'Paddington', :description => 'A room.', :short_code => 'pad', :capacity => 10, :facilities => 'Projector, whiteboard')
+Room.create(:name => 'Kings Cross', :description => 'A room.', :short_code => 'kgx', :capacity => 10, :facilities => 'Projector')
+Room.create(:name => 'Marylebone', :description => 'A room.', :short_code => 'mar', :capacity => 10, :facilities => 'Whiteboard')
+Room.create(:name => 'Euston', :description => 'Has a roof', :short_code => 'eus', :capacity => 10, :facilities => 'Projector, whiteboard')
+Room.create(:name => 'Victoria', :description => 'old station from the 80s', :short_code => 'vic', :capacity => 10)
+Room.create(:name => 'Waterloo', :description => 'the wet station', :short_code => 'wat', :capacity => 10, :facilities => 'TV, whiteboard')
+Room.create(:name => 'Charing Cross', :description => 'southbank mess', :short_code => 'chx', :capacity => 10, :facilities => 'Projector, TV, whiteboard')
 
 #Generate Timeslots
 
-locked_slots = Array.new
-
-##Opening Talk
-
-start_time = Time.utc(2011, "sep", 17,9,30,00)
-end_time = start_time + 40.minutes
-label = 'Opening Talk'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
-
-
-## Grid Population
-
-start_time = end_time
-end_time = start_time + 20.minutes
-label = 'Grid Population'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
-
-
-## Saturday Morning
-
-num_timeslots = 3
-session_no = 1
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-  
-  end_time = end_time + 10.minutes
-
-end
-
-
-## Lunch
-
-start_time = end_time
+##Today at 9am
+time = Time.now
+start_time = Time.utc(time.strftime("%Y"), time.strftime("%b"), time.strftime("%d"), 9,00,00)
 end_time = start_time + 1.hour
-label = 'Lunch'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
 
+Timeslot.create(:name => 'Opening Talk', :start => start_time, :end => end_time)
 
-## Saturday Afternoon
-
-num_timeslots = 11
+num_timeslots = 28
 
 i = 0
 while i < num_timeslots
 
-  start_time = end_time
-  end_time = start_time + 20.minutes
+  start_time = start_time + 1.hour
+  end_time = start_time + 1.hour
 
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-
-  end_time = end_time + 10.minutes
-
-end
-
-
-## Dinner
-
-start_time = end_time
-end_time = start_time + 90.minutes
-label = 'Dinner'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
-
-
-## Saturday Evening
-
-num_timeslots = 2
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-  
-  end_time = end_time + 10.minutes
-
-end
-
-
-## Saturday Night
-
-start_time = end_time
-end_time = Time.utc(2011, "sep", 18,7,30,00)
-label = 'Games, etc.'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
-
-
-## Breakfast
-
-start_time = end_time
-end_time = start_time + 90.minutes
-label = 'Breakfast'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
-
-
-## Sunday Morning
-
-num_timeslots = 4
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-  
-  end_time = end_time + 10.minutes
-
-end
-
-
-## Lunch
-
-start_time = end_time
-end_time = start_time + 1.hour
-label = 'Lunch'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-
-
-## Sunday Afternoon
-
-num_timeslots = 4
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-  
-  if (i == (num_timeslots - 1))
-  	end_time = end_time + 15.minutes
+  if (i == 4 || i == 8 || i == 12 || i == 16 || i == 20 || i == 24)
+    Timeslot.create(:name => "Break", :start => start_time, :end => end_time)
   else
-  	end_time = end_time + 10.minutes
-  end	
-  
+    Timeslot.create(:name => "Session #{i}", :start => start_time, :end => end_time)
+  end
+
+  i = i+1
 
 end
 
-
-## Closing Talk
-
-start_time = end_time
-end_time = start_time + 15.minutes
-label = 'Closing Talk'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
-
-
-## Clean-up
-
-start_time = end_time
-end_time = start_time + 30.minutes
-label = 'Clean-up'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
-
+Timeslot.create(:name => "Closing Talk", :start => start_time+1.hour, :end => end_time+1.hour)
 
 #Generate Slots
+slots = Slot.generate!
 
-puts Timeslot.all.count
-puts Timeslot.all.first.id
-puts Room.all.count
-puts Room.all.first.id
-puts Slot.all.count  
+#Generate Talks
 
-Slot.generate!
+talks = [
+  {:title => 'LifestyleLinking Open Source Project', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'aboynejames'},
+  {:title => 'Simple Data', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'John Doe'},
+  {:title => 'Set, Suguru, and Fluxx', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Ryan Alexander'},
+  {:title => 'Hack 3D', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Ketan Majmudar'},
+  {:title => 'What network APIs would you like from giffgaff', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Vincent Boon'},
+  {:title => 'JQuery tips & tricks: all sorts of awesome', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Jack Franklin'},
+  {:title => 'Control your remote control 40mph car from your iPhone or iPad', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Jack Black'},
+  {:title => 'One year running it all on the cloud', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Alistair Hann'},
+  {:title => 'Running Meetups using Social Networks', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Nathan O\'Hanlon'},
+  {:title => 'Simple node.js apps without web sockets', :description => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit mauris a sem porttitor feugiat. Nam pellentesque leo magna. Lorem.', :speaker => 'Robbie Clutton'},
+]
 
-puts Slot.all.count
+Slot.all.each do |slot|
 
-Timeslot.all.each do |timeslot|
-
-	if (locked_slots.include?(timeslot.name))
-	
-		timeslot.slots.each do |slot|
-			
-			talk = Talk.create(:title => timeslot.name)
-			slot.talk_id = talk.id
-			slot.locked = true
-			slot.save
-		
-		end			
-	
-	end
+  if slot.timeslot.name == 'Break'
+    t = Talk.create(:title => 'Break')
+    slot.locked = true
+    slot.talk_id = t.id
+    slot.save
+  elsif slot.timeslot.name == 'Opening Talk'
+    t = Talk.create(:title => 'Opening Talk')
+    slot.locked = true
+    slot.talk_id = t.id
+    slot.save
+  elsif slot.timeslot.name == 'Closing Talk'
+    t =Talk.create(:title => 'Closing Talk')
+    slot.locked = true
+    slot.talk_id = t.id
+    slot.save
+  elsif rand(4) < 2
+    talk = talks[rand(9)]
+    t = Talk.create(talk)
+    slot.talk_id = t.id
+    slot.save
+  end
 
 end
