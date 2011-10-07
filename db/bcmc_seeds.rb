@@ -30,7 +30,7 @@ locked_slots = Array.new
 
 start_time = Time.utc(2011, "sep", 17,9,30,00)
 end_time = start_time + 40.minutes
-timeslot_timeslot_label = 'Opening Talk'
+timeslot_label = 'Opening Talk'
 Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 locked_slots << timeslot_label
 
@@ -214,15 +214,15 @@ locked_slots << timeslot_label
 
 #Generate Slots
 
-puts Timeslot.all.count
-puts Timeslot.all.first.id
-puts Room.all.count
-puts Room.all.first.id
-puts Slot.all.count  
+puts "Total Timeslots: " + Timeslot.all.count.to_s
+puts "ID of first Timeslot: " + Timeslot.all.first.id.to_s
+puts "Total Rooms: " + Room.all.count.to_s
+puts "ID of first Room: " + Room.all.first.id.to_s
+puts "Total Slots: " + Slot.all.count.to_s  
 
 Slot.generate!
 
-puts Slot.all.count
+puts "Total Slots: " + Slot.all.count.to_s  
 
 Timeslot.all.each do |timeslot|
 
