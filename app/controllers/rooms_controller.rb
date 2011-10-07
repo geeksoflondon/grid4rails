@@ -23,7 +23,7 @@ class RoomsController < ApplicationController
   	@timeslots = Array.new()
   	@timeslots << Timeslot.on_now
   	@timeslots << Timeslot.on_next
-  	@date = @timeslots.first.start.to_date
+  	@date = @timeslots.first.start.to_date unless @timeslots.first.nil?
   	@rooms = Array.wrap(@room)
   	@empty_slot_index = 0
 

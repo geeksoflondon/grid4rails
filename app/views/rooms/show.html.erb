@@ -16,4 +16,4 @@
 		<p><%= @room.short_code.upcase %></p>
 	</div>	
 </div>
-<%=	render "shared/grid/grid_vertical" %> 	
+<%=	render "shared/grid/grid_vertical" unless @date.nil? %> 	
