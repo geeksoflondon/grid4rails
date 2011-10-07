@@ -28,7 +28,7 @@ locked_slots = Array.new
 
 ##Opening Talk
 
-start_time = Time.utc(2011, "sep", 17,9,30,00)
+start_time = Time.utc(2011, "oct", 29,9,30,00)
 end_time = start_time + 40.minutes
 timeslot_label = 'Opening Talk'
 Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
@@ -126,7 +126,7 @@ end
 ## Saturday Night
 
 start_time = end_time
-end_time = Time.utc(2011, "sep", 18,7,30,00)
+end_time = Time.utc(2011, "oct", 30,7,30,00)
 timeslot_label = 'Games, etc.'
 Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 locked_slots << timeslot_label
