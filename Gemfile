@@ -2,8 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'pg'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "rake", ">= 0.9.2"
 
@@ -28,6 +27,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg' #production db
+  gem 'pg'
 end
 
