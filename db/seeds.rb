@@ -14,13 +14,13 @@ Talk.delete_all
 User.delete_all
 
 #Generate Rooms
-Room.create(:name => 'Red Dwarf', :description => '5th Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'rdw', :capacity => 30, :facilities => 'TV')
-Room.create(:name => 'Doctor Who', :description => '5th Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'drw', :capacity => 100, :facilities => 'TV')
-Room.create(:name => 'Inside Out', :description => '5th Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'ino', :capacity => 20, :facilities => 'Projector')
-Room.create(:name => 'Attachments', :description => '5th Floor, in the front-left corner as you face Old Trafford.', :short_code => 'att', :capacity => 50, :facilities => 'Whiteboard')
-Room.create(:name => 'Torchwood', :description => '4th Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'twd', :capacity => 15, :facilities => 'Projector, whiteboard')
-Room.create(:name => 'Bagpuss', :description => '4th Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'bgp', :capacity => 20)
-Room.create(:name => 'Redhead', :description => '4th Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'rdh', :capacity => 30, :facilities => 'TV, whiteboard')
+Room.create(:name => 'Count Dracula', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'rdw', :capacity => 30, :facilities => 'TV')
+Room.create(:name => 'Frankenstein\'s Monster', :description => 'Xth Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'drw', :capacity => 100, :facilities => 'TV')
+Room.create(:name => 'The Luggage', :description => 'Xth Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'ino', :capacity => 20, :facilities => 'Projector')
+Room.create(:name => 'Godzilla', :description => 'Xth Floor, in the front-left corner as you face Old Trafford.', :short_code => 'att', :capacity => 50, :facilities => 'Whiteboard')
+Room.create(:name => 'Tribbles', :description => 'Xth Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'twd', :capacity => 15, :facilities => 'Projector, whiteboard')
+Room.create(:name => 'Pikachu', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'bgp', :capacity => 20)
+Room.create(:name => 'Casper', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'rdh', :capacity => 30, :facilities => 'TV, whiteboard')
 
 #Generate Timeslots
 
