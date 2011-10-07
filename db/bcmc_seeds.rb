@@ -30,18 +30,18 @@ locked_slots = Array.new
 
 start_time = Time.utc(2011, "sep", 17,9,30,00)
 end_time = start_time + 40.minutes
-label = 'Opening Talk'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_timeslot_label = 'Opening Talk'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 ## Grid Population
 
 start_time = end_time
 end_time = start_time + 20.minutes
-label = 'Grid Population'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_label = 'Grid Population'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 ## Saturday Morning
@@ -69,9 +69,9 @@ end
 
 start_time = end_time
 end_time = start_time + 1.hour
-label = 'Lunch'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_label = 'Lunch'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 ## Saturday Afternoon
@@ -98,9 +98,9 @@ end
 
 start_time = end_time
 end_time = start_time + 90.minutes
-label = 'Dinner'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_label = 'Dinner'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 ## Saturday Evening
@@ -127,18 +127,18 @@ end
 
 start_time = end_time
 end_time = Time.utc(2011, "sep", 18,7,30,00)
-label = 'Games, etc.'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_label = 'Games, etc.'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 ## Breakfast
 
 start_time = end_time
 end_time = start_time + 90.minutes
-label = 'Breakfast'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_label = 'Breakfast'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 ## Sunday Morning
@@ -165,8 +165,8 @@ end
 
 start_time = end_time
 end_time = start_time + 1.hour
-label = 'Lunch'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
+timeslot_label = 'Lunch'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 
 
 ## Sunday Afternoon
@@ -198,18 +198,18 @@ end
 
 start_time = end_time
 end_time = start_time + 15.minutes
-label = 'Closing Talk'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_label = 'Closing Talk'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 ## Clean-up
 
 start_time = end_time
 end_time = start_time + 30.minutes
-label = 'Clean-up'
-Timeslot.create(:name => label, :start => start_time, :end => end_time)
-locked_slots << label
+timeslot_label = 'Clean-up'
+Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+locked_slots << timeslot_label
 
 
 #Generate Slots
