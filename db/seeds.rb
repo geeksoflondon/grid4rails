@@ -59,7 +59,6 @@ while i < num_timeslots
 
   i = i+1
   session_no = session_no+1
-  
   end_time = end_time + 10.minutes
 
 end
@@ -117,7 +116,7 @@ while i < num_timeslots
 
   i = i+1
   session_no = session_no+1
-  
+
   end_time = end_time + 10.minutes
 
 end
@@ -155,7 +154,7 @@ while i < num_timeslots
 
   i = i+1
   session_no = session_no+1
-  
+
   end_time = end_time + 10.minutes
 
 end
@@ -183,13 +182,12 @@ while i < num_timeslots
 
   i = i+1
   session_no = session_no+1
-  
+
   if (i == (num_timeslots - 1))
   	end_time = end_time + 15.minutes
   else
   	end_time = end_time + 10.minutes
-  end	
-  
+  end
 
 end
 
@@ -218,25 +216,21 @@ puts "Total Timeslots: " + Timeslot.all.count.to_s
 puts "ID of first Timeslot: " + Timeslot.all.first.id.to_s
 puts "Total Rooms: " + Room.all.count.to_s
 puts "ID of first Room: " + Room.all.first.id.to_s
-puts "Total Slots: " + Slot.all.count.to_s  
+puts "Total Slots: " + Slot.all.count.to_s
 
 Slot.generate!
 
-puts "Total Slots: " + Slot.all.count.to_s  
+puts "Total Slots: " + Slot.all.count.to_s
 
 Timeslot.all.each do |timeslot|
 
-	if (locked_slots.include?(timeslot.name))
-	
-		timeslot.slots.each do |slot|
-			
-			talk = Talk.create(:title => timeslot.name)
-			slot.talk_id = talk.id
-			slot.locked = true
-			slot.save
-		
-		end			
-	
-	end
+  if (locked_slots.include?(timeslot.name))
+    timeslot.slots.each do |slot|
+      talk = Talk.create(:title => timeslot.name)
+      slot.talk_id = talk.id
+      slot.locked = true
+      slot.save
+    end
+  end
 
 end
