@@ -1,8 +1,5 @@
 class TalksController < ApplicationController
 
-  after_filter :expire_cache, :only => ['create', 'update', 'assign_slot']
-
-
   # A view listing all talks
   def index
     @page_id = "talks"
@@ -40,7 +37,6 @@ class TalksController < ApplicationController
       format.json  { render :json => @talk }
     end
   end
-  
 
   # Creates a new talk in the DB using the data specified
   # and then redirects to the "schedule" view
@@ -89,27 +85,26 @@ class TalksController < ApplicationController
 
   # A view displaying all talks that aren't been assigned to a slot
   def unscheduled
-	@page_id = "talks"
-    @talks = Talk.unscheduled  
+  @page_id = "talks"
+    @talks = Talk.unscheduled
   end
 
-  
   # A view of the grid for the purpose of assigning a talk to a slot
   def schedule
     @page_id = "talk-assign"
-    @unscheduled = Talk.find(params[:id])  
-   
+    @unscheduled = Talk.find(params[:id])
+
     if (params[:date])
-    	@timeslots = Timeslot.by_date(params[:date])
+      @timeslots = Timeslot.by_date(params[:date])
     else
-    	@timeslots = Timeslot.auto_date
+      @timeslots = Timeslot.auto_date
     end
     @date = @timeslots.first.start.to_date
-    if (params[:date].nil?) 
-    	# Why is date appearing in query string rather than url?
-    	redirect_to :controller => "talks", :action => "schedule", :date => @date, :id => params[:id] 
+    if (params[:date].nil?)
+      # Why is date appearing in query string rather than url?
+      redirect_to :controller => "talks", :action => "schedule", :date => @date, :id => params[:id]
     end
- 
+
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
     @rooms = Room.all
@@ -117,25 +112,24 @@ class TalksController < ApplicationController
     @empty_slot_index = 0
     @description = "The grid, showing empty slots"
   end
-  
-  
+
   # A view of the grid for the purpose of moving a talk
   # to another slot or off the grid entirely
   def move
     @page_id = "talk-move"
-    @unscheduled = Talk.find(params[:id])  
-    
+    @unscheduled = Talk.find(params[:id])
+
     if (params[:date])
-    	@timeslots = Timeslot.by_date(params[:date])
+      @timeslots = Timeslot.by_date(params[:date])
     else
-    	@timeslots = Timeslot.auto_date
+      @timeslots = Timeslot.auto_date
     end
     @date = @timeslots.first.start.to_date
-    if (params[:date].nil?) 
-    	# Why is date appearing in query string rather than url?
-    	redirect_to :controller => "talks", :action => "move", :date => @date, :id => params[:id] 
+    if (params[:date].nil?)
+      # Why is date appearing in query string rather than url?
+      redirect_to :controller => "talks", :action => "move", :date => @date, :id => params[:id]
     end
- 
+
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
     @rooms = Room.all
@@ -147,26 +141,28 @@ class TalksController < ApplicationController
 
   # Assigns the specified talk to the specified slot
   # and then redirects to a view of the grid on the date that the slot belongs to
-  def assign_slot        
+  def assign_slot
     talk = Talk.find(params[:id])
     slot = Slot.find(params[:slot])
-    
+
     # Reset the original slot (if there was one)
-    if (talk.slot)  	
-		original_slot = Slot.find(talk.slot.id)
-		if (!original_slot.nil?) 
-			original_slot.talk_id = nil
-			original_slot.save
-		end
-	end
-    
+    if (talk.slot)
+      original_slot = Slot.find(talk.slot.id)
+      if (!original_slot.nil?)
+        original_slot.talk_id = nil
+        original_slot.save
+        expire_fragment(%r{slot_#{original_slot.id}\S*})
+      end
+    end
+
     # Create associations between the talk and slot
-    slot.talk_id = talk.id   
-            
+    slot.talk_id = talk.id
+
     # Bug means that notice won't show if defined in redirect_to statement
     # http://www.ruby-forum.com/topic/830332
-    if slot.save      
-      flash[:notice] = "Talk was updated" 
+    if slot.save
+      flash[:notice] = "Talk was updated"
+      expire_fragment(%r{slot_#{slot.id}\S*})
       redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date
     else
       flash[:warning] = "There was an issue scheduling your talk"
@@ -174,43 +170,43 @@ class TalksController < ApplicationController
     end
 
   end
-  
-  
+
   # Swaps the two talks specified
   # and then redirects to a view of the grid on the date that initiating talk is now on
-  def swap_slot        
-    
+  def swap_slot
     # Check that an ID has been provided for both talks
     if (!params[:id] || !params[:talk_2])
       redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
     end
-    
+
     # Check that the talk IDs aren't the same
     if (params[:id] == params[:talk_2])
       redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
     end
-    
+
     # Find the specified talks
     talk_1 = Talk.find(params[:id])
     talk_2 = Talk.find(params[:talk_2])
-        
+
     # Find their existing slots
     slot_1 = Slot.find(talk_1.slot)
     slot_2 = Slot.find(talk_2.slot)
-	    
-	# Check that both slots have been found
+
+  # Check that both slots have been found
     if (slot_1.nil? || slot_2.nil?)
       redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
     end
-	  
+
     # Swap the talks
     slot_1.talk_id = talk_2.id
-    slot_2.talk_id = talk_1.id        
-            
+    slot_2.talk_id = talk_1.id
+
     # Bug means that notice won't show if defined in redirect_to statement
     # http://www.ruby-forum.com/topic/830332
-    if (slot_1.save && slot_2.save)      
-      flash[:notice] = "Talks were successfully swapped" 
+    if (slot_1.save && slot_2.save)
+      flash[:notice] = "Talks were successfully swapped"
+      expire_fragment(%r{slot_#{slot_1.id}\S*})
+      expire_fragment(%r{slot_#{slot_2.id}\S*})
       redirect_to :controller => "grid", :action => "date", :date => slot_2.timeslot.start.to_date
     else
       flash[:warning] = "There was an issue swapping those talks."
@@ -218,34 +214,28 @@ class TalksController < ApplicationController
     end
 
   end
-  
-  
+
   # De-assigns the specified talk from the specified slot
   # and then redirects to a view of the grid on the date that the slot belongs to
-  def unschedule        
+  def unschedule
 
-	talk = Talk.find(params[:id])	
+  talk = Talk.find(params[:id])
 
-	# Reset the original slot	
-	slot = Slot.find(talk.slot)
-	slot.talk_id = nil
+  # Reset the original slot 
+  slot = Slot.find(talk.slot)
+  slot.talk_id = nil
 
     # Bug means that notice won't show if defined in redirect_to statement
     # http://www.ruby-forum.com/topic/830332
-    if slot.save      
-      flash[:notice] = "Talk was removed from the grid." 
+    if slot.save
+      flash[:notice] = "Talk was removed from the grid."
+      expire_fragment(%r{slot_#{slot.id}\S*})
       redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date
     else
       flash[:warning] = "There was an issue removing your talk from the grid."
       redirect_to :back
     end
 
-  end
-
-  private
-
-  def expire_cache
-      expire_fragment('the_grid')
   end
 
 end
