@@ -25,14 +25,12 @@ class Slot < ActiveRecord::Base
     timeslots = Timeslot.order(:start).all
 
     Slot.delete_all
-    slot_id = 100000000    
 
     timeslots.each do |timeslot|
 
       Room.all.each do |room|
 
-        slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
-        slot.id = (slot_id + 1)
+        Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
 
       end
     end
