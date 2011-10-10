@@ -43,7 +43,7 @@ class Slot < ActiveRecord::Base
   end
 
   def is_empty?
-    if (self.talk_id.nil?)
+    if (self.talk.nil?)
       return true
     else
       return false
