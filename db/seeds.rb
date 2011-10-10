@@ -250,16 +250,15 @@ Timeslot.all.each do |timeslot|
     timeslot.slots.each do |slot|
       
       ##### Create a talk with the same name as the timeslot
-      talk = Talk.create
+      Talk.create(:title => "#{timeslot.name}")
+      talk = Talk.all.last
       
       ##### Assign the talk to the current slot
-      talk.title = "#{timeslot.name}"
       puts "Assigning talk " + talk.id.to_s + " to slot " + slot.id.to_s
       talk.slot = slot
 	  talk.save
 	  
 	  ##### Lock the slot
-	  slot.talk = talk
       slot.locked = true
       slot.save
       
