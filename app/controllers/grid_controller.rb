@@ -4,17 +4,21 @@ class GridController < ApplicationController
 
   def now
     @page_id = "now"
-    @timeslot = Timeslot.on_now
-	  @date = @timeslot.start.to_date
-	  flash.keep
-    redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
+    @timeslot = Timeslot.on_now    
+	@date = @timeslot.start.to_date unless @timeslot.nil?
+    flash.keep
+	if @date.nil?
+    	redirect_to :controller => "grid", :action => "date"
+    else 
+    	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
+    end
   end
 
   def next
     @page_id = "next"
-    @timeslot = Timeslot.on_next
-    @date = @timeslot.start.to_date
     flash.keep
+    @timeslot = Timeslot.on_next
+    @date = @timeslot.start.to_date    
     redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
   end
 
