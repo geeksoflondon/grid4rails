@@ -1,6 +1,6 @@
 class Talk < ActiveRecord::Base
 
-  has_one :slot
+  belongs_to :slot
   
   before_save :expire_cache
   after_save :rebuild_cache
