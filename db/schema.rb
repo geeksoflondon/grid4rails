@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915172700) do
+ActiveRecord::Schema.define(:version => 20111008222322) do
 
   create_table "rooms", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20110915172700) do
     t.integer  "capacity"
     t.string   "facilities"
   end
+
+  add_index "rooms", ["id"], :name => "index_rooms_on_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -43,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20110915172700) do
     t.boolean  "global",      :default => false
   end
 
+  add_index "slots", ["global"], :name => "index_slots_on_global"
+  add_index "slots", ["id"], :name => "index_slots_on_id"
+  add_index "slots", ["locked"], :name => "index_slots_on_locked"
+  add_index "slots", ["room_id"], :name => "index_slots_on_room_id"
+  add_index "slots", ["talk_id"], :name => "index_slots_on_talk_id"
+  add_index "slots", ["timeslot_id"], :name => "index_slots_on_timeslot_id"
+
   create_table "talks", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -50,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20110915172700) do
     t.datetime "updated_at"
     t.string   "speaker"
   end
+
+  add_index "talks", ["id"], :name => "index_talks_on_id"
 
   create_table "timeslots", :force => true do |t|
     t.string   "name"
@@ -60,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20110915172700) do
     t.boolean  "assign_slots", :default => true
     t.string   "description"
   end
+
+  add_index "timeslots", ["id"], :name => "index_timeslots_on_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
