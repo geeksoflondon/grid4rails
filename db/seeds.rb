@@ -255,6 +255,7 @@ Timeslot.all.each do |timeslot|
 	  talk.save
 	  
 	  ##### Lock the slot
+	  slot.talk = talk
       slot.locked = true
       slot.save
       
