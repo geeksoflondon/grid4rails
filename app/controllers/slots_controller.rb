@@ -2,9 +2,7 @@ class SlotsController < ApplicationController
 
   def index
     @page_id = "slots"
-    @slots = Slot.find(:all,
-                       :joins => :timeslot,
-                       :order => 'timeslots.start ASC')
+    @slots = Slot.all
 
     respond_to do |format|
       format.html
