@@ -2,8 +2,7 @@ class Slot < ActiveRecord::Base
 
   belongs_to :room
   belongs_to :timeslot
-
-  has_one :talk
+  belongs_to :talk
 
   validates :timeslot_id,
     :presence => true
@@ -32,13 +31,13 @@ class Slot < ActiveRecord::Base
   end
 
   def self.find_empty
-  @slots = Array.new()
-  Slot.all.each do | slot |
-    if (slot.is_empty?)
-      @slots << slot
-    end
-  end
-    return @slots
+	@slots = Array.new()
+	Slot.all.each do | slot |
+		if (slot.is_empty?)
+			@slots << slot
+		end
+	end
+  	return @slots
   end
 
   def is_empty?
