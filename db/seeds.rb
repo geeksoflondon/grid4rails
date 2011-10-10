@@ -250,9 +250,10 @@ Timeslot.all.each do |timeslot|
     timeslot.slots.each do |slot|
       
       ##### Create a talk with the same name as the timeslot
-      talk = Talk.create(:title => "#{timeslot.name}")
+      talk = Talk.create
       
       ##### Assign the talk to the current slot
+      talk.title = "#{timeslot.name}"
       puts "Assigning talk " + talk.id.to_s + " to slot " + slot.id.to_s
       talk.slot = slot
 	  talk.save
