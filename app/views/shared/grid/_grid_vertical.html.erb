@@ -33,7 +33,9 @@
 						<% if (@page_id != "room" || (@page_id == "room" && slot.room == @room)) %>
 							<% @slot = slot %>									
 							<% @room = @slot.room %>												
-			           		<%= render 'shared/grid/slot' %>
+							<% cache ("slot_#{@slot.id}_#{@page_id}_#{@version}") do %>
+			           			<%= render 'shared/grid/slot' %>
+							<% end %>
 			           	<% end %>
 					<% end %>	
 				</div>	
