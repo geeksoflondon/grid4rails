@@ -1,10 +1,6 @@
 class Talk < ActiveRecord::Base
 
   has_one :slot
-  
-  before_save :expire_cache
-  after_save :rebuild_cache
-
 
   def self.unscheduled
     talks = Talk.select {|talk| talk.is_unscheduled}
@@ -19,13 +15,5 @@ class Talk < ActiveRecord::Base
   end
 
   private
-
-  def expire_cache
-    Rails.cache.delete("talk_#{self.id}")
-  end
-
-  def rebuild_cache
-    Rails.cache.write("talk_#{self.id}", self)
-  end
 
 end
