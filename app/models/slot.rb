@@ -1,7 +1,8 @@
 class Slot < ActiveRecord::Base
+
   belongs_to :room
   belongs_to :timeslot
-  has_one :talk
+  belongs_to :talk
 
   validates :timeslot_id,
   	:presence => true
