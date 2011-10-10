@@ -4,15 +4,16 @@ Griddy::Application.routes.draw do
 
   match "versions/:version", :to => "application#set_version"
 
-  match "talks/unscheduled", :to => "talks#unscheduled"
-  match "talks/:id/schedule", :to => "talks#schedule"
-  match "talks/:id/move", :to => "talks#move"
-  match "talks/:id/unschedule", :to => "talks#unschedule"
+  
   match "talks/:id/schedule/:date", :to => "talks#schedule", :as => :schedule_talk
+  match "talks/:id/schedule", :to => "talks#schedule"
   match "talks/:id/move/:date", :to => "talks#move", :as => :move_talk  
+  match "talks/:id/move", :to => "talks#move"
   match "talks/:id/assign_slot", :to => "talks#assign_slot"
   match "talks/:id/swap_slot", :to => "talks#swap_slot"
-  match "talks/:id/edit", :to => "talks#edit"  
+  match "talks/:id/edit", :to => "talks#edit"
+  match "talks/:id/unschedule", :to => "talks#unschedule"
+  match "talks/unscheduled", :to => "talks#unscheduled"  
   resources :talks
 
   resources :users
