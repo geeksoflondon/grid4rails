@@ -7,13 +7,21 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 #Firstly lets destroy anything we can find
+puts "Deleting existing rooms, timeslots, slots, talks and users."
 Room.delete_all
 Timeslot.delete_all
 Slot.delete_all
 Talk.delete_all
 User.delete_all
 
+puts "Total Timeslots: " + Timeslot.all.count.to_s
+puts "Total Rooms: " + Room.all.count.to_s
+puts "Total Slots: " + Slot.all.count.to_s
+puts "Total Talks: " + Talk.all.count.to_s
+
+
 #Generate Rooms
+puts "Generating rooms."
 Room.create(:name => 'Count Dracula', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'rdw', :capacity => 30, :facilities => 'TV')
 Room.create(:name => 'Frankenstein\'s Monster', :description => 'Xth Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'drw', :capacity => 100, :facilities => 'TV')
 Room.create(:name => 'The Luggage', :description => 'Xth Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'ino', :capacity => 20, :facilities => 'Projector')
@@ -22,8 +30,12 @@ Room.create(:name => 'Tribbles', :description => 'Xth Floor, cosy armchairs, to 
 Room.create(:name => 'Pikachu', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'bgp', :capacity => 20)
 Room.create(:name => 'Casper', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'rdh', :capacity => 30, :facilities => 'TV, whiteboard')
 
-#Generate Timeslots
+puts "Total Rooms: " + Room.all.count.to_s
+puts "ID of first Room: " + Room.all.first.id.to_s
 
+
+#Generate Timeslots
+puts "Generating timeslots."
 locked_slots = Array.new
 
 ##Opening Talk
@@ -210,17 +222,20 @@ Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 locked_slots << timeslot_label
 
 
-#Generate Slots
-
+## Summary of timeslots created
 puts "Total Timeslots: " + Timeslot.all.count.to_s
 puts "ID of first Timeslot: " + Timeslot.all.first.id.to_s
-puts "Total Rooms: " + Room.all.count.to_s
-puts "ID of first Room: " + Room.all.first.id.to_s
-puts "Total Slots: " + Slot.all.count.to_s
 
+
+# Generate Slots
+puts "Generating slots."
 Slot.generate!
 
 puts "Total Slots: " + Slot.all.count.to_s
+
+
+# Generate pre-determined talks
+puts "Generating pre-determined talks."
 
 Timeslot.all.each do |timeslot|
 
@@ -234,3 +249,8 @@ Timeslot.all.each do |timeslot|
   end
 
 end
+
+puts "Total Talks: " + Talk.all.count.to_s
+
+# Confirm seed completed
+puts "Seeding complete."
