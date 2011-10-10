@@ -2,13 +2,14 @@ class Slot < ActiveRecord::Base
 
   belongs_to :room
   belongs_to :timeslot
-  belongs_to :talk
+
+  has_one :talk
 
   validates :timeslot_id,
-  	:presence => true
+    :presence => true
 
   validates :room_id,
-  	:presence => true
+    :presence => true
 
   def start
     timeslot.start
@@ -23,23 +24,21 @@ class Slot < ActiveRecord::Base
     Slot.delete_all
 
     Timeslot.all.each do |timeslot|
-
       Room.all.each do |room|
-
-        Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
-
+        slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
       end
     end
+
   end
 
   def self.find_empty
-	@slots = Array.new()
-	Slot.all.each do | slot |
-		if (slot.is_empty?)
-			@slots << slot
-		end
-	end
-  	return @slots
+  @slots = Array.new()
+  Slot.all.each do | slot |
+    if (slot.is_empty?)
+      @slots << slot
+    end
+  end
+    return @slots
   end
 
   def is_empty?
@@ -61,6 +60,5 @@ class Slot < ActiveRecord::Base
   def self.on_next
     Timeslot.on_next.slots
   end
-
 
 end
