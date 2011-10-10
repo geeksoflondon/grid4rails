@@ -74,7 +74,7 @@
             <% end %>
         </div>  
     <% else %>
-        <% talk = Talk.find(@slot.talk_id) %>
+        <% talk = @slot.talk %>
         <div class="talk">
             <% if (@page_id != "room") %>
                 <%= render '/shared/grid/where_when' unless @slot.locked %>
