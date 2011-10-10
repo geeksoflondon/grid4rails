@@ -1,6 +1,7 @@
 class Talk < ActiveRecord::Base
 
-  belongs_to :slot
+  has_one :slot
+  
   validates_presence_of :title, :if => proc{|obj| obj.description.blank? && obj.speaker.blank? }
   validates_presence_of :description, :if => proc{|obj| obj.title.blank? && obj.speaker.blank? }
   validates_presence_of :speaker, :if => proc{|obj| obj.title.blank? && obj.description.blank? }
