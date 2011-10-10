@@ -5,8 +5,8 @@ class GridController < ApplicationController
   def now
     @page_id = "now"
     @timeslot = Timeslot.on_now
-	@date = @timeslot.start.to_date
-	flash.keep
+	  @date = @timeslot.start.to_date
+	  flash.keep
     redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
   end
 
