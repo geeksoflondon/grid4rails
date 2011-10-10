@@ -22,11 +22,9 @@ class Slot < ActiveRecord::Base
 
   def self.generate!
 
-    timeslots = Timeslot.order(:start).all
-
     Slot.delete_all
 
-    timeslots.each do |timeslot|
+    Timeslot.all.each do |timeslot|
 
       Room.all.each do |room|
 
