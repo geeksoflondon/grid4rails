@@ -243,24 +243,21 @@ Timeslot.all.each do |timeslot|
 
   ### Check whether the name of the current timeslot is in the list of pre-determined talk names
   if (predetermined_talk_names.include?(timeslot.name))
-  
+
   	puts "Timeslot Name: " + timeslot.name
-  
+
   	#### A pre-determined talk needs to be assigned to each of the slots in this timeslot
     timeslot.slots.each do |slot|
-      
       ##### Create a talk with the same name as the timeslot
-      talk = Talk.create(:title => timeslot.name)      
-      
+      talk = Talk.create(:title => timeslot.name)
       ##### Assign the talk to the current slot
       puts "Assigning talk " + talk.id.to_s + " to slot " + slot.id.to_s
-      talk.slot = slot
+      slot.talk_id = talk.id
 	  talk.save
-	  
+
 	  ##### Lock the slot
       slot.locked = true
       slot.save
-      
     end
   end
 
