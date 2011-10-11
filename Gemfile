@@ -16,8 +16,9 @@ gem "clearance"
 
 gem 'redis' #queueing
 
-#exception capture
+#exception capture and logging
 gem 'exceptional'
+gem 'newrelic_rpm'
 
 group :development do 
   gem 'heroku'
