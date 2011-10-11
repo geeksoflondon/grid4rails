@@ -11,9 +11,6 @@ gem "jquery-rails", "~> 1.0.12"
 gem 'compass'
 gem 'haml' # for SASS
 
-#Passwords and login
-gem "clearance"
-
 gem 'redis' #queueing
 
 #exception capture and logging
