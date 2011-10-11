@@ -16,6 +16,9 @@ gem "clearance"
 
 gem 'redis' #queueing
 
+#exception capture
+gem 'exceptional'
+
 group :development do 
   gem 'heroku'
 end
