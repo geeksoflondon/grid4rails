@@ -32,7 +32,7 @@ Griddy::Application.configure do
   config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  config.action_controller.asset_host = "http://d3oqzz4kjc1a3h.cloudfront.net"
+  config.action_controller.asset_host = "http://d3m5f8nndd1dly.cloudfront.net"
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
