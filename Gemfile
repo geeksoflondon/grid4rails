@@ -15,8 +15,6 @@ gem 'haml' # for SASS
 gem "clearance"
 
 gem 'redis' #queueing
-gem 'dalli' #memcached layer
-
 
 group :development do 
   gem 'heroku'

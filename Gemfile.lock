@@ -39,7 +39,6 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    dalli (1.1.2)
     diesel (0.1.5)
       railties
     erubis (2.6.6)
@@ -106,7 +105,6 @@ PLATFORMS
 DEPENDENCIES
   clearance
   compass
-  dalli
   haml
   heroku
   jquery-rails (~> 1.0.12)
