@@ -139,6 +139,15 @@ body.talks #main {
     left: 0px;
 }
 
+#header .skip-to-versions a:link,
+#header .skip-to-versions a:visited,
+#header .skip-to-versions a:hover,
+#header .skip-to-versions a:focus,
+#header .skip-to-versions a:active {
+    padding-right: 19px;    
+    background-image: url("/images/themes/default/icons/version/large_small.png");
+}
+
 
 /* FEATURE: Footer
 -----------------------------*/

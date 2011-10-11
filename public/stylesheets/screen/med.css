@@ -48,14 +48,19 @@ body {
 -----------------------------*/
 
 a:link,
-a:visited {	
+a:visited,
+#header .skip-to-versions a:link .title,
+#header .skip-to-versions a:visited .title {	
 	text-decoration: none;	
     border-bottom: 1px dotted #999999;
 }
 
 a:hover,
 a:focus,
-a:active {
+a:active,
+#header .skip-to-versions a:hover .title,
+#header .skip-to-versions a:focus .title,
+#header .skip-to-versions a:active .title {
 	text-decoration: none;	
 	border-bottom: 1px solid #999999;
 }
@@ -224,8 +229,12 @@ input.orange,
 #header .skip-to-versions a:active {
     background-color: inherit;
     color: #dddddd;
-    padding: 3px 19px 3px 0;    
-    background: transparent url("/images/wrench.png") no-repeat right center;
+    padding: 3px 12px 3px 0;    
+    background-color: transparent;
+    background-image: url("/images/themes/default/icons/version/medium_small.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    border: none;
 }
 
 #header .nav li a,
