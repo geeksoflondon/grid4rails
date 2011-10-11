@@ -281,6 +281,18 @@ fieldset {
 }
 
 
+/* FEATURE: Versions Flash
+-----------------------------*/
+
+.versions-flash p {
+	text-align: center;
+	margin-bottom: 6px;
+}
+.versions-flash .title {
+	font-size: small;
+}
+
+
 /* VIEW: Talk
 -----------------------------*/
 

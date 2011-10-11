@@ -1,0 +1,23 @@
+<div class="message versions-flash">
+	<p>Which version would you prefer?</p>
+	<div class="options">
+		<p class="option small<% if (cookies[:version] == 'low') %> selected<% end %>">			
+			<a href="/versions/low">
+				<img src="/images/themes/default/icons/version/small.png" alt="Phone" /><br />
+				<span class="title">Small</span>
+			</a>
+		</p>
+		<p class="option medium<% if (cookies[:version] == 'med') %> selected<% end %>">
+			<a href="/versions/med">
+				<img src="/images/themes/default/icons/version/medium.png" alt="Tablet" /><br />
+				<span class="title">Medium</span>
+			</a>
+		</p>
+		<p class="option large<% if (cookies[:version] == 'high') %> selected<% end %>">
+			<a href="/versions/high">
+				<img src="/images/themes/default/icons/version/large.png" alt="Monitor" /><br />
+				<span class="title">Large</span>
+			</a>	
+		</p>
+	</div>
+</div>

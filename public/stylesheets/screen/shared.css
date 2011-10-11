@@ -63,14 +63,56 @@ form .actions {
 }
 
 
-/* Custom features
+/* FEATURE: Global Navigation
 -----------------------------*/
 
-/* Global navigation */
 #header .nav li,
 #footer .nav li {
     white-space: nowrap;
 }
+
+
+
+/* FEATURE: Versions Flash
+-----------------------------*/
+
+.versions-flash a:link,
+.versions-flash a:visited,
+.versions-flash a:hover,
+.versions-flash a:focus,
+.versions-flash a:active {
+	color: #444444;
+	text-decoration: none;
+}
+
+.versions-flash a:link .title,
+.versions-flash a:visited .title,
+.versions-flash a:hover .title,
+.versions-flash a:focus .title,
+.versions-flash a:active .title {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+}
+
+.versions-flash a:link .title,
+.versions-flash a:visited .title {
+	border-bottom-color: #C9E2AE;
+}
+
+.versions-flash .selected a:link .title,
+.versions-flash .selected a:visited .title {
+	border-bottom-color: #444444;
+}
+
+.versions-flash a:hover .title,
+.versions-flash a:focus .title,
+.versions-flash a:active .title,
+.versions-flash .selected a:hover .title,
+.versions-flash .selected a:focus .title,
+.versions-flash .selected a:active .title {
+	border-bottom-color: #ffffff;
+}
+
 
 
 /* VIEW: Grid

@@ -14,17 +14,21 @@ class ApplicationController < ActionController::Base
   	@talks_taking_place = Timeslot.on_now.nil? == true ? false : true 
   end
 
-  def version 
-    if (cookies[:version] && !cookies[:version].blank?)
-    	@version = cookies[:version] unless (cookies[:version] != "low" && cookies[:version] != "med" && cookies[:version] != "high")    	
+  def version
+  	if (!cookies[:version] || cookies[:version].blank?)
+  	 	cookies[:version_check] = true  	
+  	end 
+  	if (cookies[:version] && !cookies[:version].blank?)  
+    	@version = cookies[:version] unless (cookies[:version] != "low" && cookies[:version] != "med" && cookies[:version] != "high") 	
     end
     @version ||= "low"
     if (cookies[:version] != @version)
     	cookies[:version] = @version
-    end
+    end    
   end
   
   def set_version
+    cookies[:version_check] = false
     @version = params[:version] unless (params[:version] != "low" && params[:version] != "med" && params[:version] != "high")
     @version ||= "low"
     cookies[:version] = @version
