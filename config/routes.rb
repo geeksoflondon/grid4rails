@@ -14,7 +14,7 @@ Griddy::Application.routes.draw do
   match "talks/:id/edit", :to => "talks#edit"
   match "talks/:id/unschedule", :to => "talks#unschedule"
   match "talks/unscheduled", :to => "talks#unscheduled"
-  resources :talks
+  resources :talks, :except => [:destroy]
 
   match "rooms/:room", :to => "rooms#show"
   resources :rooms, :only => [:index, :show]
@@ -25,7 +25,7 @@ Griddy::Application.routes.draw do
   match "grid/:date", :to => "grid#date"
   match "grid/:date/sessions/:timeslot", :to => "grid#show"
   match "grid", :to => "grid#date"
-  resources :grid
+  resources :grid, :except => [:index, :new, :create, :edit, :update, :destroy]
 
 
   # The priority is based upon order of creation:
