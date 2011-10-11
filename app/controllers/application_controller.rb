@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
   	 	cookies[:version_check] = true  	
   	end 
   	if (cookies[:version] && !cookies[:version].blank?)  
-    	@version = cookies[:version] unless (cookies[:version] != "low" && cookies[:version] != "med" && cookies[:version] != "high") 	
+    	@version = cookies[:version] unless (cookies[:version] != "small" && cookies[:version] != "medium" && cookies[:version] != "large") 	
     end
-    @version ||= "low"
+    @version ||= "small"
     if (cookies[:version] != @version)
     	cookies[:version] = @version
     end    
@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
   
   def set_version
     cookies[:version_check] = false
-    @version = params[:version] unless (params[:version] != "low" && params[:version] != "med" && params[:version] != "high")
-    @version ||= "low"
+    @version = params[:version] unless (params[:version] != "small" && params[:version] != "medium" && params[:version] != "large")
+    @version ||= "small"
     cookies[:version] = @version
     if (params[:url])
         redirect_to params[:url]	

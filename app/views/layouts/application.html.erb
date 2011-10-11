@@ -10,15 +10,15 @@
 		<title>Griddy</title>
 		
 		<!-- Style -->	
-		<% if (@version == "high") %> 			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/med", "screen/high" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med", "themes/#{theme}/screen/high" %>			
-		<% elsif (@version == "med") %>			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/med" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med" %>			
+		<% if (@version == "large") %> 			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", "screen/large" %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", "themes/#{theme}/screen/high" %>			
+		<% elsif (@version == "medium") %>			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium" %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium" %>			
 		<% else  %>						
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/low"  %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/low"  %>						
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/small"  %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/small"  %>						
 		<% end  %>
 		
 		<!-- CSRF -->

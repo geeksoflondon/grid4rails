@@ -1,7 +1,7 @@
 <div id="options" class="nav">
 	<h2 class="heading<% if (@header) %> hide<% end %>">Options:</h2>
 	<ul>
-		<% if ((@header && @version != "low") || (@footer && @version == "low")) %>
+		<% if ((@header && @version != "small") || (@footer && @version == "small")) %>
 			<li<% if (current_page?(:action => 'index', :controller => 'grid') || request.url == root_url) %> class="selected"<% end %>>
 				<a href="/grid">View Grid</a>
 			</li>

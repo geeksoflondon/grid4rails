@@ -5,7 +5,7 @@
         end
         slot_index = @slots.index(@slot)
     %>
-    <% if (@version == "low" && @page_id != "room") %>              
+    <% if (@version == "small" && @page_id != "room") %>              
         <%
             # Determine the id of the next slot in the current timeslot
             if (@slot != @slots.last)
@@ -62,7 +62,7 @@
                     <span class='submit'><%= link_to("Add a talk", url_options = { :controller => "talks", :action => "new"}, html_options = { :class => "button green medium" }) %></span>
                 </p> 
             <% end %>
-            <% if (@version == "low" && @page_id != "room") %>   
+            <% if (@version == "small" && @page_id != "room") %>   
                 <p class="skip skip-to-empty">
                     <span class="label">Empty: </span>
                     <a href="#empty-<%= (@empty_slot_index + 1) %>">next</a>

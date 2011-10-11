@@ -1,21 +1,21 @@
 <% @footer = true %>
-<% if (@version == "low") %>
+<% if (@version == "small") %>
 	<p class="skip-up hide"><img src="/images/arrow_up.png" class="icon" width="28" height="15" /><a href="#header" title="Skip to the top of the page">top</a></p>
 <% end %>
 <div id="footer"> 
-	<% if (@version == "low") %>
+	<% if (@version == "small") %>
 		<p class="skip-down hide"><img src="/images/arrow_down.png" class="icon" width="28" height="15" /><a href="#version-switcher" title="Skip to the version switcher">versions</a></p>
 	<% end %>
 	<%= render '/shared/nav/global' %>
-	<% if (@version == "low") %>		
+	<% if (@version == "small") %>		
 		<p class="skip-up hide"><img src="/images/arrow_up.png" class="icon" width="28" height="15" /><a href="#header" title="Skip to the top of the page">top</a></p>
 	<% end %>
 	<div id="version-switcher" class="version-switcher">
 		<h2 class="heading">Versions:</h2>
 		<p class="options">
-			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "low", :url => request.url %>" <% if (@version == "low") %>class="selected"<% end %>>Small</a><span class="delimiter"></span></span>
-			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "med", :url => request.url %>" <% if (@version == 'med') %>class="selected"<% end %>>Medium</a><span class="delimiter"></span></span>
-			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "high", :url => request.url %>" <% if (@version == 'high') %>class="selected"<% end %>>Large</a></span>
+			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "small", :url => request.url %>" <% if (@version == "small") %>class="selected"<% end %>>Small</a><span class="delimiter"></span></span>
+			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "medium", :url => request.url %>" <% if (@version == 'medium') %>class="selected"<% end %>>Medium</a><span class="delimiter"></span></span>
+			<span class="option"><a href="<%= url_for :controller => "application", :action => "set_version", :version => "large", :url => request.url %>" <% if (@version == 'large') %>class="selected"<% end %>>Large</a></span>
 		</p>
 	</div>
 </div>
