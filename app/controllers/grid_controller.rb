@@ -55,17 +55,7 @@ class GridController < ApplicationController
     @rooms = Room.all
     @description = "All talks."
   end
-
-  def day
-    @page_id = "day-grid"
-    @show_room_col = true
-    @timeslots = Timeslot.by_day(params[:date])
-    @date = @timeslots.first.start.to_date
-    @is_single_timeslot = (@timeslots.count == 1)
-    @empty_slot_index = 0
-    @rooms = Array.wrap(Room.all)
-    @description = "On this day."
-  end
+  
 
   def room
   	@page_id = "room-grid"

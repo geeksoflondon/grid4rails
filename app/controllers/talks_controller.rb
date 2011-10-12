@@ -178,17 +178,18 @@ class TalksController < ApplicationController
   # and then redirects to a view of the grid on the date that initiating talk is now on
   def swap_slot
     # Check that an ID has been provided for both talks
-    if (!params[:id] || !params[:talk_2])
-      redirect_to :controller => 'talks', :action => 'move', :id => params[:id], :version => params[:version] and return
+    talk = Talk.find(session[:talk_id])
+    if (!session[:talk_id] || !params[:talk_2])
+      redirect_to :controller => 'talks', :action => 'move', :id => session[:talk_id], :version => params[:version] and return
     end
 
     # Check that the talk IDs aren't the same
-    if (params[:id] == params[:talk_2])
-      redirect_to :controller => 'talks', :action => 'move', :id => params[:id], :version => params[:version] and return
+    if (session[:talk_id] == params[:talk_2])
+      redirect_to :controller => 'talks', :action => 'move', :id => session[:talk_id], :version => params[:version] and return
     end
 
     # Find the specified talks
-    talk_1 = Talk.find(params[:id])
+    talk_1 = Talk.find(session[:talk_id])
     talk_2 = Talk.find(params[:talk_2])
 
     # Find their existing slots
@@ -197,7 +198,7 @@ class TalksController < ApplicationController
 
   # Check that both slots have been found
     if (slot_1.nil? || slot_2.nil?)
-      redirect_to :controller => 'talks', :action => 'move', :id => params[:id], :version => params[:version] and return
+      redirect_to :controller => 'talks', :action => 'move', :id => session[:talk_id], :version => params[:version] and return
     end
 
     # Swap the talks
@@ -222,7 +223,7 @@ class TalksController < ApplicationController
   # and then redirects to a view of the grid on the date that the slot belongs to
   def unschedule
 
-	  talk = Talk.find(params[:id])
+	  talk = Talk.find(session[:talk_id])
 	
 	  # Reset the original slot 
 	  slot = Slot.find(talk.slot)
