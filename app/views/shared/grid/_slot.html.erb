@@ -49,7 +49,7 @@
                 <% end %>
             <% end %>
             <% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
-                <%= form_tag(:controller => "talks", :action => "assign_slot", :id => @unscheduled.id) do |f| %>
+                <%= form_tag(:controller => "talks", :action => "assign_slot") do |f| %>
                     <input type="hidden" name="slot" value="<%= @slot.id %>" />
                     <% if (@page_id == "talk-assign") %>
                         <p class="actions"><span class="submit"><%= submit_tag("Insert here", options = { :class => "button green medium" }) %></span></p>
@@ -80,7 +80,7 @@
                 <%= render '/shared/grid/where_when' unless @slot.locked %>
             <% end %>
             <% if (@page_id == "talk-move" unless (@slot.locked? || talk == @unscheduled)) %>
-                <%= form_tag(:controller => "talks", :action => "swap_slot", :id => @unscheduled.id) do |f| %>
+                <%= form_tag(:controller => "talks", :action => "swap_slot") do |f| %>
                     <input type="hidden" name="talk_2" value="<%= talk.id %>" />
                     <p class="actions"><span class="submit"><%= submit_tag("Swap", :class => "button orange medium") %></span></p>
                 <% end %>

@@ -45,6 +45,7 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.save
+        session[:talk_id] = @talk.id
         format.html { redirect_to :controller => 'talks', :action => 'schedule', :id => @talk.id, :version => params[:version] }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
         format.json  { render :json => @talk, :status => :created, :location => @talk }
@@ -118,6 +119,7 @@ class TalksController < ApplicationController
   def move
     @page_id = "talk-move"
     @unscheduled = Talk.find(params[:id])
+    session[:talk_id] = @unscheduled.id
 
     if (params[:date])
       @timeslots = Timeslot.by_date(params[:date])
@@ -142,7 +144,7 @@ class TalksController < ApplicationController
   # Assigns the specified talk to the specified slot
   # and then redirects to a view of the grid on the date that the slot belongs to
   def assign_slot
-    talk = Talk.find(params[:id])
+    talk = Talk.find(session[:talk_id])
     slot = Slot.find(params[:slot])
 
     # Reset the original slot (if there was one)
@@ -163,6 +165,7 @@ class TalksController < ApplicationController
     if slot.save
       flash[:notice] = "Talk was updated"
       expire_fragment(%r{slot_#{slot.id}\S*})
+      session[:talk_id] = nil
       redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
     else
       flash[:warning] = "There was an issue scheduling your talk"
