@@ -234,7 +234,7 @@ body.talks #main {
 #header .nav li {
     padding: 0 12px;
     float: left;
-    whitespace: nowrap;   
+    white-space: nowrap;   
     font-size: 15px;
     line-height: 1.3em;
 }

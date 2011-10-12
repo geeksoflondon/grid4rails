@@ -467,7 +467,8 @@ body.grid .message {
 }
 
 #error_explanation ul {
-  list-style: disc inside;
+  list-style-type: disc;
+  list-style-position: inside;
 }
 
 #error_explanation li {
