@@ -14,30 +14,25 @@ class ApplicationController < ActionController::Base
   	@talks_taking_place = Timeslot.on_now.nil? == true ? false : true 
   end
 
+  # Valid versions are s, m and l (small, medium, large)
   def version
-  	if (!cookies[:version] || cookies[:version].blank?)
+  	if (params[:version_check] == 'false')
+  		cookies[:version_check] = false  	
+  	elsif (!cookies[:version] || cookies[:version].blank?)
   	 	cookies[:version_check] = true  	
   	end 
   	if (cookies[:version] && !cookies[:version].blank?)  
-    	@version = cookies[:version] unless (cookies[:version] != "small" && cookies[:version] != "medium" && cookies[:version] != "large") 	
+    	@version = cookies[:version] unless (cookies[:version] != "s" && cookies[:version] != "m" && cookies[:version] != "l") 	
     end
-    @version ||= "small"
+    if (params[:version] && @version != params[:version])
+    	@version = params[:version] unless (params[:version] != "s" && params[:version] != "m" && params[:version] != "l")
+    end
+    @version ||= "s"
     if (cookies[:version] != @version)
     	cookies[:version] = @version
     end    
   end
   
-  def set_version
-    cookies[:version_check] = false
-    @version = params[:version] unless (params[:version] != "small" && params[:version] != "medium" && params[:version] != "large")
-    @version ||= "small"
-    cookies[:version] = @version
-    if (params[:url])
-        redirect_to params[:url]	
-    else 
-    	redirect_to "/"
-    end
-  end
 
   def enable_cors
     response.headers["Access-Control-Allow-Origin"] = "*"

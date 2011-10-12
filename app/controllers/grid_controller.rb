@@ -8,9 +8,9 @@ class GridController < ApplicationController
 	@date = @timeslot.start.to_date unless @timeslot.nil?
     flash.keep
 	if @date.nil?
-    	redirect_to :controller => "grid", :action => "date"
+    	redirect_to :controller => "grid", :action => "date", :version => params[:version]
     else 
-    	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
+    	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
     end
   end
 
@@ -19,7 +19,7 @@ class GridController < ApplicationController
     @timeslot = Timeslot.on_next
     @date = @timeslot.start.to_date
     flash.keep
-    redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
+    redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
   end
 
   def show
@@ -46,7 +46,7 @@ class GridController < ApplicationController
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?) 
     	flash.keep
-    	redirect_to :controller => "grid", :action => "date", :date => @date
+    	redirect_to :controller => "grid", :action => "date", :date => @date, :version => params[:version]
     end
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
@@ -70,7 +70,7 @@ class GridController < ApplicationController
   def room
   	@page_id = "room-grid"
   	flash.keep
-    redirect_to :controller => "rooms", :action => "show", :room => params[:room]
+    redirect_to :controller => "rooms", :action => "show", :room => params[:room], :version => params[:version]
   end
 
   private

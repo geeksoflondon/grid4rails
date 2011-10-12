@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
    
   	if (@room.nil?)
   		flash[:warning] = "Unable to find room requested" 
-  		redirect_to :controller => "rooms" and return
+  		redirect_to :controller => "rooms", :version => params[:version] and return
   	end
   	
   	@timeslots = Array.new()
@@ -55,11 +55,11 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to(@room, :notice => 'Room was successfully created.') }
+        format.html { redirect_to(@room, :notice => 'Room was successfully created.', :version => params[:version]) }
         format.xml  { render :xml => @room, :status => :created, :location => @room }
         format.json  { render :json => @room, :status => :created, :location => @room }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :version => params[:version] }
         format.xml  { render :xml => @room.errors, :status => :unprocessable_entity }
         format.json  { render :json => @room.errors, :status => :unprocessable_entity }
       end
@@ -71,11 +71,11 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.update_attributes(params[:room])
-        format.html { redirect_to(@room, :notice => 'Room was successfully updated.') }
+        format.html { redirect_to(@room, :notice => 'Room was successfully updated.', :version => params[:version]) }
         format.xml  { head :ok }
         format.json  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "edit", :version => params[:version] }
         format.xml  { render :xml => @room.errors, :status => :unprocessable_entity }
         format.json  { render :json => @room.errors, :status => :unprocessable_entity }
       end
@@ -87,7 +87,7 @@ class RoomsController < ApplicationController
     @room.destroy
 
     respond_to do |format|
-      format.html { redirect_to(rooms_url) }
+      format.html { redirect_to(rooms_url, :version => params[:version]) }
       format.xml  { head :ok }
       format.json  { head :ok }
     end

@@ -1,2 +1,2 @@
-<% if (cookies[:version_check] == 'true') %><%= render '/shared/version_upgrade' %><% end %>
+<% if (cookies[:version_check] == 'true') %><%= render '/shared/version_check' %><% end %>
 <% if flash[:notice] || flash[:warning] %><p class="message <%= flash[:warning] ? "warning" : "notice" %>"><%= flash[:notice] %><%= flash[:warning] %></p><% end %>
