@@ -1,6 +1,6 @@
 <p class="where-when">
 	<% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
-		<label for="slot-#{@slot.id}-select">
+		<label for="slot-<%= @slot.id %>-select">
 	<% end %>
 	
 	<% if (@page_id != "timeslot") 
