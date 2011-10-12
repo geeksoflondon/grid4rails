@@ -94,6 +94,7 @@ class TalksController < ApplicationController
   def schedule
     @page_id = "talk-assign"
     @unscheduled = Talk.find(params[:id])
+    session[:talk_id] = @unscheduled.id    
 
     if (params[:date])
       @timeslots = Timeslot.by_date(params[:date])
@@ -102,7 +103,6 @@ class TalksController < ApplicationController
     end
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?)
-      # Why is date appearing in query string rather than url?
       redirect_to :controller => "talks", :action => "schedule", :date => @date, :id => params[:id], :version => params[:version]
     end
 
@@ -128,7 +128,6 @@ class TalksController < ApplicationController
     end
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?)
-      # Why is date appearing in query string rather than url?
       redirect_to :controller => "talks", :action => "move", :date => @date, :id => params[:id], :version => params[:version]
     end
 
