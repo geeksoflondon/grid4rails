@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
-  
+
   before_filter :enable_cors
   before_filter :talks_taking_place
   before_filter :version
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # Flag for checking whether a timeslot matching now, exists.
   # Equals false if no timeslot matching now exists; otherwise will be true.
   def talks_taking_place
-  	@talks_taking_place = Timeslot.on_now.nil? == true ? false : true 
+    @talks_taking_place = Timeslot.on_now.nil? == true ? false : true 
   end
 
   # Valid versions are s, m and l (small, medium, large)
@@ -40,15 +40,15 @@ class ApplicationController < ActionController::Base
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "GET"
   end
-  
-  private
-  
-	before_filter :instantiate_controller_and_action_names
-	
-	def instantiate_controller_and_action_names
-		@current_action = action_name
-		@current_controller = controller_name
-	end
 
-  
+  private
+
+  before_filter :instantiate_controller_and_action_names
+
+  def instantiate_controller_and_action_names
+    @current_action = action_name
+    @current_controller = controller_name
+  end
+
+
 end
