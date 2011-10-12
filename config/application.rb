@@ -39,10 +39,4 @@ module Griddy
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    # Specify release number
-    RELEASE_NUMBER = 1
-	config.action_controller.asset_path = proc { |asset_path| 
-		"#{asset_path}?#{RELEASE_NUMBER}" 
-	}  
-	end
 end
