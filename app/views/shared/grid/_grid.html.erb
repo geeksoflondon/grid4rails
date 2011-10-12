@@ -27,7 +27,7 @@
 	        	<% @slots.each do |slot|%>
 	        		<% @slot = slot %>
 	        		<% if (@slot.room_id == @room.id) %>
-		            	<td <% if (@version != "s") %>data-slot_id="<%= @slot.id %>"<% end %><% if (classnames(@slot).length > 0) %>class="<%= classnames(@slot).join(" ") %>"<% end %>>
+		            	<td <% if (@version == "l") %>data-slot_id="<%= @slot.id %>"<% end %><% if (classnames(@slot).length > 0) %>class="<%= classnames(@slot).join(" ") %>"<% end %>>
 		           			<% cache ("slot_#{@slot.id}_#{@page_id}_#{@version}") do %>
 								<%= render 'shared/grid/slot' %>
 							<% end %>
