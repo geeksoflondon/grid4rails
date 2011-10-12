@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   def version
   	if (params[:version_check] == 'false')
   		cookies[:version_check] = false  	
+  		params.delete(:version_check)
   	elsif (!cookies[:version] || cookies[:version].blank?)
   	 	cookies[:version_check] = true  	
   	end 
@@ -31,6 +32,9 @@ class ApplicationController < ActionController::Base
     if (cookies[:version] != @version)
     	cookies[:version] = @version
     end    
+    if (!params[:version])
+    	params[:version] = @version
+    end
   end
   
 
