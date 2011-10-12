@@ -8,6 +8,7 @@ class GridController < ApplicationController
 	@date = @timeslot.start.to_date unless @timeslot.nil?
     flash.keep
 	if @date.nil?
+		flash[:warning] = "There's nothing on right now."
     	redirect_to :controller => "grid", :action => "date", :version => params[:version]
     else 
     	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
@@ -17,9 +18,14 @@ class GridController < ApplicationController
   def next
     @page_id = "next"
     @timeslot = Timeslot.on_next
-    @date = @timeslot.start.to_date
+    @date = @timeslot.start.to_date unless @timeslot.nil?
     flash.keep
-    redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+    if (@date.nil?) 
+    	flash[:warning] = "That's all folks!"
+    	redirect_to :controller => "grid", :action => "date", :version => params[:version]
+    else
+    	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+    end
   end
 
   def show

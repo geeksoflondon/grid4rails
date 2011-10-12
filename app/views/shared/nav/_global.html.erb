@@ -5,11 +5,9 @@
 			<li<% if (current_page?(:action => 'index', :controller => 'grid') || request.url == root_url) %> class="selected"<% end %>>
 				<a href="<%= url_for :controller => 'grid' %>">View Grid</a>
 			</li>
-			<% if (@talks_taking_place) %>
-				<li<% if (current_page?(:action => 'now', :controller => 'grid')) %> class="selected"<% end %>>
-					<a href="<%= url_for :controller => 'grid', :action => 'now' %>">On Now</a>
-				</li>
-			<% end %>
+			<li<% if (current_page?(:action => 'now', :controller => 'grid')) %> class="selected"<% end %>>
+				<a href="<%= url_for :controller => 'grid', :action => 'now' %>">On Now</a>
+			</li>
 			<li<% if (current_page?(:action => 'next', :controller => 'grid')) %> class="selected"<% end %>>
 				<a href="<%= url_for :controller => 'grid', :action => 'next' %>">On Next</a>
 			</li>
