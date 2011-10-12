@@ -7,12 +7,11 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 #Firstly lets destroy anything we can find
-puts "Deleting existing rooms, timeslots, slots, talks and users."
+puts "Deleting existing rooms, timeslots, slots and talks."
 Room.delete_all
 Timeslot.delete_all
 Slot.delete_all
 Talk.delete_all
-User.delete_all
 
 puts "Total Timeslots: " + Timeslot.all.count.to_s
 puts "Total Rooms: " + Room.all.count.to_s
