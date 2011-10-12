@@ -52,14 +52,14 @@
                 <%= form_tag(:controller => "talks", :action => "assign_slot") do |f| %>
                     <input type="hidden" name="slot" value="<%= @slot.id %>" />
                     <% if (@page_id == "talk-assign") %>
-                        <p class="actions"><span class="submit"><%= submit_tag("Insert here", options = { :class => "button green medium" }) %></span></p>
+                        <p class="actions"><span class="submit"><%= submit_tag("Insert here", options = { :id => "slot-#{@slot.id}-select", :class => "button green medium" }) %></span></p>
                     <% else %>
-                        <p class="actions"><span class="submit"><%= submit_tag("Move here", options = { :class => "button green medium" }) %></span></p>
+                        <p class="actions"><span class="submit"><%= submit_tag("Move here", options = { :id => "slot-#{@slot.id}-select", :class => "button green medium" }) %></span></p>
                     <% end %>
                 <% end %>
             <% else %>
                 <p class="actions">
-                    <span class='submit'><%= link_to("Add a talk", url_options = { :controller => "talks", :action => "new"}, html_options = { :class => "button green medium" }) %></span>
+                    <span class='submit'><%= link_to("Add a talk", url_options = { :controller => "talks", :action => "new"}, html_options = { :id => "slot-#{@slot.id}-select", :class => "button green medium" }) %></span>
                 </p> 
             <% end %>
             <% if (@version == "s" && @page_id != "room") %>   
