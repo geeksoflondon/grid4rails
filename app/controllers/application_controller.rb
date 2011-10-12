@@ -28,6 +28,18 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def reset
+  
+  	# Delete the version cookies
+  	delete_cookie("version")
+  	delete_cookie("version_check")
+  	
+  	# Reset the session
+  	reset_session
+  	
+  	# Redirect to the homepage
+  	redirect_to :controller => "grid", :action => "index"
+  end  
 
   def enable_cors
     response.headers["Access-Control-Allow-Origin"] = "*"
@@ -43,5 +55,10 @@ class ApplicationController < ActionController::Base
     @current_controller = controller_name
   end
 
+	
+	# Removes the specified cookie
+	def delete_cookie(name)
+		cookies[name] = {:value => '', :expires => Time.at(0)}
+	end
 
 end

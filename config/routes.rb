@@ -1,5 +1,7 @@
 Griddy::Application.routes.draw do
 
+  match "reset", :to => "application#reset", :as => :reset
+
   scope "(:version)", :version => /s|m|l/ do  
     	
 		match "talks/:id/schedule/:date", :to => "talks#schedule", :as => :schedule_talk
