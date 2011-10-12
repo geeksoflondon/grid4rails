@@ -22,7 +22,7 @@ Griddy::Application.routes.draw do
 		match "grid/:date", :to => "grid#date"
 		match "grid/:date/sessions/:timeslot", :to => "grid#show"
 		match "grid", :to => "grid#date"  
-  		resources :grid, :except => [:index, :new, :create, :edit, :update, :destroy]
+  		resources :grid, :except => [:new, :create, :edit, :update, :destroy]
 		
   end
 
