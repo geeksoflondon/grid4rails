@@ -11,12 +11,11 @@ gem "jquery-rails", "~> 1.0.12"
 gem 'compass'
 gem 'haml' # for SASS
 
-#Passwords and login
-gem "clearance"
-
 gem 'redis' #queueing
-gem 'dalli' #memcached layer
 
+#exception capture and logging
+gem 'exceptional'
+gem 'newrelic_rpm'
 
 group :development do 
   gem 'heroku'
