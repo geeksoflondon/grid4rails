@@ -77,10 +77,12 @@ fieldset {
     margin: 0;    
 }
 
+#core-options,
 #options {
     margin-top: 12px;
 }
 
+#core-options,
 #options,
 .version-switcher {
     padding: 3px;

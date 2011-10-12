@@ -1,4 +1,4 @@
-<div id="options" class="nav">
+<div id="<% if (@header) %>core-options<% elsif (@footer) %>options<% end %>" class="nav">
 	<h2 class="heading<% if (@header) %> hide<% end %>">Options:</h2>
 	<ul>
 		<% if ((@header && @version != "s") || (@footer && @version == "s")) %>
