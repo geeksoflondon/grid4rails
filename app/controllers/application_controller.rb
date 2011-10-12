@@ -31,9 +31,10 @@ class ApplicationController < ActionController::Base
   def reset
   
   	# Delete the version cookies
-  	delete_cookie("version")
-  	delete_cookie("version_check")
-  	
+  	cookies.to_hash.each_pair do |k, v|  	
+  		delete_cookie(k.to_sym)
+	end 
+  	  	
   	# Reset the session
   	reset_session
   	
