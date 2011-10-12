@@ -31,5 +31,9 @@ div, p, li, th, td {
     font-size: small;
 }
 
+em.accesskey {
+	font-style: normal;
+}
+
 /* Debug aids 
 -----------------------------*/
