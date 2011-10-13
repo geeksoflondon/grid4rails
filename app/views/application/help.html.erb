@@ -1,0 +1,69 @@
+<h1 class="heading">Help</h1>
+<h2 class="heading">Versions</h2>
+<p>This application is available in several versions.  You can switch between them at any time (see <a href="#version-switcher">foot of page</a>).</p>
+<ul class="version-list">
+	<li>
+		<h3 class="heading">Small</h3>
+		<p>Optimised for unforgiving clients, small viewports and keyboard navigation, eg. your first web-enabled phone.</p>		
+		<p>This is the default version.</p>
+	</li>
+	<li>
+		<h3 class="heading">Medium</h3>
+		<p>Optimsed for devices that are "smart" but still have a fairly restricted viewport, eg. your latest web-enabled, handheld device.</p>
+	</li>
+	<li>
+		<h3 class="heading">Large</h3>
+		<p>Optimised for devices that can handle anything that's thrown at them and have a large viewport, eg. your laptop.</p>
+	</li>
+</ul>
+<h2 id="accesskeys" class="heading">Accesskeys</h2>
+<p>If your client supports accesskeys, these are the one's we're using:</p>
+<ul class="accesskeys">
+	<li>
+		<span class="term" title="term"><a href="/" title="h for home">h</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">Home</span>
+	</li>
+	<li>
+		<span class="term" title="term"><a href="<%= url_for grid_path %>" title="g for grid">g</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">View the Grid</span>
+	</li>
+	<li>
+		<span class="term" title="term"><a href="<%= url_for grid_now_path %>" title="1 for now">1</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">On Now</span>
+	</li>
+	<li>
+		<span class="term" title="term"><a href="<%= url_for grid_next_path %>" title="2 for next">2</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">On Next</span>
+	</li>
+	<li>
+		<span class="term" title="term"><a href="<%= url_for new_talk_path %>" title="t for talk">t</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">Add a Talk</span>
+	</li>
+	<li>
+		<span class="term" title="term"><a href="<%= url_for talks_unscheduled_path %>" title="u for unscheduled">u</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">Unscheduled Talks</span>
+	</li>
+	<li>
+		<span class="term" title="term"><a href="<%= url_for feedback_path %>" title="9 for feedback">9</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">Feedback</span>
+	</li>
+	<li>
+		<span class="term" title="term"><a href="<%= url_for help_path %>" title="6 for help">6</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">Help (links to this page)</span>
+	</li>
+	<li>	
+		<span class="term" title="term"><a href="<%= url_for help_path %>#accesskeys" title="0 for accesskeys">0</a></span>
+		<span class="delimiter">&nbsp;</span>
+		<span class="definition" title="definition">A shortcut to this list of accesskeys</span>
+	</li>
+</ul>
+<h2 id="feedback" class="heading">Feedback</h2>
+<p>This application is a work in progress and your feedback would be very welcome.  Please add it to this Google form: <a href="">FEEDBACK FORM URL</a></p>

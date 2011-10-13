@@ -17,9 +17,9 @@
 		<% end %>
 		<% if (@footer) %>
 			<li<% if (current_page?(:action => 'unscheduled', :controller => 'talks')) %> class="selected"<% end %>><a href="<%= url_for :controller => "talks", :action => "unscheduled" %>" accesskey="u" title="A list of all talks that have been created but aren't currently scheduled to take place (u)"><em class="accesskey">U</em>nscheduled Talks</a><span class="delimiter"></span></li>
-			<li><a href="/feedback" accesskey="9" title="Tell us what you think (9)">Feedback [404]</a><span class="delimiter"></span></li>
-			<li><a href="/help" accesskey="6" title="General information about the site that might be useful (6)">Help [404]</a><span class="delimiter"></span></li>
-			<li class="last"><a href="/help#accesskeys" accesskey="0" title="A list to the accesskeys used on this site (0)">Accesskeys</a></li>
+			<li><a href="<%= url_for :controller => 'application', :action => 'feedback' %>" accesskey="9" title="Tell us what you think (9)">Feedback</a><span class="delimiter"></span></li>
+			<li><a href="<%= url_for :controller => 'application', :action => 'help' %>" accesskey="6" title="General information about the site that might be useful (6)">Help</a><span class="delimiter"></span></li>
+			<li class="last"><a href="<%= url_for :controller => 'application', :action => 'help', :anchor => 'accesskeys' %>" accesskey="0" title="A list to the accesskeys used on this site (0)">Accesskeys</a></li>
 		<% end %>	
 	</ul>	
 </div>

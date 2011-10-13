@@ -25,8 +25,11 @@ Griddy::Application.routes.draw do
 		match "grid/:date/sessions/:timeslot", :to => "grid#show"
 		match "grid", :to => "grid#date"  
   		resources :grid, :except => [:new, :create, :edit, :update, :destroy]
+  		
+  		match "help", :to => "application#help"
+  		match "feedback", :to => "application#feedback"  		
 		
-  end
+  end	
 
 
   # The priority is based upon order of creation:

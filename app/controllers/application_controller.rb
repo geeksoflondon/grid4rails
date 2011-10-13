@@ -26,8 +26,17 @@ class ApplicationController < ActionController::Base
     if (!params[:version])
     	params[:version] = @version
     end
+  end   
+  
+  
+  def enable_cors
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET"
   end
   
+  
+  # Matches /reset, a URL used for resetting the 
+  # session and cookies associated with this application
   def reset
   
   	# Delete the version cookies
@@ -42,10 +51,18 @@ class ApplicationController < ActionController::Base
   	redirect_to :controller => "grid", :action => "index"
   end  
 
-  def enable_cors
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Methods"] = "GET"
+
+  # View providing helpful information
+  def help
+  	@page_id = "help"  	  
   end
+
+  # View for gathering feedback
+  def feedback
+  	redirect_to url_for :controller => "application", :action => "help", :anchor => "feedback", :version => @version
+  end   
+
+  
 
   private
 
