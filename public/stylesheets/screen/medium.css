@@ -648,9 +648,6 @@ table.grid .talk .where-when {
 
 table.grid .where-when span {
     display: inline;
-    padding: 2px 3px;
-    margin: 1px;
-    background-color: #eeeeee; 
 }
 
 /* Break slots */
@@ -685,7 +682,7 @@ table.grid .empty .where-when a:active {
 
 table.grid .empty .where-when {   
     margin: 0;
-    padding: 6px 2px;
+    padding: 6px 0px;
     white-space: nowrap;
 }
 
