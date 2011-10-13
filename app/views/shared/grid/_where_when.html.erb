@@ -1,8 +1,4 @@
-<p class="where-when">
-	<% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
-		<label for="slot">
-	<% end %>
-	
+<p class="where-when">	
 	<% if (@page_id != "timeslot") 
 		timeslot = @slot.timeslot
 	%>
@@ -20,9 +16,5 @@
 			<span class="room">
 			<%= link_to (@show_room_col ? @room.short_code.upcase : @room.name), :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></span>
 		<% end %>
-	<% end %>
-	
-	<% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
-		</label>
-	<% end %>
+	<% end %>	
 </p>

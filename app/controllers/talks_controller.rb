@@ -48,11 +48,11 @@ class TalksController < ApplicationController
     respond_to do |format|
       if @talk.save
         session[:talk_id] = @talk.id
-        format.html { redirect_to :controller => 'talks', :action => 'schedule', :id => @talk.id }
+        format.html { redirect_to :controller => 'talks', :action => 'schedule', :id => @talk.id, :version => params[:version] }
         format.xml  { render :xml => @talk, :status => :created, :location => @talk }
         format.json  { render :json => @talk, :status => :created, :location => @talk }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :version => params[:version] }
         format.xml  { render :xml => @talk.errors, :status => :unprocessable_entity }
         format.json  { render :json => @talk.errors, :status => :unprocessable_entity }
       end
@@ -74,11 +74,11 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-        format.html { redirect_to(@talk, :notice => 'Talk was successfully updated.') }
+        format.html { redirect_to(@talk, :notice => 'Talk was successfully updated.', :version => params[:version]) }
         format.xml  { head :ok }
         format.json  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "edit", :version => params[:version] }
         format.xml  { render :xml => @talk.errors, :status => :unprocessable_entity }
         format.json  { render :json => @talk.errors, :status => :unprocessable_entity }
       end
@@ -96,6 +96,7 @@ class TalksController < ApplicationController
   def schedule
     @page_id = "talk-assign"
     @unscheduled = Talk.find(params[:id])
+    session[:talk_id] = @unscheduled.id    
 
     if (params[:date])
       @timeslots = Timeslot.by_date(params[:date])
@@ -104,8 +105,7 @@ class TalksController < ApplicationController
     end
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?)
-      # Why is date appearing in query string rather than url?
-      redirect_to :controller => "talks", :action => "schedule", :date => @date, :id => params[:id]
+      redirect_to :controller => "talks", :action => "schedule", :date => @date, :id => params[:id], :version => params[:version]
     end
 
     @dates = Array.wrap(Timeslot.dates)
@@ -130,8 +130,7 @@ class TalksController < ApplicationController
     end
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?)
-      # Why is date appearing in query string rather than url?
-      redirect_to :controller => "talks", :action => "move", :date => @date, :id => params[:id]
+      redirect_to :controller => "talks", :action => "move", :date => @date, :id => params[:id], :version => params[:version]
     end
 
     @dates = Array.wrap(Timeslot.dates)
@@ -168,10 +167,10 @@ class TalksController < ApplicationController
       flash[:notice] = "Talk was updated"
       expire_fragment(%r{slot_#{slot.id}\S*})
       session[:talk_id] = nil
-      redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date
+      redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
     else
       flash[:warning] = "There was an issue scheduling your talk"
-      redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id
+      redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id, :version => params[:version]
     end
 
   end
@@ -180,17 +179,18 @@ class TalksController < ApplicationController
   # and then redirects to a view of the grid on the date that initiating talk is now on
   def swap_slot
     # Check that an ID has been provided for both talks
-    if (!params[:id] || !params[:talk_2])
-      redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
+    talk = Talk.find(session[:talk_id])
+    if (!session[:talk_id] || !params[:talk_2])
+      redirect_to :controller => 'talks', :action => 'move', :id => session[:talk_id], :version => params[:version] and return
     end
 
     # Check that the talk IDs aren't the same
-    if (params[:id] == params[:talk_2])
-      redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
+    if (session[:talk_id] == params[:talk_2])
+      redirect_to :controller => 'talks', :action => 'move', :id => session[:talk_id], :version => params[:version] and return
     end
 
     # Find the specified talks
-    talk_1 = Talk.find(params[:id])
+    talk_1 = Talk.find(session[:talk_id])
     talk_2 = Talk.find(params[:talk_2])
 
     # Find their existing slots
@@ -199,7 +199,7 @@ class TalksController < ApplicationController
 
   # Check that both slots have been found
     if (slot_1.nil? || slot_2.nil?)
-      redirect_to :controller => 'talks', :action => 'move', :id => params[:id] and return
+      redirect_to :controller => 'talks', :action => 'move', :id => session[:talk_id], :version => params[:version] and return
     end
 
     # Swap the talks
@@ -212,10 +212,10 @@ class TalksController < ApplicationController
       flash[:notice] = "Talks were successfully swapped"
       expire_fragment(%r{slot_#{slot_1.id}\S*})
       expire_fragment(%r{slot_#{slot_2.id}\S*})
-      redirect_to :controller => "grid", :action => "date", :date => slot_2.timeslot.start.to_date
+      redirect_to :controller => "grid", :action => "date", :date => slot_2.timeslot.start.to_date, :version => params[:version]
     else
       flash[:warning] = "There was an issue swapping those talks."
-      redirect_to :controller => 'talks', :action => 'move', :id => talk_1.id, :date => slot_1.timeslot.start.to_date
+      redirect_to :controller => 'talks', :action => 'move', :id => talk_1.id, :date => slot_1.timeslot.start.to_date, :version => params[:version]
     end
 
   end
@@ -224,18 +224,18 @@ class TalksController < ApplicationController
   # and then redirects to a view of the grid on the date that the slot belongs to
   def unschedule
 
-  talk = Talk.find(params[:id])
-
-  # Reset the original slot 
-  slot = Slot.find(talk.slot)
-  slot.talk_id = nil
+	  talk = Talk.find(session[:talk_id])
+	
+	  # Reset the original slot 
+	  slot = Slot.find(talk.slot)
+	  slot.talk_id = nil
 
     # Bug means that notice won't show if defined in redirect_to statement
     # http://www.ruby-forum.com/topic/830332
     if slot.save
       flash[:notice] = "Talk was removed from the grid."
       expire_fragment(%r{slot_#{slot.id}\S*})
-      redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date
+      redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
     else
       flash[:warning] = "There was an issue removing your talk from the grid."
       redirect_to :back

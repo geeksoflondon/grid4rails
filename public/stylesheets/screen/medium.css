@@ -1,4 +1,4 @@
-/* NOTES: Med
+/* NOTES: Medium
 -----------------------------
 ** Can use px for font size
 ** Don't try to use complex positioning
@@ -467,7 +467,8 @@ body.grid .message {
 }
 
 #error_explanation ul {
-  list-style: disc inside;
+  list-style-type: disc;
+  list-style-position: inside;
 }
 
 #error_explanation li {
@@ -869,4 +870,11 @@ body.talks #main fieldset {
 #room .grid a:link, 
 #room .grid a:visited {
     text-decoration: none;
+}
+
+/* VIEW: Help
+-----------------------------*/
+
+#help #main {
+	padding-bottom: 15px;
 }

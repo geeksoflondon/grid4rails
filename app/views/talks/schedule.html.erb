@@ -5,17 +5,17 @@
 		<p>To add your talk to the grid, find an empty slot, click to select and hit submit.</p>
 	<% end %>
 	<%= form_tag(:controller => "talks", :action => "unschedule") do |f| %>
-		<%= hidden_field('talk', :value => @unscheduled.id) %>
+		<input type="hidden" name="talk" value="<%= session[:talk_id] %>" />
 		<fieldset class="actions">
 			<p>
-				<span class="cancel"><%= link_to "Cancel", url_options = { :controller => "talks", :action => "show", :id => @unscheduled.id } %></span>
+				<span class="cancel"><%= link_to "Cancel", url_options = { :controller => "talks", :action => "show", :id => session[:talk_id] } %></span>
 				<span class="delimiter"> </span>
 				<span class="unschedule"><%= link_to "Schedule Later", url_options = { :controller => "grid", :action => "date" } %></span>
 			</p>
 		</fieldset>
 	<% end %>
 </div>		
-<% if (@version == "low") %>
+<% if (@version == "s") %>
 	<%= render "shared/grid/grid_vertical" %>
 <% else %>
 	<%= render "shared/grid/grid" %>

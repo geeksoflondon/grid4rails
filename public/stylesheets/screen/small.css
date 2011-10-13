@@ -1,4 +1,4 @@
-/* NOTES: Low 
+/* NOTES: Small 
 -----------------------------
 ** Use names for font sizes
 ** Don't try to use positioning
@@ -17,6 +17,7 @@
 
 /* Basic text rules
 -----------------------------*/
+
 
 /* Basic form rules
 -----------------------------*/
@@ -77,10 +78,12 @@ fieldset {
     margin: 0;    
 }
 
+#core-options,
 #options {
     margin-top: 12px;
 }
 
+#core-options,
 #options,
 .version-switcher {
     padding: 3px;
@@ -241,11 +244,13 @@ fieldset {
 /* FEATURE: Page Title
 -----------------------------*/
 
-#main h1 {
+#main h1,
+#help h1.heading {
     font-size: large;
 	margin-top: 6px;
     margin-bottom: 12px;
 }
+
 
 /* FEATURE: Informational messages
 -----------------------------*/

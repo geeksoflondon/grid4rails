@@ -7,12 +7,11 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 #Firstly lets destroy anything we can find
-puts "Deleting existing rooms, timeslots, slots, talks and users."
+puts "Deleting existing rooms, timeslots, slots and talks."
 Room.delete_all
 Timeslot.delete_all
 Slot.delete_all
 Talk.delete_all
-User.delete_all
 
 puts "Total Timeslots: " + Timeslot.all.count.to_s
 puts "Total Rooms: " + Room.all.count.to_s
@@ -22,13 +21,13 @@ puts "Total Talks: " + Talk.all.count.to_s
 
 #Generate Rooms
 puts "Generating rooms."
-Room.create(:name => 'Count Dracula', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'rdw', :capacity => 30, :facilities => 'TV')
-Room.create(:name => 'Frankenstein\'s Monster', :description => 'Xth Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'drw', :capacity => 100, :facilities => 'TV')
-Room.create(:name => 'The Luggage', :description => 'Xth Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'ino', :capacity => 20, :facilities => 'Projector')
-Room.create(:name => 'Godzilla', :description => 'Xth Floor, in the front-left corner as you face Old Trafford.', :short_code => 'att', :capacity => 50, :facilities => 'Whiteboard')
-Room.create(:name => 'Tribbles', :description => 'Xth Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'twd', :capacity => 15, :facilities => 'Projector, whiteboard')
-Room.create(:name => 'Pikachu', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'bgp', :capacity => 20)
-Room.create(:name => 'Casper', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'rdh', :capacity => 30, :facilities => 'TV, whiteboard')
+Room.create(:name => 'Count Dracula', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'cdr', :capacity => 30, :facilities => 'TV')
+Room.create(:name => 'Frankenstein\'s Monster', :description => 'Xth Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'frm', :capacity => 100, :facilities => 'TV')
+Room.create(:name => 'The Luggage', :description => 'Xth Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'lug', :capacity => 20, :facilities => 'Projector')
+Room.create(:name => 'Godzilla', :description => 'Xth Floor, in the front-left corner as you face Old Trafford.', :short_code => 'god', :capacity => 50, :facilities => 'Whiteboard')
+Room.create(:name => 'Tribbles', :description => 'Xth Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'trb', :capacity => 15, :facilities => 'Projector, whiteboard')
+Room.create(:name => 'Pikachu', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'pik', :capacity => 20)
+Room.create(:name => 'Casper', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'cas', :capacity => 30, :facilities => 'TV, whiteboard')
 
 puts "Total Rooms: " + Room.all.count.to_s
 puts "ID of first Room: " + Room.all.first.id.to_s

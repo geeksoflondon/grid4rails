@@ -1,34 +1,48 @@
-<!doctype html> 
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--> 
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--> 
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--> 
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]--> 
+<% if (@version == 'l') %>
+	<!DOCTYPE html>
+	<html lang="en">
+<% else %>
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<% end %>
 	<head>  
-		<meta charset="UTF-8"> 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="content-language" content="en">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
 		
 		<title>Griddy</title>
 		
 		<!-- Style -->	
-		<% if (@version == "high") %> 			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/med", "screen/high" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med", "themes/#{theme}/screen/high" %>			
-		<% elsif (@version == "med") %>			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/med" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/med" %>			
+		<% if (@version == "l") %> 			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", "screen/large" %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", "themes/#{theme}/screen/large" %>			
+		<% elsif (@version == "m") %>			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium" %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium" %>			
 		<% else  %>						
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/low"  %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/low"  %>						
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/small"  %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/small"  %>						
 		<% end  %>
 		
 		<!-- CSRF -->
 		<%= csrf_meta_tag %>	
 		
 		
-		<meta name="description" content="">
-		<meta name="author" content=""> 
-		<meta name="viewport" content="width=200, initial-scale=1, maximum-scale=3, minimum-scale=1"> 
+		<meta name="description" content="" />
+		<meta name="author" content="" /> 
+		<meta name="viewport" content="width=200, initial-scale=1, maximum-scale=3, minimum-scale=1" /> 
 		
+		<%# Google Analytics %>
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-26290688-2']);  
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })(); 
+		</script>
 	</head> 
 	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">
 		<%= render '/shared/header' %>

@@ -3,44 +3,66 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :enable_cors
-  before_filter :talks_taking_place
   before_filter :version
 
-  # Flag for checking whether a timeslot matching now, exists.
-  # Equals false if no timeslot matching now exists; otherwise will be true.
-  def talks_taking_place
-    @talks_taking_place = Timeslot.on_now.nil? == true ? false : true 
-  end
-
+  # Valid versions are s, m and l (small, medium, large)
   def version
-    if (!cookies[:version] || cookies[:version].blank?)
-      cookies[:version_check] = true
+  	if (params[:version_check] == 'false')
+  		cookies[:version_check] = false  	
+  		params.delete(:version_check)
+  	elsif (!cookies[:version] || cookies[:version].blank?)
+  	 	cookies[:version_check] = true  	
+  	end 
+  	if (cookies[:version] && !cookies[:version].blank?)  
+    	@version = cookies[:version] unless (cookies[:version] != "s" && cookies[:version] != "m" && cookies[:version] != "l") 	
     end
-    if (cookies[:version] && !cookies[:version].blank?)
-      @version = cookies[:version] unless (cookies[:version] != "low" && cookies[:version] != "med" && cookies[:version] != "high")
+    if (params[:version] && @version != params[:version])
+    	@version = params[:version] unless (params[:version] != "s" && params[:version] != "m" && params[:version] != "l")
     end
-    @version ||= "low"
+    @version ||= "s"
     if (cookies[:version] != @version)
-      cookies[:version] = @version
+    	cookies[:version] = @version
+    end    
+    if (!params[:version])
+    	params[:version] = @version
     end
-  end
-
-  def set_version
-    cookies[:version_check] = false
-    @version = params[:version] unless (params[:version] != "low" && params[:version] != "med" && params[:version] != "high")
-    @version ||= "low"
-    cookies[:version] = @version
-    if (params[:url])
-        redirect_to params[:url]
-    else
-      redirect_to "/"
-    end
-  end
-
+  end   
+  
+  
   def enable_cors
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "GET"
   end
+  
+  
+  # Matches /reset, a URL used for resetting the 
+  # session and cookies associated with this application
+  def reset
+  
+  	# Delete the version cookies
+  	cookies.to_hash.each_pair do |k, v|  	
+  		delete_cookie(k.to_sym)
+	end 
+  	  	
+  	# Reset the session
+  	reset_session
+  	
+  	# Redirect to the homepage
+  	redirect_to :controller => "grid", :action => "index"
+  end  
+
+
+  # View providing helpful information
+  def help
+  	@page_id = "help"  	  
+  end
+
+  # View for gathering feedback
+  def feedback
+  	redirect_to url_for :controller => "application", :action => "help", :anchor => "feedback", :version => @version
+  end   
+
+  
 
   private
 
@@ -51,5 +73,10 @@ class ApplicationController < ActionController::Base
     @current_controller = controller_name
   end
 
+	
+	# Removes the specified cookie
+	def delete_cookie(name)
+		cookies[name] = {:value => '', :expires => Time.at(0)}
+	end
 
 end

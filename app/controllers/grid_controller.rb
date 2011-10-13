@@ -8,18 +8,24 @@ class GridController < ApplicationController
 	@date = @timeslot.start.to_date unless @timeslot.nil?
     flash.keep
 	if @date.nil?
-    	redirect_to :controller => "grid", :action => "date"
+		flash[:warning] = "There's nothing on right now."
+    	redirect_to :controller => "grid", :action => "date", :version => params[:version]
     else 
-    	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
+    	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
     end
   end
 
   def next
     @page_id = "next"
     @timeslot = Timeslot.on_next
-    @date = @timeslot.start.to_date
+    @date = @timeslot.start.to_date unless @timeslot.nil?
     flash.keep
-    redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id
+    if (@date.nil?) 
+    	flash[:warning] = "That's all folks!"
+    	redirect_to :controller => "grid", :action => "date", :version => params[:version]
+    else
+    	redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+    end
   end
 
   def show
@@ -46,7 +52,7 @@ class GridController < ApplicationController
     @date = @timeslots.first.start.to_date
     if (params[:date].nil?) 
     	flash.keep
-    	redirect_to :controller => "grid", :action => "date", :date => @date
+    	redirect_to :controller => "grid", :action => "date", :date => @date, :version => params[:version]
     end
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
@@ -55,22 +61,12 @@ class GridController < ApplicationController
     @rooms = Room.all
     @description = "All talks."
   end
-
-  def day
-    @page_id = "day-grid"
-    @show_room_col = true
-    @timeslots = Timeslot.by_day(params[:date])
-    @date = @timeslots.first.start.to_date
-    @is_single_timeslot = (@timeslots.count == 1)
-    @empty_slot_index = 0
-    @rooms = Array.wrap(Room.all)
-    @description = "On this day."
-  end
+  
 
   def room
   	@page_id = "room-grid"
   	flash.keep
-    redirect_to :controller => "rooms", :action => "show", :room => params[:room]
+    redirect_to :controller => "rooms", :action => "show", :room => params[:room], :version => params[:version]
   end
 
   private

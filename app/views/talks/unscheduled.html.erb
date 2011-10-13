@@ -2,7 +2,7 @@
 <% if (@talks.count > 0) %>
 	<ul class="talks">
 		<% @talks.each do |talk| %>
-			<li id="talk.id">								
+			<li id="talk-<%= talk.id %>">								
 				<h2 class="heading">
 					<a href="<%= url_for :controller => "talks", :action => "show", :id => talk.id %>">
 						<%= if (talk.title.blank?) then "[untitled]" else talk.title end %>
