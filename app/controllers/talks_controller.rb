@@ -91,6 +91,28 @@ class TalksController < ApplicationController
   end
 
 
+  def remove
+    talk = Talk.find(params[:id])
+
+    # Reset the original slot (if there was one)
+    if (talk.slot)
+      slot = talk.slot
+      slot.talk_id = nil
+
+      if slot.save
+        flash[:notice] = "Talk was removed from the grid"
+        expire_fragment(%r{slot_#{slot.id}\S*})
+        redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
+      else
+        flash[:warning] = "There was an issue scheduling your talk"
+        redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id, :version => params[:version]
+      end
+
+    else
+      redirect_to :controller => "grid"
+    end
+  end
+
   # A view displaying all talks that aren't been assigned to a slot
   def unscheduled
   @page_id = "talks"
