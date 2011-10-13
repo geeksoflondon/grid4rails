@@ -58,9 +58,7 @@
                     <% end %>
                 <% end %>
             <% else %>
-                <p class="actions">
-                    <span class='submit'><%= link_to("Add a talk", url_options = { :controller => "talks", :action => "new"}, html_options = { :id => "slot-#{@slot.id}-select", :class => "button green medium" }) %></span>
-                </p> 
+            	<%# Formerly used to output "Add Talk" input into empty slots in the grid %>                
             <% end %>
             <% if (@version == "s" && @page_id != "room") %>   
                 <p class="skip skip-to-empty">

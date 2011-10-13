@@ -124,6 +124,7 @@ class TalksController < ApplicationController
     @page_id = "talk-assign"
     @unscheduled = Talk.find(params[:id])
     session[:talk_id] = @unscheduled.id
+	flash.keep
 
     if (params[:date])
       @timeslots = Timeslot.by_date(params[:date])
@@ -175,6 +176,12 @@ class TalksController < ApplicationController
     talk = Talk.find(session[:talk_id])
     slot = Slot.find(params[:slot])
 
+	# Check whether the slot is locked or already occupied
+	if (slot.locked || slot.talk)
+		flash[:warning] = "That session is already taken.  Please choose another."
+    	redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id, :version => params[:version] and return
+	end		
+
     # Reset the original slot (if there was one)
     if (talk.slot)
       original_slot = Slot.find(talk.slot.id)
@@ -205,6 +212,7 @@ class TalksController < ApplicationController
   # Swaps the two talks specified
   # and then redirects to a view of the grid on the date that initiating talk is now on
   def swap_slot
+  
     # Check that an ID has been provided for both talks
     talk = Talk.find(session[:talk_id])
     if (!session[:talk_id] || !params[:talk_2])
@@ -252,7 +260,7 @@ class TalksController < ApplicationController
   def unschedule
 
 	  talk = Talk.find(session[:talk_id])
-
+	
 	  # Reset the original slot 
 	  slot = Slot.find(talk.slot)
 	  slot.talk_id = nil
