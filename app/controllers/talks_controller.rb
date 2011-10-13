@@ -147,11 +147,11 @@ class TalksController < ApplicationController
     talk = Talk.find(session[:talk_id])
     slot = Slot.find(params[:slot])
 
-	# Check whether the slot is already occupied
-	if (slot.talk)
+	# Check whether the slot is locked or already occupied
+	if (slot.locked || slot.talk)
 		flash[:warning] = "That session is already taken.  Please choose another."
     	redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id, :version => params[:version] and return
-	end
+	end		
 
     # Reset the original slot (if there was one)
     if (talk.slot)
