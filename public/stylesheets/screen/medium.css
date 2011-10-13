@@ -619,7 +619,7 @@ table.grid .talk {
     padding: 3px 0;
 }
 
-table.grid .talk .heading,
+table.grid .slot .heading,
 table.grid .talk p,
 table.grid .empty,
 table.grid th p {
@@ -684,26 +684,6 @@ table.grid .empty .where-when {
     margin: 0;
     padding: 6px 0px;
     white-space: nowrap;
-}
-
-table.grid .empty .heading {
-  margin: 5px;
-  background-color: #C9E2AE;
-  padding: 5px 0px;
-  color: #000;
-}
-
-table.grid .empty .submit {
-  margin: 5px 0px;
-  display: block;
-}
-
-table.grid .empty .submit a:link,
-table.grid .empty .submit a:visited,
-table.grid .empty .submit a:hover,
-table.grid .empty .submit a:focus,
-table.grid .empty .submit a:active {
-  color: #fff;
 }
 
 /* On now */
