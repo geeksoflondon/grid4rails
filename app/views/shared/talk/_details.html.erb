@@ -2,7 +2,7 @@
 <<%= heading_element %> class="heading">
   <%= ((@talk.title.blank?) ? "[Untitled]" : @talk.title) %>
 </<%= heading_element %>> 
-<% if (!@talk.speaker unless @talk.speaker.blank?) %>
+<% if (@talk.speaker unless @talk.speaker.blank?) %>
   <p class="speaker"><%= @talk.speaker %></p>	
 <% end %>
 <% if (@talk.description unless @talk.description.blank?) %>
