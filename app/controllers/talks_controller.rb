@@ -1,5 +1,7 @@
 class TalksController < ApplicationController
 
+  skip_before_filter :verify_authenticity_token
+
   # A view listing all talks
   def index
     @page_id = "talks"
