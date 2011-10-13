@@ -74,6 +74,11 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
+
+        if @talk.slot != nil
+          expire_fragment(%r{slot_#{@talk.slot.id}\S*})
+        end
+
         format.html { redirect_to(@talk, :notice => 'Talk was successfully updated.', :version => params[:version]) }
         format.xml  { head :ok }
         format.json  { head :ok }
@@ -96,7 +101,7 @@ class TalksController < ApplicationController
   def schedule
     @page_id = "talk-assign"
     @unscheduled = Talk.find(params[:id])
-    session[:talk_id] = @unscheduled.id    
+    session[:talk_id] = @unscheduled.id
 	flash.keep
 
     if (params[:date])
