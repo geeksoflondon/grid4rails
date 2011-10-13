@@ -871,3 +871,10 @@ body.talks #main fieldset {
 #room .grid a:visited {
     text-decoration: none;
 }
+
+/* VIEW: Help
+-----------------------------*/
+
+#help #main {
+	padding-bottom: 15px;
+}

@@ -407,30 +407,3 @@ div.grid .empty {
 #room .grid {
 	margin-top: 12px;
 }
-
-/* VIEW: Help
------------------------------*/
-
-#help .heading {
-	margin-top: 12px;
-	margin-bottom: 6px;
-}
-#help h3 {
-	font-weight: normal;
-	font-style: italic;
-}
-
-ul.version-list {
-	margin-left: 18px;
-	list-style-type: disc;
-	list-style-position: outside;	
-}
-
-ul.accesskeys {
-	margin-top: 6px;
-	margin-left: 6px;
-}
-ul.accesskeys .term {
-	font-weight: bold;
-	width: 3em;	
-}

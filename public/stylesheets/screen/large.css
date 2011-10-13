@@ -409,3 +409,11 @@ body.talks #main fieldset.actions {
 body.talks #main fieldset.actions p {
 	border: none;
 }
+
+
+/* VIEW: Help
+-----------------------------*/
+
+#help #main {
+	padding-bottom: 18px;
+}
