@@ -32,6 +32,17 @@
 		<meta name="author" content="" /> 
 		<meta name="viewport" content="width=200, initial-scale=1, maximum-scale=3, minimum-scale=1" /> 
 		
+		<%# Google Analytics %>
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-26290688-2']);  
+		  _gaq.push(['_trackPageview']);
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })(); 
+		</script>
 	</head> 
 	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">
 		<%= render '/shared/header' %>
