@@ -10,7 +10,7 @@ module SlotsHelper
 		if (slot.is_empty?)
 			classes << "empty"
 		end
-		if (!slot.is_empty? && slot.locked) 
+		if (slot.locked) 
 			classes << "break"
 		end
 		return classes

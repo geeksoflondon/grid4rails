@@ -30,7 +30,7 @@
 				</div>
 				<div class="slots">					
 					<% @timeslot.slots.each do |slot| %>						
-						<% if (@page_id != "room" || (@page_id == "room" && slot.room == @room)) %>
+						<% if ((@page_id != "room" || (@page_id == "room" && slot.room == @room)) && !(slot.locked && slot.talk.nil?)) %>
 							<% @slot = slot %>									
 							<% @room = @slot.room %>												
 							<% cache ("slot_#{@slot.id}_#{@page_id}_#{@version}") do %>
