@@ -642,7 +642,7 @@ table.grid .speaker {
 
 table.grid .talk .where-when {     
     margin: 0;
-    padding: 6px 5px; 
+    padding: 3px 6px; 
     white-space: nowrap;
 }
 
@@ -682,7 +682,7 @@ table.grid .empty .where-when a:active {
 
 table.grid .empty .where-when {   
     margin: 0;
-    padding: 6px 0px;
+    padding: 3px 0px;
     white-space: nowrap;
 }
 
