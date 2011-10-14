@@ -613,6 +613,10 @@ table.grid th.room .details {
 	font-weight: normal;
 }
 
+table.grid .slot .where-when {
+	text-align: center;
+}
+
 /* Talk */
 
 table.grid .talk {
@@ -654,6 +658,10 @@ table.grid .where-when span {
 
 table.grid .break {
     background-color: #ffffcc;
+}
+
+table.grid .break .where-when {
+	text-align: left;
 }
 
 

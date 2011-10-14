@@ -75,7 +75,7 @@
         <% talk = @slot.talk %>
         <div class="talk">
             <% if (@page_id != "room") %>
-                <%= render '/shared/grid/where_when' unless @slot.locked %>
+                <%= render '/shared/grid/where_when' %>
             <% end %>
             <% if (@page_id == "talk-move" unless (@slot.locked? || talk == @unscheduled)) %>
                 <%= form_tag(:controller => "talks", :action => "swap_slot") do |f| %>

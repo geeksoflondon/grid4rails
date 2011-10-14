@@ -7,7 +7,7 @@
 		<span class="start"><%= timeslot.start.strftime("%H:%M") %></span>
 	<% end %>
 	
-	<% if (@page_id != "room") %> 
+	<% if (@page_id != "room" && !@slot.locked) %> 
 		<% if (@page_id != "timeslot" && @page_id != "room-grid") %>
 			<span class="delimiter hide">, </span>
 		<% end %>
