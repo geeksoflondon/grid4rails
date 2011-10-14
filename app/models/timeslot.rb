@@ -1,6 +1,7 @@
 class Timeslot < ActiveRecord::Base
   
   has_many :slots
+  belongs_to :talk
   
   validates :end, 
   	:uniqueness => {:scope => :start}

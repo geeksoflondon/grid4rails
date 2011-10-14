@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111011205515) do
+ActiveRecord::Schema.define(:version => 20111014033600) do
 
   create_table "rooms", :force => true do |t|
     t.string   "name"
@@ -42,10 +42,8 @@ ActiveRecord::Schema.define(:version => 20111011205515) do
     t.datetime "updated_at"
     t.integer  "talk_id"
     t.boolean  "locked",      :default => false
-    t.boolean  "global",      :default => false
   end
 
-  add_index "slots", ["global"], :name => "index_slots_on_global"
   add_index "slots", ["id"], :name => "index_slots_on_id"
   add_index "slots", ["locked"], :name => "index_slots_on_locked"
   add_index "slots", ["room_id"], :name => "index_slots_on_room_id"
@@ -70,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20111011205515) do
     t.datetime "updated_at"
     t.boolean  "assign_slots", :default => true
     t.string   "description"
+    t.integer  "global_talk"
   end
 
   add_index "timeslots", ["id"], :name => "index_timeslots_on_id"
