@@ -57,8 +57,8 @@
                         <p class="actions"><span class="submit"><%= submit_tag("Move here", options = { :id => "slot-#{@slot.id}-select", :class => "button green medium" }) %></span></p>
                     <% end %>
                 <% end %>
-            <% else %>
-            	<%# Formerly used to output "Add Talk" input into empty slots in the grid %>                
+            <% elsif (@version == 's') %>            	
+                <h2 class="heading">Empty</h2>               
             <% end %>
             <% if (@version == "s" && @page_id != "room") %>   
                 <p class="skip skip-to-empty">
