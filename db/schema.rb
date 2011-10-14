@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014033600) do
+ActiveRecord::Schema.define(:version => 20111014035100) do
 
   create_table "rooms", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20111014033600) do
     t.integer  "weighting"
     t.integer  "capacity"
     t.string   "facilities"
+    t.boolean  "include_in_grid", :default => true
   end
 
   add_index "rooms", ["id"], :name => "index_rooms_on_id"
@@ -66,9 +67,9 @@ ActiveRecord::Schema.define(:version => 20111014033600) do
     t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "assign_slots", :default => true
+    t.boolean  "assign_slots",   :default => true
     t.string   "description"
-    t.integer  "global_talk"
+    t.integer  "global_talk_id"
   end
 
   add_index "timeslots", ["id"], :name => "index_timeslots_on_id"

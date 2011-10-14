@@ -1,26 +1,26 @@
-<div id="slot-<%= @slot.id %>" class="slot">
+<div id="slot-<%= slot.id %>" class="slot">
     <%
-        if (@slot.is_empty?)
+        if (slot.is_empty?)
             @empty_slot_index += 1
         end
-        slot_index = @slots.index(@slot)
+        slot_index = slots.index(slot)
     %>
     <% if (@version == "s" && @page_id != "room") %>              
         <%
             # Determine the id of the next slot in the current timeslot
-            if (@slot != @slots.last)
-                slot_next_id = @slots[slot_index + 1].id
-            elsif (@timeslot != @timeslots.last)
-                slot_next_id = @timeslots[@timeslots.index(@timeslot) + 1].slots.first.id
+            if (slot != slots.last)
+                slot_next_id = slots[slot_index + 1].id
+            elsif (timeslot != timeslots.last)
+                slot_next_id = timeslots[timeslots.index(timeslot) + 1].slots.first.id
             else
                 slot_next_id = nil
             end
 
             # Determine the id of the previous slot in the current timeslot
-            if (@slot != @slots.first)
-                slot_prev_id = @slots[slot_index - 1].id
-            elsif (@timeslot != @timeslots.first)
-                slot_prev_id = @timeslots[@timeslots.index(@timeslot) - 1].slots.first.id
+            if (slot != slots.first)
+                slot_prev_id = slots[slot_index - 1].id
+            elsif (timeslot != timeslots.first)
+                slot_prev_id = timeslots[timeslots.index(timeslot) - 1].slots.first.id
             else
                 slot_prev_id = nil
             end
@@ -41,23 +41,23 @@
             <a href="#header" class="top">top</a>
         </p>            
     <% end %>   
-    <% if (@slot.is_empty?) %>              
+    <% if (!slot.locked && slot.is_empty?) %>              
         <div id="empty-<%= @empty_slot_index %>" class="empty">    
             <% if (@page_id != "room") %>    
-                <% cache("where_when_#{@slot.id}") do %>
-                    <%= render '/shared/grid/where_when' %>
+                <% cache("where_when_#{slot.id}") do %>
+                    <%= render '/shared/grid/where_when', :slot => slot, :room => room  %>
                 <% end %>
             <% end %>
             <% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
                 <%= form_tag(:controller => "talks", :action => "assign_slot") do |f| %>
-                    <input type="hidden" name="slot" value="<%= @slot.id %>" />
+                    <input type="hidden" name="slot" value="<%= slot.id %>" />
                     <% if (@page_id == "talk-assign") %>
-                        <p class="actions"><span class="submit"><%= submit_tag("Insert here", options = { :id => "slot-#{@slot.id}-select", :class => "button green medium" }) %></span></p>
+                        <p class="actions"><span class="submit"><%= submit_tag("Insert here", options = { :id => "slot-#{slot.id}-select", :class => "button green medium" }) %></span></p>
                     <% else %>
-                        <p class="actions"><span class="submit"><%= submit_tag("Move here", options = { :id => "slot-#{@slot.id}-select", :class => "button green medium" }) %></span></p>
+                        <p class="actions"><span class="submit"><%= submit_tag("Move here", options = { :id => "slot-#{slot.id}-select", :class => "button green medium" }) %></span></p>
                     <% end %>
                 <% end %>
-            <% elsif (@version == 's') %>            	
+            <% elsif (@version == 's' || @is_single_timeslot) %>            	
                 <h2 class="heading">Empty</h2>               
             <% end %>
             <% if (@version == "s" && @page_id != "room") %>   
@@ -72,26 +72,30 @@
             <% end %>
         </div>  
     <% else %>
-        <% talk = @slot.talk %>
-        <div class="talk">
-            <% if (@page_id != "room") %>
-                <%= render '/shared/grid/where_when' %>
+    	<% talk = ((slot.locked && slot.is_empty?) ? timeslot.global_talk : slot.talk) %>
+        <div class="talk">        	
+        	<% if (@page_id != "room") %>
+           		<%= render '/shared/grid/where_when', :slot => slot, :room => ((talk.nil? || talk.slot.nil?) ? room : talk.slot.room) %>
             <% end %>
-            <% if (@page_id == "talk-move" unless (@slot.locked? || talk == @unscheduled)) %>
+            <% if (@page_id == "talk-move" unless (slot.locked? || talk == @unscheduled)) %>
                 <%= form_tag(:controller => "talks", :action => "swap_slot") do |f| %>
                     <input type="hidden" name="talk_2" value="<%= talk.id %>" />
                     <p class="actions"><span class="submit"><%= submit_tag("Swap", :class => "button orange medium") %></span></p>
                 <% end %>
             <% end %>           
             <h2 class="heading title">
-                <% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>
-                <%= link_to talk_title, talk_path(talk) unless talk.title.nil? %>                    
+            	<% if (talk.nil?) %>
+            		<%= timeslot.name %> 
+            	<% else %>
+                	<% talk_title = ((talk.title.strip == "") ? "[Untitled]" : talk.title) %>
+                	<%= link_to talk_title, talk_path(talk) unless talk.title.nil? %> 
+                <% end %>                                   
             </h2> 
-            <% if ((!talk.speaker.nil?) && talk.speaker.strip != "") %>
+            <% if (!talk.nil? && (!talk.speaker.nil?) && talk.speaker.strip != "") %>
                 <h3 class="heading speaker">
                     <%= talk.speaker %>
                 </h3>
-            <% end %>          
-        </div>       
-    <% end %>
+            <% end %>       			  	        	           
+	    </div>
+    <% end %> 
 </div>

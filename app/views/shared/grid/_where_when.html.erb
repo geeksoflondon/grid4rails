@@ -1,20 +1,20 @@
 <p class="where-when">	
 	<% if (@page_id != "timeslot") 
-		timeslot = @slot.timeslot
+		timeslot = slot.timeslot
 	%>
 		<span class="day"><%= timeslot.start.strftime("%a") %></span>
 		<span class="delimiter hide"> </span>
 		<span class="start"><%= timeslot.start.strftime("%H:%M") %></span>
 	<% end %>
 	
-	<% if (@page_id != "room" && !@slot.locked) %> 
+	<% if (@page_id != "room") %> 
 		<% if (@page_id != "timeslot" && @page_id != "room-grid") %>
 			<span class="delimiter hide">, </span>
 		<% end %>
 		
 		<% if (@page_id != "room-grid") %>
 			<span class="room">
-			<%= link_to (@show_room_col ? @room.short_code.upcase : @room.name), :controller => "grid", :action => "room", :date => @date, :room => @room.short_code %></span>
+			<%= link_to (@show_room_col ? room.short_code.upcase : room.name), :controller => "grid", :action => "room", :date => @date, :room => room.short_code %></span>
 		<% end %>
 	<% end %>	
 </p>

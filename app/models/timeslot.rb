@@ -1,7 +1,6 @@
 class Timeslot < ActiveRecord::Base
   
-  has_many :slots
-  belongs_to :talk
+  has_many :slots  
   
   validates :end, 
   	:uniqueness => {:scope => :start}
@@ -11,8 +10,7 @@ class Timeslot < ActiveRecord::Base
   
   # Returns all timeslots that have already started (relative to the current date and time)
   scope :past, where('start < ?', Time.now).order("start DESC")
-  
-  
+    
   # Returns all timeslots that have yet to start (relative to the current date and time)
   scope :upcoming, where('start >= ?', Time.now).order("start ASC")
 
@@ -21,6 +19,10 @@ class Timeslot < ActiveRecord::Base
     Timeslot.where("assign_slots = ?", false)
   end
 
+  # Returns the slot in this timeslot assigned to the room specified
+  def slot_by_room(room)
+  	self.slots.where('room_id = ?', room.id).first unless room.nil?
+  end
 
   # Returns the current timeslot (relative to the current date and time)
   def self.on_now
@@ -133,8 +135,7 @@ class Timeslot < ActiveRecord::Base
   # Returns date of last day of event
   def self.end_date
   	Timeslot.all.last.start.to_date
-  end
-  
+  end  
 
   def contains_empty_slot?
   	@empty_slots = Slot.find_empty
@@ -145,5 +146,16 @@ class Timeslot < ActiveRecord::Base
   	end
   	return false
   end 
+  
+  def global_talk  
+  	Talk.find(self.global_talk_id) unless self.global_talk_id.nil?
+  end
+  
+  def has_global_talk?
+  	if (!self.global_talk_id.nil?) 
+  		return true
+  	end
+  	return false
+  end
 
 end

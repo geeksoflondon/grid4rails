@@ -1,52 +1,50 @@
-	<% if (@page_id != "room") %>
-		<p class="skip-to-empty skip-down hide">		
-			<img class="icon" width="14" height="7" src="/images/arrow_down.png" alt="An arrow pointing downwards" />
-			<a name="empty-0" href="#empty-1" title="Skip to the first empty slot">first empty slot</a>
-		</p>
-	<% end %>
-	<div class="grid">
-		<% @timeslots.each do | timeslot | %>
-			<% @timeslot = timeslot %>
-			<% @slots = @timeslot.slots %>
-			<div id="timeslot-<%= @timeslot.id %>" class="timeslot<% if (@timeslot == @timeslots.first) %> first<% end %>">
-				<div class="header">
-					<%= render "shared/grid/timeslot_heading" %>
-					<% if ((@version == "s") && !@is_single_timeslot) %>
-						<p class="skip">
-							<span class="label">Session: </span>
-							<% if (@timeslot != @timeslots.last) %>
-								<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) + 1].id %>" class="next">next</a>
-							<% end %>
-							<% if (@timeslot != @timeslots.first && @timeslot != @timeslots.last) %>
-								<span class="delimiter"> | </span>
-							<% end %>
-							<% if (@timeslot != @timeslots.first) %>
-								<a href="#timeslot-<%= @timeslots[@timeslots.index(@timeslot) - 1].id %>" class="prev">prev</a>
-							<% end %>
+<% if (@page_id != "room") %>
+	<p class="skip-to-empty skip-down hide">		
+		<img class="icon" width="14" height="7" src="/images/arrow_down.png" alt="An arrow pointing downwards" />
+		<a name="empty-0" href="#empty-1" title="Skip to the first empty slot">first empty slot</a>
+	</p>
+<% end %>
+<div class="grid">
+	<% @timeslots.each do | timeslot | %>
+		<% slots = timeslot.slots %>
+		<div id="timeslot-<%= timeslot.id %>" class="timeslot<% if (timeslot == @timeslots.first) %> first<% end %>">
+			<div class="header">
+				<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
+				<% if ((@version == "s") && !@is_single_timeslot) %>
+					<p class="skip">
+						<span class="label">Session: </span>
+						<% if (timeslot != @timeslots.last) %>
+							<a href="#timeslot-<%= @timeslots[@timeslots.index(timeslot) + 1].id %>" class="next">next</a>
+						<% end %>
+						<% if (timeslot != @timeslots.first && timeslot != @timeslots.last) %>
 							<span class="delimiter"> | </span>
-							<a href="#header" class="top">top</a>
-						</p>
-					<% end %>
-				</div>
-				<div class="slots">					
-					<% @timeslot.slots.each do |slot| %>						
-						<% if ((@page_id != "room" || (@page_id == "room" && slot.room == @room)) && !(slot.locked && slot.talk.nil?)) %>
-							<% @slot = slot %>									
-							<% @room = @slot.room %>												
-							<% cache ("slot_#{@slot.id}_#{@page_id}_#{@version}") do %>
-			           			<%= render 'shared/grid/slot' %>
-							<% end %>
-			           	<% end %>
-					<% end %>	
-				</div>	
-			</div>										
-		<% end %>					
-	</div>
-	<% if (@page_id != "room" && @timeslot.contains_empty_slot?) %>
-		<p id="empty-<%= @empty_slot_index %>" class="skip skip-to-empty skip-to-empty-last">
-			<img class="icon" width="14" height="7" src="/images/arrow_up.png" alt="An arrow pointing upwards" />		
-			<a href="#empty-0 %>">first empty</a>
-			<span class="delimiter"> | </span>
-			<a href="#empty-<%= @empty_slot_index - 1 %>">last empty</a>
-		</p>
-	<% end %>
+						<% end %>
+						<% if (timeslot != @timeslots.first) %>
+							<a href="#timeslot-<%= @timeslots[@timeslots.index(timeslot) - 1].id %>" class="prev">prev</a>
+						<% end %>
+						<span class="delimiter"> | </span>
+						<a href="#header" class="top">top</a>
+					</p>
+				<% end %>
+			</div>
+			<div class="slots">					
+				<% timeslot.slots.each do |slot| %>						
+					<% room = slot.room %>					
+					<% if ((timeslot.has_global_talk? && !room.is_empty?(timeslot)) || (!timeslot.has_global_talk? && room.include_in_grid)) %>												
+						<% cache ("slot_#{slot.id}_#{@page_id}_#{@version}") do %>
+			       			<%= render 'shared/grid/slot', :timeslots => @timeslots, :timeslot => timeslot, :slots => slots, :slot => slot, :room => room %>
+						<% end %>
+			       	<% end %>
+				<% end %>	
+			</div>
+		</div>											
+	<% end %>					
+</div>
+<% if (@page_id != "room" && (@timeslot.contains_empty_slot? unless @timeslot.nil?)) %>
+	<p id="empty-<%= @empty_slot_index %>" class="skip skip-to-empty skip-to-empty-last">
+		<img class="icon" width="14" height="7" src="/images/arrow_up.png" alt="An arrow pointing upwards" />		
+		<a href="#empty-0 %>">first empty</a>
+		<span class="delimiter"> | </span>
+		<a href="#empty-<%= @empty_slot_index - 1 %>">last empty</a>
+	</p>
+<% end %>

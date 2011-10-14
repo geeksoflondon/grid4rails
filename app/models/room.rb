@@ -31,5 +31,14 @@ class Room < ActiveRecord::Base
   def self.by_short_code(short_code)
   	 Room.where("short_code = ?", short_code).first
   end
+  
+  def is_empty?(timeslot)
+  	self.slots.each do |slot|
+  		if (slot.timeslot.id == timeslot.id)
+  			return slot.is_empty?
+  		end
+  	end
+  	return false
+  end
 
 end

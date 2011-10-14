@@ -272,7 +272,7 @@ input.orange,
 
 #footer .nav,
 #footer .version-switcher {
-    padding: 6px 12px 9px;
+    padding: 6px 6px 9px;
     background-color: #000000; /* #000000 */
     color: #ffffff; /* #ffffff */
 }
@@ -656,11 +656,11 @@ table.grid .where-when span {
 
 /* Break slots */
 
-table.grid .break {
+table.grid .locked {
     background-color: #ffffcc;
 }
 
-table.grid .break .where-when {
+table.grid .locked .where-when {
 	text-align: left;
 }
 
@@ -711,12 +711,15 @@ table.single-timeslot .slot {
     padding-bottom: 6px;
 }
 
+table.single-timeslot .slot .where-when,
+table.single-timeslot .slot .heading,
 table.single-timeslot p {
-  text-align: left;
+	text-align: left;
 }
 
 table.single-timeslot .empty .heading {
-    padding-left: 3px;
+    padding-left: 0px;
+    font-weight: normal;
 }
 
 table.single-timeslot td.now {

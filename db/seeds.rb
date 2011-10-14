@@ -21,13 +21,15 @@ puts "Total Talks: " + Talk.all.count.to_s
 
 #Generate Rooms
 puts "Generating rooms."
-Room.create(:name => 'Count Dracula', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'cdr', :capacity => 30, :facilities => 'TV')
-Room.create(:name => 'Frankenstein\'s Monster', :description => 'Xth Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'frm', :capacity => 100, :facilities => 'TV')
-Room.create(:name => 'The Luggage', :description => 'Xth Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'lug', :capacity => 20, :facilities => 'Projector')
-Room.create(:name => 'Godzilla', :description => 'Xth Floor, in the front-left corner as you face Old Trafford.', :short_code => 'god', :capacity => 50, :facilities => 'Whiteboard')
-Room.create(:name => 'Tribbles', :description => 'Xth Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'trb', :capacity => 15, :facilities => 'Projector, whiteboard')
-Room.create(:name => 'Pikachu', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'pik', :capacity => 20)
-Room.create(:name => 'Casper', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'cas', :capacity => 30, :facilities => 'TV, whiteboard')
+room_a = Room.create(:name => 'Everywhere', :description => 'Any and all rooms (assuming it\'s not out-of-bounds and there\'s no other talk scheduled in it)', :short_code => 'any', :capacity => 250, :include_in_grid => false)
+room_b = Room.create(:name => 'Thing', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'thg', :capacity => 250, :facilities => 'TV', :include_in_grid => false)
+room1 = Room.create(:name => 'Count Dracula', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'cdr', :capacity => 30, :facilities => 'TV')
+room2 = Room.create(:name => 'Frankenstein\'s Monster', :description => 'Xth Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'frm', :capacity => 100, :facilities => 'TV')
+room3 = Room.create(:name => 'The Luggage', :description => 'Xth Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'lug', :capacity => 20, :facilities => 'Projector')
+room4 = Room.create(:name => 'Godzilla', :description => 'Xth Floor, in the front-left corner as you face Old Trafford.', :short_code => 'god', :capacity => 50, :facilities => 'Whiteboard')
+room5 = Room.create(:name => 'Tribbles', :description => 'Xth Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'trb', :capacity => 15, :facilities => 'Projector, whiteboard')
+room6 = Room.create(:name => 'Pikachu', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'pik', :capacity => 20)
+room7 = Room.create(:name => 'Casper', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'cas', :capacity => 30, :facilities => 'TV, whiteboard')
 
 puts "Total Rooms: " + Room.all.count.to_s
 puts "ID of first Room: " + Room.all.first.id.to_s
@@ -35,15 +37,17 @@ puts "ID of first Room: " + Room.all.first.id.to_s
 
 #Generate Timeslots
 puts "Generating timeslots."
-predetermined_talk_names = Array.new
+predetermined_talks = Array.new
+timeslots_to_lock = Array.new
 
 ##Opening Talk
 
 start_time = Time.utc(2011, "oct", 29,9,30,00)
 end_time = start_time + 40.minutes
 timeslot_label = 'Opening Talk'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_b, "Welcome to BarcampLondon9!", "The Crew"]
+timeslots_to_lock << timeslot
 
 
 ## Grid Population
@@ -51,8 +55,9 @@ predetermined_talk_names << timeslot_label
 start_time = end_time
 end_time = start_time + 20.minutes
 timeslot_label = 'Grid Population'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_a, "Add your talk to the grid", "You"]
+timeslots_to_lock << timeslot
 
 
 ## Saturday Morning
@@ -80,8 +85,9 @@ end
 start_time = end_time
 end_time = start_time + 1.hour
 timeslot_label = 'Lunch'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_b, nil, nil]
+timeslots_to_lock << timeslot
 
 
 ## Saturday Afternoon
@@ -109,8 +115,9 @@ end
 start_time = end_time
 end_time = start_time + 90.minutes
 timeslot_label = 'Dinner'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_b, nil, nil]
+timeslots_to_lock << timeslot
 
 
 ## Saturday Evening
@@ -138,8 +145,9 @@ end
 start_time = end_time
 end_time = Time.utc(2011, "oct", 30,7,30,00)
 timeslot_label = 'Games, etc.'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_a, nil, nil]
+timeslots_to_lock << timeslot
 
 
 ## Breakfast
@@ -147,8 +155,9 @@ predetermined_talk_names << timeslot_label
 start_time = end_time
 end_time = start_time + 90.minutes
 timeslot_label = 'Breakfast'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_b, nil, nil]
+timeslots_to_lock << timeslot
 
 
 ## Sunday Morning
@@ -176,7 +185,9 @@ end
 start_time = end_time
 end_time = start_time + 1.hour
 timeslot_label = 'Lunch'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_b, nil, nil]
+timeslots_to_lock << timeslot
 
 
 ## Sunday Afternoon
@@ -208,17 +219,19 @@ end
 start_time = end_time
 end_time = start_time + 15.minutes
 timeslot_label = 'Closing Talk'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_b, "A quick round-up of the weekend.", "The Crew"]
+timeslots_to_lock << timeslot
 
 
-## Clean-up
+## Tidy-up
 
 start_time = end_time
 end_time = start_time + 30.minutes
-timeslot_label = 'Clean-up'
-Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-predetermined_talk_names << timeslot_label
+timeslot_label = 'Tidy-up'
+timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+predetermined_talks << [timeslot, room_a, "A quick zip-round to set the rooms back as they were before we took over.", "Everyone"]
+timeslots_to_lock << timeslot
 
 
 ## Summary of timeslots created
@@ -235,41 +248,67 @@ puts "Total Slots: " + Slot.all.count.to_s
 
 # Generate pre-determined talks
 puts "Generating pre-determined talks."
-puts "Total Pre-determined Talk Titles: " + predetermined_talk_names.count.to_s
+puts "Total Pre-determined Talk Titles: " + predetermined_talks.count.to_s
 
-## Loop through all timeslots
-Timeslot.all.each do |timeslot|
+## Loop through the list of pre-determined talks
+predetermined_talks.each do |predetermined_talk|
 
-  ### Check whether the name of the current timeslot is in the list of pre-determined talk names
-  if (predetermined_talk_names.include?(timeslot.name))
+  ### Fetch the timeslot
+  timeslot = predetermined_talk[0]
 
-  	puts "Timeslot Name: " + timeslot.name
+  puts "Timeslot Name: " + timeslot.name   
 
-  	#### A pre-determined talk needs to be assigned to each of the slots in this timeslot
-    timeslot.slots.each do |slot|
-    
-      if (timeslot.slots.first == slot)
-      
-  		##### Create a talk with the same name as the timeslot
-  		talk = Talk.create(:title => timeslot.name)
-
-  		##### Assign the talk to the current slot
-  		puts "Assigning talk " + talk.id.to_s + " to slot " + slot.id.to_s
-  		talk.slot = slot
-  		talk.save
-	  	
-	  end
-
-	  ##### Lock the slot
-      slot.locked = true
-      slot.save
-      
-    end
+  ### Create a talk with the name specified
+  talk = Talk.create(:title => timeslot.name, :description => predetermined_talk[2], :speaker => predetermined_talk[3])
+  
+  #### Set the talk as the timeslot's global talk
+  puts "Setting talk " + talk.id.to_s + " as global talk for timeslot " + timeslot.id.to_s
+  timeslot.global_talk_id = talk.id
+  timeslot.save
+  
+  ### Assign the talk to the room specified, if specified
+  room = predetermined_talk[1]
+  if (!room.nil?)
+  
+    puts "Room Name: " + room.name  	
+  	
+  	#### Fetch the slot this talk is to be scheduled in
+  	slot = timeslot.slot_by_room(room)
+  	
+  	#### Assign the talk to the current slot
+  	puts "Assigning talk " + talk.id.to_s + " to slot " + slot.id.to_s
+  	talk.slot = slot
+  	talk.save
+  	
+  	#### Lock the slot
+    slot.locked = true
+    slot.save
+  	
   end
-
+  
 end
 
 puts "Total Talks: " + Talk.all.count.to_s
+
+
+# Lock timeslots
+puts "Locking timeslots."
+puts "Total Timeslots to Lock: " + timeslots_to_lock.count.to_s
+
+## Loop through the list of timeslots to lock
+timeslots_to_lock.each do |timeslot|
+    	
+  	### Loop through all the slots in the current timeslot
+    timeslot.slots.each do |slot|
+
+		#### Lock the slot
+	    slot.locked = true
+	    slot.save      
+
+  	end
+
+end
+
 
 # Confirm seed completed
 puts "Seeding complete."

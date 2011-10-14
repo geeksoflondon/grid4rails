@@ -1,12 +1,12 @@
-<% if (@slot) %>
+<% if (room || timeslot) %>
 	<div class="slot-details">
 		<div class="when">
 			<h2 class="heading">When</h2>
-			<p><a href="<%= url_for :controller => "grid", :action => "show", :timeslot => @slot.timeslot.id, :date => @slot.timeslot.start.to_date %>"><%= @slot.timeslot.start.strftime("%A") %>, <%= @slot.timeslot.start.strftime("%H:%M") %> - <% if (@slot.timeslot.start.to_date != @slot.timeslot.end.to_date) %><%= @slot.timeslot.end.strftime("%A") %>, <% end %><%= @slot.timeslot.end.strftime("%H:%M") %></a></p>
+			<p><a href="<%= url_for :controller => "grid", :action => "show", :timeslot => timeslot.id, :date => timeslot.start.to_date %>"><%= timeslot.start.strftime("%A") %>, <%= timeslot.start.strftime("%H:%M") %> - <% if (timeslot.start.to_date != timeslot.end.to_date) %><%= timeslot.end.strftime("%A") %>, <% end %><%= timeslot.end.strftime("%H:%M") %></a></p>
 		</div>	
 		<div class="where">
 			<h2 class="heading">Where</h2>
-			<p><a href="<%= url_for :controller => "grid", :action => "room", :date => @slot.timeslot.start.to_date, :room => @slot.room.short_code %>"><%= @slot.room.name %></a></p>
+			<p><a href="<%= url_for :controller => "rooms", :action => "show", :room => room.short_code %>"><%= room.name %></a></p>
 		</div>	
 	</div>
 <% end %>

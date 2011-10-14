@@ -22,10 +22,10 @@ class Slot < ActiveRecord::Base
 
     Slot.delete_all
 
-    Timeslot.all.each do |timeslot|
-      Room.all.each do |room|
-        slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
-      end
+	Room.all.each do |room|
+    	Timeslot.all.each do |timeslot|      
+        	slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
+      	end
     end
 
   end

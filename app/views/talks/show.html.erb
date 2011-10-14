@@ -1,21 +1,21 @@
 <div class="talk">
-    <%= render '/shared/talk/details' %>
+    <%= render '/shared/talk/details', :talk => @talk %>
     <% if (!@talk.slot.nil?) %>
-        <% @slot = @talk.slot %>
-        <%= render '/shared/talk/slot' %>       
+        <%= render '/shared/talk/slot', :room => (@talk.slot.room unless @talk.slot.nil?), :timeslot => (@talk.slot.timeslot unless @talk.slot.nil?) %>       
     <% end %>
 
-    <div class='actions'>
-        <p>
-            <% if (@talk.slot.nil?) %>
-                <span class="schedule"><%= link_to "Move to Grid", url_options = { :controller => "talks", :action => "schedule", :id => @talk.id }, html_options = { :class => "button green" } %></span>
-            <% else %>
-                <span class="schedule"><%= link_to "Remove from Grid", url_options = { :controller => "talks", :action => "remove", :id => @talk.id }, html_options = { :class => "button red", :style => "color: #fff" } %></span>
-                <span class="schedule"><%= link_to "Move", url_options = { :controller => "talks", :action => "move", :id => @talk.id }, html_options = { :class => "button green" } %></span>
-            <% end %>
-            <span class="submit"><%= link_to "Edit", edit_talk_path(@talk), html_options = { :class => "button green" } %></span>           
-        </p>
-    </div>
-
+	<% if (@talk.slot && !@talk.slot.locked) %>
+	    <div class='actions'>
+	        <p>
+	            <% if (@talk.slot.nil?) %>
+	                <span class="schedule"><%= link_to "Move to Grid", url_options = { :controller => "talks", :action => "schedule", :id => @talk.id }, html_options = { :class => "button green" } %></span>
+	            <% else %>
+	                <span class="schedule"><%= link_to "Remove from Grid", url_options = { :controller => "talks", :action => "remove", :id => @talk.id }, html_options = { :class => "button red", :style => "color: #fff" } %></span>
+	                <span class="schedule"><%= link_to "Move", url_options = { :controller => "talks", :action => "move", :id => @talk.id }, html_options = { :class => "button green" } %></span>
+	            <% end %>
+	            <span class="submit"><%= link_to "Edit", edit_talk_path(@talk), html_options = { :class => "button green" } %></span>           
+	        </p>
+	    </div>
+	<% end %>
 </div>
 

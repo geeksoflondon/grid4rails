@@ -1,10 +1,10 @@
 <% if (@current_controller == "talks" && @current_action == "unscheduled") then heading_element = "h2" else heading_element = "h1" end %>
 <<%= heading_element %> class="heading">
-  <%= ((@talk.title.blank?) ? "[Untitled]" : @talk.title) %>
+  <%= ((talk.title.blank?) ? "[Untitled]" : talk.title) %>
 </<%= heading_element %>> 
-<% if (@talk.speaker unless @talk.speaker.blank?) %>
-  <p class="speaker"><%= @talk.speaker %></p>	
+<% if (talk.speaker unless talk.speaker.blank?) %>
+  <p class="speaker"><%= talk.speaker %></p>	
 <% end %>
-<% if (@talk.description unless @talk.description.blank?) %>
-  <p class="description"><%= @talk.description %></p>
+<% if (talk.description unless talk.description.blank?) %>
+  <p class="description"><%= talk.description %></p>
 <% end %>

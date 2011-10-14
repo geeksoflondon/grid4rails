@@ -8,10 +8,16 @@ module SlotsHelper
 			classes << "now"
 		end
 		if (slot.is_empty?)
-			classes << "empty"
+			if (slot.locked)
+				if (slot.timeslot.global_talk_id.nil?)
+					classes << "break" 
+				end
+			else
+				classes << "empty"
+			end
 		end
 		if (slot.locked) 
-			classes << "break"
+			classes << "locked"
 		end
 		return classes
 	end
