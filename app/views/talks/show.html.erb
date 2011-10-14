@@ -4,7 +4,7 @@
         <%= render '/shared/talk/slot', :room => (@talk.slot.room unless @talk.slot.nil?), :timeslot => (@talk.slot.timeslot unless @talk.slot.nil?) %>       
     <% end %>
 
-	<% if (@talk.slot && !@talk.slot.locked) %>
+	<% if ((@talk.slot && !@talk.slot.locked) || @talk.slot.nil?) %>
 	    <div class='actions'>
 	        <p>
 	            <% if (@talk.slot.nil?) %>
