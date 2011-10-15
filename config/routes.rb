@@ -34,7 +34,7 @@ Griddy::Application.routes.draw do
   end
 
   scope "(:version)", :version => 'xl' do
-  	match 'grid', :to => "grid#index"  	
+  	match 'grid', :to => "grid#index"
   end
 
   root :to => "grid#now"

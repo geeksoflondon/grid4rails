@@ -4,6 +4,7 @@ Room.delete_all
 Timeslot.delete_all
 Slot.delete_all
 Talk.delete_all
+Grid.kill_redis_caches
 
 puts "Total Timeslots: " + Timeslot.all.count.to_s
 puts "Total Rooms: " + Room.all.count.to_s

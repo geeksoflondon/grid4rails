@@ -1,9 +1,9 @@
 class GridController < ApplicationController
 
   before_filter :load_grid
-  
+
   def index
-  	if (params[:version] != 'xl') 
+  	if (params[:version] != 'xl')
   		redirect_to :controller => "grid", :action => "date", :version => params[:version]
   	end
   	@page_id = "grid"
@@ -14,7 +14,7 @@ class GridController < ApplicationController
   	@timeslots << on_next unless on_next.nil?
   	if (@timeslots.first.nil?)
   		@date = nil
-  	else 
+  	else
   		@date = @timeslots.first.start.to_date
   	end
   end
