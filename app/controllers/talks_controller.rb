@@ -74,7 +74,10 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-        format.html { redirect_to(@talk, :notice => 'Talk was successfully updated.', :version => params[:version]) }
+        format.html { 			
+        	flash[:notice] = "Talk was successfully updated."
+        	redirect_to :controller => 'talks', :action => 'show', :version => params[:version] 
+        }
         format.xml  { head :ok }
         format.json  { head :ok }
       else
