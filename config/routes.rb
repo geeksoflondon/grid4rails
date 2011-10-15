@@ -1,6 +1,7 @@
 Griddy::Application.routes.draw do
 
   match "reset", :to => "application#reset", :as => :reset
+  match "stats/gecko/count", :to => "stats#talks"
 
   scope "(:version)", :version => /s|m|l/ do  
 
