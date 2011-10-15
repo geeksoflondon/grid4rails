@@ -82,6 +82,8 @@ GEM
       thor (~> 0.14.4)
     rake (0.9.2)
     redis (2.2.2)
+    redis-store (1.0.0.1)
+      redis (~> 2.2.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rubyzip (0.9.4)
@@ -111,5 +113,6 @@ DEPENDENCIES
   rails (= 3.0.3)
   rake (>= 0.9.2)
   redis
+  redis-store
   sqlite3-ruby
   timecop

@@ -11,7 +11,9 @@ gem "jquery-rails", "~> 1.0.12"
 gem 'compass'
 gem 'haml' # for SASS
 
-gem 'redis' #queueing
+#queueing and caching
+gem 'redis'
+gem 'redis-store'
 
 #exception capture and logging
 gem 'exceptional'
