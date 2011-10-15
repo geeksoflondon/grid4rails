@@ -1,5 +1,7 @@
 class GridController < ApplicationController
 
+  before_filter :load_grid
+
   def now
     @page_id = "now"
     @timeslot = Timeslot.on_now
@@ -69,6 +71,12 @@ class GridController < ApplicationController
     @page_id = "room-grid"
     flash.keep
     redirect_to :controller => "rooms", :action => "show", :room => params[:room], :version => params[:version]
-  endf
+  end
+
+  private
+
+  def load_grid
+    @grid = Grid.new
+  end
 
 end
