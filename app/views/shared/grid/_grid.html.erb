@@ -6,33 +6,33 @@
 				<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
 			</th>
 		<% end %>
-	</tr> 			
-	<% @rooms.each do |room| %>	
-		<% if ((@is_single_timeslot && ((!@timeslots.first.has_global_talk? && room.include_in_grid) || (@timeslots.first.has_global_talk?  && !room.is_empty?(@timeslots.first)))) || (!@is_single_timeslot && room.include_in_grid)) %>
-		    <tr class="<%= cycle("odd", "even") %>">
-		    	<% if (@show_room_col) %>
-			        <th class="room header">
+	</tr>			
+	<% @rooms.each do |room| %> 
+		<% if ((@is_single_timeslot && ((!@timeslots.first.has_global_talk? && room.include_in_grid) || (@timeslots.first.has_global_talk?	&& !room.is_empty?(@timeslots.first)))) || (!@is_single_timeslot && room.include_in_grid)) %>
+			<tr class="<%= cycle("odd", "even") %>">
+				<% if (@show_room_col) %>
+					<th class="room header">
 						<p class="heading"><%= link_to room.name, :controller => "grid", :action => "room", :date => @date, :room => room.short_code %></p>
-			            <p class="shortcode"><%= room.short_code.upcase %></p>
-			            <div class="details">
-			            	<p class="capacity"><span class="label">Holds: </span><%= room.capacity unless room.capacity.blank? %></p>
-			            	<p class="facilities"><span class="label">Facilities: </span><% if (room.facilities.blank?) %>Nothing special<% else %><%= room.facilities %><% end %></p>
-			            </div>		  		            
-			        </th>      
-		        <% end %>      
-		        <% @timeslots.each do |timeslot| %>
-		        	<% slots = timeslot.slots %>
-		        	<% slots.each do |slot|%>
-		        		<% if (slot.room_id == room.id) %>
-			            	<td<% if (@version == "l") %> data-slot_id="<%= slot.id %>"<% end %><% if (classnames(slot).length > 0) %> class="<%= classnames(slot).join(" ") %>"<% end %>>
-			           			<% cache ("slot_#{slot.id}_#{@page_id}_#{@version}") do %>
+						<p class="shortcode"><%= room.short_code.upcase %></p>
+						<div class="details">
+							<p class="capacity"><span class="label">Holds: </span><%= room.capacity unless room.capacity.blank? %></p>
+							<p class="facilities"><span class="label">Facilities: </span><% if (room.facilities.blank?) %>Nothing special<% else %><%= room.facilities %><% end %></p>
+						</div>							
+					</th>	   
+				<% end %>	   
+				<% @timeslots.each do |timeslot| %>
+					<% slots = timeslot.slots %>
+					<% slots.each do |slot|%>
+						<% if (slot.room_id == room.id) %>
+							<td<% if (@version == "l") %> data-slot_id="<%= slot.id %>"<% end %><% if (classnames(slot).length > 0) %> class="<%= classnames(slot).join(" ") %>"<% end %>>
+								<% cache ("slot_#{slot.id}_#{@page_id}_#{@version}") do %>
 									<%= render 'shared/grid/slot', :timeslots => @timeslots, :timeslot => timeslot, :slots => slots, :slot => slot, :room => room %>
 								<% end %>
-			           		</td>	   
-		           		<% end %>     			        	
-		        	<% end %>
-		        <% end %>	      
-		    </tr>
-	    <% end %>
+							</td>
+						<% end %>
+					<% end %>
+				<% end %>
+			</tr>
+		<% end %>
 	<% end %>
 </table>
