@@ -1,7 +1,137 @@
-/* VIEW: the grid
+/* Basic form rules
 -----------------------------*/
 
-#gridTable td, 
-#gridTable th {
-    border-color: #cccccc; /* #cccccc */
+.actions a {
+    background-color: #DDDDDD;
+    color: #333333;
+}
+
+
+/* FEATURE: Header
+-----------------------------*/
+
+#header {
+    border-bottom-color: #000000;
+}
+
+#header .branding {
+    background-color: #000000; /* #000000 */
+    border-bottom-color: #000000;
+}
+
+
+/* FEATURE: Footer
+-----------------------------*/
+
+#footer {
+    border-top-color: #000000;    
+}
+
+
+/* FEATURE: Scrollers
+-----------------------------*/
+
+.scroller {
+    background-color: #000000; /* #f5f5f5 */
+    color: #fcfcfc;
+    border-color: #000000; /* #555555 */
+}
+.scroller a,
+.scroller a:link,
+.scroller a:visited,
+.scroller a:hover,
+.scroller a:focus,
+.scroller a:active {
+    color: #ffffff;
+}
+
+
+/* FEATURE: Version Switcher
+-----------------------------*/
+
+.version-switcher {   
+    background-color: #000000; /* #000000 */
+    color: #ffffff; /* #ffffff */
+}
+
+.version-switcher .heading,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+    color: #ffffff; /* #ffffff */
+}
+
+#footer .version-switcher .delimiter {
+    border-color: #555555;
+}
+
+
+/* FEATURE: Skippers
+-----------------------------*/
+
+.skip-up {
+    border-bottom-color: #000000; /* #000000 */
+}
+
+
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {      
+    background-color: #C9E2AE;
+}    
+    
+.warning {
+  color: #7E2B29;
+  background-color: #F9EEEE;
+}
+
+.message,
+.message p {    
+    color: #444;                       
+}
+
+.message .actions {
+	background-color: #ffffff;
+}
+
+
+/* FEATURE: the grid
+-----------------------------*/
+
+div.grid .timeslot .header {  
+    background-color: #f5f5f5;
+    color: #000000;
+}
+
+div.grid .talk,
+div.grid .empty {
+    border-color: #cccccc;
+}
+
+.grid .header .where-when {
+    color: #b13c3b;
+}
+
+.grid .slot .empty {
+    background-color: #C9E2AE;
+}
+
+.grid .slot .empty,
+.grid .slot .empty .heading,
+.grid .slot .empty .where-when,
+.grid .slot .empty a,
+.grid .slot .empty a:link,
+.grid .slot .empty a:visited,
+.grid .slot .empty a:hover,
+.grid .slot .empty a:focus,
+.grid .slot .empty a:active {
+    color: #444;    
+}
+
+.grid .slot .actions {
+    background-color: #ffffff;
+    border-color: #444444; 
 }

@@ -1,0 +1,150 @@
+/* Basic background rules
+-----------------------------*/
+
+html {
+  background-color: black;
+}
+
+
+/* Basic form rules (inc. pseudo form elements)
+-----------------------------*/
+
+form .field_with_errors input[type=text], 
+form .field_with_errors textarea {
+  border-color: #aa0000;
+}
+
+form input[type=text],
+form textarea {  
+  border-color: #aaa;    
+}
+
+
+/* Layout
+-----------------------------*/
+
+#header {
+    border-bottom-color: #888;
+}
+
+#body {
+    border-top-color: #888888;      
+}
+
+#header {
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+  box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+}
+
+
+/* FEATURE: Header
+-----------------------------*/
+
+#header {
+  background-color: black;
+}
+
+
+/* FEATURE: Footer
+-----------------------------*/
+
+#footer {
+  background-color: black;
+  border-top-color: #888;  
+}
+
+#footer .nav,
+#footer .version-switcher,
+#footer .heading {
+    color: #cccccc;
+}
+
+#footer .nav li {
+    border-color: #cccccc;
+}
+
+
+/* FEATURE: Global navigation
+-----------------------------*/
+
+/* In header */
+
+#header .nav li a:link,
+#header .nav li a:visited,
+#header .nav li a:hover,
+#header .nav li a:focus,
+#header .nav li a:active {
+    color: #ffffff;
+}
+
+
+/* FEATURE: Version Switcher
+-----------------------------*/
+
+.version-switcher,
+.version-switcher .heading,
+.version-switcher a,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+  color: #fff;
+}
+
+
+/* FEATURE: Timeslot scroller
+-----------------------------*/
+
+.scroller {
+  background-color: #000;
+  color: #cccccc;
+}
+
+.scroller a {
+  color: #333;  
+}
+
+.scroller .arrows {
+  color: #cccccc;
+}
+
+
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {
+    background-color: #C9E2AE;
+	color: #444;
+}
+
+.instructions {   
+  background-color: #C9E2AE;
+  color: #111;  
+}
+
+.warning {
+  color: #7E2B29;
+  background-color: #F9EEEE;    
+}
+
+
+/* VIEW: Schedule Talk
+-----------------------------*/
+
+#talk-assign table.grid tr.even .empty {
+  background-color: #fafafa;
+}
+
+#talk-assign table.grid tr.odd .empty {
+  background-color: #ffffff;
+}
+
+
+/* FEATURE: Create/Edit Talk Form
+-----------------------------*/
+
+body.talks #main fieldset.actions {
+    border-color: #cccccc;
+}

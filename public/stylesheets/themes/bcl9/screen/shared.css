@@ -1,40 +1,43 @@
-/* Basic text rules
------------------------------*/
-
-body, td, th {
-    color: #e64c00; /* #666666 */
-}
-
 /* Basic link rules
 -----------------------------*/
-
+a,
 a:link,
 a:visited,
 a:hover,
 a:focus,
 a:active {
-	color: #000000; /* #000000 */
-	background: transparent none repeat scroll 0 0; /* Bugfix: remove device default highlight */
+    color: #000000; /* #000000 */
 }
 
-a:link,
-a:visited {
-	color: #000000; /* #000000 */
-}
 
-/* Custom features
+/* FEATURE: Versions Flash
 -----------------------------*/
 
-/* Version switcher */
-/* Footer nav options */
-.version-switcher .options,
-#footer .nav {
-    color: #ffbd9d; /* #cccccc */
+.versions-flash a:link,
+.versions-flash a:visited,
+.versions-flash a:hover,
+.versions-flash a:focus,
+.versions-flash a:active {
+	color: #444444;
 }
 
-/* Version switcher */
-.version-switcher .skip {
-    color: #ffbd9d; /* #cccccc */
+.versions-flash a:link .title,
+.versions-flash a:visited .title {
+	border-bottom-color: #C9E2AE;
+}
+
+.versions-flash .selected a:link .title,
+.versions-flash .selected a:visited .title {
+	border-bottom-color: #444444;
+}
+
+.versions-flash a:hover .title,
+.versions-flash a:focus .title,
+.versions-flash a:active .title,
+.versions-flash .selected a:hover .title,
+.versions-flash .selected a:focus .title,
+.versions-flash .selected a:active .title {
+	border-bottom-color: #ffffff;
 }
 
 
@@ -46,7 +49,8 @@ a:visited {
 .talk .options a:hover,
 .talk .options a:focus,
 .talk .options a:active {
-    color: #ff8142; /* #999999 */
+    background-color: #ddd; /* #999999 */
+    color: #7f4627; /* Updated */
 }
 
 .where-when,
@@ -55,6 +59,21 @@ a:visited {
 .where-when a:visited,
 .where-when a:hover,
 .where-when a:focus,
-.where-when a:active {
-    color: #c84200; /* #555555 */
+.where-when a:active,
+table.single-timeslot .empty .slot .where-when,
+table.single-timeslot .empty .slot .where-when a:link,
+table.single-timeslot .empty .slot .where-when a:visited,
+table.single-timeslot .empty .slot .where-when a:hover,
+table.single-timeslot .empty .slot .where-when a:focus,
+table.single-timeslot .empty .slot .where-when a:active {
+    color: #7f4627; /* Updated */
+}
+
+table.single-timeslot .empty .slot .heading {
+    color: #444444; /* Updated */
+}
+
+
+#room .grid .slot .heading {
+    color: #666666; /* Updated */
 }

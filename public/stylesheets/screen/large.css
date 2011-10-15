@@ -18,13 +18,6 @@
 	left: 0;
 }
 
-/* Basic background rules
------------------------------*/
-
-html {
-  background-color: black;
-}
-
 
 /* Basic text rules
 -----------------------------*/
@@ -44,13 +37,15 @@ form .label {
 
 form .field_with_errors input[type=text], 
 form .field_with_errors textarea {
-  border: 1px solid #aa0000;
+  border-width: 1px; 
+  border-style: solid;
 }
 
 form input[type=text],
 form textarea {  
   padding: 6px;
-  border: 1px solid #aaa;
+  border-width: 1px; 
+  border-style: solid;
   height: inherit;
   font-size: 18px;   
 }
@@ -79,7 +74,6 @@ form .submit input {
     position: fixed;
     left: 0;
     overflow: hidden;
-    border-bottom-color: #888;
     border-bottom-style: solid;   
     top: 0;
     height: 40px;
@@ -89,7 +83,8 @@ form .submit input {
 #body {
     margin: 40px 0 0 0;
     padding: 0;
-    border-top: 1px solid #888888;      
+    border-top-width: 1px;
+    border-top-style: solid;      
 }
 
 #main {
@@ -100,12 +95,6 @@ form .submit input {
 #main h1 {
     margin: 12px 0;
     padding: 0;
-}
-
-#header {
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
-  box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
 }
 
 form,
@@ -125,10 +114,6 @@ body.talks #main {
 
 /* FEATURE: Header
 -----------------------------*/
-
-#header {
-  background-color: black;
-}
 
 #header .branding { 
     display: block;
@@ -152,25 +137,15 @@ body.talks #main {
 /* FEATURE: Footer
 -----------------------------*/
 
-#footer {
-  background-color: black;
-  border-top: 3px solid #888;  
+#footer {  
+  border-top-width: 3px;
+  border-top-style: solid;  
   font-size: 0.9em;
 }
 
 #footer .heading,
 #footer ul {
     display: inline;
-}
-
-#footer .nav,
-#footer .version-switcher,
-#footer .heading {
-    color: #cccccc;
-}
-
-#footer .nav li {
-    border-color: #cccccc;
 }
 
 #footer .nav .heading {
@@ -239,16 +214,8 @@ body.talks #main {
     line-height: 1.3em;
 }
 
-#header .nav li a:link,
-#header .nav li a:visited,
-#header .nav li a:hover,
-#header .nav li a:focus,
-#header .nav li a:active {
-    color: #ffffff;
-}
-
-#header a.add {
-  background-image: url("/images/add.png");
+#header .nav li a.add {
+  background-image: url("/images/themes/default/icons/add.png");
   background-repeat: no-repeat;
   background-position: center left;
   padding-left: 22px;
@@ -266,17 +233,6 @@ body.talks #main {
     padding: 6px 15px;
 }
 
-.version-switcher,
-.version-switcher .heading,
-.version-switcher a,
-.version-switcher a:link,
-.version-switcher a:visited,
-.version-switcher a:hover,
-.version-switcher a:focus,
-.version-switcher a:active {
-  color: #fff;
-}
-
 .version-switcher .heading {
   display: inline;
 }
@@ -289,21 +245,14 @@ body.talks #main {
 /* FEATURE: Timeslot scroller
 -----------------------------*/
 
-.scroller {
-  background-color: #000;
+.scroller { 
   padding: 6px 0 9px 0;
-  color: #cccccc;
 }
 
 .scroller a {
   margin: 0px 0px;
   border: 0px;
-  color: #333;
   font-weight: bold;
-}
-
-.scroller .arrows {
-  color: #cccccc;
 }
 
 .scroller span {
@@ -319,26 +268,20 @@ body.talks #main {
 	padding: 18px 18px 18px 60px;
     background-position: 18px 17px;
     background-repeat: no-repeat;
-    background-color: #C9E2AE;
-	color: #444;
     font-weight: bold;
     font-size: 1.3em;                        
 }
 
 .instructions {  
-  background-image: url("/images/info.png");   
-  background-color: #C9E2AE;
-  color: #111;  
+  background-image: url("/images/themes/default/icons/info.png");      
 }
 
 .notice { 
-  background-image: url("/images/accept.png");      
+  background-image: url("/images/themes/default/icons/confirmation.png");      
 }
 
 .warning {
-  color: #7E2B29;
-  background-color: #F9EEEE;
-  background-image: url("/images/info.png");    
+  background-image: url("/images/themes/default/icons/info.png");    
 }
 
 .message form {
@@ -359,21 +302,8 @@ body.grid #main {
 }
 
 
-/* VIEW: Schedule Talk
------------------------------*/
-
-#talk-assign table.grid tr.even .empty {
-  background-color: #fafafa;
-}
-
-#talk-assign table.grid tr.odd .empty {
-  background-color: #ffffff;
-}
-
-
 /* VIEW: Talk
 -----------------------------*/
-
 
 #talk .talk h1 {
   margin-bottom: 5px;
@@ -393,6 +323,7 @@ body.grid #main {
   max-width: 500px;
 }
 
+
 /* FEATURE: Create/Edit Talk Form
 -----------------------------*/
 
@@ -403,7 +334,8 @@ body.talks #main h1 {
 
 body.talks #main fieldset.actions {
     padding: 0;
-    border: 1px solid #cccccc;
+    border-width: 1px;
+    border-style: solid;
 }
 
 body.talks #main fieldset.actions p {

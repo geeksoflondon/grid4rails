@@ -1,56 +1,320 @@
-/* Basic form rules
+/* Basic link rules
 -----------------------------*/
 
-.submit input,
-.scroller a,
-.scroller a:link,
-.scroller a:visited {	
-	color: #000000; /* #000000 */
-	border-color: #dddddd; /* #dddddd */
-	background: #eeeeee; /* #eeeeee */
+a:link,
+a:visited,
+#header .skip-to-versions a:link .title,
+#header .skip-to-versions a:visited .title {	
+    border-bottom-color: #999999;
 }
 
-.submit input:hover,
-.submit input:focus,
-.scroller a:hover,
-.scroller a:focus {
-	background: #dddddd; /* #dddddd */
-}
-
-.submit input:active,
-.scroller a:active {
-	color: #555555; /* #555555 */
+a:hover,
+a:focus,
+a:active,
+#header .skip-to-versions a:hover .title,
+#header .skip-to-versions a:focus .title,
+#header .skip-to-versions a:active .title {	
+	border-bottom-color: #999999;
 }
 
 
-/* Custom features
+/* Basic form rules (inc. pseudo form elements)
 -----------------------------*/
+
+form input,
+form textarea {
+  border-color: #cccccc;
+}
+
+.actions p {
+  border-color: #cccccc;
+}
+
+.actions a {
+    background-color: #DDDDDD;
+    color: #333333;    
+}
+
+input.green,
+.actions a.green {     
+    background-color: #99cc33; /* Green */
+    color: #ffffff;    
+}
+
+input.orange,
+.actions a.orange {
+    background-color: #f78d1d; /* Orange */
+    color: #ffffff;
+}
+
+
+/* FEATURE: Header
+-----------------------------*/
+
+#header {
+    background-color: #000000; /* #000000 */
+}
+
+#header .skip-to-versions a:link,
+#header .skip-to-versions a:visited,
+#header .skip-to-versions a:hover,
+#header .skip-to-versions a:focus,
+#header .skip-to-versions a:active {
+    background-color: inherit;
+    color: #dddddd;  
+    background-color: transparent;   
+}
+
+#header .nav li a,
+#header .nav li a.add span {
+    border-bottom-color: #000000;
+}
+
+#header .nav li.selected a,
+#header .nav li.selected a.add span {
+    border-bottom-color: #ffffff;
+}
+
+#header .nav li a:hover,
+#header .nav li a:focus,
+#header .nav li a.add:hover span,
+#header .nav li a.add:focus span {
+    border-bottom-color: red;
+}
 
 /* Logo */
 #header .page-title a {    
-    background-color: #666666;    
-}
-
-/* Version Switcher */
-.version-switcher .selected {
-     background-color: #666666; /* #000000 */
-     color: #ffffff; /* #ffffff */
-     border-color: #888888; /* #000000 */
-}
-
-/* Scroller */
-.scroller .arrows {
-    color: #777777; /* #777777 */
+    background-image: url('/images/themes/mediacity/logo.png');
+    background-repeat: no-repeat;    
 }
 
 
-/* VIEW: the grid
+/* FEATURE: Footer
 -----------------------------*/
 
-#gridTable tr.even{
-	background-color: #fcfcfc; /* #fcfcfc */
+#footer .nav,
+#footer .version-switcher {
+    background-color: #000000; /* #000000 */
+    color: #ffffff; /* #ffffff */
 }
 
-.where-when span {
-    background-color: #f5f5f5; /* #f5f5f5 */
+#footer .heading,
+#footer .nav a:link,
+#footer .nav a:visited,
+#footer .nav a:hover,
+#footer .nav a:focus,
+#footer .nav a:active,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+    background-color: inherit;
+    color: #ffffff; /* #ffffff */
+}
+
+
+/* FEATURE: Global Navigation
+-----------------------------*/
+
+/* In Header */
+
+#header .nav,
+#header .nav a:link,
+#header .nav a:visited,
+#header .nav a:hover,
+#header .nav a:focus,
+#header .nav a:active {
+    background-color: inherit;
+    color: #ffffff;
+}
+
+/* In Footer */
+
+#footer .nav .delimiter,
+#footer .version-switcher .delimiter {
+    border-color: #555555;
+}
+
+
+/* FEATURE: Scrollers
+-----------------------------*/
+
+.scroller {
+    background-color: #000000; /* #f5f5f5 */
+    color: #fcfcfc;
+    border-color: #555555; /* #555555 */   
+}
+
+.scroller a:link,
+.scroller a:visited,
+.scroller a:hover,
+.scroller a:focus,
+.scroller a:active {
+    background-color: inherit;
+    color: #ffffff;
+}
+
+.scroller a span {
+    border-bottom-color: #000000;
+}
+
+.scroller a.selected span {
+    border-bottom-color: #ffffff;
+}
+
+.scroller a:hover span,
+.scroller a:focus span {
+    border-bottom-color: red;
+}
+
+
+/* FEATURE: Skippers
+-----------------------------*/
+
+
+.skip-up {
+    border-bottom-color: #000000; /* #000000 */
+}
+
+
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {          
+    background-color: #C9E2AE;         
+}
+
+.warning {
+	color: #7E2B29;
+  	background-color: #F9EEEE;
+}
+
+#error_explanation li {
+  color: #a00;
+}
+
+.message,
+.message p {
+    color: #444;    
+}
+
+.message .actions {
+	background-color: #ffffff;	
+}
+
+
+/* FEATURE: Grid
+-----------------------------*/
+
+table.grid td, 
+table.grid th {
+    border-color: #cccccc;
+}
+
+table.grid th {  
+    background-color: #f5f5f5;
+    color: #000000;       
+}
+
+table.grid tr.even th,
+table.grid th.odd {
+    background-color: #eeeeee;
+}
+
+table.grid tr.even {
+  background-color: #fafafa;
+}
+
+table.grid tr.odd {
+  background-color: #ffffff;
+}
+
+/* Room headings */
+
+table.grid th.room .shortcode,
+table.grid th.room .heading a:link,
+table.grid th.room .heading a:visited,
+table.grid th.room .heading a:hover,
+table.grid th.room .heading a:focus,
+table.grid th.room .heading a:active {
+  background-color: inherit;
+  color: #660000;
+}
+
+/* Talk */
+
+table.grid .talk .title a:link,
+table.grid .talk .title a:visited,
+table.grid .talk .title a:hover,
+table.grid .talk .title a:focus,
+table.grid .talk .title a:active {
+  background-color: inherit;
+  color: #000000;
+}
+
+/* Break slots */
+
+table.grid .locked {
+    background-color: #ffffcc;
+}
+
+/* Empty slots */
+
+table.grid .empty .where-when,
+table.grid .empty .where-when a:link,
+table.grid .empty .where-when a:visited,
+table.grid .empty .where-when a:hover,
+table.grid .empty .where-when a:focus,
+table.grid .empty .where-when a:active {
+    color: #444444; 
+}
+
+/* On now */
+
+table.grid td.now {
+    background-color: #e0efe1;
+}
+
+/* Single time-slot view */
+
+table.single-timeslot td.now {
+    background-color: #ffffff;
+}
+
+table.single-timeslot .where-when span,
+#room .grid .timeslot .header .context {
+	background-color: transparent;
+	color: #000000;
+}
+
+#room .grid .timeslot .header .context,
+table.single-timeslot .empty .where-when a:link,
+table.single-timeslot .empty .where-when a:visited,
+table.single-timeslot .empty .where-when a:hover,
+table.single-timeslot .empty .where-when a:focus,
+table.single-timeslot .empty .where-when a:active {
+	color: #7E2B29
+}
+
+
+/* VIEW: Room
+-----------------------------*/
+
+#room .grid .timeslot .header {
+	background-color: #F5F5F5;
+    color: #000000;
+}
+
+#room .grid .slot .heading {
+    color: #666666;
+}
+
+#room .grid a, 
+#room .grid a:link, 
+#room .grid a:visited,
+#room .grid a:hover, 
+#room .grid a:focus, 
+#room .grid a:active {
+    color: #000000;
 }

@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def theme
-		"mediacity"
+		"bcl9"
 	end
 
 	def current_url(new_params)
