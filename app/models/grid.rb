@@ -61,5 +61,9 @@ class Grid
     end
   end
 
+  def kill_redis_caches
+    REDIS.key('views/*').each do |key| REDIS.del(key) end
+    REDIS.key('rooms').each do |key| REDIS.del(key) end
+  end
 
 end
