@@ -47,11 +47,13 @@
 	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">
 		<%= render '/shared/header' %>
 		<div id="body">
+			<% if (cookies[:version_check] != 'true') %>
+				<%= render '/shared/nav/scrollers' %>
+			<% end %>		
 			<div id="main">
 				<% if (cookies[:version_check] == 'true') %>
 					<%= render '/shared/version_check' %>
 				<% else %>
-					<%= render '/shared/nav/scrollers' %>
 					<%= render '/shared/notice' %>
 					<%= yield %>
 				<% end %>

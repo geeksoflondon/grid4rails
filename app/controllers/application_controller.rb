@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
   before_filter :enable_cors
   before_filter :version
 
-  # Valid versions are s, m and l (small, medium, large)
+  # Valid versions are s, m, and xl (small, medium, large, extra large)
   def version
+  	versions = ['s', 'm', 'l', 'xl']
   	if (params[:version_check] == 'false')
   		cookies[:version_check] = false  	
   		params.delete(:version_check)
@@ -14,18 +15,16 @@ class ApplicationController < ActionController::Base
   	 	cookies[:version_check] = true  	
   	end 
   	if (cookies[:version] && !cookies[:version].blank?)  
-    	@version = cookies[:version] unless (cookies[:version] != "s" && cookies[:version] != "m" && cookies[:version] != "l") 	
+    	@version = cookies[:version] unless (!versions.include?(cookies[:version].to_s)) 	
     end
     if (params[:version] && @version != params[:version])
-    	@version = params[:version] unless (params[:version] != "s" && params[:version] != "m" && params[:version] != "l")
+    	@version = params[:version] unless (!versions.include?(cookies[:version].to_s))
     end
     @version ||= "s"
     if (cookies[:version] != @version)
     	cookies[:version] = @version
     end    
-    if (!params[:version])
-    	params[:version] = @version
-    end
+    params[:version] = @version
   end   
   
   
