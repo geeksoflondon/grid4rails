@@ -1,8 +1,11 @@
 <table summary="<%= @description %>" cellpadding="0" cellspacing="0" border="0"<% if (@is_single_timeslot) %> width="100%"<% end %> class="grid <%= (@is_single_timeslot ? "single-timeslot" : "multi-timeslot") %>">
 	<tr> 
 		<% if (@show_room_col) %><th>&nbsp;</th><% end %> 
-		<% @timeslots.each do | timeslot | %>
-			<th class="timeslot header <%= cycle("odd", "even") %><% if (timeslot == Timeslot.on_now) %> now<% end %>">			
+		<%
+			timeslot_now = Timeslot.on_now
+			@timeslots.each do | timeslot |
+		%>
+			<th class="timeslot header <%= cycle("odd", "even") %><% if (timeslot == timeslot_now) %> now<% end %>">			
 				<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
 			</th>
 		<% end %>
