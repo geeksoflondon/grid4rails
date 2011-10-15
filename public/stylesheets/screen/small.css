@@ -407,3 +407,7 @@ div.grid .empty {
 #room .grid {
 	margin-top: 12px;
 }
+
+#room .slot .talk .message p {
+	font-size: small;
+}	

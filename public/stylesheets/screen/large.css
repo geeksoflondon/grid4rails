@@ -417,3 +417,12 @@ body.talks #main fieldset.actions p {
 #help #main {
 	padding-bottom: 18px;
 }
+
+
+/* VIEW: Room
+-----------------------------*/
+
+#room .slot .talk .message {
+	padding: 9px 9px 9px 40px;
+	background-position: 9px 12px;
+}

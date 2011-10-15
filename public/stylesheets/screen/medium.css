@@ -860,6 +860,15 @@ body.talks #main fieldset {
     text-decoration: none;
 }
 
+#room .slot .talk .message {
+	margin: 0 0 15px 0;
+}
+
+#room .slot .talk .message p {
+	font-size: small;
+}		
+
+
 /* VIEW: Help
 -----------------------------*/
 

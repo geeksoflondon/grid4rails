@@ -83,6 +83,11 @@
                     <p class="actions"><span class="submit"><%= submit_tag("Swap", :class => "button orange medium") %></span></p>
                 <% end %>
             <% end %>           
+            <% if (@page_id == 'room' && talk.slot.room.id != @room.id) %>
+            	<div class="message warning">
+            		<p>This talk is scheduled to take place in <%= talk.slot.room.name %>.</p>
+            	</div>
+            <% end %>              
             <h2 class="heading title">
             	<% if (talk.nil?) %>
             		<%= timeslot.name %> 
@@ -95,7 +100,7 @@
                 <h3 class="heading speaker">
                     <%= talk.speaker %>
                 </h3>
-            <% end %>       			  	        	           
-	    </div>
+            <% end %>     			  	        	           
+	    </div>	    
     <% end %> 
 </div>
