@@ -1,6 +1,8 @@
 <div id="error_explanation">
 	<h2 class="heading">Oops</h2>
 	<ul>
-    	<li>You need to fill in at least one field</li>
+		<% @errors.full_messages.each.each do |error|%>
+    		<li><%= error %></li>
+		<% end %>
   	</ul>
 </div>
