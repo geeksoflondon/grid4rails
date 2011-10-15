@@ -27,17 +27,6 @@ class Grid
     end
   end
 
-	def timeslots_containing_empty_slot
-		@timeslots = Array.new()
-		start = Time.now
-		timeslots.each do | timeslot |
-			if (timeslot.contains_empty_slot)
-				@timeslots << timeslot
-			end
-		end 
-	  return @timeslots
-	end
-
   def rooms
     rooms = Rails.cache.read('rooms')
     unless rooms.nil?
@@ -71,15 +60,6 @@ class Grid
       return talk
     end
   end
-
-	def contains_empty_slot?		
-		self.timeslots.each do |timeslot|
-			if (timeslot.contains_empty_slot?)
-				return true 
-			end
-		end
-		return false
-	end
 
 
 end
