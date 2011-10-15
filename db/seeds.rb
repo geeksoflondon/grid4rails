@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
-
 #Firstly lets destroy anything we can find
 puts "Deleting existing rooms, timeslots, slots and talks."
 Room.delete_all
@@ -19,17 +11,93 @@ puts "Total Slots: " + Slot.all.count.to_s
 puts "Total Talks: " + Talk.all.count.to_s
 
 
-#Generate Rooms
+# Generate Rooms
 puts "Generating rooms."
-room_a = Room.create(:name => 'Everywhere', :description => 'Any and all rooms (assuming it\'s not out-of-bounds and there\'s no other talk scheduled in it)', :short_code => 'any', :capacity => 250, :include_in_grid => false)
-room_b = Room.create(:name => 'Thing', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'thg', :capacity => 250, :facilities => 'TV', :include_in_grid => false)
-room1 = Room.create(:name => 'Count Dracula', :description => 'Xth Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', :short_code => 'cdr', :capacity => 30, :facilities => 'TV')
-room2 = Room.create(:name => 'Frankenstein\'s Monster', :description => 'Xth Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', :short_code => 'frm', :capacity => 100, :facilities => 'TV')
-room3 = Room.create(:name => 'The Luggage', :description => 'Xth Floor, in the rear-left corner as you face Old Trafford.', :short_code => 'lug', :capacity => 20, :facilities => 'Projector')
-room4 = Room.create(:name => 'Godzilla', :description => 'Xth Floor, in the front-left corner as you face Old Trafford.', :short_code => 'god', :capacity => 50, :facilities => 'Whiteboard')
-room5 = Room.create(:name => 'Tribbles', :description => 'Xth Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', :short_code => 'trb', :capacity => 15, :facilities => 'Projector, whiteboard')
-room6 = Room.create(:name => 'Pikachu', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', :short_code => 'pik', :capacity => 20)
-room7 = Room.create(:name => 'Casper', :description => 'Xth Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', :short_code => 'cas', :capacity => 30, :facilities => 'TV, whiteboard')
+
+room_a = Room.create(
+	:name => 'Everywhere', 
+	:description => 'Any and all rooms (assuming it\'s not out-of-bounds and there\'s no other talk scheduled in it)', 
+	:short_code => 'any', 
+	:capacity => 250, 
+	:include_in_grid => false
+)
+room_b = Room.create(
+	:name => 'Thing', 
+	:description => 'The huge room in the basement; down the stairs and to the left.', 
+	:short_code => 'thg', 
+	:capacity => 250,  
+	:include_in_grid => false
+)
+room1 = Room.create(
+	:name => 'Count Dracula', 
+	:description => 'Basement.', 
+	:short_code => 'cdr', 
+	:capacity => 40, 
+	:facilities => 'tbd'
+)
+room2 = Room.create(
+	:name => 'Frankenstein\'s Monster', 
+	:description => 'Basement', 
+	:short_code => 'frm', 
+	:capacity => 40, 
+	:facilities => 'tbd'
+)
+room3 = Room.create(
+	:name => 'Audrey II', 
+	:description => 'Basement', 
+	:short_code => 'aud', 
+	:capacity => 40, 
+	:facilities => 'tbd'
+)
+room4 = Room.create(
+	:name => 'The Luggage', 
+	:description => 'First floor.', 
+	:short_code => 'lug', 
+	:capacity => 40, 
+	:facilities => 'tbd'
+)
+room5 = Room.create(
+	:name => 'Godzilla', 
+	:description => 'First floor.', 
+	:short_code => 'god', 
+	:capacity => 30, 
+	:facilities => 'tbd'
+)
+room6 = Room.create(
+	:name => 'Tribbles', 
+	:description => 'First floor.', 
+	:short_code => 'trb', 
+	:capacity => 30,
+	:facilities => 'tbd'
+)
+room7 = Room.create(
+	:name => 'Pikachu', 
+	:description => 'First floor.', 
+	:short_code => 'pik', 
+	:capacity => 30, 
+	:facilities => 'tbd'
+)
+room8 = Room.create(
+	:name => 'Casper', 
+	:description => 'Second floor.', 
+	:short_code => 'cas', 
+	:capacity => 30, 
+	:facilities => 'tbd'
+)
+room9 = Room.create(
+	:name => 'Weeping Angel', 
+	:description => 'Second floor.', 
+	:short_code => 'ang', 
+	:capacity => 30, 
+	:facilities => 'tbd'
+)
+room10 = Room.create(
+	:name => 'Edward Scissorhands', 
+	:description => 'Second floor.', 
+	:short_code => 'slh', 
+	:capacity => 30, 
+	:facilities => 'scr'
+)
 
 puts "Total Rooms: " + Room.all.count.to_s
 puts "ID of first Room: " + Room.all.first.id.to_s
@@ -42,194 +110,248 @@ timeslots_to_lock = Array.new
 
 ##Opening Talk
 
-start_time = Time.utc(2011, "oct", 29,9,30,00)
-end_time = start_time + 40.minutes
 timeslot_label = 'Opening Talk'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 15,9,30,00), 
+	:end => Time.utc(2011, "oct", 15,10,10,00)
+)
 predetermined_talks << [timeslot, room_b, "Welcome to BarcampLondon9!", "The Crew"]
 timeslots_to_lock << timeslot
 
 
 ## Grid Population
 
-start_time = end_time
-end_time = start_time + 20.minutes
 timeslot_label = 'Grid Population'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 15,10,10,00), 
+	:end => Time.utc(2011, "oct", 15,10,30,00)
+)
 predetermined_talks << [timeslot, room_a, "Add your talk to the grid", "You"]
 timeslots_to_lock << timeslot
 
 
 ## Saturday Morning
-
-num_timeslots = 3
-session_no = 1
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-  end_time = end_time + 10.minutes
-
-end
+		
+Timeslot.create(
+	:name => "Session 1", 
+	:start => Time.utc(2011, "oct", 15,10,30,00), 
+	:end => Time.utc(2011, "oct", 15,10,50,00)
+)
+Timeslot.create(
+	:name => "Session 2", 
+	:start => Time.utc(2011, "oct", 15,11,00,00), 
+	:end => Time.utc(2011, "oct", 15,11,20,00)
+)
+Timeslot.create(
+	:name => "Session 3", 
+	:start => Time.utc(2011, "oct", 15,11,30,00), 
+	:end => Time.utc(2011, "oct", 15,11,50,00)
+)
 
 
 ## Lunch
 
-start_time = end_time
-end_time = start_time + 1.hour
 timeslot_label = 'Lunch'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 15,12,00,00), 
+	:end => Time.utc(2011, "oct", 15,13,00,00)
+)
 predetermined_talks << [timeslot, room_b, nil, nil]
 timeslots_to_lock << timeslot
 
 
-## Saturday Afternoon
+## Saturday Afternoon, Part I
 
-num_timeslots = 11
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-
-  end_time = end_time + 10.minutes
-
-end
+Timeslot.create(
+	:name => "Session 4", 
+	:start => Time.utc(2011, "oct", 15,13,00,00), 
+	:end => Time.utc(2011, "oct", 15,13,20,00)
+)
+Timeslot.create(
+	:name => "Session 5", 
+	:start => Time.utc(2011, "oct", 15,13,30,00), 
+	:end => Time.utc(2011, "oct", 15,13,50,00)
+)
+Timeslot.create(
+	:name => "Session 6", 
+	:start => Time.utc(2011, "oct", 15,14,00,00), 
+	:end => Time.utc(2011, "oct", 15,14,20,00)
+)
+Timeslot.create(
+	:name => "Session 7", 
+	:start => Time.utc(2011, "oct", 15,14,30,00), 
+	:end => Time.utc(2011, "oct", 15,14,50,00)
+)	
+Timeslot.create(
+	:name => "Session 8", 
+	:start => Time.utc(2011, "oct", 15,15,00,00), 
+	:end => Time.utc(2011, "oct", 15,15,20,00)
+)
+Timeslot.create(
+	:name => "Session 9", 
+	:start => Time.utc(2011, "oct", 15,15,30,00), 
+	:end => Time.utc(2011, "oct", 15,15,50,00)
+)
+Timeslot.create(
+	:name => "Session 10", 
+	:start => Time.utc(2011, "oct", 15,16,00,00), 
+	:end => Time.utc(2011, "oct", 15,16,20,00)
+)
+Timeslot.create(
+	:name => "Session 11", 
+	:start => Time.utc(2011, "oct", 15,16,30,00), 
+	:end => Time.utc(2011, "oct", 15,16,50,00)
+)
+Timeslot.create(
+	:name => "Session 12", 
+	:start => Time.utc(2011, "oct", 15,17,00,00), 
+	:end => Time.utc(2011, "oct", 15,17,20,00)
+)
+Timeslot.create(
+	:name => "Session 13", 
+	:start => Time.utc(2011, "oct", 15,17,30,00), 
+	:end => Time.utc(2011, "oct", 15,17,50,00)
+)
+Timeslot.create(
+	:name => "Session 14", 
+	:start => Time.utc(2011, "oct", 15,18,00,00), 
+	:end => Time.utc(2011, "oct", 15,18,20,00)
+)
 
 
 ## Dinner
 
-start_time = end_time
-end_time = start_time + 90.minutes
 timeslot_label = 'Dinner'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 15,18,30,00), 
+	:end => Time.utc(2011, "oct", 15,20,00,00)
+)
 predetermined_talks << [timeslot, room_b, nil, nil]
 timeslots_to_lock << timeslot
 
 
 ## Saturday Evening
 
-num_timeslots = 2
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-
-  end_time = end_time + 10.minutes
-
-end
+Timeslot.create(
+	:name => "Session 15", 
+	:start => Time.utc(2011, "oct", 15,20,00,00), 
+	:end => Time.utc(2011, "oct", 15,20,20,00)
+)
+Timeslot.create(
+	:name => "Session 16", 
+	:start => Time.utc(2011, "oct", 15,20,30,00), 
+	:end => Time.utc(2011, "oct", 15,20,50,00)
+)
 
 
 ## Saturday Night
 
-start_time = end_time
-end_time = Time.utc(2011, "oct", 30,7,30,00)
 timeslot_label = 'Games, etc.'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 15,21,00,00), 
+	:end => Time.utc(2011, "oct", 16,6,30,00)
+)
 predetermined_talks << [timeslot, room_a, nil, nil]
 timeslots_to_lock << timeslot
 
 
 ## Breakfast
 
-start_time = end_time
-end_time = start_time + 90.minutes
 timeslot_label = 'Breakfast'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 16,6,30,00), 
+	:end => Time.utc(2011, "oct", 16,8,00,00)
+)
 predetermined_talks << [timeslot, room_b, nil, nil]
 timeslots_to_lock << timeslot
 
 
-## Sunday Morning
+## Sunday Morning, Part I
 
-num_timeslots = 4
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-
-  end_time = end_time + 10.minutes
-
-end
+Timeslot.create(
+	:name => "Session 17", 
+	:start => Time.utc(2011, "oct", 16,8,00,00), 
+	:end => Time.utc(2011, "oct", 16,8,20,00)
+)
+Timeslot.create(
+	:name => "Session 18", 
+	:start => Time.utc(2011, "oct", 16,8,30,00), 
+	:end => Time.utc(2011, "oct", 16,8,50,00)
+)
+Timeslot.create(
+	:name => "Session 19", 
+	:start => Time.utc(2011, "oct", 16,9,00,00), 
+	:end => Time.utc(2011, "oct", 16,9,20,00)
+)
+Timeslot.create(
+	:name => "Session 20", 
+	:start => Time.utc(2011, "oct", 16,9,30,00), 
+	:end => Time.utc(2011, "oct", 16,9,50,00)
+)	
 
 
 ## Lunch
 
-start_time = end_time
-end_time = start_time + 1.hour
 timeslot_label = 'Lunch'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 16,10,00,00), 
+	:end => Time.utc(2011, "oct", 16,11,00,00)
+)
 predetermined_talks << [timeslot, room_b, nil, nil]
 timeslots_to_lock << timeslot
 
 
 ## Sunday Afternoon
 
-num_timeslots = 4
-
-i = 0
-while i < num_timeslots
-
-  start_time = end_time
-  end_time = start_time + 20.minutes
-
-  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-
-  i = i+1
-  session_no = session_no+1
-
-  if (i == (num_timeslots - 1))
-  	end_time = end_time + 15.minutes
-  else
-  	end_time = end_time + 10.minutes
-  end
-
-end
+Timeslot.create(
+	:name => "Session 21", 
+	:start => Time.utc(2011, "oct", 16,11,00,00), 
+	:end => Time.utc(2011, "oct", 16,11,20,00)
+)
+Timeslot.create(
+	:name => "Session 22", 
+	:start => Time.utc(2011, "oct", 16,11,30,00), 
+	:end => Time.utc(2011, "oct", 16,11,50,00)
+)
+Timeslot.create(
+	:name => "Session 23", 
+	:start => Time.utc(2011, "oct", 16,12,00,00), 
+	:end => Time.utc(2011, "oct", 16,12,20,00)
+)
+Timeslot.create(
+	:name => "Session 24", 
+	:start => Time.utc(2011, "oct", 16,12,30,00), 
+	:end => Time.utc(2011, "oct", 16,12,50,00)
+)	
 
 
 ## Closing Talk
 
-start_time = end_time
-end_time = start_time + 15.minutes
 timeslot_label = 'Closing Talk'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 16,13,00,00), 
+	:end => Time.utc(2011, "oct", 16,13,15,00)
+)
 predetermined_talks << [timeslot, room_b, "A quick round-up of the weekend.", "The Crew"]
 timeslots_to_lock << timeslot
 
 
 ## Tidy-up
 
-start_time = end_time
-end_time = start_time + 30.minutes
 timeslot_label = 'Tidy-up'
-timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+timeslot = Timeslot.create(
+	:name => timeslot_label, 
+	:start => Time.utc(2011, "oct", 16,13,15,00), 
+	:end => Time.utc(2011, "oct", 16,13,45,00)
+)
 predetermined_talks << [timeslot, room_a, "A quick zip-round to set the rooms back as they were before we took over.", "Everyone"]
 timeslots_to_lock << timeslot
 
@@ -311,4 +433,4 @@ end
 
 
 # Confirm seed completed
-puts "Seeding complete."
+puts "Load complete."  
