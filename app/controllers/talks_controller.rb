@@ -74,11 +74,6 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-
-        if @talk.slot != nil
-          expire_fragment(%r{slot_#{@talk.slot.id}\S*})
-        end
-
         format.html { redirect_to(@talk, :notice => 'Talk was successfully updated.', :version => params[:version]) }
         format.xml  { head :ok }
         format.json  { head :ok }
@@ -101,7 +96,6 @@ class TalksController < ApplicationController
 
       if slot.save
         flash[:notice] = "Talk was removed from the grid"
-        expire_fragment(%r{slot_#{slot.id}\S*})
         redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
       else
         flash[:warning] = "There was an issue scheduling your talk"
@@ -188,7 +182,6 @@ class TalksController < ApplicationController
       if (!original_slot.nil?)
         original_slot.talk_id = nil
         original_slot.save
-        expire_fragment(%r{slot_#{original_slot.id}\S*})
       end
     end
 
@@ -199,7 +192,6 @@ class TalksController < ApplicationController
     # http://www.ruby-forum.com/topic/830332
     if slot.save
       flash[:notice] = "Talk was updated"
-      expire_fragment(%r{slot_#{slot.id}\S*})
       session[:talk_id] = nil
       redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
     else
@@ -245,8 +237,6 @@ class TalksController < ApplicationController
     # http://www.ruby-forum.com/topic/830332
     if (slot_1.save && slot_2.save)
       flash[:notice] = "Talks were successfully swapped"
-      expire_fragment(%r{slot_#{slot_1.id}\S*})
-      expire_fragment(%r{slot_#{slot_2.id}\S*})
       redirect_to :controller => "grid", :action => "date", :date => slot_2.timeslot.start.to_date, :version => params[:version]
     else
       flash[:warning] = "There was an issue swapping those talks."
@@ -269,7 +259,6 @@ class TalksController < ApplicationController
     # http://www.ruby-forum.com/topic/830332
     if slot.save
       flash[:notice] = "Talk was removed from the grid."
-      expire_fragment(%r{slot_#{slot.id}\S*})
       redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
     else
       flash[:warning] = "There was an issue removing your talk from the grid."
