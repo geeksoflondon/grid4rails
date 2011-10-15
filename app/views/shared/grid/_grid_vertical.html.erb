@@ -30,7 +30,7 @@
 			<div class="slots">					
 				<% timeslot.slots.each do |slot| %>						
 					<% room = slot.room %>					
-					<% if ((timeslot.has_global_talk? && !room.is_empty?(timeslot)) || (!timeslot.has_global_talk? && room.include_in_grid)) %>												
+					<% if ((timeslot.has_global_talk? && !room.is_empty?(timeslot)) || (!timeslot.has_global_talk? && room.include_in_grid && slot.room == @room)) %>												
 						<% cache ("slot_#{slot.id}_#{@page_id}_#{@version}") do %>
 			       			<%= render 'shared/grid/slot', :timeslots => @timeslots, :timeslot => timeslot, :slots => slots, :slot => slot, :room => room %>
 						<% end %>
