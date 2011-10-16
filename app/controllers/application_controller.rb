@@ -70,6 +70,8 @@ class ApplicationController < ActionController::Base
   def instantiate_controller_and_action_names
     @current_action = action_name
     @current_controller = controller_name
+    @timeslot_on_now = Timeslot.on_now
+    @timeslot_on_next = Timeslot.on_next
   end
 
 	

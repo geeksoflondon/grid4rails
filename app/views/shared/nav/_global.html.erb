@@ -2,21 +2,21 @@
 	<h2 class="heading<% if (@header) %> hide<% end %>">Options:</h2>
 	<ul>
 		<% if ((@header && @version != "s") || (@footer && @version == "s")) %>
-			<li<% if (current_page?(:action => 'index', :controller => 'grid') || request.url == root_url) %> class="selected"<% end %>>
-				<a href="<%= url_for :controller => 'grid' %>" title="The event's organic schedule (g)" accesskey="g">View <em class="accesskey">G</em>rid</a>
+			<li<% if ((@current_controller == 'grid' && !(@page_id == 'timeslot' && (@timeslot == @timeslot_on_now || @timeslot == @timeslot_on_next))) || request.url == root_url) %> class="selected"<% end %>>
+				<a href="<%= url_for :controller => 'grid' %>" title="The event's organic schedule (g)" accesskey="g"><span class="label">View <em class="accesskey">G</em>rid</span></a>
 			</li>
-			<li<% if (current_page?(:action => 'now', :controller => 'grid')) %> class="selected"<% end %>>
-				<a href="<%= url_for :controller => 'grid', :action => 'now' %>" title="Information about what's scheduled to happen during the current session (1)" accesskey="1">On Now</a>
+			<li<% if (@current_controller == 'grid' && @timeslot == @timeslot_on_now) %> class="selected"<% end %>>
+				<a href="<%= url_for :controller => 'grid', :action => 'now' %>" title="Information about what's scheduled to happen during the current session (1)" accesskey="1"><span class="label">On Now</span></a>
 			</li>
-			<li<% if (current_page?(:action => 'next', :controller => 'grid')) %> class="selected"<% end %>>
-				<a href="<%= url_for :controller => 'grid', :action => 'next' %>" title="Information about what's due to happen during the next session (2)" accesskey="2">On Next</a>
+			<li<% if (@current_controller == 'grid' && @timeslot == @timeslot_on_next) %> class="selected"<% end %>>
+				<a href="<%= url_for :controller => 'grid', :action => 'next' %>" title="Information about what's due to happen during the next session (2)" accesskey="2"><span class="label">On Next</span></a>
 			</li>
 			<li class="add-talk<% if (current_page?(:action => 'new', :controller => 'talks')) %> selected<% end %>">
 				<a href="<%= url_for :controller => 'talks', :action => 'new' %>" class="add" accesskey="t" title="Create and schedule a talk (t)"><span class="label">Add a <em class="accesskey">T</em>alk</span></a>
 			</li>
 		<% end %>
 		<% if (@footer) %>
-			<li<% if (current_page?(:action => 'unscheduled', :controller => 'talks')) %> class="selected"<% end %>><a href="<%= url_for :controller => "talks", :action => "unscheduled" %>" accesskey="u" title="A list of all talks that have been created but aren't currently scheduled to take place (u)"><em class="accesskey">U</em>nscheduled Talks</a><span class="delimiter"></span></li>
+			<li<% if (@current_controller == 'talks' && @current_action == 'unscheduled') %> class="selected"<% end %>><a href="<%= url_for :controller => "talks", :action => "unscheduled" %>" accesskey="u" title="A list of all talks that have been created but aren't currently scheduled to take place (u)"><em class="accesskey">U</em>nscheduled Talks</a><span class="delimiter"></span></li>
 			<li><a href="<%= url_for :controller => 'application', :action => 'feedback' %>" accesskey="9" title="Tell us what you think (9)">Feedback</a><span class="delimiter"></span></li>
 			<li><a href="<%= url_for :controller => 'application', :action => 'help' %>" accesskey="6" title="General information about the site that might be useful (6)">Help</a><span class="delimiter"></span></li>
 			<li class="last"><a href="<%= url_for :controller => 'application', :action => 'help', :anchor => 'accesskeys' %>" accesskey="0" title="A list to the accesskeys used on this site (0)">Accesskeys</a></li>

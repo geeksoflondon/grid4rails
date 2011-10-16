@@ -8,8 +8,8 @@ class GridController < ApplicationController
   	end
   	@page_id = "grid"
     @timeslots = Array.new()
-  	on_now = Timeslot.on_now
-  	on_next = Timeslot.on_next
+  	on_now = @timeslot_on_now
+  	on_next = @timeslot_on_next
   	@timeslots << on_now unless on_now.nil?
   	@timeslots << on_next unless on_next.nil?
   	if (@timeslots.first.nil?)
@@ -21,7 +21,7 @@ class GridController < ApplicationController
 
   def now
     @page_id = "now"
-    @timeslot = Timeslot.on_now
+    @timeslot = @timeslot_on_now
     @date = @timeslot.start.to_date unless @timeslot.nil?
     flash.keep
     if @date.nil?
@@ -34,7 +34,7 @@ class GridController < ApplicationController
 
   def next
     @page_id = "next"
-    @timeslot = Timeslot.on_next
+    @timeslot = @timeslot_on_next
     @date = @timeslot.start.to_date unless @timeslot.nil?
     flash.keep
     if (@date.nil?)
