@@ -1,7 +1,9 @@
 /* Basic background rules
 -----------------------------*/
 
-html {
+html,
+#header,
+#footer {
   background-color: black;
 }
 
@@ -23,12 +25,9 @@ form textarea {
 /* Layout
 -----------------------------*/
 
-#header {
-    border-bottom-color: #888;
-}
-
+#header,
 #body {
-    border-top-color: #888888;      
+    border-bottom-color: #888888;
 }
 
 #header {
@@ -38,19 +37,10 @@ form textarea {
 }
 
 
-/* FEATURE: Header
------------------------------*/
-
-#header {
-  background-color: black;
-}
-
-
 /* FEATURE: Footer
 -----------------------------*/
 
 #footer {
-  background-color: black;
   border-top-color: #888;  
 }
 
@@ -65,32 +55,17 @@ form textarea {
 }
 
 
-/* FEATURE: Global navigation
------------------------------*/
-
-/* In header */
-
-#header .nav li a:link,
-#header .nav li a:visited,
-#header .nav li a:hover,
-#header .nav li a:focus,
-#header .nav li a:active {
-    color: #ffffff;
-}
-
-
 /* FEATURE: Version Switcher
 -----------------------------*/
 
 .version-switcher,
 .version-switcher .heading,
-.version-switcher a,
 .version-switcher a:link,
 .version-switcher a:visited,
 .version-switcher a:hover,
 .version-switcher a:focus,
 .version-switcher a:active {
-  color: #fff;
+  color: #ffffff;
 }
 
 

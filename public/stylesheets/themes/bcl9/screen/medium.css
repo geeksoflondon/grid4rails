@@ -65,18 +65,6 @@ input.orange,
     background-color: transparent;   
 }
 
-#header .nav li a,
-#header .nav li a.add span {
-    border-bottom-color: #000000;
-}
-
-#header .nav li.selected a,
-#header .nav li.selected a.add span {
-    border-bottom-color: #ffffff;
-}
-
-
-
 /* Logo */
 #header .page-title a {    
     background-image: url('/images/themes/mediacity/logo.png');
@@ -112,18 +100,6 @@ input.orange,
 /* FEATURE: Global Navigation
 -----------------------------*/
 
-/* In Header */
-
-#header .nav,
-#header .nav a:link,
-#header .nav a:visited,
-#header .nav a:hover,
-#header .nav a:focus,
-#header .nav a:active {
-    background-color: inherit;
-    color: #ffffff;
-}
-
 /* In Footer */
 
 #footer .nav .delimiter,
@@ -152,10 +128,6 @@ input.orange,
 
 .scroller a span {
     border-bottom-color: #000000;
-}
-
-.scroller a.selected span {
-    border-bottom-color: #ffffff;
 }
 
 
@@ -304,7 +276,12 @@ table.single-timeslot .empty .where-when a:active {
     color: #000000;
 }
 
-#room .grid a, 
+
+
+
+/* Links */
+
+
 #room .grid a:link, 
 #room .grid a:visited,
 #room .grid a:hover, 
@@ -313,14 +290,38 @@ table.single-timeslot .empty .where-when a:active {
     color: #000000;
 }
 
+#header .nav,
+#header .nav a:link,
+#header .nav a:visited,
+#header .nav a:hover,
+#header .nav a:focus,
+#header .nav a:active {
+    background-color: inherit;
+    color: #ffffff;
+}
 
-/* Links */
+.scroller a.selected span,
+#header .nav li.selected a:link span,
+#header .nav li.selected a:visited span {
+	border-bottom-color: #ffa500; /* Updated */
+}
 
-#header .nav li a:hover,
-#header .nav li a:focus,
-#header .nav li a.add:hover span,
-#header .nav li a.add:focus span,
+#header .nav li a:link span,
+#header .nav li a:visited span,
+#header .nav li a:hover span,
+#header .nav li a:focus span,
+#header .nav li a:active span {
+    border-bottom-color: #000000;
+}
+
+#header .nav li a:hover span,
+#header .nav li a:focus span,
+#header .nav li a:active span,
+#header .nav li.selected a:hover span,
+#header .nav li.selected a:focus span,
+#header .nav li.selected a:active span,
 .scroller a:hover span,
-.scroller a:focus span {
-    border-bottom-color: #ffa500; /* Updated */
+.scroller a:focus span,
+.scroller a:active span {
+    border-bottom-color: #ffffff;
 }

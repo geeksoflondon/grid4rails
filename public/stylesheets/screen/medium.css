@@ -40,7 +40,7 @@ body {
 }
 
 #main {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 
@@ -220,14 +220,16 @@ input,
 
 }
 
-#header .nav li a,
-#header .nav li a.add span {
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-}
-
-#header .nav li.selected a,
-#header .nav li.selected a.add span {
+#header .nav li a:link span,
+#header .nav li a:visited span,
+#header .nav li a:hover span,
+#header .nav li a:focus span,
+#header .nav li a:active span,
+#header .nav li.selected a:link span,
+#header .nav li.selected a:visited span,
+#header .nav li.selected a:hover span,
+#header .nav li.selected a:focus span,
+#header .nav li.selected a:active span {
     border-bottom-width: 2px;
     border-bottom-style: solid;
 }
@@ -239,19 +241,7 @@ input,
 #header .nav li a:active {
 	display: inline-block;
 	padding: 3px 0; 
-}
-
-
-#header .nav li a:hover,
-#header .nav li a:focus,
-#header .nav li a.add:hover span,
-#header .nav li a.add:focus span {
-    text-decoration: none;
-}
-
-#header .nav li.add-talk a:hover,
-#header .nav li.add-talk a:focus,
-#header .nav li.add-talk a {
+	text-decoration: none;
     border: none;
 }
 
