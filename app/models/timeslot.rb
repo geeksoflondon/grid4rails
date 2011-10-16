@@ -7,10 +7,10 @@ class Timeslot < ActiveRecord::Base
   default_scope order('start')
 
   # Returns all timeslots that have already started (relative to the current date and time)
-  scope :past, where('start < ?', Time.now).order("start DESC")
+  scope :past, where('start < ?', Time.now.utc).order("start DESC")
 
   # Returns all timeslots that have yet to start (relative to the current date and time)
-  scope :upcoming, where('start >= ?', Time.now).order("start ASC")
+  scope :upcoming, where('start >= ?', Time.now.utc).order("start ASC")
 
   def self.non_assignables
     Timeslot.where("assign_slots = ?", false)
@@ -32,7 +32,7 @@ class Timeslot < ActiveRecord::Base
   end
 
   def on_now?
-    (self.start <= Time.now && self.end >= Time.now)
+    (self.start <= Time.now.utc && self.end >= Time.now.utc)
   end
 
   def on_next?
