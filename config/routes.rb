@@ -37,6 +37,11 @@ Griddy::Application.routes.draw do
   	match 'grid', :to => "grid#index"
   end
 
+  #Mount Resque Web UI
+  require "resque/server"
+  require "resque_scheduler"
+  mount Resque::Server.new, :at => "/resque"
+
   root :to => "grid#now"
 
 end
