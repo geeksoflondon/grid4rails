@@ -11,7 +11,9 @@
 		<% slots = timeslot.slots %>
 		<div id="timeslot-<%= timeslot.id %>" class="timeslot<% if (timeslot == @timeslots.first) %> first<% end %>">
 			<div class="header">
-				<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
+				<% cache ("timeslot_#{timeslot.id}_#{@page_id}_#{@version}") do %>
+					<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
+				<% end %>
 				<% if ((@version == "s") && !@is_single_timeslot) %>
 					<p class="skip">
 						<span class="label">Session: </span>
