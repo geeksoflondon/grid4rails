@@ -20,30 +20,30 @@ function init_pubsubhubbub() {
 }
 
 function process_pubnub(message) {
-	
+    
     if (message.slot !== null && ($("body").attr('id') == 'talk-assign' || 'talk-move')) {
         slot = message.slot
         if (slot.talk_id != null && $("#slot-"+message.slot.id+"-select").length > 0){
             $("#slot-"+message.slot.id+"-select").removeClass('green').addClass('red').val('Taken').attr("disabled", true);         
         }
     }
-	
-	if (message.slot !== null && ($("body").attr('id') == 'date-grid' && slot.talk_id != null)) {
-		$.getJSON("/talks/"+message.slot.talk_id+".json", function(data) {
-			if($("#slot-"+message.slot.id).parent().hasClass('empty')){
-				$("#slot-"+message.slot.id).children().first().append('<h2 class="heading title"><a href="/'+getCookie('version')+'/talks/'+data.talk.id+'">'+data.talk.title+'</a></h2>');
-			} else {
-				$("#slot-"+message.slot.id).children().first().find('h2 > a').attr("href", "/"+getCookie('version')+"/talks/"+data.talk.id+"")
-				$("#slot-"+message.slot.id).children().first().find('h2 > a').text(data.talk.title)
-			}
-		});
+    
+    if (message.slot !== null && ($("body").attr('id') == 'date-grid' && slot.talk_id != null)) {
+        $.getJSON("/talks/"+message.slot.talk_id+".json", function(data) {
+            if($("#slot-"+message.slot.id).parent().hasClass('empty')){
+                $("#slot-"+message.slot.id).children().first().append('<h2 class="heading title"><a href="/'+getCookie('version')+'/talks/'+data.talk.id+'">'+data.talk.title+'</a></h2>');
+            } else {
+                $("#slot-"+message.slot.id).children().first().find('h2 > a').attr("href", "/"+getCookie('version')+"/talks/"+data.talk.id+"")
+                $("#slot-"+message.slot.id).children().first().find('h2 > a').text(data.talk.title)
+            }
+        });
     }
 
-	if (message.slot !== null && ($("body").attr('id') == 'date-grid' && slot.talk_id == null)) {
-		if($("#slot-"+message.slot.id).parent().hasClass('empty') !== true){
-			$("#slot-"+message.slot.id).children().first().find('h2').empty();
-		}
-	}
+    if (message.slot !== null && ($("body").attr('id') == 'date-grid' && slot.talk_id == null)) {
+        if($("#slot-"+message.slot.id).parent().hasClass('empty') !== true){
+            $("#slot-"+message.slot.id).children().first().find('h2').empty();
+        }
+    }
 }
 
 function getCookie(name) {
