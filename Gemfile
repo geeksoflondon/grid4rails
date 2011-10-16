@@ -17,6 +17,9 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'redis-store'
 
+#realtime foo
+gem 'pubnub-ruby'
+
 #exception capture and logging
 gem 'exceptional'
 gem 'newrelic_rpm'
