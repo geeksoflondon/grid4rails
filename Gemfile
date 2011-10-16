@@ -13,6 +13,8 @@ gem 'haml' # for SASS
 
 #queueing and caching
 gem 'redis'
+gem 'resque'
+gem 'resque-scheduler'
 gem 'redis-store'
 
 #exception capture and logging

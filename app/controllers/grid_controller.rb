@@ -1,7 +1,5 @@
 class GridController < ApplicationController
 
-  before_filter :load_grid
-
   def index
   	if (params[:version] != 'xl')
   		redirect_to :controller => "grid", :action => "date", :version => params[:version]
@@ -88,12 +86,6 @@ class GridController < ApplicationController
     @page_id = "room-grid"
     flash.keep
     redirect_to :controller => "rooms", :action => "show", :room => params[:room], :version => params[:version]
-  end
-
-  private
-
-  def load_grid
-    @grid = Grid.new
   end
 
 end

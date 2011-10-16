@@ -24,6 +24,7 @@ namespace :db do
 	Timeslot.delete_all
 	Slot.delete_all
 	Talk.delete_all
+	REDIS.keys('*').each do |key| REDIS.del(key) end
 	
 	puts "Total Timeslots: " + Timeslot.all.count.to_s
 	puts "Total Rooms: " + Room.all.count.to_s
