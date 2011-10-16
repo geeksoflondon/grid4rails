@@ -4,7 +4,7 @@ module SlotsHelper
 	# Is called from /shared/grid/grid
 	def classnames(slot)
 		classes = Array.new 
-		if (slot.timeslot == Timeslot.on_now)
+		if (slot.timeslot == @timeslot_on_now)
 			classes << "now"
 		end
 		if (slot.is_empty?)

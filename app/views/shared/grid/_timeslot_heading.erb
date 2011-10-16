@@ -1,7 +1,7 @@
 <% if (@version == "s" && @page_id != "room") %>
 	<p class="day"><%= timeslot.start.strftime("%A") %></p>
 <% elsif (@page_id == "room") %>
-	<p class="context"><% if (timeslot.on_now?) %>Now<% else %>Next<% end %></p>
+	<p class="context"><% if (timeslot == @timeslot_on_now) %>Now<% else %>Next<% end %></p>
 <% end %>
 <p class="time">
 	<% if (!@is_single_timeslot) %>		
