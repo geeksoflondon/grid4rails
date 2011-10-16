@@ -1,19 +1,19 @@
 development:
   adapter: postgresql
-  database: rails_development
+  database: griddy_development
   username: gol
   encoding: unicode
   host: localhost
 
 testing:
   adapter: postgresql
-  database: rails_testing
+  database: griddy_testing
   username: gol
   encoding: unicode
   host: localhost
 
 production:
   adapter: postgresql
-  database: rails_production
+  database: griddy_production
   username: gol
   encoding: unicode
