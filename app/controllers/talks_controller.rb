@@ -170,11 +170,23 @@ class TalksController < ApplicationController
   # Assigns the specified talk to the specified slot
   # and then redirects to a view of the grid on the date that the slot belongs to
   def assign_slot
-    talk = Talk.find(session[:talk_id])
-    slot = Slot.find(params[:slot])
+    talk = Talk.find(session[:talk_id]) unless session[:talk_id].blank?
+    slot = Slot.find(params[:slot]) unless params[:slot].blank?
+
+    if (talk.nil?)
+      flash[:warning] = "Oops, something may have just gone wrong.  Please check that your talk's in the correct place."
+      if (params[:date].blank?)
+      	redirect_to :controller => "grid", :action => "date", :version => params[:version] and return
+      else
+      	redirect_to :controller => "grid", :action => "date", :date => params[:date], :version => params[:version] and return
+      end
+    elsif (slot.nil?)
+      flash[:warning] = "Oops. Where was that again..?"
+      redirect_to :controller => "talks", :action => "schedule", :date => params[:date], :id => talk.id, :version => params[:version] and return    
+    end
 
 	# Check whether the slot is locked or already occupied
-	if (slot.locked || slot.talk)
+	if (slot.locked || (slot.talk && slot.talk != talk))
 		flash[:warning] = "That session is already taken.  Please choose another."
     	redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id, :version => params[:version] and return
 	end		
