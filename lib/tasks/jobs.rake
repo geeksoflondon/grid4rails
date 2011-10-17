@@ -7,7 +7,7 @@ namespace :jobs do
     dummy_counter = 1
     while dummy_counter < 100
       clear_caches
-      sleep(10)
+      sleep(60)
     end
 
   end
