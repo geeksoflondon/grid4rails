@@ -8,6 +8,7 @@ class Slot < ActiveRecord::Base
   validates :room_id, :presence => true
 
   after_save :clear_cache
+  after_save :notify
 
   def start
     timeslot.start
@@ -64,6 +65,13 @@ class Slot < ActiveRecord::Base
     REDIS.keys("views/slot_#{self.id}*").each do |key|
       REDIS.del(key)
     end
+  end
+
+  def notify
+    PUBNUB.publish({
+        'channel' => PUBNUB_CHANNEL,
+        'message' => self
+    })
   end
 
 end
