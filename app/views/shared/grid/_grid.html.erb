@@ -4,7 +4,7 @@
 		<% @timeslots.each do | timeslot | %>
 			<th class="timeslot header <%= cycle("odd", "even") %><% if (timeslot == @timeslot_on_now) %> now<% end %>">			
 				<% cache ("timeslot_#{timeslot.id}_#{@page_id}_#{@version}") do %>
-				<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
+					<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
 				<% end %>
 			</th>
 		<% end %>
