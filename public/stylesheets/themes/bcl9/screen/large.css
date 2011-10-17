@@ -4,7 +4,7 @@
 html,
 #header,
 #footer {
-  background-color: black;
+  background-color: #000000;
 }
 
 
@@ -13,12 +13,12 @@ html,
 
 form .field_with_errors input[type=text], 
 form .field_with_errors textarea {
-  border-color: #aa0000;
+  border-color: #990000; /* ws */
 }
 
 form input[type=text],
 form textarea {  
-  border-color: #aaa;    
+  border-color: #999999; /* ws */    
 }
 
 
@@ -27,7 +27,11 @@ form textarea {
 
 #header,
 #body {
-    border-bottom-color: #888888;
+    border-bottom-color: #999999; /* ws */
+}
+
+#footer {
+  border-top-color: #999999; /* ws */ 
 }
 
 #header {
@@ -40,18 +44,14 @@ form textarea {
 /* FEATURE: Footer
 -----------------------------*/
 
-#footer {
-  border-top-color: #888;  
-}
-
 #footer .nav,
 #footer .version-switcher,
 #footer .heading {
-    color: #cccccc;
+    color: #cccccc; /* ws */
 }
 
 #footer .nav li {
-    border-color: #cccccc;
+    border-color: #cccccc; /* ws */
 }
 
 
@@ -73,35 +73,16 @@ form textarea {
 -----------------------------*/
 
 .scroller {
-  background-color: #000;
-  color: #cccccc;
+  background-color: #000000;
+  color: #cccccc; /* ws */
 }
 
 .scroller a {
-  color: #333;  
+  color: #333333; /* ws */
 }
 
 .scroller .arrows {
-  color: #cccccc;
-}
-
-
-/* FEATURE: Informational messages
------------------------------*/
-
-.message {
-    background-color: #C9E2AE;
-	color: #444;
-}
-
-.instructions {   
-  background-color: #C9E2AE;
-  color: #111;  
-}
-
-.warning {
-  color: #7E2B29;
-  background-color: #F9EEEE;    
+  color: #cccccc; /* ws */
 }
 
 
@@ -109,7 +90,7 @@ form textarea {
 -----------------------------*/
 
 #talk-assign table.grid tr.even .empty {
-  background-color: #fafafa;
+  background-color: #fafafa; /* ! */
 }
 
 #talk-assign table.grid tr.odd .empty {
@@ -121,5 +102,5 @@ form textarea {
 -----------------------------*/
 
 body.talks #main fieldset.actions {
-    border-color: #cccccc;
+    border-color: #cccccc; /* ws */
 }

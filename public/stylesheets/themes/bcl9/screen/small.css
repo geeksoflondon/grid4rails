@@ -2,8 +2,8 @@
 -----------------------------*/
 
 .actions a {
-    background-color: #DDDDDD;
-    color: #333333;
+    background-color: #cccccc; /* ws */
+    color: #333333; /* ws */
 }
 
 
@@ -15,7 +15,7 @@
 }
 
 #header .branding {
-    background-color: #000000; /* #000000 */
+    background-color: #000000;
     border-bottom-color: #000000;
 }
 
@@ -32,9 +32,9 @@
 -----------------------------*/
 
 .scroller {
-    background-color: #000000; /* #f5f5f5 */
+    background-color: #000000; 
     color: #fcfcfc;
-    border-color: #000000; /* #555555 */
+    border-color: #000000;
 }
 .scroller a,
 .scroller a:link,
@@ -50,8 +50,8 @@
 -----------------------------*/
 
 .version-switcher {   
-    background-color: #000000; /* #000000 */
-    color: #ffffff; /* #ffffff */
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .version-switcher .heading,
@@ -60,11 +60,11 @@
 .version-switcher a:hover,
 .version-switcher a:focus,
 .version-switcher a:active {
-    color: #ffffff; /* #ffffff */
+    color: #ffffff;
 }
 
 #footer .version-switcher .delimiter {
-    border-color: #555555;
+    border-color: #666666; /* ws */
 }
 
 
@@ -72,29 +72,7 @@
 -----------------------------*/
 
 .skip-up {
-    border-bottom-color: #000000; /* #000000 */
-}
-
-
-/* FEATURE: Informational messages
------------------------------*/
-
-.message {      
-    background-color: #C9E2AE;
-}    
-    
-.warning {
-  color: #7E2B29;
-  background-color: #F9EEEE;
-}
-
-.message,
-.message p {    
-    color: #444;                       
-}
-
-.message .actions {
-	background-color: #ffffff;
+    border-bottom-color: #000000;
 }
 
 
@@ -102,26 +80,28 @@
 -----------------------------*/
 
 div.grid .timeslot .header {  
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* ! */
     color: #000000;
 }
 
 div.grid .timeslot .header .context,
 div.grid .timeslot .header .day { 
-	color: #7F4627;
+	color: #663333; /* ws */
 }
 
 div.grid .talk,
 div.grid .empty {
-    border-color: #cccccc;
+    border-color: #cccccc; /* ws */
 }
 
+/* obsolete?
 .grid .header .where-when {
     color: #b13c3b;
 }
+*/
 
 .grid .slot .empty {
-    background-color: #C9E2AE;
+    background-color: #99cc99; /* ws */
 }
 
 .grid .slot .empty,
@@ -133,10 +113,10 @@ div.grid .empty {
 .grid .slot .empty a:hover,
 .grid .slot .empty a:focus,
 .grid .slot .empty a:active {
-    color: #444;    
+    color: #333333; /* ws */
 }
 
 .grid .slot .actions {
     background-color: #ffffff;
-    border-color: #444444; 
+    border-color: #333333; /* ws */ 
 }
