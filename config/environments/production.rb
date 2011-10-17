@@ -47,5 +47,5 @@ Griddy::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
+  # ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
 end
