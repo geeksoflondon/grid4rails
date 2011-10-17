@@ -1,9 +1,0 @@
-/* Touchscreen Link rules
------------------------------*/
-
-#site-nav a,
-#footer a,
-.ts-text a,
-.ts-image a {
-    display: block;
-}

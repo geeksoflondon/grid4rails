@@ -1,14 +1,4 @@
-/* NOTES: Medium
------------------------------
-** Can use px for font size
-** Don't try to use complex positioning
-** Typeface still unlikely to be the one you specify
-** Default screen resolution still pretty narrow,
-*  eg. 320x480
-** No CSS3
-** Touchscreen navigation
-*  (:hover irrelevant)
------------------------------*/
+/* See /stylesheets/README.txt for guidelines */
 
 /* Workarounds
 -----------------------------*/
