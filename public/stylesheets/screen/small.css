@@ -1,19 +1,4 @@
-/* NOTES: Small 
------------------------------
-** Use names for font sizes
-** Don't try to use positioning
-** Probably only one typeface per page
-** Probably won't respect typeface specified
-** Keep tables ~very~ simple: no border-collapse, 
-*  thead, tbody or varying border widths/colours/styles.
-** No image-replacement
-** Avoid using large and/or wide images in content
-** Screen resolution is likely to be relatively narrow and shallow,
-*  eg. 176x144
-** KEYBOARD NAVIGATION
-*  (remember :focus as well as :hover)
------------------------------*/
-
+/* See /stylesheets/README.txt for guidelines */
 
 /* Basic text rules
 -----------------------------*/

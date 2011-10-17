@@ -1,11 +1,5 @@
-/* NOTES: Large
------------------------------
-** Go for it. CSS3, the lot.
-** med.css applied first.  
-** Mouse and touchscreen navigation
-** Screen resolution likely to range
-*  from 320x480 to 1920x1080
------------------------------*/
+/* See /stylesheets/README.txt for guidelines */
+
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 @import url(../buttons.css);
 

@@ -10,18 +10,18 @@
 		<meta http-equiv="content-language" content="en" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
 		
-		<title>Griddy</title>
+		<title>Griddy</title>		
 		
 		<!-- Style -->	
 		<% if (@version == "l") %> 			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", "screen/large" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", "themes/#{theme}/screen/large" %>			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", "screen/large", :media => 'all' %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", "themes/#{theme}/screen/large", :media => 'all' %>			
 		<% elsif (@version == "m") %>			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium" %>			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", :media => 'all' %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", :media => 'all' %>			
 		<% else  %>						
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/small"  %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/small"  %>						
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/small", :media => 'all'  %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/small", :media => 'all'  %>						
 		<% end  %>
 		
 		<!-- CSRF -->
@@ -30,7 +30,8 @@
 		
 		<meta name="description" content="" />
 		<meta name="author" content="" /> 
-		<meta name="viewport" content="width=200, initial-scale=1, maximum-scale=3, minimum-scale=1" /> 
+		<meta name="viewport" content="width=200, initial-scale=1, maximum-scale=3, minimum-scale=1" />
+		<%= favicon_link_tag %>		
 		
 	</head> 
 	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">

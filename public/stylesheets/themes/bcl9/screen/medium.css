@@ -5,7 +5,7 @@ a:link,
 a:visited,
 #header .skip-to-versions a:link .title,
 #header .skip-to-versions a:visited .title {	
-    border-bottom-color: #999999;
+    border-bottom-color: #999999; /* ws */
 }
 
 a:hover,
@@ -14,7 +14,7 @@ a:active,
 #header .skip-to-versions a:hover .title,
 #header .skip-to-versions a:focus .title,
 #header .skip-to-versions a:active .title {	
-	border-bottom-color: #999999;
+	border-bottom-color: #999999; /* ws */
 }
 
 
@@ -23,27 +23,27 @@ a:active,
 
 form input,
 form textarea {
-  border-color: #cccccc;
+  border-color: #cccccc; /* ws */
 }
 
 .actions p {
-  border-color: #cccccc;
+  border-color: #cccccc; /* ws */
 }
 
 .actions a {
-    background-color: #DDDDDD;
-    color: #333333;    
+    background-color: #dddddd; /* wc */
+    color: #333333; /* ws */    
 }
 
 input.green,
 .actions a.green {     
-    background-color: #99cc33; /* Green */
+    background-color: #99cc33; /* wc */
     color: #ffffff;    
 }
 
 input.orange,
 .actions a.orange {
-    background-color: #f78d1d; /* Orange */
+    background-color: #FF8C00; /* wc */
     color: #ffffff;
 }
 
@@ -52,7 +52,7 @@ input.orange,
 -----------------------------*/
 
 #header {
-    background-color: #000000; /* #000000 */
+    background-color: #000000;
 }
 
 #header .skip-to-versions a:link,
@@ -61,7 +61,7 @@ input.orange,
 #header .skip-to-versions a:focus,
 #header .skip-to-versions a:active {
     background-color: inherit;
-    color: #dddddd;  
+    color: #dddddd; /* wc */
     background-color: transparent;   
 }
 
@@ -77,8 +77,8 @@ input.orange,
 
 #footer .nav,
 #footer .version-switcher {
-    background-color: #000000; /* #000000 */
-    color: #ffffff; /* #ffffff */
+    background-color: #000000;
+    color: #ffffff;
 }
 
 #footer .heading,
@@ -93,7 +93,7 @@ input.orange,
 .version-switcher a:focus,
 .version-switcher a:active {
     background-color: inherit;
-    color: #ffffff; /* #ffffff */
+    color: #ffffff;
 }
 
 
@@ -104,7 +104,7 @@ input.orange,
 
 #footer .nav .delimiter,
 #footer .version-switcher .delimiter {
-    border-color: #555555;
+    border-color: #666666; /* ws */
 }
 
 
@@ -112,9 +112,9 @@ input.orange,
 -----------------------------*/
 
 .scroller {
-    background-color: #000000; /* #f5f5f5 */
-    color: #fcfcfc;
-    border-color: #555555; /* #555555 */   
+    background-color: #000000;
+    color: #fcfcfc; /* ! */
+    border-color: #666666; /* ws */
 }
 
 .scroller a:link,
@@ -136,33 +136,7 @@ input.orange,
 
 
 .skip-up {
-    border-bottom-color: #000000; /* #000000 */
-}
-
-
-/* FEATURE: Informational messages
------------------------------*/
-
-.message {          
-    background-color: #C9E2AE;         
-}
-
-.warning {
-	color: #7E2B29;
-  	background-color: #F9EEEE;
-}
-
-#error_explanation li {
-  color: #a00;
-}
-
-.message,
-.message p {
-    color: #444;    
-}
-
-.message .actions {
-	background-color: #ffffff;	
+    border-bottom-color: #000000;
 }
 
 
@@ -171,21 +145,21 @@ input.orange,
 
 table.grid td, 
 table.grid th {
-    border-color: #cccccc;
+    border-color: #cccccc; /* WS */
 }
 
 table.grid th {  
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* WC */
     color: #000000;       
 }
 
 table.grid tr.even th,
 table.grid th.odd {
-    background-color: #eeeeee;
+    background-color: #eeeeee; /* ! */
 }
 
 table.grid tr.even {
-  background-color: #fafafa;
+  background-color: #fafafa; /* ! */
 }
 
 table.grid tr.odd {
@@ -200,11 +174,13 @@ table.grid th.room .heading a:hover,
 table.grid th.room .heading a:focus,
 table.grid th.room .heading a:active {
   background-color: inherit;
-  color: #bf4b0b; /* Updated */
+  color: #CC3300; /* ws */
 }
 
+/* Dark Brown */
+#room .grid .timeslot .header .context,
 table.grid th.room .shortcode {
-	color: #7F4627; /* Updated */
+	color: #663333; /* ws */
 }
 
 /* Talk */
@@ -221,7 +197,7 @@ table.grid .talk .title a:active {
 /* Break slots */
 
 table.grid .locked {
-    background-color: #ffffcc;
+    background-color: #ffffcc; /* ws */
 }
 
 /* Empty slots */
@@ -232,14 +208,14 @@ table.grid .empty .where-when a:visited,
 table.grid .empty .where-when a:hover,
 table.grid .empty .where-when a:focus,
 table.grid .empty .where-when a:active {
-    color: #444444; 
+    color: #333333; /* ws */
 }
 
 
 /* On now */
 
 table.grid td.now {
-    background-color: #e0efe1;
+    background-color: #e0efe1; /* ! */
 }
 
 /* Single time-slot view */
@@ -260,19 +236,16 @@ table.single-timeslot .empty .where-when a:visited,
 table.single-timeslot .empty .where-when a:hover,
 table.single-timeslot .empty .where-when a:focus,
 table.single-timeslot .empty .where-when a:active {
-	color: #bf5b0b; /* Updated */
+	color: #cc6600; /* ws */
 }
 
-#room .grid .timeslot .header .context {
-	color: #7F4627;
-}
 
 
 /* VIEW: Room
 -----------------------------*/
 
 #room .grid .timeslot .header {
-	background-color: #F5F5F5;
+	background-color: #F5F5F5; /* wc */
     color: #000000;
 }
 
@@ -303,7 +276,7 @@ table.single-timeslot .empty .where-when a:active {
 .scroller a.selected span,
 #header .nav li.selected a:link span,
 #header .nav li.selected a:visited span {
-	border-bottom-color: #ffa500; /* Updated */
+	border-bottom-color: #ff9900; /* ws */
 }
 
 #header .nav li a:link span,

@@ -143,5 +143,33 @@ class Timeslot < ActiveRecord::Base
     end
     return false
   end
+  
+	def self.generate!(session_no = 1, num_timeslots = 2, start_time = nil, session_duration = 30.minutes, break_duration = 10.minutes)
+		
+		if (start_time.nil?)
+			raise
+		end
+		
+		end_time = start_time
+		
+		i = 0	
+		while i < num_timeslots
+		
+		  if (i > 0)
+		  	start_time = end_time
+		  end
+		  end_time = start_time + session_duration
+		
+		  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)	  	
+		
+		  i = i+1
+		  session_no = session_no+1
+		  end_time = end_time + break_duration unless (i == num_timeslots) 
+		
+		end
+	
+		return end_time
+		
+	end
 
 end

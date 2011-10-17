@@ -6,7 +6,7 @@ namespace :db do
   	Run using the command 'rake db:load_bcl9
   DESC
   
-  task :load_bcl9 => [:environment] do
+  task :load_now_next_test_event => :environment do  
   
   	# Drop the existing database
     Rake::Task['db:drop'].invoke
@@ -133,169 +133,17 @@ namespace :db do
 	predetermined_talks = Array.new
 	timeslots_to_lock = Array.new
 	
-	##Opening Talk
 	
-	start_time = Time.utc(2011, "oct", 29,9,30,00)
-	end_time = start_time + 40.minutes
-	timeslot_label = 'Opening Talk'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, "Welcome to BarcampLondon9!", "The Crew"]
-	timeslots_to_lock << timeslot
-	
-	
-	## Grid Population
-	
-	start_time = end_time
-	end_time = start_time + 20.minutes
-	timeslot_label = 'Grid Population'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_a, "Add your talk to the grid", "You"]
-	timeslots_to_lock << timeslot
-	
-	
-	## Saturday Morning
-		
-	session_no = 1
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
-	session_no = session_no+num_timeslots	
-	
-	
-	## Lunch
-	
-	start_time = end_time
-	end_time = start_time + 1.hour
-	timeslot_label = 'Lunch'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-	
-	
-	## Saturday Afternoon, Part I
-	
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
-	session_no = session_no+num_timeslots	
-
-
-	## Afternoon Tea
-	
-	start_time = end_time
-	end_time = start_time + 30.minutes
-	timeslot_label = 'Afternoon Tea'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-
-
-	## Saturday Afternoon, Part II
-	
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
-	session_no = session_no+num_timeslots	
-
-	
-	## Dinner
-	
-	start_time = end_time
-	end_time = start_time + 90.minutes
-	timeslot_label = 'Dinner'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-	
-	
-	## Saturday Evening
-	
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
-	session_no = session_no+num_timeslots	
-	
-	
-	## Saturday Night
-	
-	start_time = end_time
-	end_time = Time.utc(2011, "oct", 30,8,00,00)
-	timeslot_label = 'Games, etc.'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_a, nil, nil]
-	timeslots_to_lock << timeslot
-	
-	
-	## Breakfast
-	
-	start_time = end_time
-	end_time = start_time + 120.minutes
-	timeslot_label = 'Breakfast'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-	
-	
-	## Sunday Morning, Part I
-	
-	num_timeslots = 3
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
-	session_no = session_no+num_timeslots	
-
-
-	## Coffee Break
-	
-	start_time = end_time
-	end_time = start_time + 20.minutes
-	timeslot_label = 'Coffee Break'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-
-
-	## Sunday Morning, Part II
-	
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
-	session_no = session_no+num_timeslots	
-		
-	
-	## Lunch
-	
-	start_time = end_time
-	end_time = start_time + 50.minutes
-	timeslot_label = 'Lunch'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-	
-	
-	## Sunday Afternoon
-	
-	num_timeslots = 3
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
-	session_no = session_no+num_timeslots	
-	
-	
-	## Closing Talk
-	
-	start_time = end_time
-	end_time = start_time + 15.minutes
-	timeslot_label = 'Closing Talk'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, "A quick round-up of the weekend.", "The Crew"]
-	timeslots_to_lock << timeslot
-	
-	
-	## Tidy-up
-	
-	start_time = end_time
-	end_time = start_time + 30.minutes
-	timeslot_label = 'Tidy-up'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_a, "A quick zip-round to set the rooms back as they were before we took over.", "Everyone"]
-	timeslots_to_lock << timeslot
+	## All Timeslots		
+	Timeslot.generate!(1, 10, Time.now.utc, 2.minutes, 1.minute)	
 	
 	
 	## Summary of timeslots created
 	puts "Total Timeslots: " + Timeslot.all.count.to_s
-	puts "ID of first Timeslot: " + Timeslot.all.first.id.to_s
+	puts "ID of first Timeslot: " + Timeslot.all.first.id.to_s unless Timeslot.all.nil?
+	Timeslot.all.each do |timeslot|
+		puts "Timeslot #{timeslot.id}: #{timeslot.start.to_s} - #{timeslot.end.to_s}"
+	end
 	
 	
 	# Generate Slots
@@ -370,8 +218,8 @@ namespace :db do
 	
 	
 	# Confirm seed completed
-	puts "Load complete."  
+	puts "Load complete."     
     
-  end
+  end # task
   
-end
+end # namespace

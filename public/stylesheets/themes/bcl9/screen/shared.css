@@ -6,7 +6,39 @@ a:visited,
 a:hover,
 a:focus,
 a:active {
-    color: #000000; /* #000000 */
+    color: #000000;
+}
+
+
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {          
+    background-color: #99cc99; /* ws */   
+    color: #333333; /* ws */    
+}
+
+.instructions {   
+  background-color: #99cc99; /* ws */   
+  color: #000000;  
+}
+
+.warning {
+	color: #663333; /* ws */
+  	background-color: #Ffcccc; /* WS */
+}
+
+#error_explanation li {
+  color: #990000; /* WS */
+}
+
+.message,
+.message p {
+    color: #333333; /* WS */
+}
+
+.message .actions {
+	background-color: #ffffff;	
 }
 
 
@@ -18,17 +50,17 @@ a:active {
 .versions-flash a:hover,
 .versions-flash a:focus,
 .versions-flash a:active {
-	color: #444444;
+	color: #333333; /* ws */
 }
 
 .versions-flash a:link .title,
 .versions-flash a:visited .title {
-	border-bottom-color: #C9E2AE;
+	border-bottom-color: #99cc99; /* ws */
 }
 
 .versions-flash .selected a:link .title,
 .versions-flash .selected a:visited .title {
-	border-bottom-color: #444444;
+	border-bottom-color: #333333; /* ws */
 }
 
 .versions-flash a:hover .title,
@@ -49,8 +81,8 @@ a:active {
 .talk .options a:hover,
 .talk .options a:focus,
 .talk .options a:active {
-    background-color: #ddd; /* #999999 */
-    color: #7f4627; /* Updated */
+    background-color: #cccccc; /* ws */ 
+    color: #663333; /* ws */
 }
 
 .where-when,
@@ -66,14 +98,14 @@ table.single-timeslot .empty .slot .where-when a:visited,
 table.single-timeslot .empty .slot .where-when a:hover,
 table.single-timeslot .empty .slot .where-when a:focus,
 table.single-timeslot .empty .slot .where-when a:active {
-    color: #7f4627; /* Updated */
+    color: #663333; /* ws */
 }
 
 table.single-timeslot .empty .slot .heading {
-    color: #444444; /* Updated */
+    color: #333333; /* ws */
 }
 
 
 #room .grid .slot .heading {
-    color: #666666; /* Updated */
+    color: #666666; /* ws */
 }
