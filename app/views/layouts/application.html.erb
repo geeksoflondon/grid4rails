@@ -14,14 +14,14 @@
 		
 		<!-- Style -->	
 		<% if (@version == "l") %> 			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", "screen/large" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", "themes/#{theme}/screen/large" %>			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", "screen/large", :media => 'all' %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", "themes/#{theme}/screen/large", :media => 'all' %>			
 		<% elsif (@version == "m") %>			
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium" %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium" %>			
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", :media => 'all' %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", :media => 'all' %>			
 		<% else  %>						
-				<%= stylesheet_link_tag "global", "screen/shared", "screen/small"  %>
-				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/small"  %>						
+				<%= stylesheet_link_tag "global", "screen/shared", "screen/small", :media => 'all'  %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/small", :media => 'all'  %>						
 		<% end  %>
 		
 		<!-- CSRF -->
