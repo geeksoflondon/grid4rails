@@ -11,8 +11,9 @@ namespace :db do
   	# Drop the existing database
     Rake::Task['db:drop'].invoke
     
-    # Empty tmp:cache
+    # Empty caches
     Rake::Task['tmp:cache:clear'].invoke
+    Rake::Task['redis:clear_everything'].invoke
     
     # Create a new instance of the database
     Rake::Task['db:create'].invoke    
@@ -156,7 +157,7 @@ namespace :db do
 		
 	session_no = 1
 	num_timeslots = 2
-	end_time = generate_sessions(session_no, num_timeslots, end_time)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
 	session_no = session_no+num_timeslots	
 	
 	
@@ -173,7 +174,7 @@ namespace :db do
 	## Saturday Afternoon, Part I
 	
 	num_timeslots = 2
-	end_time = generate_sessions(session_no, num_timeslots, end_time)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
 	session_no = session_no+num_timeslots	
 
 
@@ -190,7 +191,7 @@ namespace :db do
 	## Saturday Afternoon, Part II
 	
 	num_timeslots = 2
-	end_time = generate_sessions(session_no, num_timeslots, end_time)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
 	session_no = session_no+num_timeslots	
 
 	
@@ -207,7 +208,7 @@ namespace :db do
 	## Saturday Evening
 	
 	num_timeslots = 2
-	end_time = generate_sessions(session_no, num_timeslots, end_time)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
 	session_no = session_no+num_timeslots	
 	
 	
@@ -234,7 +235,7 @@ namespace :db do
 	## Sunday Morning, Part I
 	
 	num_timeslots = 3
-	end_time = generate_sessions(session_no, num_timeslots, end_time, 30.minutes)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
 	session_no = session_no+num_timeslots	
 
 
@@ -251,7 +252,7 @@ namespace :db do
 	## Sunday Morning, Part II
 	
 	num_timeslots = 2
-	end_time = generate_sessions(session_no, num_timeslots, end_time, 30.minutes)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
 	session_no = session_no+num_timeslots	
 		
 	
@@ -268,7 +269,7 @@ namespace :db do
 	## Sunday Afternoon
 	
 	num_timeslots = 3
-	end_time = generate_sessions(session_no, num_timeslots, end_time, 30.minutes)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
 	session_no = session_no+num_timeslots	
 	
 	
@@ -373,31 +374,4 @@ namespace :db do
     
   end
   
-end
-
-def generate_sessions(session_no = 1, num_timeslots = 2, start_time = nil, session_duration = 40.minutes, break_duration = 10.minutes)
-	
-	if (start_time.nil?)
-		raise
-	end
-	
-	end_time = start_time
-	
-	i = 0	
-	while i < num_timeslots
-	
-	  if (i > 0)
-	  	start_time = end_time
-	  end
-	  end_time = start_time + session_duration
-	
-	  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
-	
-	  i = i+1
-	  session_no = session_no+1
-	  end_time = end_time + break_duration unless (i == num_timeslots) 
-	
-	end
-
-	return end_time
 end

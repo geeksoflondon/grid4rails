@@ -1,12 +1,12 @@
 namespace :db do
   
   desc <<-DESC
-  	Drop, create, migrate then seed the database with data for BarcampLondon9
+  	Drop, create, migrate then seed the database with data for BarcampMediaCity (inaugural)
   	This file should contain all the record creation needed to seed the database with its default values.
   	Run using the command 'rake db:load_bcl9
   DESC
   
-  task :load_bcl9 => [:environment] do
+  task :load_bcmc => [:environment] do
   
   	# Drop the existing database
     Rake::Task['db:drop'].invoke
@@ -36,9 +36,6 @@ namespace :db do
 	# Generate Rooms
 	puts "Generating rooms."
 	
-	# Room specs: https://geeksoflondon.basecamphq.com/projects/7251895-barcamp-london-9/posts/52762583/comments
-	# Naming scheme: https://geeksoflondon.basecamphq.com/projects/7251895-barcamp-london-9/cat/73463514/posts
-	
 	room_a = Room.create(
 		:name => 'Everywhere', 
 		:description => 'Any and all rooms (assuming it\'s not out-of-bounds and there\'s no other talk scheduled in it)', 
@@ -47,81 +44,52 @@ namespace :db do
 		:include_in_grid => false
 	)
 	room_b = Room.create(
-		:name => 'The Hellmouth', 
-		:description => 'The huge room in the basement; down the stairs and to the left.', 
-		:short_code => 'hel', 
-		:capacity => 250,  
-		:include_in_grid => false
-	)
+		:name => 'Doctor Who', 
+		:description => '5th Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', 
+		:short_code => 'drw', 
+		:capacity => 100,
+		:facilities => 'TV',  
+	)	
 	room1 = Room.create(
-		:name => 'Amityville', 
-		:description => 'Basement.', 
-		:short_code => 'amv', 
-		:capacity => 40, 
-		:facilities => 'tbd'
+		:name => 'Red Dwarf', 
+		:description => '5th Floor, straight ahead towards Old Trafford. Semi-circle of chairs against the curved glass wall.', 
+		:short_code => 'rdw', 
+		:capacity => 30, 
+		:facilities => 'TV'
 	)
 	room2 = Room.create(
-		:name => '0001 Cemetery Lane', 
-		:description => 'Basement', 
-		:short_code => 'cem', 
-		:capacity => 40, 
-		:facilities => 'tbd'
+		:name => 'Inside Out', 
+		:description => '5th Floor, in the rear-left corner as you face Old Trafford.', 
+		:short_code => 'ino', 
+		:capacity => 20, 
+		:facilities => 'Projector'
 	)
 	room3 = Room.create(
-		:name => 'Little Shop of Horrors', 
-		:description => 'Basement', 
-		:short_code => 'lsh', 
-		:capacity => 40, 
-		:facilities => 'tbd'
+		:name => 'Little Attachments', 
+		:description => '5th Floor, in the front-left corner as you face Old Trafford.', 
+		:short_code => 'att', 
+		:capacity => 50, 
+		:facilities => 'Whiteboard'
 	)
 	room4 = Room.create(
-		:name => 'Lake Placid', 
-		:description => 'First floor.', 
-		:short_code => 'lkp', 
-		:capacity => 40, 
-		:facilities => 'tbd'
+		:name => 'Torchwood', 
+		:description => '4th Floor, cosy armchairs, to the right as you face Old Trafford, behind the kitchen.', 
+		:short_code => 'twd', 
+		:capacity => 15, 
+		:facilities => 'Projector, whiteboard'
 	)
 	room5 = Room.create(
-		:name => 'Island of Lost Souls', 
-		:description => 'First floor.', 
-		:short_code => 'ils', 
-		:capacity => 30, 
-		:facilities => 'tbd'
+		:name => 'Bagpuss', 
+		:description => '4th Floor, in the front-left corner as you face Old Trafford. Next to Bagpuss.', 
+		:short_code => 'bgp', 
+		:capacity => 20
 	)
 	room6 = Room.create(
-		:name => 'Pan\'s Labrynth', 
-		:description => 'First floor.', 
-		:short_code => 'lab', 
+		:name => 'Redhead', 
+		:description => '4th Floor, in the front-left corner as you face Old Trafford. Next to Redhead.', 
+		:short_code => 'rdh', 
 		:capacity => 30,
-		:facilities => 'tbd'
-	)
-	room7 = Room.create(
-		:name => 'The Black Lagoon', 
-		:description => 'First floor.', 
-		:short_code => 'blk', 
-		:capacity => 30, 
-		:facilities => 'tbd'
-	)
-	room8 = Room.create(
-		:name => 'Burkittsville', 
-		:description => 'Second floor.', 
-		:short_code => 'bkv', 
-		:capacity => 30, 
-		:facilities => 'tbd'
-	)
-	room9 = Room.create(
-		:name => 'Eastwick', 
-		:description => 'Second floor.', 
-		:short_code => 'ewk', 
-		:capacity => 30, 
-		:facilities => 'tbd'
-	)
-	room10 = Room.create(
-		:name => 'Sleepy Hollow', 
-		:description => 'Second floor.', 
-		:short_code => 'slh', 
-		:capacity => 30, 
-		:facilities => 'tbd'
+		:facilities => 'TV, whiteboard'
 	)
 	
 	puts "Total Rooms: " + Room.all.count.to_s
@@ -135,7 +103,7 @@ namespace :db do
 	
 	##Opening Talk
 	
-	start_time = Time.utc(2011, "oct", 29,9,30,00)
+	start_time = Time.utc(2011, "sep", 17,9,30,00)
 	end_time = start_time + 40.minutes
 	timeslot_label = 'Opening Talk'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
@@ -156,8 +124,8 @@ namespace :db do
 	## Saturday Morning
 		
 	session_no = 1
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
+	num_timeslots = 3
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 20.minutes) + 10.minutes
 	session_no = session_no+num_timeslots	
 	
 	
@@ -171,29 +139,12 @@ namespace :db do
 	timeslots_to_lock << timeslot
 	
 	
-	## Saturday Afternoon, Part I
+	## Saturday Afternoon
 	
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
+	num_timeslots = 11
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 20.minutes) + 10.minutes
 	session_no = session_no+num_timeslots	
-
-
-	## Afternoon Tea
 	
-	start_time = end_time
-	end_time = start_time + 30.minutes
-	timeslot_label = 'Afternoon Tea'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-
-
-	## Saturday Afternoon, Part II
-	
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
-	session_no = session_no+num_timeslots	
-
 	
 	## Dinner
 	
@@ -208,14 +159,14 @@ namespace :db do
 	## Saturday Evening
 	
 	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 20.minutes) + 10.minutes
 	session_no = session_no+num_timeslots	
 	
 	
 	## Saturday Night
 	
 	start_time = end_time
-	end_time = Time.utc(2011, "oct", 30,8,00,00)
+	end_time = Time.utc(2011, "sep", 18,7,30,00)
 	timeslot_label = 'Games, etc.'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 	predetermined_talks << [timeslot, room_a, nil, nil]
@@ -225,7 +176,7 @@ namespace :db do
 	## Breakfast
 	
 	start_time = end_time
-	end_time = start_time + 120.minutes
+	end_time = start_time + 90.minutes
 	timeslot_label = 'Breakfast'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 	predetermined_talks << [timeslot, room_b, nil, nil]
@@ -234,32 +185,15 @@ namespace :db do
 	
 	## Sunday Morning, Part I
 	
-	num_timeslots = 3
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
-	session_no = session_no+num_timeslots	
-
-
-	## Coffee Break
-	
-	start_time = end_time
-	end_time = start_time + 20.minutes
-	timeslot_label = 'Coffee Break'
-	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
-	timeslots_to_lock << timeslot
-
-
-	## Sunday Morning, Part II
-	
-	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
+	num_timeslots = 4
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 20.minutes) + 10.minutes
 	session_no = session_no+num_timeslots	
 		
 	
 	## Lunch
 	
 	start_time = end_time
-	end_time = start_time + 50.minutes
+	end_time = start_time + 1.hour
 	timeslot_label = 'Lunch'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 	predetermined_talks << [timeslot, room_b, nil, nil]
@@ -268,8 +202,8 @@ namespace :db do
 	
 	## Sunday Afternoon
 	
-	num_timeslots = 3
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
+	num_timeslots = 4
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 20.minutes) + 10.minutes
 	session_no = session_no+num_timeslots	
 	
 	
