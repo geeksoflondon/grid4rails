@@ -79,8 +79,6 @@ class GridController < ApplicationController
     @empty_slot_index = 0
     @rooms = Room.all
     @description = "All talks."
-    #Chuck the response in varnish for 2 seconds. 
-    response.headers['Cache-Control'] = 'public, max-age=10'
   end
 
 
