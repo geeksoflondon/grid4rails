@@ -14,12 +14,14 @@
 			<tr class="<%= cycle("odd", "even") %>">
 				<% if (@show_room_col) %>
 					<th class="room header">
-						<p class="heading"><%= link_to room.name, :controller => "grid", :action => "room", :date => @date, :room => room.short_code %></p>
-						<p class="shortcode"><%= room.short_code.upcase %></p>
-						<div class="details">
-							<p class="capacity"><span class="label">Holds: </span><%= room.capacity unless room.capacity.blank? %></p>
-							<p class="facilities"><span class="label">Facilities: </span><% if (room.facilities.blank?) %>Nothing special<% else %><%= room.facilities %><% end %></p>
-						</div>							
+						<div class="summary">
+							<p class="heading"><%= link_to room.name, :controller => "grid", :action => "room", :date => @date, :room => room.short_code %></p>
+							<p class="shortcode"><%= room.short_code.upcase %></p>
+							<div class="details">
+								<p class="capacity"><span class="label">Holds: </span><%= room.capacity unless room.capacity.blank? %></p>
+								<p class="facilities"><span class="label">Facilities: </span><% if (room.facilities.blank?) %>Nothing special<% else %><%= room.facilities %><% end %></p>
+							</div>	
+						</div>						
 					</th>	   
 				<% end %>	   
 				<% @timeslots.each do |timeslot| %>

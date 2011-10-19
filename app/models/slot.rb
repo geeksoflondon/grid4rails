@@ -30,13 +30,17 @@ class Slot < ActiveRecord::Base
   end
 
   def self.find_empty
-  @slots = Array.new()
-  Slot.all.each do | slot |
-    if (slot.is_empty?)
-      @slots << slot
-    end
+	  @slots = Array.new()
+	  Slot.all.each do | slot |
+	    if (slot.is_empty?)
+	      @slots << slot
+	    end
+	  end
+      return @slots
   end
-    return @slots
+  
+  def self.find_occupied
+  	Slot.select {|slot| !slot.is_empty?}
   end
 
   def is_empty?

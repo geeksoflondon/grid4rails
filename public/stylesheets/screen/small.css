@@ -85,6 +85,18 @@ fieldset {
 }
 
 
+/* FEATURE: Header
+-----------------------------*/
+
+#header .branding a:link,
+#header .branding a:visited,
+#header .branding a:hover,
+#header .branding a:focus,
+#header .branding a:active {
+	display:block;
+	padding: 0 3px;
+}
+
 /* FEATURE: Footer
 -----------------------------*/
 
@@ -123,16 +135,18 @@ fieldset {
     font-size: small;   
     margin: 0;
     border-style: solid;
-    border-width: 0 0 3px 0;
+    border-width: 1px 0 1px 0;
 }
 .scroller p {
     text-align: center;
 }
+.scroller a {
+	display: inline-block;
+	padding: 3px 0;
+}
 .scroller .selected {
     font-weight: bold;
-    text-decoration: underline;
-    display: inline-block;
-    padding: 3px 0;
+    text-decoration: underline;        
 }
 
 
@@ -211,11 +225,15 @@ fieldset {
 /* FEATURE: Page Title
 -----------------------------*/
 
-#main h1,
-#help h1.heading {
+
+h1 {
     font-size: large;
 	margin-top: 6px;
     margin-bottom: 12px;
+}
+
+#top h1 {
+	margin: 3px 6px;
 }
 
 
@@ -278,7 +296,14 @@ body.talks .slot-details p {
 -----------------------------*/
 
 div.grid {
+	margin-top: 12px;
+	padding-top: 0;
     padding-bottom: 12px;
+}
+
+div.grid hr {
+	margin: 0;
+	padding: 0;
 }
 
 div.grid .timeslot .header {  
@@ -287,11 +312,7 @@ div.grid .timeslot .header {
 }
 
 div.grid .timeslot {
-    padding-top: 30px;
-}
-
-div.grid .first {
-    padding-top: 12px;
+	padding: 0 0 18px 0;
 }
 
 div.grid .timeslot .header .day,
@@ -301,15 +322,16 @@ div.grid .timeslot .header .context {
 }
 
 div.grid .timeslot .header .time {
-    margin-bottom: 6px;
+    margin-bottom: 0;
+    font-size: medium;
 }
 
-.skip-to-empty {
-    
+.grid .slot .empty .heading {
+	font-weight: normal;
 }
 
 div.grid .slot {
-    margin-top: 18px;
+    margin-top: 12px;
 }
 
 div.grid .talk,
@@ -326,10 +348,8 @@ div.grid .empty {
 }
 
 .grid .slot .empty {
-    margin: 6px 0;
+    margin: 6px 0 0;
 }
-
-
 
 .grid .slot .actions {
     text-align: center;
@@ -337,6 +357,11 @@ div.grid .empty {
     margin-bottom: 3px;
     border-width: 1px;
     border-style: solid; 
+}
+
+.grid .talk .where-when .start,
+.grid .empty .where-when .start {
+	font-size: x-small;
 }
 
 
@@ -350,8 +375,17 @@ div.grid .empty {
 
 #room .grid {
 	margin-top: 12px;
+	padding-bottom: 0;
 }
+
+#room div.grid .slot {
+	margin-bottom: 18px;
+} 
 
 #room .slot .talk .message p {
 	font-size: small;
 }	
+
+#room div.grid .timeslot {
+	padding: 0;
+}

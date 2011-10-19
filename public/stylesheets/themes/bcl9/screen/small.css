@@ -32,9 +32,9 @@
 -----------------------------*/
 
 .scroller {
-    background-color: #000000; 
-    color: #fcfcfc;
-    border-color: #000000;
+    background-color: #ff9900; /* ws */ 
+    color: #000000;
+    border-color: #ff8c00; /* wc */
 }
 .scroller a,
 .scroller a:link,
@@ -42,7 +42,7 @@
 .scroller a:hover,
 .scroller a:focus,
 .scroller a:active {
-    color: #ffffff;
+    color: #000000;
 }
 
 
@@ -79,8 +79,13 @@
 /* FEATURE: the grid
 -----------------------------*/
 
+hr {
+	color: #EEE8AA;
+	background-color: #eee8aa;
+}
+
 div.grid .timeslot .header {  
-    background-color: #f5f5f5; /* ! */
+    background-color: #FAFAD2; /* wc */
     color: #000000;
 }
 
@@ -94,26 +99,21 @@ div.grid .empty {
     border-color: #cccccc; /* ws */
 }
 
-/* obsolete?
-.grid .header .where-when {
-    color: #b13c3b;
-}
-*/
-
-.grid .slot .empty {
-    background-color: #99cc99; /* ws */
+.grid .slot .empty .heading{
+    color: #999999; /* ws */
 }
 
-.grid .slot .empty,
-.grid .slot .empty .heading,
-.grid .slot .empty .where-when,
-.grid .slot .empty a,
-.grid .slot .empty a:link,
-.grid .slot .empty a:visited,
-.grid .slot .empty a:hover,
-.grid .slot .empty a:focus,
-.grid .slot .empty a:active {
-    color: #333333; /* ws */
+.grid .slot .empty .skip-to-empty {
+    color: #555555; /* ws */
+}
+
+div.grid .talk .description {
+	color: #333333;
+}
+
+.grid .talk .where-when .start,
+.grid .empty .where-when .start {
+	color: #555555;
 }
 
 .grid .slot .actions {

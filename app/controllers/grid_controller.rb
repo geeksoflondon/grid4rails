@@ -58,7 +58,7 @@ class GridController < ApplicationController
 
   def date
     @page_id = "date-grid"
-    @show_room_col = true
+    @show_room_col = ((@version == 's') ? false : true)
 
     if (params[:date])
       @timeslots = Timeslot.by_date(params[:date])
@@ -76,8 +76,11 @@ class GridController < ApplicationController
     @dates = Array.wrap(Timeslot.dates)
     @scroller_date = true
     @is_single_timeslot = (@timeslots.count == 1)
+    if (@version == 's')
+    	@slots = Slot.all.sort_by{|slot| [slot.timeslot.start, slot.room.id, slot.id]}
+    end
     @empty_slot_index = 0
-    @rooms = Room.all
+    @rooms = Room.all.sort_by{|room|[room.id]}
     @description = "All talks."
   end
 

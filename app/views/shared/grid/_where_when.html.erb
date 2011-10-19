@@ -1,20 +1,19 @@
-<p class="where-when">	
-	<% if (@page_id != "timeslot") 
-		timeslot = slot.timeslot
-	%>
-		<span class="day"><%= timeslot.start.strftime("%a") %></span>
+<% element = element("where_when") %>
+<<%= element %> class="where-when">	
+	<% if (@version != 's' && @page_id != "timeslot") %>
+		<span class="day"><%= day_name(timeslot.start, "%a") %></span>
 		<span class="delimiter hide"> </span>
 		<span class="start"><%= timeslot.start.strftime("%H:%M") %></span>
-	<% end %>
-	
+	<% end %>	
 	<% if (@page_id != "room") %> 
-		<% if (@page_id != "timeslot" && @page_id != "room-grid") %>
+		<% if ((@version != 's' && @page_id != "timeslot") && @page_id != "room-grid") %>
 			<span class="delimiter hide">, </span>
-		<% end %>
-		
+		<% end %>		
 		<% if (@page_id != "room-grid") %>
-			<span class="room">
-			<%= link_to (@show_room_col ? room.short_code.upcase : room.name), :controller => "grid", :action => "room", :date => @date, :room => room.short_code %></span>
+			<span class="room"><%= link_to ((@show_room_col == true && @version != 's') ? room.short_code.upcase : room.name), :controller => "grid", :action => "room", :date => @date, :room => room.short_code %></span>
+			<% if (@version == 's' && (@page_id == 'date-grid' || @page_id == 'talk-assign')) %>
+				<span class="start"> (<a href="<% if (@version == "s") %><%= url_for :controller => "grid", :action => "show", :timeslot => timeslot.id, :date => @date %><% else %><%= url_for :controller => "grid", :action => "show", :date => timeslot.start.to_date, :timeslot => timeslot.id, :version => params[:version] %><% end %>"><%= timeslot.start.strftime("%H:%M") %></a>)</span>		
+			<% end %>
 		<% end %>
 	<% end %>	
-</p>
+</<%= element %>>

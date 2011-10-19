@@ -1,0 +1,6 @@
+<% if (@page_id == "talk-move" unless (slot.locked? || talk == @unscheduled)) %>
+    <%= form_tag(:controller => "talks", :action => "swap_slot") do |f| %>
+        <input type="hidden" name="talk_2" value="<%= talk.id %>" />
+        <p class="actions"><span class="submit"><%= submit_tag("Swap", :class => "button orange medium") %></span></p>
+    <% end %>
+<% end %>

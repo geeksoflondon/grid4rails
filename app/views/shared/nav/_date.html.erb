@@ -8,7 +8,7 @@
 		<% @dates.each do | date | %>
 		 	<% classname = "selected" if @date == date %>
 			<a href="<%= url_for :controller => @current_controller, :action => @current_action, :id => params[:id], :date => date %>" class="<%=classname %>">
-				<span><%= date.strftime("%A") %></span>
+				<span><%= day_name(date, ((@version == 's' && @dates.count > 2) ? "%a" : "%A")) %></span>
 			</a>
 			<% if (date != @dates.last) %>
 				<span class="delimiter"> | </span>

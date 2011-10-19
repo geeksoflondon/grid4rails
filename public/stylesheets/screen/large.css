@@ -60,25 +60,59 @@ form .submit input {
 /* Layout
 -----------------------------*/
 
-#header {
+#top {
     display: block;
     margin: 0;
     padding: 0;
+    border: 0;
     width: 100%;
     position: fixed;
     left: 0;
-    overflow: hidden;
-    border-bottom-style: solid;   
+    overflow: hidden;   
     top: 0;
-    height: 40px;
-    border-width: 0 0 3px 0;
+    height: 3em;	
+}
+
+#header {
+	height: 3em;
+	clear: both;
+	position: relative;
+	display: block;
+	width: 100%;
+	top: 0;
+	left: 0;
+	border: 0;
+	padding: 0;
+}
+
+#top .scrollers {
+	display: block;
+	width: 100%;
+	position: absolute;
+	top: 3em;
+	left: 0;
+	clear: both;
+	border: 0;
+	padding: 0;
 }
 
 #body {
-    margin: 40px 0 0 0;
+    margin: 3em 0 0 0;
     padding: 0;
     border-top-width: 1px;
     border-top-style: solid;      
+}
+
+body.grid #top,
+body#talk-assign #top,
+body#talk-move #top {
+    height: 5.5em;
+}
+
+body.grid #body,
+body#talk-assign #body,
+body#talk-move #body {
+	margin: 5.5em 0 0 0;	
 }
 
 #main {
@@ -196,8 +230,7 @@ body.talks #main {
 #header #core-options ul {
     display: block;
     margin: 0;
-    padding: 12px 0 0 0;
-    width: 400px;
+    padding: 10px 0 0 0;
 }
 
 #header .nav li {
@@ -238,10 +271,6 @@ body.talks #main {
 
 /* FEATURE: Timeslot scroller
 -----------------------------*/
-
-.scroller { 
-  padding: 6px 0 9px 0;
-}
 
 .scroller a {
   margin: 0px 0px;

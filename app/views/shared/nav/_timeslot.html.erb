@@ -4,7 +4,7 @@
 		timeslot_next = @timeslot.next
 	%>
 	<div class="scroller timeslot-scroller">
-		<p class="options">
+		<p class="options" title="options">
 			<% if (timeslot_prev) %>
 				<a href="<%= url_for(:controller => "grid", :action => "show", :date => timeslot_prev.start.to_date, :timeslot => timeslot_prev.id) %>">
 					<span class="arrows">&lt;&lt;</span><span class="label">Earlier</span>

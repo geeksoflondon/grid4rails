@@ -147,6 +147,16 @@ input,
 /* Layout
 -----------------------------*/
 
+#top {
+	border-bottom: 3px solid #4F2918;
+}
+
+body.grid #top,
+body#talk-assign #top,
+body#talk-move #top {
+	border-bottom: none;
+}
+
 #header {
     margin: 0;
     padding: 0;
@@ -527,15 +537,35 @@ table.grid .slot .where-when {
 
 /* Talk */
 
-table.grid .talk {
-    padding: 3px 0;
+table.multi-timeslot div.talk,
+table.multi-timeslot div.empty {
+    padding: 3px 6px;    
 }
 
-table.grid .slot .heading,
-table.grid .talk p,
-table.grid .empty,
-table.grid th p {
+table.single-timeslot .talk,
+table.single-timeslot .empty {
     padding: 3px 6px;
+}
+
+table.single-timeslot td.empty {
+	padding: 0;
+}
+
+
+table.grid th .time,
+table.grid th .summary {
+    padding: 3px 6px;
+}
+
+table.grid th .summary .shortcode {
+	padding: 6px 0;
+}
+table.grid th .summary .details p {
+	margin-top: 3px;
+}
+
+table.grid th .time {
+	font-weight: normal;
 }
 
 table.grid .speaker {
@@ -543,10 +573,20 @@ table.grid .speaker {
     font-weight: normal;
 }
 
-table.grid .talk .where-when {     
-    margin: 0;
-    padding: 3px 6px; 
+table.grid .slot .where-when,
+table.grid .slot .where-when,
+table.grid .slot .heading {     
+    margin:  0;
+    padding: 3px 0; 
+}
+
+table.multi-timeslot .empty .where-when,
+table.multi-timeslot .talk .where-when {
     white-space: nowrap;
+}
+
+table.grid .slot .where-when {
+    font-weight: normal;
 }
 
 table.grid .where-when span {
@@ -561,7 +601,7 @@ table.grid .locked .where-when {
 
 /* Empty slots */
 
-table.grid div.empty {
+table.multi-column div.empty {
     margin: 0;
     padding: 0;
 }
@@ -573,11 +613,6 @@ table.grid .actions {
     text-align: center;
 }
 
-table.grid .empty .where-when {   
-    margin: 0;
-    padding: 3px 0px;
-    white-space: nowrap;
-}
 
 /* Single time-slot view */
 
@@ -597,7 +632,6 @@ table.single-timeslot p {
 }
 
 table.single-timeslot .empty .heading {
-    padding-left: 0px;
     font-weight: normal;
 }
 
@@ -671,8 +705,12 @@ body.talks #main fieldset {
 }
 
 #room .grid .timeslot .header {
+	padding: 3px;	
+}
+
+#room .grid .timeslot .header .context,
+#room .grid .timeslot .header .time {
     font-weight: normal;
-    padding: 3px;
 }
 
 #room .grid .timeslot .header .context {

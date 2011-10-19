@@ -25,7 +25,7 @@ form textarea {
 /* Layout
 -----------------------------*/
 
-#header,
+#top,
 #body {
     border-bottom-color: #999999; /* ws */
 }
@@ -34,11 +34,19 @@ form textarea {
   border-top-color: #999999; /* ws */ 
 }
 
-#header {
+#top {
   -webkit-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
   -moz-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
   box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
 }
+
+
+/* FEATURE: Header
+-----------------------------*/
+
+#header #core-options {
+	background-color: transparent;
+} 
 
 
 /* FEATURE: Footer

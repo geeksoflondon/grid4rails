@@ -1,9 +1,8 @@
-<% if (@version == "s" && @page_id != "room") %>
-	<p class="day"><%= timeslot.start.strftime("%A") %></p>
-<% elsif (@page_id == "room") %>
-	<p class="context"><% if (timeslot == @timeslot_on_now) %>Now<% else %>Next<% end %></p>
+<% if (@page_id == "room") %>
+	<h2 class="context"><% if (timeslot == @timeslot_on_now) %>Now<% else %>Next<% end %></h2>
 <% end %>
-<p class="time">
+<% element = element("timeslot_heading") %>
+<<%= element %> class="time">
 	<% if (!@is_single_timeslot) %>		
 		<a href="<% if (@version == "s") %><%= url_for :controller => "grid", :action => "show", :timeslot => timeslot.id, :date => @date %><% else %><%= url_for :controller => "grid", :action => "show", :date => timeslot.start.to_date, :timeslot => timeslot.id, :version => params[:version] %><% end %>">
 	<% end %>			
@@ -11,4 +10,4 @@
 	<% if (!@is_single_timeslot) %>
 		</a>
 	<% end %>
-</p>
+</<%= element %>>
