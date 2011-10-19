@@ -2,8 +2,21 @@ class Talk < ActiveRecord::Base
 
   has_one :slot
 
-  validates :title, :length => { :minimum => 4, :maximum => 64, :allow_blank => true, :message => "needs to be longer than 4 characters and less than 64" }
-  validates :speaker, :length => { :minimum => 4, :maximum => 64, :allow_blank => true, :message => "needs to be longer than 4 characters and less than 64" }
+  validates :title, 
+  	:length => { 
+  		:minimum => 1, 
+  		:maximum => 64, 
+  		:allow_blank => true, 
+  		:message => "needs to be at least 1 character long and fewer than 65" 
+  	}
+  	
+  validates :speaker, 
+  	:length => { 
+  		:minimum => 1, 
+  		:maximum => 64, 
+  		:allow_blank => true, 
+  		:message => "needs to be at least 1 character long and fewer than 65" 
+  	}
 
   validates_presence_of :title, :if => proc{|obj| obj.description.blank? && obj.speaker.blank? }
   validates_presence_of :description, :if => proc{|obj| obj.title.blank? && obj.speaker.blank? }
