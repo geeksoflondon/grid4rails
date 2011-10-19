@@ -139,7 +139,7 @@ namespace :db do
 	end_time = start_time + 40.minutes
 	timeslot_label = 'Opening Talk'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, "Welcome to BarcampLondon9!", "The Crew"]
+	predetermined_talks << [timeslot, room_b, "Welcome to BarcampLondon9!", "The Crew", true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -149,7 +149,7 @@ namespace :db do
 	end_time = start_time + 20.minutes
 	timeslot_label = 'Grid Population'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_a, "Add your talk to the grid", "You"]
+	predetermined_talks << [timeslot, room_a, "Add your talk to the grid", "You", true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -167,7 +167,7 @@ namespace :db do
 	end_time = start_time + 1.hour
 	timeslot_label = 'Lunch'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
+	predetermined_talks << [timeslot, room_b, nil, nil, true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -184,7 +184,7 @@ namespace :db do
 	end_time = start_time + 30.minutes
 	timeslot_label = 'Afternoon Tea'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
+	predetermined_talks << [timeslot, room_b, nil, nil, true]
 	timeslots_to_lock << timeslot
 
 
@@ -201,7 +201,7 @@ namespace :db do
 	end_time = start_time + 90.minutes
 	timeslot_label = 'Dinner'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
+	predetermined_talks << [timeslot, room_b, nil, nil, true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -218,7 +218,7 @@ namespace :db do
 	end_time = Time.utc(2011, "oct", 30,8,00,00)
 	timeslot_label = 'Games, etc.'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_a, nil, nil]
+	predetermined_talks << [timeslot, room_a, nil, nil, true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -228,7 +228,7 @@ namespace :db do
 	end_time = start_time + 120.minutes
 	timeslot_label = 'Breakfast'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
+	predetermined_talks << [timeslot, room_b, nil, nil, true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -245,7 +245,7 @@ namespace :db do
 	end_time = start_time + 20.minutes
 	timeslot_label = 'Coffee Break'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
+	predetermined_talks << [timeslot, room_b, nil, nil, true]
 	timeslots_to_lock << timeslot
 
 
@@ -262,7 +262,7 @@ namespace :db do
 	end_time = start_time + 50.minutes
 	timeslot_label = 'Lunch'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, nil, nil]
+	predetermined_talks << [timeslot, room_b, nil, nil, true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -279,7 +279,7 @@ namespace :db do
 	end_time = start_time + 15.minutes
 	timeslot_label = 'Closing Talk'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_b, "A quick round-up of the weekend.", "The Crew"]
+	predetermined_talks << [timeslot, room_b, "A quick round-up of the weekend.", "The Crew", true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -289,7 +289,7 @@ namespace :db do
 	end_time = start_time + 30.minutes
 	timeslot_label = 'Tidy-up'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
-	predetermined_talks << [timeslot, room_a, "A quick zip-round to set the rooms back as they were before we took over.", "Everyone"]
+	predetermined_talks << [timeslot, room_a, "A quick zip-round to set the rooms back as they were before we took over.", "Everyone", true]
 	timeslots_to_lock << timeslot
 	
 	
@@ -318,11 +318,13 @@ namespace :db do
 	  puts "Timeslot Name: " + timeslot.name   
 	
 	  ### Create a talk with the name specified
-	  talk = Talk.create(:title => timeslot.name, :description => predetermined_talk[2], :speaker => predetermined_talk[3])
+	  talk = Talk.create(:title => timeslot.name, :description => predetermined_talk[2].to_s, :speaker => predetermined_talk[3])
 	  
 	  #### Set the talk as the timeslot's global talk
-	  puts "Setting talk " + talk.id.to_s + " as global talk for timeslot " + timeslot.id.to_s
-	  timeslot.global_talk_id = talk.id
+	  if (predetermined_talk[4] == true)
+	  	puts "Setting talk " + talk.id.to_s + " as global talk for timeslot " + timeslot.id.to_s
+	  	timeslot.global_talk_id = talk.id	  	
+	  end
 	  timeslot.save
 	  
 	  ### Assign the talk to the room specified, if specified
