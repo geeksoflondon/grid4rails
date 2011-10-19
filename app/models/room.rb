@@ -1,6 +1,8 @@
 class Room < ActiveRecord::Base
 	
 	has_many :slots
+	
+	default_scope order('id')
 
   validates :name,
   	:presence => true,
