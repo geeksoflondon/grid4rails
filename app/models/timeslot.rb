@@ -11,7 +11,7 @@ class Timeslot < ActiveRecord::Base
   end
 
   def self.upcoming
-    Timeslot.where('start < ?', Time.now.utc).order("start DESC")
+    Timeslot.where('start >= ?', Time.now.utc).order("start DESC")
   end
 
   def self.non_assignables
