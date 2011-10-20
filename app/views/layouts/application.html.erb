@@ -26,16 +26,15 @@
 		
 		<!-- CSRF -->
 		<%= csrf_meta_tag %>	
-		
-		
+				
 		<meta name="description" content="" />
 		<meta name="author" content="" /> 
 		<meta name="viewport" content="width=200, initial-scale=1, maximum-scale=3, minimum-scale=1" />
 		<%= favicon_link_tag %>		
 		
 	</head> 
-	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">
-		<%= render '/shared/header' %>
+	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">		
+		<%= render '/shared/header' %>		
 		<div id="body">	
 			<div id="main">
 				<% if (cookies[:version_check] == 'true') %>
@@ -46,31 +45,34 @@
 				<% end %>
 			</div>
 		</div>
+		
 		<%= render 'shared/footer' %>
-	
-		<%= javascript_include_tag "jquery.min.js" %>
-		<%= javascript_include_tag "application" %>
 		
-		<%# Google Analytics %>
-		<script type="text/javascript">
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-26290688-2']);  
-		  _gaq.push(['_trackPageview']);
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })(); 
-		</script>
+		<% if (@version != 's') %>
+			<%= javascript_include_tag "jquery.min.js" %>
+			<%= javascript_include_tag "application" %>
 		
-		<div pub-key="<%= ENV['PUBNUB_PUBLISH_KEY'] %>" sub-key="<%= ENV['PUBNUB_SUBSCRIBE_KEY'] %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
-		<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+			<%# Google Analytics %>
+			<script type="text/javascript">
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-26290688-2']);  
+			  _gaq.push(['_trackPageview']);
+			  (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })(); 
+			</script>
 		
-		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-		chromium.org/developers/how-tos/chrome-frame-getting-started --> 
-		<!--[if lt IE 7 ]>
-		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-		<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-		<![endif]--> 
+			<div pub-key="<%= ENV['PUBNUB_PUBLISH_KEY'] %>" sub-key="<%= ENV['PUBNUB_SUBSCRIBE_KEY'] %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+			<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+		
+			<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+			chromium.org/developers/how-tos/chrome-frame-getting-started --> 
+			<!--[if lt IE 7 ]>
+			<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+			<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+			<![endif]--> 
+		<% end %>
 	</body> 
 </html>
