@@ -11,8 +11,10 @@
 		<span id="header-end"></span>
 		<% @header = false %>			
 	</div>
-	<% if (@current_controller == 'grid' || (@current_controller == 'talks' && (@current_action == 'schedule' || @current_action == 'move'))) %><h1 class="hide heading"><%= page_title %></h1><% end %>
-	<% if (cookies[:version_check] != 'true') %>
-		<%= render '/shared/nav/scrollers' %>
+	<% if cookies[:version_check] != 'true' %>	
+		<% if (@current_controller == 'grid' || (@current_controller == 'talks' && (@current_action == 'schedule' || @current_action == 'move'))) %><h1 class="hide heading"><%= page_title %></h1><% end %>
+		<% if (cookies[:version_check] != 'true') %>
+			<%= render '/shared/nav/scrollers' %>
+		<% end %>
 	<% end %>
 </div>	
