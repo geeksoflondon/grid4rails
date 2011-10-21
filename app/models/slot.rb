@@ -6,6 +6,8 @@ class Slot < ActiveRecord::Base
 
   validates :timeslot_id, :presence => true
   validates :room_id, :presence => true
+  
+  after_save :clear_cache
 
   def start
     timeslot.start
@@ -60,4 +62,12 @@ class Slot < ActiveRecord::Base
     Timeslot.on_next.slots
   end
 
+  private
+  
+  def clear_cache
+  	REDIS.keys("views/slot_#{self.id}*").each do |key|
+  		REDIS.del(key)
+	end
+end
+  
 end
