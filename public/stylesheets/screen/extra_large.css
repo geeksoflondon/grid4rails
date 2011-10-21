@@ -1,0 +1,209 @@
+/* See /stylesheets/README.txt for guidelines */
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url(../buttons.css);
+
+/* Custom hides (screenreader-friendly)
+-----------------------------*/
+
+.hide,
+.skip  {
+	margin: -5000px 0 0 -5000px;
+	position: absolute;
+	top: 0;	
+	left: 0;
+}
+
+
+/* Layout
+-----------------------------*/
+
+#main {
+	display: block;
+	position: relative;
+}
+
+
+body,
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+	color: yellow;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;
+}
+
+.div {
+	background-color: transparent;
+}
+
+body#grid {
+	padding: .5em 0 .5em .5em;	
+	background-color: #000000;
+	font-size: 2em;
+	background-image: url('/images/themes/bcl9/glowing_background.png');
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+}
+
+.tweets {
+	position: relative;
+	top: -20px;
+}
+
+.pumpkin {
+	position: relative;
+	top: 0;
+	left: -20%;
+	width: 70%;
+}
+.logo {
+	display: block;
+	position: absolute;
+	top: 58%;
+	left: 0;
+	width: 100%;
+}
+
+div.grid {
+	border: 0;
+	padding: 0;	
+	width: 100%;
+	display: block;
+	position: absolute;	
+}
+
+.whats-on {
+	border: 0;
+	padding: 0;
+	display: block;
+	width: 35%;		
+}
+
+.now {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.next {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.tweets {
+	display: block;
+	width: 20%;
+	margin: 0 auto;
+}
+
+.pair {
+	width: 100%;
+	display: block;
+	clear: both;
+	padding: 1.3em 0;
+}
+
+.slot {
+	display: block;
+}
+
+.double .slot {
+	width: 50%;
+	float: left;
+}
+
+.single .slot {
+	width: 80%;
+}
+
+.talk,
+.empty {
+	width: 90%;
+}
+
+.where-when {
+
+}
+
+.slot .heading,
+.slot .description {
+	word-wrap: break-word;
+}
+
+.context {
+	font-size: 2em;
+	font-family: serif;
+	text-transform: uppercase;
+	color: yellow;
+}
+
+.time {
+	font-size: 1.2em;
+}
+
+.time,
+.time a:link,
+.time a:visited,
+.time a:hover,
+.time a:focus,
+.time a:active {
+	color: #DAA520; /* GoldenRod */
+}
+
+.room {
+	font-size: 1em;
+}
+
+.room,
+.room a:link,
+.room a:visited,
+.room a:hover,
+.room a:focus,
+.room a:active {
+	color: #F5DEB3; /* Wheat */
+}
+
+.where-when,
+.title,
+.description,
+.empty .heading {
+	margin-bottom: .3em;
+}
+
+.where-when {
+	font-size: .9em;
+	font-weight: normal;
+}
+
+.empty {
+	margin-bottom: 1em;
+}
+
+.empty .heading,
+.title {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+.description {
+	font-style: normal;
+	font-weight: normal;
+	color: #F0E68C;
+}
+.speaker {
+	font-weight: normal;
+}
+
+.tweets .header {
+	padding-top: 1em;
+}

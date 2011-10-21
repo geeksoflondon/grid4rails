@@ -1,4 +1,4 @@
-<% if (@page_id != "room") %>
+<% if (@version == 's' && @page_id != "room") %>
 	<p class="skip-to-empty skip-down hide">		
 		<a name="empty-0" href="#empty-1" title="Skip to the first empty slot">
 			<img class="icon" width="14" height="8" src="/images/themes/default/arrows/down_14x8.png" alt="An arrow pointing downwards" />
@@ -15,10 +15,16 @@
 	<% @timeslots.each do | timeslot | %>
 		<% 
 			next_timeslot = (timeslot == @timeslots.last) ? nil : @timeslots[@timeslots.index(timeslot) + 1]
-			slots = timeslot.slots.sort_by{|slot| [slot.room.id, slot.id]} 
-		%>		
-		<hr class="hide session" size="2" />
-		<div id="timeslot-<%= timeslot.id %>" class="timeslot<% if (timeslot == @timeslots.first) %> first<% end %>">			
+			slots = timeslot.slots_for_display((@page_id == 'room') ? @room : nil)
+			first_timeslot = ((timeslot == @timeslots.first) ? true : false)
+			last_timeslot = ((timeslot == @timeslots.last) ? true : false)	
+		%>	
+		<% if (@version == 's') %>	
+			<hr class="hide session" size="2" />
+		<% elsif (@version == 'xl') %>
+			<div class="whats-on <% if (first_timeslot) %>now<% elsif (last_timeslot) %>next<% end %>">			
+		<% end %>
+		<div id="timeslot-<%= timeslot.id %>" class="timeslot<% if (first_timeslot) %> first<% elsif (last_timeslot) %> last<% end %>">			
 			<div class="header">
 				<% if ((@version == "s") && !@is_single_timeslot) %>
 					<p class="skip">
@@ -40,27 +46,36 @@
 					<%= render "shared/grid/timeslot_heading", :timeslot => timeslot %>
 				<% end %>			
 			</div>
-			<div class="slots">								 	 
-				<% timeslot.slots.each do |slot| %>									
-					<% room = slot.room %>			
-					<% if ((timeslot.has_global_talk? && !room.is_empty?(timeslot)) || (!timeslot.has_global_talk? && room.include_in_grid && (@page_id != 'room' || (@page_id == 'room' && slot.room == @room)))) %>												
-						<% cache ("slot_#{slot.id}_#{@page_id}_#{@version}") do %>
-							<% 
-								if (@version == 's')
-									next_slot = next_displayed_slot(((@page_id == 'date-grid') ? @slots : slots), slot)
-								else
-									next_slot = nil
-								end 								
-							%>							
-			       			<%= render 'shared/grid/slot', :timeslots => @timeslots, :timeslot => timeslot, :next_timeslot => next_timeslot, :prev_timeslot => prev_timeslot, :prev_room => prev_room, :slots => slots, :slot => slot, :next_slot => next_slot, :prev_slot => prev_slot, :room => room %>
-			       			<% prev_room = room %>
-			       			<% prev_slot = slot %> 
-						<% end %>
-			       	<% end %>
-				<% end %>	
+			<div class="slots <% if (slots.count > (timeslot.slots.count / 2)) %> double<% else %>single<% end %>">																 
+				<% slots.each_index do |index| %>	
+					<% slot = slots[index] %>								
+					<% room = slot.room %>		
+					<% even = cycle('false', 'true') %>										
+					<% if (even == 'false' || slots.first == slot) %>					
+						<div class="pair">							
+					<% end %>						
+					<% cache ("slot_#{slot.id}_#{@page_id}_#{@version}") do %>
+						<% 
+							if (@version == 's')
+								next_slot = next_displayed_slot(((@page_id == 'date-grid') ? @slots : slots), slot)
+							else
+								next_slot = nil
+							end 								
+						%>							
+		       			<%= render 'shared/grid/slot', :timeslots => @timeslots, :timeslot => timeslot, :next_timeslot => next_timeslot, :prev_timeslot => prev_timeslot, :prev_room => prev_room, :slots => slots, :slot => slot, :next_slot => next_slot, :prev_slot => prev_slot, :room => room %>
+		       			<% prev_room = room %>
+		       			<% prev_slot = slot %> 
+					<% end %>
+					<% if (even == 'true') || slots.last == slot %>
+						</div>
+					<% end %>	
+				<% end %>
 			</div>
 		</div>						
-		<% prev_timeslot = timeslot %>					
+		<% prev_timeslot = timeslot %>
+		<% if (@version == 'xl') %>
+			</div>			
+		<% end %>
 	<% end %>					
 </div>
 <% if (@page_id != "room" && (@timeslot.contains_empty_slot? unless @timeslot.nil?)) %>

@@ -6,14 +6,11 @@
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <% end %>
 	<head>  
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta http-equiv="content-language" content="en" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
-		
-		<title>Griddy</title>		
-		
-		<!-- Style -->	
-		<% if (@version == "l") %> 			
+		<!-- Style -->
+		<% if (@version == "xl") %>
+				<%= stylesheet_link_tag "global", "screen/extra_large", :media => 'all' %>
+				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/extra_large", :media => 'all' %>			
+		<% elsif (@version == "l") %> 			
 				<%= stylesheet_link_tag "global", "screen/shared", "screen/medium", "screen/large", :media => 'all' %>
 				<%= stylesheet_link_tag "themes/#{theme}/global", "themes/#{theme}/screen/shared", "themes/#{theme}/screen/medium", "themes/#{theme}/screen/large", :media => 'all' %>			
 		<% elsif (@version == "m") %>			
@@ -26,15 +23,21 @@
 		
 		<!-- CSRF -->
 		<%= csrf_meta_tag %>	
-				
+			
+		<!-- Meta-data -->
+		<title>Griddy</title>		
 		<meta name="description" content="" />
 		<meta name="author" content="" /> 
 		<meta name="viewport" content="width=200, initial-scale=1, maximum-scale=3, minimum-scale=1" />
-		<%= favicon_link_tag %>		
-		
+		<%= favicon_link_tag %>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="content-language" content="en" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 						
 	</head> 
-	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">		
-		<%= render '/shared/header' %>		
+	<body id="<%= @page_id %>" class="<%= controller.controller_name %>">
+		<% if (@version != 'xl') %>
+			<%= render '/shared/header' %>
+		<% end %>
 		<div id="body">	
 			<div id="main">
 				<% if (cookies[:version_check] == 'true') %>
@@ -44,15 +47,17 @@
 					<%= yield %>
 				<% end %>
 			</div>
-		</div>
-		
-		<%= render 'shared/footer' %>
+		</div>		
+		<% if (@version != 'xl') %>
+			<%= render 'shared/footer' %>
+		<% end %>
 		
 		<% if (@version != 's') %>
+			<!-- Scripts -->
 			<%= javascript_include_tag "jquery.min.js" %>
-			<%= javascript_include_tag "application" %>
-		
-			<%# Google Analytics %>
+			<%= javascript_include_tag "application" %>		
+			
+			<%## Google Analytics %>
 			<script type="text/javascript">
 			  var _gaq = _gaq || [];
 			  _gaq.push(['_setAccount', 'UA-26290688-2']);  
@@ -67,8 +72,8 @@
 			<div pub-key="<%= ENV['PUBNUB_PUBLISH_KEY'] %>" sub-key="<%= ENV['PUBNUB_SUBSCRIBE_KEY'] %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 			<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 		
-			<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-			chromium.org/developers/how-tos/chrome-frame-getting-started --> 
+			<%## Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+			chromium.org/developers/how-tos/chrome-frame-getting-started %> 
 			<!--[if lt IE 7 ]>
 			<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
 			<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>

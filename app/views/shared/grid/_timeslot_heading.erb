@@ -1,4 +1,4 @@
-<% if (@page_id == "room") %>
+<% if (@page_id == "room" || (@version == 'xl' && @page_id == "grid")) %>
 	<h2 class="context"><% if (timeslot == @timeslot_on_now) %>Now<% else %>Next<% end %></h2>
 <% end %>
 <% element = element("timeslot_heading") %>

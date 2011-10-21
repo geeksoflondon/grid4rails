@@ -1,12 +1,12 @@
 <% element = element("where_when") %>
 <<%= element %> class="where-when">	
-	<% if (@version != 's' && @page_id != "timeslot") %>
+	<% if (@version != 's' && @version != 'xl' && @page_id != 'timeslot') %>
 		<span class="day"><%= day_name(timeslot.start, "%a") %></span>
 		<span class="delimiter hide"> </span>
 		<span class="start"><%= timeslot.start.strftime("%H:%M") %></span>
 	<% end %>	
 	<% if (@page_id != "room") %> 
-		<% if ((@version != 's' && @page_id != "timeslot") && @page_id != "room-grid") %>
+		<% if (@version != 's' && @version != 'xl' && @page_id != "timeslot" && @page_id != "room-grid") %>
 			<span class="delimiter hide">, </span>
 		<% end %>		
 		<% if (@page_id != "room-grid") %>

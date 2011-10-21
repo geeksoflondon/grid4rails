@@ -15,6 +15,11 @@ class GridController < ApplicationController
   	else
   		@date = @timeslots.first.start.to_date
   	end
+    @is_single_timeslot = (@timeslots.count == 1)
+    @scroller_timeslot = false
+    @empty_slot_index = 0
+    @rooms = Room.all
+    @description = "An at-a-glance view of what's on now and next."  	
   end
 
   def now

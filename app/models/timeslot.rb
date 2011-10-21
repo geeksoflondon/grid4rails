@@ -144,6 +144,33 @@ class Timeslot < ActiveRecord::Base
     return false
   end
   
+  def slots_for_display(room = nil, empty = false)
+  		if (empty == false)
+	  		slots = Array.new
+	  		if (self.has_global_talk?)
+	  			self.slots.each do |slot|
+	  					if (slot.talk)
+	  							slots << slot
+	  					end
+	  			end
+	  		else
+	  			self.slots.each do |slot|
+	  					if (slot.room.include_in_grid? && (room.nil? || room == slot.room))
+	  							slots << slot
+	  					end
+	  			end  			
+	  		end
+  		else
+  			if (room.nil?)
+  				slots = timeslot.slots
+  			else
+  				slots = timeslot.slot_by_room(room)
+  			end
+  		end
+  		slots.sort_by{|slot| [slot.room.id, slot.id]}
+  end
+  
+  
 	def self.generate!(session_no = 1, num_timeslots = 2, start_time = nil, session_duration = 30.minutes, break_duration = 10.minutes)
 		
 		if (start_time.nil?)

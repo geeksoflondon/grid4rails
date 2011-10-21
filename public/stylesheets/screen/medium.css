@@ -501,12 +501,14 @@ table.grid th {
 }
 
 table.grid th {  
-    min-width: 100px;
+    /*min-width: 100px; */
     font-weight: normal;           
 }
 
 table.grid td {
-    min-width: 30%;
+	width: 8em;
+    min-width: 8em;
+    max-width: 10em;
 }
 
 table.multi-timeslot th.timeslot {
@@ -578,6 +580,7 @@ table.grid .slot .where-when,
 table.grid .slot .heading {     
     margin:  0;
     padding: 3px 0; 
+    word-wrap: break-word;
 }
 
 table.multi-timeslot .empty .where-when,

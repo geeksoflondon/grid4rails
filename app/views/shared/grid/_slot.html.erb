@@ -1,5 +1,7 @@
 <% talk_element = element("talk_title") %>
-<hr class="hide room" size="1" />
+<% if (@version == 's') %>	
+	<hr class="hide room" size="1" />
+<% end %>
 <div id="slot-<%= slot.id %>" class="slot">
     <% slot_index = slot_index(slots, slot) %>
     <% if (@version == "s" && @page_id != "room") %>
@@ -58,7 +60,7 @@
                         <p class="actions"><span class="submit"><%= submit_tag("Move here", options = { :id => "slot-#{slot.id}-select", :class => "button green medium" }) %></span></p>
                     <% end %>
                 <% end %>
-            <% elsif (@version == 's' || @is_single_timeslot) %> 
+            <% elsif (@version == 's' || @version == 'xl' || @is_single_timeslot) %> 
                 <<%= talk_element %> class="heading">Empty</<%= talk_element %>>               
             <% end %>
             <% if (@version == "s" && @page_id != "room") %>   
@@ -95,16 +97,16 @@
                 <% end %>                                   
             </<%= talk_element %>> 
             <% if (!talk.nil?) %>
+							<% if ((@version == 'xl' && @page_id == 'grid' ) || (@version == 's' && (@page_id != 'date-grid' && @page_id != 'talk-assign') && !talk.description.blank?)) %>
+							    <div class="description">
+							        <%= talk.description %>
+							    </div>
+							<% end %>	            
             	<% if (!talk.speaker.blank?) %>
 	                <h3 class="heading speaker">
 	                    <%= talk.speaker %>
 	                </h3>
-            	<% end %>     	
-            	<% if (@version == 's' && (@page_id != 'date-grid' && @page_id != 'talk-assign') && !talk.description.blank?) %>
-	                <div class="description">
-	                    <%= talk.description %>
-	                </div>
-	            <% end %>	            
+            	<% end %>     	            
             <% end %>  
             <% if (@version == 's') %>
             	<%= render '/shared/grid/swap', :talk => talk, :slot => slot %>
