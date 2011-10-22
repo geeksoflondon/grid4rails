@@ -1,6 +1,6 @@
 <h1 class="heading">Recent Changes</h1>
 <ol>
-	<% @slots.each do |slot| %>
-		<li></li>
-	<% end %>
+  <% @talks.each do |talk| %>
+    <li><%=h time_ago_in_words(talk.updated_at) %> ago &mdash; <%= link_to talk.title, talk %></li>
+  <% end %>
 </ol>

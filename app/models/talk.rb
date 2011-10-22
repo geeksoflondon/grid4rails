@@ -37,6 +37,11 @@ class Talk < ActiveRecord::Base
     talks.sort_by(&:updated_at).reverse
   end
 
+
+  def self.by_updated
+    Talk.limit(50).order("updated_at DESC")
+  end
+
   def is_unscheduled
     if (slot == nil)
       return true
