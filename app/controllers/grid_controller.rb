@@ -108,7 +108,7 @@ class GridController < ApplicationController
 	# A view displaying recent changes to the grid
 	def recent
 		@page_id = "recent-changes"
-    @talks = Talk.by_updated
+		@talks = Talk.by_updated
 	end
 
 end
