@@ -17,9 +17,6 @@ gem 'resque'
 gem 'resque-scheduler'
 gem 'redis-store'
 
-#realtime foo
-gem 'pubnub-ruby'
-
 #exception capture and logging
 gem 'exceptional'
 gem 'newrelic_rpm'
@@ -34,5 +31,8 @@ end
 
 group :production do
   gem 'pg'
+  
+  #realtime foo
+  gem 'pubnub-ruby'
 end
 
