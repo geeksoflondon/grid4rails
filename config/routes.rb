@@ -15,6 +15,7 @@ Griddy::Application.routes.draw do
     match "talks/assign_slot", :to => "talks#assign_slot"
     match "talks/swap_slot", :to => "talks#swap_slot"
     match "talks/unscheduled", :to => "talks#unscheduled"
+		match "talks/recent", :to => "grid#recent"
       resources :talks
 
     match "rooms/:room", :to => "rooms#show"
@@ -22,10 +23,11 @@ Griddy::Application.routes.draw do
 
     match 'grid/now', :to => "grid#now"
     match 'grid/next', :to => "grid#next"
+		match "grid/recent", :to => "grid#recent"
     match "grid/:date/rooms/:room", :to => "grid#room"
     match "grid/:date", :to => "grid#date"
-    match "grid/:date/sessions/:timeslot", :to => "grid#show"
-    match "grid", :to => "grid#date"
+    match "grid/:date/sessions/:timeslot", :to => "grid#show"		
+    match "grid", :to => "grid#date"	
       resources :grid, :except => [:new, :create, :edit, :update, :destroy]
 
     match "help", :to => "application#help"

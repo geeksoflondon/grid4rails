@@ -70,7 +70,6 @@ form .submit input {
     left: 0;
     overflow: hidden;   
     top: 0;
-    height: 3em;	
 }
 
 #header {
@@ -97,7 +96,7 @@ form .submit input {
 }
 
 #body {
-    margin: 3em 0 0 0;
+    margin: 0;
     padding: 0;
     border-top-width: 1px;
     border-top-style: solid;      
@@ -112,9 +111,20 @@ body#talk-move #top {
 body.grid #body,
 body#talk-assign #body,
 body#talk-move #body {
-	margin: 5.5em 0 0 0;	
+	margin-top: 5.5em;	
 }
 
+body #top,
+body#recent-changes #top {
+	height: 3em;	
+}
+
+#body,
+body#recent-changes #body {
+	margin-top: 3em;
+}
+
+#recent-changes #main,
 #main {
     padding-left: 12px;
     padding-right: 12px;
