@@ -49,6 +49,10 @@ class Talk < ActiveRecord::Base
     return false
   end
 
+  def etherpad_link
+    "http://etherpad.wikimedia.org/bcl" + id.to_s
+  end
+
   private
 
   def clear_cache
