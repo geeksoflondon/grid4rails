@@ -8,6 +8,8 @@ class Slot < ActiveRecord::Base
 	validates :room_id, :presence => true
 
 	after_save :clear_cache
+	
+	
 	def start
 		timeslot.start
 	end
@@ -22,6 +24,7 @@ class Slot < ActiveRecord::Base
 		Room.all.each do |room|
 			Timeslot.all.each do |timeslot|
 				slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
+				puts "Slot #{slot.id} created (#{room.name}, #{timeslot.start.to_s})"
 			end
 		end
 

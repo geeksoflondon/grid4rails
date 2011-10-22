@@ -1,6 +1,5 @@
 class SlotObserver < ActiveRecord::Observer
 	
-	
 	def after_save(slot)
 		notify(slot)
 	end
@@ -8,10 +7,12 @@ class SlotObserver < ActiveRecord::Observer
 	private
 
 	def notify(slot)
-		PUBNUB.publish({
-			'channel' => PUBNUB_CHANNEL,
-			'message' => slot
-		})
+		if (defined?(PUBNUB))
+			PUBNUB.publish({
+					'channel' => PUBNUB_CHANNEL,
+					'message' => slot
+			})
+		end		
 	end
 
 end
