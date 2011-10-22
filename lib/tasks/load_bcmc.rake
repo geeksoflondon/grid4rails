@@ -48,7 +48,7 @@ namespace :db do
 		:description => '5th Floor, large auditorium-like space to the left as you face Old Trafford. Where the welcome talk took place.', 
 		:short_code => 'drw', 
 		:capacity => 100,
-		:facilities => 'TV',  
+		:facilities => 'TV'
 	)	
 	room1 = Room.create(
 		:name => 'Red Dwarf', 
