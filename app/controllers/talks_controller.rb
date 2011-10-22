@@ -1,8 +1,8 @@
 class TalksController < ApplicationController
 
 	skip_before_filter :verify_authenticity_token
-	
-	
+
+
 	# A view listing all talks
 	def index
 		@page_id = "talks"
@@ -14,6 +14,7 @@ class TalksController < ApplicationController
 			format.json  { render :json => @talks }
 		end
 	end
+
 
 	# A view of the talk specified
 	def show
@@ -27,6 +28,7 @@ class TalksController < ApplicationController
 		end
 	end
 
+
 	# A view for entering details about a new talk
 	def new
 		@page_id = "talk-new"
@@ -38,6 +40,7 @@ class TalksController < ApplicationController
 			format.json  { render :json => @talk }
 		end
 	end
+
 
 	# Creates a new talk in the DB using the data specified
 	# and then redirects to the "schedule" view
@@ -58,11 +61,13 @@ class TalksController < ApplicationController
 		end
 	end
 
+
 	# An editable view of the specified talk
 	def edit
 		@page_id = "talk-edit"
 		@talk = Talk.find(params[:id])
 	end
+
 
 	# Updates the details of the specified talk, in the DB
 	# and then redirects to the "show" view of that talk
@@ -85,6 +90,7 @@ class TalksController < ApplicationController
 		end
 	end
 
+
 	def remove
 		talk = Talk.find(params[:id])
 
@@ -106,11 +112,13 @@ class TalksController < ApplicationController
 		end
 	end
 
+
 	# A view displaying all talks that aren't been assigned to a slot
 	def unscheduled
 		@page_id = "talks"
 		@talks = Talk.unscheduled
 	end
+
 
 	# A view of the grid for the purpose of assigning a talk to a slot
 	def schedule
@@ -137,6 +145,7 @@ class TalksController < ApplicationController
 		@description = "The grid, showing empty slots"
 	end
 
+
 	# A view of the grid for the purpose of moving a talk
 	# to another slot or off the grid entirely
 	def move
@@ -161,6 +170,7 @@ class TalksController < ApplicationController
 		@empty_slot_index = 0
 		@description = "The grid, showing empty slots"
 	end
+
 
 	# Assigns the specified talk to the specified slot
 	# and then redirects to a view of the grid on the date
@@ -204,13 +214,14 @@ class TalksController < ApplicationController
 		if slot.save
 			flash[:notice] = "Talk was updated"
 			session[:talk_id] = nil
-			redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :version => params[:version]
+			redirect_to :controller => "grid", :action => "date", :date => slot.timeslot.start.to_date, :talk => talk.id, :version => params[:version]
 		else
 			flash[:warning] = "There was an issue scheduling your talk"
 			redirect_to :action => 'schedule', :controller => 'talks', :id => talk.id, :version => params[:version]
 		end
 
 	end
+
 
 	# Swaps the two talks specified
 	# and then redirects to a view of the grid
@@ -256,6 +267,7 @@ class TalksController < ApplicationController
 		end
 
 	end
+
 
 	# De-assigns the specified talk from the specified slot
 	# and then redirects to a view of the grid on the date

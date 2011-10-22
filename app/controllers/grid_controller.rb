@@ -3,7 +3,7 @@ class GridController < ApplicationController
 
 	def index
 		if (params[:version] != 'xl')
-		redirect_to :controller => "grid", :action => "date", :version => params[:version]
+			redirect_to :controller => "grid", :action => "date", :version => params[:version]
 		end
 		@page_id = "grid"
 		@timeslots = Array.new()
@@ -12,9 +12,9 @@ class GridController < ApplicationController
 		@timeslots << on_now unless on_now.nil?
 		@timeslots << on_next unless on_next.nil?
 		if (@timeslots.first.nil?)
-		@date = nil
+			@date = nil
 		else
-		@date = @timeslots.first.start.to_date
+			@date = @timeslots.first.start.to_date
 		end
 		@is_single_timeslot = (@timeslots.count == 1)
 		@scroller_timeslot = false
@@ -30,10 +30,16 @@ class GridController < ApplicationController
 		@date = @timeslot.start.to_date unless @timeslot.nil?
 		flash.keep
 		if @date.nil?
-		flash[:warning] = "There's nothing on right now."
-		redirect_to :controller => "grid", :action => "date", :version => params[:version]
+			flash[:warning] = "There's nothing on right now."
+			@timeslot = Timeslot.auto_date.first
+			@date = @timeslot.start.to_date unless @timeslot.nil?
+			if @date.nil?
+				redirect_to :controller => "grid", :action => "date", :version => params[:version]
+			else
+				redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+			end
 		else
-		redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+			redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
 		end
 	end
 
@@ -44,10 +50,10 @@ class GridController < ApplicationController
 		@date = @timeslot.start.to_date unless @timeslot.nil?
 		flash.keep
 		if (@date.nil?)
-		flash[:warning] = "That's all folks!"
-		redirect_to :controller => "grid", :action => "date", :version => params[:version]
+			flash[:warning] = "That's all folks!"
+			redirect_to :controller => "grid", :action => "date", :version => params[:version]
 		else
-		redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+			redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
 		end
 	end
 
@@ -71,16 +77,16 @@ class GridController < ApplicationController
 		@show_room_col = ((@version == 's') ? false : true)
 
 		if (params[:date])
-		@timeslots = Timeslot.by_date(params[:date])
+			@timeslots = Timeslot.by_date(params[:date])
 		else
-		@timeslots = Timeslot.auto_date
+			@timeslots = Timeslot.auto_date
 		end
 
 		@date = @timeslots.first.start.to_date
 
 		if (params[:date].nil?)
-		flash.keep
-		redirect_to :controller => "grid", :action => "date", :date => @date, :version => params[:version]
+			flash.keep
+			redirect_to :controller => "grid", :action => "date", :date => @date, :version => params[:version]
 		end
 
 		@dates = Array.wrap(Timeslot.dates)
@@ -93,8 +99,10 @@ class GridController < ApplicationController
 		@rooms = Room.all.sort_by{|room|[room.id]}
 		@description = "All talks."
 
-		#Chuck the response in varnish for 300 (5 min) seconds.
-		response.headers['Cache-Control'] = 'public, max-age=300'
+		if (@version != 's')
+			#Chuck the response in varnish for 5 seconds.
+			response.headers['Cache-Control'] = 'public, max-age=5'
+		end
 	end
 
 
