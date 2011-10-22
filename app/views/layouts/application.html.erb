@@ -54,7 +54,11 @@
 		
 		<% if (@version != 's') %>
 			<!-- Scripts -->
-			<%= javascript_include_tag "jquery.min.js" %>
+			<%## Libraries %>
+			<%= javascript_include_tag "jquery.min.js" %>			
+			<%= javascript_include_tag "babble.js" %>
+			
+			<%## Bespoke %>
 			<%= javascript_include_tag "application" %>		
 			
 			<%## Google Analytics %>
@@ -69,6 +73,7 @@
 			  })(); 
 			</script>
 		
+			<%## PubNub %>
 			<div pub-key="<%= ENV['PUBNUB_PUBLISH_KEY'] %>" sub-key="<%= ENV['PUBNUB_SUBSCRIBE_KEY'] %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 			<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 		

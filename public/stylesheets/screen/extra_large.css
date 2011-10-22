@@ -69,7 +69,7 @@ body#grid {
 .logo {
 	display: block;
 	position: absolute;
-	top: 58%;
+	top: 5em;
 	left: 0;
 	width: 100%;
 }
@@ -206,4 +206,45 @@ div.grid {
 
 .tweets .header {
 	padding-top: 1em;
+	margin-bottom: 3em;
+}
+
+.tweets .stream {
+	height: 500px;
+	overflow: hidden;
+}
+
+.tweet {
+	position: relative;
+	margin-top: 2em;
+}
+
+.tweet .avatar {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.tweet .message,
+.tweet .when {
+	margin-left: 50px;
+	color: #ffffff;
+	word-wrap: break-word;
+}
+
+.tweet .when {
+	margin-top: .25em;
+}
+.tweet .when,
+.tweet .when a:link,
+.tweet .when a:visited,
+.tweet .when a:hover,
+.tweet .when a:focus,
+.tweet .when a:active {
+	color: #DAA520;
+}
+
+.tweet .tweeter {
+	color: #ff8c00;
 }
