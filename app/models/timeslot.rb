@@ -187,7 +187,8 @@ class Timeslot < ActiveRecord::Base
 		  end
 		  end_time = start_time + session_duration
 		
-		  Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)	  	
+		  timeslot = Timeslot.create(:name => "Session #{session_no}", :start => start_time, :end => end_time)
+		  puts "Timeslot #{timeslot.id} created (#{timeslot.name}, #{timeslot.start}, #{timeslot.end})"	  	
 		
 		  i = i+1
 		  session_no = session_no+1
