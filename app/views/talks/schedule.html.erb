@@ -10,7 +10,7 @@
 			<p>
 				<span class="cancel"><%= link_to "Cancel", url_options = { :controller => "talks", :action => "show", :id => session[:talk_id] } %></span>
 				<span class="delimiter"> </span>
-				<span class="unschedule"><%= link_to "Schedule Later", url_options = { :controller => "grid", :action => "date" } %></span>
+				<span class="unschedule"><%= link_to "Schedule Later", url_options = { :controller => "talks", :action => "unscheduled" } %></span>
 			</p>
 		</fieldset>
 	<% end %>
