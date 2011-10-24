@@ -74,5 +74,10 @@ class ApplicationController < ActionController::Base
 	def delete_cookie(name)
 		cookies[name] = {:value => '', :expires => Time.at(0)}
 	end
+	
+	def custom_404	
+		@page_id = "error-404"				
+		render :status => 404
+	end
 
 end

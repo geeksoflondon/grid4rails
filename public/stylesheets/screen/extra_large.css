@@ -1,8 +1,5 @@
 /* See /stylesheets/README.txt for guidelines */
 
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
-@import url(../buttons.css);
-
 /* Custom hides (screenreader-friendly)
 -----------------------------*/
 
@@ -15,10 +12,11 @@
 }
 
 
+
 /* Layout
 -----------------------------*/
 
-#main {
+body#grid #main {
 	display: block;
 	position: relative;
 }
@@ -239,3 +237,62 @@ div.grid {
 	border: 1px solid green;
 }
 */
+
+
+/* VIEW: 404
+ */
+
+body.application,
+body.application #main {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+body.application #main {	
+	font-size: medium;
+	padding: 1em;
+}
+
+/* Basic link rules
+-----------------------------*/
+
+body.application a:link,
+body.application a:visited {	
+	text-decoration: none;	
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
+}
+
+body.application a:hover,
+body.application a:focus,
+body.application a:active {
+	text-decoration: none;	
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+
+body.application #version-switcher {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+body.application #version-switcher .option {	
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 18px;
+    padding-left: 0px;
+	display: list-item;
+	color: #ffffff;
+}
+
+body.application h1.heading {
+	color: orange;	
+	font-size: large;
+}
+
+body.application .heading,
+body.application p {
+	margin-top: 6px;
+	margin-bottom: 6px;
+} 

@@ -1,9 +1,14 @@
 Griddy::Application.routes.draw do
 
+  #Mount Resque Web UI
+  require "resque/server"
+  require "resque_scheduler"
+  mount Resque::Server.new, :at => "/resque"
+	
   match "reset", :to => "application#reset", :as => :reset
   match "stats/gecko/count", :to => "stats#talks"
 
-  scope "(:version)", :version => /s|m|l/ do  
+  scope ":version", :version => /s|m|l/ do  
 
     match "talks/:id/schedule/:date", :to => "talks#schedule", :as => :schedule_talk
     match "talks/:id/schedule", :to => "talks#schedule"
@@ -36,15 +41,12 @@ Griddy::Application.routes.draw do
 
   end
 
-  scope "(:version)", :version => 'xl' do
+  scope ":version", :version => 'xl' do
   	match 'grid', :to => "grid#index"
-  end
-
-  #Mount Resque Web UI
-  require "resque/server"
-  require "resque_scheduler"
-  mount Resque::Server.new, :at => "/resque"
-
-  root :to => "grid#now"
+  end 
+  
+  root :to => "grid#now" 
+  
+  match "*path", :to => "application#custom_404"
 
 end

@@ -1,0 +1,8 @@
+<div id="version-switcher" class="version-switcher">
+	<h2 class="heading">Versions:</h2>
+	<p class="options">
+		<span class="option"><a href="<%= current_url(:version => 's') %>" <% if (@version == 's') %>class="selected"<% end %> title="Switch to the small version of this page (s)" accesskey="s"><em class="accesskey">S</em>mall</a><span class="delimiter"></span></span>
+		<span class="option"><a href="<%= current_url(:version => 'm') %>" <% if (@version == 'm') %>class="selected"<% end %> title="Switch to the medium version of this page (m)" accesskey="m"><em class="accesskey">M</em>edium</a><span class="delimiter"></span></span>
+		<span class="option"><a href="<%= current_url(:version => 'l') %>" <% if (@version == 'l') %>class="selected"<% end %> title="Switch to the large version of this page (l)" accesskey="l"><em class="accesskey">L</em>arge</a></span>
+	</p>
+</div>

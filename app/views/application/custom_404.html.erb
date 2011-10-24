@@ -1,0 +1,7 @@
+<h1 class="heading">Page Not Found</h1>
+<% if (@version == 'xl' || params[:version] == 'xl' || cookies[:version] == 'xl') %>			
+		<p>Try <a href="/xl/grid">here</a>, instead or consider switching to another version.</p>
+		<%= render '/shared/nav/versions' %>
+<% end %>
+
+<img src="/images/themes/bcl9/pumpkin.png" width="130px" />
