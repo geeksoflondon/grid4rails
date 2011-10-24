@@ -330,19 +330,22 @@ div.grid .timeslot .header .time {
 	font-weight: normal;
 }
 
-div.grid .slot {
+div.grid .slot,
+body.talks ul.talks li.talk {
     margin-top: 12px;
 }
 
 div.grid .talk,
-div.grid .empty {
+div.grid .empty,
+body.talks ul.talks div.talk  {
     border-width: 1px;
     border-style: solid;
     padding: 3px;
 }
 
 .slot p,
-.slot .heading {
+.slot .heading,
+body.talks ul.talks p {
     margin-top: 6px;
     margin-bottom: 6px;
 }
@@ -388,4 +391,26 @@ div.grid .empty {
 
 #room div.grid .timeslot {
 	padding: 0;
+}
+
+/* VIEW: All Talks, Unscheduled Talks
+-----------------------------*/ 
+
+body.talks .ingress {
+	margin-top: 12px;
+	margin-bottom: 18px;
+}
+
+body.talks ul.talks p.history {
+	margin-bottom: 0;
+	color: #333333;
+	font-size: x-small;
+}
+
+body.talks ul.talks div.talk .title a:link,
+body.talks ul.talks div.talk .title a:visited,
+body.talks ul.talks div.talk .title a:hover,
+body.talks ul.talks div.talk .title a:focus,
+body.talks ul.talks div.talk .title a:active {
+	color: #CF5700;
 }

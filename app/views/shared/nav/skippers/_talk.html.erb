@@ -1,0 +1,16 @@
+<p class="skip skip-to-talk">
+    <span class="label">Talk: </span>           
+    <% if (!next_talk.nil?) %>
+        <a href="#talk-<%= next_talk.id %>">next</a>
+    <% end %>
+    <% if (!next_talk.nil? && !prev_talk.nil?) %>
+        <span class="delimiter"> | </span>
+    <% end %>
+    <% if (!prev_talk.nil?) %>
+        <a href="#talk-<%= prev_talk.id %>">prev</a>
+    <% end %>
+    <% if (!next_talk.nil? || !prev_talk.nil?) %>
+        <span class="delimiter"> | </span>
+    <% end %>
+    <a href="#header" class="top">top</a>
+</p>  

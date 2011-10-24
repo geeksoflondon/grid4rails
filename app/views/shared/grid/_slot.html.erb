@@ -5,50 +5,13 @@
 <div id="slot-<%= slot.id %>" class="slot">
     <% slot_index = slot_index(slots, slot) %>
     <% if (@version == "s" && @page_id != "room") %>
-        <% 			
-			next_room = ((next_slot.nil?) ? nil : next_slot.room)
-        	room_timeslot = "#{room.short_code}#{timeslot.id}"
-        	if (next_room.nil? || (@page_id == 'date-grid' && next_timeslot.nil?))
-        		next_room_timeslot = nil        		
-        	else        	
-        		if (slots.include?(next_slot))        	
-        			next_room_timeslot = "#{next_room.short_code}#{timeslot.id}"
-        		else
-        			next_room_timeslot = "#{next_room.short_code}#{next_timeslot.id}"
-        		end
-        	end	
-        	if (prev_room.nil? || (@page_id == 'date-grid' && prev_timeslot.nil?))
-        		prev_room_timeslot = nil
-        	else	
-        		if (slots.include?(prev_slot))
-        			prev_room_timeslot = "#{prev_room.short_code}#{timeslot.id}"
-        		else	        		        	        		        			
-        			prev_room_timeslot = "#{prev_room.short_code}#{prev_timeslot.id}"
-        		end        			
-        	end        	
-        %>                
-        <p id="<%= room_timeslot %>" class="skip skip-to-talk">
-            <span class="label">Room: </span>           
-            <% if (!next_room_timeslot.nil?) %>
-                <a href="#<%= next_room_timeslot %>">next</a>
-            <% end %>
-            <% if (!next_room_timeslot.nil? && !prev_room_timeslot.nil?) %>
-                <span class="delimiter"> | </span>
-            <% end %>
-            <% if (!prev_room_timeslot.nil?) %>
-                <a href="#<%= prev_room_timeslot %>">prev</a>
-            <% end %>
-            <% if (!next_room_timeslot.nil? || !prev_room_timeslot.nil?) %>
-                <span class="delimiter"> | </span>
-            <% end %>
-            <a href="#header" class="top">top</a>
-        </p>            
-    <% end %>   
+    	<%= render '/shared/nav/skippers/room', :next_slot => next_slot, :prev_slot => prev_slot, :prev_room => prev_room, :prev_timeslot => prev_timeslot, :next_timeslot => next_timeslot, :slots => slots,  :room => room, :timeslot => timeslot %>
+    <% end %>
     <% if (!slot.locked && slot.is_empty?) %>              
         <div id="empty-<%= @empty_slot_index %>" class="empty">    
             <% if (@page_id != "room") %>    
                 <% cache("where_when_#{slot.id}_#{@page_id}_#{@version}") do %>
-                    <%= render '/shared/grid/where_when', :timeslot => timeslot, :room => room  %>
+                    <%= render '/shared/grid/where_when', :timeslot => timeslot, :room => room, :date => @date  %>
                 <% end %>
             <% end %>
             <% if (@page_id == "talk-assign" || @page_id == "talk-move") %>
@@ -78,7 +41,7 @@
     	<% talk = ((slot.locked && slot.is_empty?) ? timeslot.global_talk : slot.talk) %>
         <div class="talk">        	
         	<% if (@page_id != "room") %>
-           		<%= render '/shared/grid/where_when', :timeslot => timeslot, :room => ((talk.nil? || talk.slot.nil?) ? room : talk.slot.room) %>
+           		<%= render '/shared/grid/where_when', :timeslot => timeslot, :room => ((talk.nil? || talk.slot.nil?) ? room : talk.slot.room), :date => @date %>
             <% end %>
             <% if (@version != 's') %>
             	<%= render '/shared/grid/swap', :talk => talk, :slot => slot %>

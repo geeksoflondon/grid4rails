@@ -686,9 +686,26 @@ body.talks #main fieldset {
 /* VIEW: Unscheduled Talks
 -----------------------------*/
 
-.talks li {
+body.talks .ingress {
+	margin-top: 12px;
+	margin-bottom: 18px;
+}
+
+ul.talks {
+	margin-bottom: 20px;	
+}
+
+ul.talks li.talk {
     margin-top: 6px; 
 }
+
+ul.talks li.talk .title {
+	margin-top: 12px;
+} 
+
+ul.talks li.talk .history {
+	margin-top: 3px;
+} 
 
 
 /* VIEW: Room

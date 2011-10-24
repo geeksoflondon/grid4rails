@@ -1,19 +1,15 @@
 <% element = element("where_when") %>
 <<%= element %> class="where-when">	
-	<% if (@version != 's' && @version != 'xl' && @page_id != 'timeslot') %>
+	<% if (show_when) %>
 		<span class="day"><%= day_name(timeslot.start, "%a") %></span>
 		<span class="delimiter hide"> </span>
-		<span class="start"><%= timeslot.start.strftime("%H:%M") %></span>
-	<% end %>	
-	<% if (@page_id != "room") %> 
-		<% if (@version != 's' && @version != 'xl' && @page_id != "timeslot" && @page_id != "room-grid") %>
-			<span class="delimiter hide">, </span>
-		<% end %>		
-		<% if (@page_id != "room-grid") %>
-			<span class="room"><%= link_to ((@show_room_col == true && @version != 's') ? room.short_code.upcase : room.name), :controller => "grid", :action => "room", :date => @date, :room => room.short_code %></span>
-			<% if (@version == 's' && (@page_id == 'date-grid' || @page_id == 'talk-assign')) %>
-				<span class="start"> (<a href="<% if (@version == "s") %><%= url_for :controller => "grid", :action => "show", :timeslot => timeslot.id, :date => @date %><% else %><%= url_for :controller => "grid", :action => "show", :date => timeslot.start.to_date, :timeslot => timeslot.id, :version => params[:version] %><% end %>"><%= timeslot.start.strftime("%H:%M") %></a>)</span>		
-			<% end %>
+		<span class="start"><%= timeslot.start.strftime("%H:%M") %></span><% if (@page_id != "room") %><span class="delimiter<% if (@page_id != 'talks' && @page_id != 'talks-unscheduled') %> hide<% end %>">, </span><% end %>
+	<% end %>
+	<% if (show_where) %>
+		<% label = (use_shortcode ? room.short_code.upcase : room.name) %>
+		<span class="room"><%= (@page_id == 'talks' || @page_id == 'talks-unscheduled') ? label : link_to(label, :controller => "grid", :action => "room", :date => date, :room => room.short_code) %></span>
+		<% if (@version == 's' && (@page_id == 'date-grid' || @page_id == 'talk-assign')) %>
+			<span class="start"> (<a href="<% if (@version == "s") %><%= url_for :controller => "grid", :action => "show", :timeslot => timeslot.id, :date => date %><% else %><%= url_for :controller => "grid", :action => "show", :date => timeslot.start.to_date, :timeslot => timeslot.id, :version => params[:version] %><% end %>"><%= timeslot.start.strftime("%H:%M") %></a>)</span>		
 		<% end %>
-	<% end %>	
+	<% end %>
 </<%= element %>>

@@ -70,6 +70,16 @@ module ApplicationHelper
 			case context
 			when "timeslot_heading"
 				return "h3"
+			end			
+		when "talk"
+			case context
+			when "talk_title"
+				return "h1"
+			end
+		when "talks", "talks-unscheduled"
+			case context
+			when "talk_title"
+				return "h2"
 			end
 		when "date-grid", "timeslot"
 			case context
@@ -119,6 +129,57 @@ module ApplicationHelper
 			path = path + "_solid_bg"
 		end
 		path = path + ".png"
+	end
+	
+	def show_when
+		case @version
+		when "s"
+			case @page_id
+			when "talks", "talks-unscheduled"
+				return true
+			end
+		when "m"
+			case @page_id
+			when "timeslot"
+				return false
+			else
+				return true
+			end			
+		when "l"
+			case @page_id
+			when "timeslot"
+				return false
+			else
+				return true
+			end			
+		when "xl"
+		end
+		return false
+	end
+	
+	def show_where
+		case @page_id
+		when "room-grid"
+			return false
+		end
+		return true
+	end	
+	
+	def use_shortcode
+		case @version
+		when "s"
+			case @page_id
+			when "talks", "unscheduled-talks"
+				return true
+			end
+			return false
+		else
+			case @show_room_col				
+			when false
+				return false
+			end
+		end
+		return true
 	end
 
 end

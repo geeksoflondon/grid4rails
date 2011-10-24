@@ -1,0 +1,26 @@
+<ul class="talks">
+	<% prev_talk = nil %>
+	<% @talks.each do |talk| %>		
+		<% next_talk = ((talk == @talks.last) ? nil : @talks[@talks.index(talk) + 1]) %>
+		<li id="talk-<%= talk.id %>" class="talk">
+			<% if (@version == "s") %>
+				<%= render '/shared/nav/skippers/talk', :next_talk => next_talk, :prev_talk => prev_talk %>
+			<% end %>		
+			<div class="talk">
+				<%= talk.description = nil %>
+				<%= render '/shared/talk/details', :talk => talk %>
+				<% if (!talk.slot.nil?) %>
+					<%= render '/shared/grid/where_when', :timeslot => talk.slot.timeslot, :room => talk.slot.room, :date => talk.slot.timeslot.start.to_date %>
+				<% end %>
+				<p class="history">
+					<% if (talk.updated_at == talk.created_at) %>
+						<span class="created"><span class="label">Created: </span><%= talk.created_at.strftime("%a") %> <%= talk.created_at.strftime("%H:%M") %></span>
+					<% else %>
+						<span class="updated"><span class="label">Updated: </span> <%= talk.updated_at.strftime("%a") %> <%= talk.updated_at.strftime("%H:%M") %></span>
+					<% end %>
+				</p>
+			</div>
+		</li>
+		<% prev_talk = talk %>
+	<% end %>
+</ul>

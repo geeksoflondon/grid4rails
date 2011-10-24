@@ -1,23 +1,7 @@
 <h1 class="heading">Unscheduled Talks</h1>
 <% if (@talks.count > 0) %>
-	<ul class="talks">
-		<% @talks.each do |talk| %>
-			<li id="talk-<%= talk.id %>">								
-				<h2 class="heading">
-					<a href="<%= url_for :controller => "talks", :action => "show", :id => talk.id %>">
-						<%= if (talk.title.blank?) then "[untitled]" else talk.title end %>
-					</a>
-				</h2>
-				<p class="history">
-					<% if (talk.updated_at == talk.created_at) %>
-						<span class="created"><span class="label">Created: </span><%= talk.created_at.strftime("%a") %> <%= talk.created_at.strftime("%H:%M") %></span>
-					<% else %>
-						<span class="updated"><span class="label">Updated: </span> <%= talk.updated_at.strftime("%a") %> <%= talk.updated_at.strftime("%H:%M") %></span>
-					<% end %>
-				</p>
-			</li>
-		<% end %>
-	</ul>
+	<p class="ingress">A list of all talks that currently aren&apos;t scheduled to happen.</p>
+	<%= render '/shared/talk/listing' %>
 <% else %>
 	<p>It looks as though all talks are on the grid.</p>
 <% end %>

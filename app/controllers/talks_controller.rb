@@ -6,7 +6,7 @@ class TalksController < ApplicationController
 	# A view listing all talks
 	def index
 		@page_id = "talks"
-		@talks = Talk.all
+		@talks = Talk.all.sort_by{|talk| [talk.title, talk.created_at]}
 
 		respond_to do |format|
 			format.html # index.html.erb
@@ -115,8 +115,8 @@ class TalksController < ApplicationController
 
 	# A view displaying all talks that aren't been assigned to a slot
 	def unscheduled
-		@page_id = "talks"
-		@talks = Talk.unscheduled
+		@page_id = "talks-unscheduled"
+		@talks = Talk.unscheduled.sort_by.sort_by{|talk| [talk.updated_at, talk.created_at]}.reverse
 	end
 
 
@@ -182,9 +182,9 @@ class TalksController < ApplicationController
 		if (talk.nil?)
 			flash[:warning] = "Oops, something may have just gone wrong.  Please check that your talk's in the correct place."
 			if (params[:date].blank?)
-				redirect_to :controller => "grid", :action => "date", :version => params[:version] and return
+				redirect_to :controller => "grid", :action => "date", :version => params[:version], :anchor => "slot-#{slot.id}" and return
 			else
-				redirect_to :controller => "grid", :action => "date", :date => params[:date], :version => params[:version] and return
+				redirect_to :controller => "grid", :action => "date", :date => params[:date], :version => params[:version], anchor => "slot-#{slot.id} unless slot.nil?" and return
 			end
 		elsif (slot.nil?)
 			flash[:warning] = "Oops. Where was that again..?"

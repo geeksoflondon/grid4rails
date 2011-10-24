@@ -1,10 +1,16 @@
-<% if (@current_controller == "talks" && @current_action == "unscheduled") then heading_element = "h2" else heading_element = "h1" end %>
-<<%= heading_element %> class="heading">
+<% element = element('talk_title') %>
+<<%= element %> class="heading title">
+	<% if (@page_id == 'talks' || @page_id == 'talks-unscheduled') %>
+		<a href="<%= url_for(talk) %>">
+	<% end %>
   <%= ((talk.title.blank?) ? "[Untitled]" : talk.title) %>
-</<%= heading_element %>> 
+  <% if (@page_id == 'talks' || @page_id == 'talks-unscheduled') %>
+		</a>
+	<% end %>
+</<%= element %>> 
 <% if (talk.speaker unless talk.speaker.blank?) %>
   <p class="speaker"><%= talk.speaker %></p>	
 <% end %>
-<% if (talk.description unless talk.description.blank?) %>
+<% if (talk.description unless (talk.description.blank?)) %>
   <p class="description"><%= talk.description %></p>
 <% end %>
