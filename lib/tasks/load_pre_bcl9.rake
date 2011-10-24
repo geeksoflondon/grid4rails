@@ -190,7 +190,7 @@ namespace :db do
 	## Opening Day, Lunch
 	
 	start_time = end_time
-	end_time = start_time + 1.hour
+	end_time = start_time + 70.minutes
 	timeslot_label = 'Lunch'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 	puts "Timeslot #{timeslot.id} created (#{timeslot.name}, #{timeslot.start}, #{timeslot.end})"
@@ -201,15 +201,15 @@ namespace :db do
 	
 	## Opening Day, Afternoon
 	
-	num_timeslots = 4
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
+	num_timeslots = 7
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
 	session_no = session_no + num_timeslots
 
 	
 	## Opening Day, Dinner
 	
 	start_time = end_time
-	end_time = start_time + 90.minutes
+	end_time = start_time + 95.minutes
 	timeslot_label = 'Dinner'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 	puts "Timeslot #{timeslot.id} created (#{timeslot.name}, #{timeslot.start}, #{timeslot.end})"
@@ -221,7 +221,7 @@ namespace :db do
 	## Opening Day, Evening
 	
 	num_timeslots = 2
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
 	session_no = session_no + num_timeslots
 	
 	
@@ -253,14 +253,14 @@ namespace :db do
   	### Generic Day, Morning
   	
   	num_timeslots = 5
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
   	session_no = session_no + num_timeslots
   		
   	
   	### Generic Day, Lunch
   	
   	start_time = end_time
-  	end_time = start_time + 50.minutes
+  	end_time = start_time + 75.minutes
   	timeslot_label = 'Lunch'
   	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
   	puts "Timeslot #{timeslot.id} created (#{timeslot.name}, #{timeslot.start}, #{timeslot.end})"
@@ -271,15 +271,15 @@ namespace :db do
 	
   	### Generic Day, Afternoon
   	
-  	num_timeslots = 4
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
+  	num_timeslots = 7
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
   	session_no = session_no + num_timeslots
 
 	
   	### Generic Day, Dinner
   	
   	start_time = end_time
-  	end_time = start_time + 90.minutes
+  	end_time = start_time + 95.minutes
   	timeslot_label = 'Dinner'
   	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
   	puts "Timeslot #{timeslot.id} created (#{timeslot.name}, #{timeslot.start}, #{timeslot.end})"
@@ -291,7 +291,7 @@ namespace :db do
   	### Generic Day, Evening
   	
   	num_timeslots = 2
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time)
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
   	session_no = session_no + num_timeslots
 	
 	
@@ -323,14 +323,14 @@ namespace :db do
 	## Final Day, Morning
 	
 	num_timeslots = 5
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
 	session_no = session_no + num_timeslots
 		
 	
 	## Final Day, Lunch
 	
 	start_time = end_time
-	end_time = start_time + 50.minutes
+	end_time = start_time + 75.minutes
 	timeslot_label = 'Lunch'
 	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
 	puts "Timeslot #{timeslot.id} created (#{timeslot.name}, #{timeslot.start}, #{timeslot.end})"
@@ -342,7 +342,7 @@ namespace :db do
 	## Final Day, Afternoon
 	
 	num_timeslots = 3
-	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
+	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
 	session_no = session_no + num_timeslots	
 	
 	
