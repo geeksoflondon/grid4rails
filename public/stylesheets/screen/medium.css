@@ -213,7 +213,7 @@ body#talk-move #top {
 #header .skip-to-versions a:hover,
 #header .skip-to-versions a:focus,
 #header .skip-to-versions a:active {
-    padding: 3px 12px 3px 0;    
+    padding: 3px 19px 3px 0;    
     background-repeat: no-repeat;
     background-position: right center;
     background-image: url("/images/themes/default/icons/version/medium_small.png");

@@ -107,6 +107,10 @@ fieldset {
 	padding: 0 3px;
 }
 
+.branding {
+	background: transparent url('/images/themes/default/icons/version/small_small_padded.png') scroll no-repeat top right;
+}
+
 /* FEATURE: Footer
 -----------------------------*/
 
