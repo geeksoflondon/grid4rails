@@ -7,7 +7,7 @@ class Talk < ActiveRecord::Base
 		:minimum => 1,
 		:maximum => 64,
 		:allow_blank => true,
-		:message => "needs to be at least 1 character long and fewer than 64 (it\'s currently %{count})"
+		:message => "needs to be at least 1 character long and fewer than 64."
 	}
 
 	validates :speaker,
@@ -15,7 +15,7 @@ class Talk < ActiveRecord::Base
 		:minimum => 1,
 		:maximum => 64,
 		:allow_blank => true,
-		:message => "needs to be at least 1 character long and fewer than 64 (it\'s currently %{count})"
+		:message => "needs to be at least 1 character long and fewer than 64."
 	}
 
 	validates :description,
@@ -23,7 +23,7 @@ class Talk < ActiveRecord::Base
 		:minimum => 1,
 		:maximum => 128,
 		:allow_blank => true,
-		:message => "needs to be at least 1 character long and fewer than 128 (it\'s currently %{count})"
+		:message => "needs to be at least 1 character long and fewer than 128."
 	}
 
 	validates_presence_of :title, :if => proc{|obj| obj.description.blank? && obj.speaker.blank? }
