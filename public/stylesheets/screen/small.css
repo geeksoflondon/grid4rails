@@ -45,6 +45,16 @@ fieldset {
 }
 
 
+/* Basic list rules
+-----------------------------*/
+
+.bulleted li {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 3px;
+    padding-left: 3px;
+}
+
 
 /* Layout
 -----------------------------*/
@@ -118,10 +128,6 @@ fieldset {
     font-size: medium;
 }
 .nav li {
-    list-style-type: disc;
-    list-style-position: outside;
-    margin-left: 18px;
-    padding-left: 3px;
     margin-top: 3px;
     margin-bottom: 3px;
 }
@@ -284,13 +290,15 @@ body.talks #main h1 {
 }
 
 body.talks .description,
-body.talks .slot-details {
+body.talks .slot-details,
+body.talks .related {
     margin-top: 12px;
 }
 
 body.talks .slot-details p {
     margin-bottom: 6px;
 }
+
 
 /* FEATURE: Grid
 -----------------------------*/

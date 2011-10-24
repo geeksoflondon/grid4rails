@@ -1,8 +1,18 @@
 module ApplicationHelper
 	
+	def event
+		"bcl9"		
+	end
 	
-	def theme
-		"bcl9"
+	def theme		
+		event_code = event()
+		case event_code
+		when "bcl9"
+			return "bcl9"
+		when "mediacity"
+			return "mediacity"
+		end
+		return "default"
 	end
 
 	def current_url(new_params)

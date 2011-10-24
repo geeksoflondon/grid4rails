@@ -1,6 +1,6 @@
 <div id="<% if (@header) %>core-options<% elsif (@footer) %>options<% end %>" class="nav">
 	<h2 class="heading<% if (@header) %> hide<% end %>">Options:</h2>
-	<ul>
+	<ul class="bulleted">
 		<% if ((@header && @version != "s") || (@footer && @version == "s")) %>
 			<li<% if ((@current_controller == 'grid' && !(@page_id == 'timeslot' && (@timeslot == @timeslot_on_now || @timeslot == @timeslot_on_next))) || request.url == root_url) %> class="selected"<% end %>>
 				<a href="<%= url_for :controller => 'grid' %>" title="The event's organic schedule (g)" accesskey="g"><span class="label">View <em class="accesskey">G</em>rid</span></a>

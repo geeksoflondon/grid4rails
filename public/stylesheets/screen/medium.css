@@ -662,7 +662,8 @@ body.talks #main h1 {
 }
 
 body.talks .description,
-body.talks .slot-details {
+body.talks .slot-details,
+body.talks .related {
     margin-top: 12px;
 }
 
