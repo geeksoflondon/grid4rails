@@ -46,12 +46,8 @@ Griddy::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
-  # Activate observers that should always be running 
-  config.active_record.observers = :slot_observer 
 
-  ## DO NOT COMMIT ###	
-  config.action_controller.asset_host = nil
-	config.serve_static_assets = true
-     
+  # Activate observers that should always be running 
+  config.active_record.observers = :slot_observer
+
 end
