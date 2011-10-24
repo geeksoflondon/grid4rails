@@ -51,8 +51,9 @@ input.orange,
 /* FEATURE: Header
 -----------------------------*/
 
+#top,
 #header {
-    background-color: #000000;
+    background-color: #3a261d;
 }
 
 #header .skip-to-versions a:link,

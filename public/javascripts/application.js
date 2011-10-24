@@ -71,10 +71,36 @@ function getCookie(name) {
 
 jQuery(function($) {
 	
+	// Width fixes
+	var tweak_width = function() {
+		var widest_width = function() {
+			var w = $(window).width();
+			var d = $(document).width();
+			var t = $("table.grid").width();
+			if (t > w && t > d) {
+				return t;
+			} else if (d > w) {
+				return d;
+			} else{
+				return w;
+			};
+		}
+			
+		$("#top").css("width", widest_width());
+		$("#header, .scroller p").css("width", $(window).width());	
+	}
+
+	$(document).ready(function() {
+		tweak_width();
+	})
+			
+	$(window).resize(function() {
+  		tweak_width();
+	});
+	
 	// XL Grid	
 	$("body#grid, .v-xl").each(function() {
 		$(".grid .whats-on").each(function() {
-			console.log(this);
 			$(this).filter(".now").addClass("visible");
 			$(this).filter(".next").addClass("invisible");	
 		});
