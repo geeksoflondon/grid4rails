@@ -104,8 +104,8 @@ jQuery(function($) {
 			$(this).filter(".now").addClass("visible");
 			$(this).filter(".next").addClass("invisible");	
 		});
-	});	
-	setTimeout('$("body#grid, .v-xl").dg()', 30000);			
+		setTimeout('$("body#grid, .v-xl").dg()', 30000);
+	});			
 	
 	// Babble (Twitter)
 	$(".tweets .stream").babble({

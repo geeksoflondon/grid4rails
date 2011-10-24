@@ -44,8 +44,6 @@
 																	
 		this.each(function() {
 			init();
-			console.log(visible);
-			console.log(invisible);
 			rotate();							
 		});
 				
