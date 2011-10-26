@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
 		params[:version] = @version
 			
 		if (cookies[:version_check].to_s == 'true' || version_check == true)
+			@page_id = 'version-check'
 			render 'application/version'			
 		end
 		

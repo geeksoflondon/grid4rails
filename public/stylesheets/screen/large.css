@@ -115,12 +115,14 @@ body#talk-move #body {
 }
 
 body #top,
-body#recent-changes #top {
+body#recent-changes #top,
+body#version-check #top {
 	height: 3em;	
 }
 
 #body,
-body#recent-changes #body {
+body#recent-changes #body,
+body#version-check #body {
 	margin-top: 3em;
 }
 
