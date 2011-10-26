@@ -32,7 +32,15 @@
 		<%= favicon_link_tag %>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="content-language" content="en" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 						
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		
+		<% if (@version == 'xl' && @current_controller == 'grid' && @current_action == 'index') 
+			# Legacy automatic page refresh (60 seconds) %>
+			<noscript>				
+				<meta http-equiv="refresh" content="60">
+			</noscript>
+		<% end %>		
+		 						
 	</head> 
 	<body id="<%= @page_id %>" class="<%= controller.controller_name %><% if (@version) %> v-<%= @version %><% end %>">
 		<% if (@version != 'xl') %>

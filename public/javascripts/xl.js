@@ -1,5 +1,14 @@
-(function($) {
+
+// Automatic page refresh
+function refresh() {
+	window.location.reload(false);
+}
+
+
+
+(function($) {	
 	
+	// Now and next
 	$.fn.dg = function(custom_settings) {	
 		
 		// Configuration
@@ -48,5 +57,12 @@
 		});
 				
 	};
+	
+	
+	// Automatic page refresh, every 60 seconds
+	$(document).ready(function() {	
+	    // the timeout value should be the same as in the "refresh" meta-t
+	    setTimeout("refresh()", 60*1000);
+	});	
 	
 })(jQuery);
