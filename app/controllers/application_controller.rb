@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 		
 		## If their preference hasn't been stored,
 		## ask which version they'd like
-		if (!cookies[:version] || cookies[:version].blank?)
+		if (!cookies[:version].to_s == 'true' || cookies[:version].blank?)
 			version_check = true
 			cookies[:version_check] = true
 		end
@@ -29,14 +29,14 @@ class ApplicationController < ActionController::Base
 		## If the user's preference is stored, 
 		## assign the stored value to @version
 		if (cookies[:version])
-			@version = cookies[:version] unless (!versions.include?(cookies[:version].to_s))
+			@version = cookies[:version].to_s unless (!versions.include?(cookies[:version].to_s))
 		end
 		
 		## If the stored value doesn't match the version
 		## specified in the current request, 
 		## change @version to match that requested
-		if (params[:version] && @version != params[:version].to_s)
-			@version = params[:version] unless (!versions.include?(params[:version].to_s))
+		if (params[:version] && @version != params[:version])
+			@version = params[:version] unless (!versions.include?(params[:version]))
 		end
 		
 		## If @version still doesn't have a value,
@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
 		
 		## If the stored value doesn't match the value of @version,
 		## update the stored value to match @version
-		if (cookies[:version] != @version)
+		if (cookies[:version].to_s != @version)
 			cookies[:version] = @version
 		end
 		
@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
 		## available as a parameter
 		params[:version] = @version
 			
-		if (cookies[:version_check] == true || version_check == true)
+		if (cookies[:version_check].to_s == 'true' || version_check == true)
 			render 'application/version'			
 		end
 		
