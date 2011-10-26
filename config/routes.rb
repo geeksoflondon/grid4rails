@@ -7,7 +7,7 @@ Griddy::Application.routes.draw do
 	
   match "reset", :to => "application#reset", :as => :reset
   match "stats/gecko/count", :to => "stats#talks"
-
+  
   scope ":version", :version => /s|m|l/ do  
 
     match "talks/:id/schedule/:date", :to => "talks#schedule", :as => :schedule_talk
@@ -40,7 +40,7 @@ Griddy::Application.routes.draw do
     match "feedback", :to => "application#feedback"
 
   end
-
+  
   scope ":version", :version => 'xl' do
   	match 'grid', :to => "grid#index"
   end 

@@ -40,12 +40,10 @@
 		<% end %>
 		<div id="body">	
 			<div id="main">
-				<% if (cookies[:version_check] == 'true') %>
-					<%= render '/shared/version_check' %>
-				<% else %>
+				<% if (cookies[:version_check] != 'true') %>
 					<%= render '/shared/notice' %>
-					<%= yield %>
 				<% end %>
+				<%= yield %>
 			</div>
 		</div>		
 		<% if (@version != 'xl') %>

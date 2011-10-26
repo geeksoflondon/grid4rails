@@ -8,24 +8,55 @@ class ApplicationController < ActionController::Base
 	
 	# Valid versions are s, m, and xl (small, medium, large, extra large)
 	def version
+		
+		## Array listing the valid version shortcodes
 		versions = ['s', 'm', 'l', 'xl']
+			
+		## Once the user has specified their preference,
+		## remove the :version_check parameter.		
 		if (params[:version_check] == 'false')
 			cookies[:version_check] = false
 			params.delete(:version_check)
-		elsif (!cookies[:version] || cookies[:version].blank?)
+		end
+		
+		## If their preference hasn't been stored,
+		## ask which version they'd like
+		if (!cookies[:version] || cookies[:version].blank?)
+			version_check = true
 			cookies[:version_check] = true
 		end
-		if (cookies[:version] && !cookies[:version].blank?)
+		
+		## If the user's preference is stored, 
+		## assign the stored value to @version
+		if (cookies[:version])
 			@version = cookies[:version] unless (!versions.include?(cookies[:version].to_s))
 		end
-		if (params[:version] && @version != params[:version])
-			@version = params[:version] unless (!versions.include?(cookies[:version].to_s))
+		
+		## If the stored value doesn't match the version
+		## specified in the current request, 
+		## change @version to match that requested
+		if (params[:version] && @version != params[:version].to_s)
+			@version = params[:version] unless (!versions.include?(params[:version].to_s))
 		end
+		
+		## If @version still doesn't have a value,
+		## default to small
 		@version ||= "s"
+		
+		## If the stored value doesn't match the value of @version,
+		## update the stored value to match @version
 		if (cookies[:version] != @version)
 			cookies[:version] = @version
 		end
+		
+		## Ensure that the current version is
+		## available as a parameter
 		params[:version] = @version
+			
+		if (cookies[:version_check] == true || version_check == true)
+			render 'application/version'			
+		end
+		
 	end
 
 	def enable_cors
@@ -46,7 +77,7 @@ class ApplicationController < ActionController::Base
 		reset_session
 
 		# Redirect to the homepage
-		redirect_to :controller => "grid", :action => "index"
+		redirect_to :controller => "grid", :action => "index", :version => 's'
 	end
 
 	# View providing helpful information
