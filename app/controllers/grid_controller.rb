@@ -105,10 +105,10 @@ class GridController < ApplicationController
 		@rooms = Room.all.sort_by{|room|[room.id]}
 		@description = "All talks."
 
-		if (@version != 's')
-			#Chuck the response in varnish for 5 seconds.
-			response.headers['Cache-Control'] = 'public, max-age=5'
-		end
+    # if (@version != 's')
+    #   #Chuck the response in varnish for 5 seconds.
+    #   response.headers['Cache-Control'] = 'public, max-age=5'
+    # end
 	end
 
 
