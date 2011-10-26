@@ -89,7 +89,7 @@ namespace :db do
 		:facilities => 'tbd'
 	)
 	room6 = Room.create(
-		:name => 'Pan\'s Labrynth', 
+		:name => 'Pan\'s Labyrinth', 
 		:description => 'First floor.', 
 		:short_code => 'lab', 
 		:capacity => 30,
