@@ -87,13 +87,20 @@ jQuery(function($) {
 	});
 	
 	
-	// XL Grid	
+	// XL Grid		
 	$("body#grid, .v-xl").each(function() {
 		$(".grid .whats-on").each(function() {
-			$(this).filter(".now").addClass("visible");
+			$(this).filter(".now").each(function(){
+				$(this).css("opacity", "0");
+				$(this).adjustToFit();
+				$(this).animate({
+					opacity : 1
+				}, 2500);				
+				$(this).addClass("visible");
+			});
 			$(this).filter(".next").addClass("invisible");	
 		});
-		setTimeout('$("body#grid, .v-xl").dg()', 30000);
+		setTimeout('$("body#grid, .v-xl").blade()', 30000);
 	});			
 	
 	

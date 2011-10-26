@@ -1,6 +1,6 @@
 (function($) {
 
-	$.fn.babble = function(custom_settings) {
+	$.fn.babble = function(custom_settings) {		
 
 		// Configuration
 		var settings = {
@@ -31,15 +31,7 @@
 
 			// Build request
 			request = formulate_request();
-
-			//ultID = 0;
-			// create the URL  to be request at the Twitter API
-			// aURL = this.createURL();
-			// url = this.buildQuery();
-			// query the twitter API and create the tweets list
-			// this.conectaTwitter(1);
-			// if live mode is enabled, schedule the next twitter API query
-			// if(timer!=undefined&&!running) this.temporizador();
+			
 
 		}, configure = function() {
 
@@ -47,6 +39,31 @@
 			if(custom_settings) {
 				this.settings = $.extend(settings, custom_settings);
 			}
+			
+			// Auto-adjust height
+			var autoAdjust = function() {		
+			
+				var pane = $(".tweets");		
+				
+				// Determine the height of relevant elements	
+				var currPaneTop = $(pane).position().top;
+				var windowHeight = $(window).height();				
+				var documentHeight = $(document).height();							
+				
+				// Calculate a potential new height for the pane		
+				var spaceHeight = windowHeight;
+				if (documentHeight > spaceHeight) {
+					spaceHeight = documentHeight;
+				}								
+				var spareBodySpace = spaceHeight - currPaneTop;															
+										
+				// If there's space, reposition the pane
+				if (spareBodySpace > 0) {
+					var newPaneHeight = spareBodySpace + "px";
+					$(pane).css("height", newPaneHeight);							
+				}															
+			};
+			autoAdjust();
 
 		}, notify = function(message) {
 
