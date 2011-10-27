@@ -157,12 +157,12 @@ namespace :db do
   		
   	session_no = 1
   	num_timeslots = 1
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes, 5.minutes)
   	session_no = session_no+num_timeslots
   	
   	end_time = end_time + 5.minutes
     num_timeslots = 3
-    end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
+    end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes, 5.minutes)
     session_no = session_no+num_timeslots 	
   	
   	
@@ -179,7 +179,7 @@ namespace :db do
   	## Saturday Afternoon, Part I
   	
   	num_timeslots = 4
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes, 5.minutes)
   	session_no = session_no+num_timeslots	
   
   
@@ -196,7 +196,7 @@ namespace :db do
     ## Saturday Afternoon, Part II
     
   	num_timeslots = 4
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes, 5.minutes)
   	session_no = session_no+num_timeslots	
   
   	
