@@ -21,6 +21,10 @@ gem 'redis-store'
 gem 'exceptional'
 gem 'newrelic_rpm'
 
+
+#realtime foo
+gem 'pubnub-ruby'
+
 group :development do 
   gem 'heroku'
 end
@@ -31,8 +35,5 @@ end
 
 group :production do
   gem 'pg'
-  
-  #realtime foo
-  gem 'pubnub-ruby'
 end
 
