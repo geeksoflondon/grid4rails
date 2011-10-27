@@ -34,12 +34,12 @@ class GridController < ApplicationController
 			@timeslot = Timeslot.auto_date.first
 			@date = @timeslot.start.to_date unless @timeslot.nil?
 			if @date.nil?
-				redirect_to :controller => "grid", :action => "date", :version => params[:version]
+				redirect_to :controller => "grid", :action => "date", :version => params[:version], :format => params[:format]
 			else
-				redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+				redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version], :format => params[:format]
 			end
 		else
-			redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+			redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version], :format => params[:format]
 		end
 	end
 
@@ -53,7 +53,7 @@ class GridController < ApplicationController
 			flash[:warning] = "That's all folks!"
 			redirect_to :controller => "grid", :action => "date", :version => params[:version]
 		else
-			redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version]
+			redirect_to :controller => "grid", :action => "show", :date => @date, :timeslot => @timeslot.id, :version => params[:version], :format => params[:format]
 		end
 	end
 
@@ -73,7 +73,7 @@ class GridController < ApplicationController
 		respond_to do |format|
 			format.html # index.html.erb
 			format.xml  { render :xml => @timeslot }
-			format.json  { render :json => @timeslot }
+			format.json  { render :json => @timeslot, :include => {:slots => {:include => :talk}}}
 		end
 	end
 
