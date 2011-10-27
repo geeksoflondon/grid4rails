@@ -171,7 +171,7 @@ class Timeslot < ActiveRecord::Base
   end
   
   
-	def self.generate!(session_no = 1, num_timeslots = 2, start_time = nil, session_duration = 30.minutes, break_duration = 10.minutes)
+	def self.generate!(session_no = 1, num_timeslots = 2, start_time = nil, session_duration = 30.minutes, break_duration = 5.minutes)
 		
 		if (start_time.nil?)
 			raise
