@@ -182,8 +182,20 @@ namespace :db do
   	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes)
   	session_no = session_no+num_timeslots	
   
-  	end_time = end_time + 5.minutes
-  	num_timeslots = 5
+  
+    ## Tea Break
+    
+    start_time = end_time
+    end_time = start_time + 30.minutes
+    timeslot_label = 'Tea Break'
+    timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+    predetermined_talks << [timeslot, room_b, nil, nil, true]
+    timeslots_to_lock << timeslot
+  
+  
+    ## Saturday Afternoon, Part II
+    
+  	num_timeslots = 4
   	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
   	session_no = session_no+num_timeslots	
   
@@ -201,7 +213,7 @@ namespace :db do
   	## Saturday Evening
   	
   	num_timeslots = 2
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes)
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 20.minutes, 10.minutes)
   	session_no = session_no+num_timeslots	
   	
   	
