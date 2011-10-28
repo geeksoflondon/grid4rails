@@ -1,8 +1,11 @@
 // Automatic page refresh
 function refresh() {
 	window.location.reload(false);
-}(function($) {
+}
 
+
+
+(function($) {
 
 	$.fn.flypost = function(context) {
 
@@ -119,6 +122,9 @@ function refresh() {
 							if (this.speaker !== null && $.trim(this.speaker) != '') {
 								$(this.parent).append('<h3 class="heading speaker">' + this.speaker + '</h3>');
 							}
+							if (this.title) {
+								
+							}
 						}	
 					};				
 				};
@@ -168,14 +174,8 @@ function refresh() {
 		};
 		var fetchJson = function(context) {
 			var sources = {
-				/*
-				now  : "http://bcl9grid.heroku.com/m/grid/now.json",
-				next : "http://bcl9grid.heroku.com/m/grid/next.json"
-				now  : "/m/grid/now.json",
-				next : "/m/grid/next.json"
-				*/
-				now : "http://localhost:3000/m/grid/now.json",
-				next : "http://localhost:3000/m/grid/next.json"				
+				now  : "http://bcl9grid.heroku.com/s/grid/now.json",
+				next : "http://bcl9grid.heroku.com/s/grid/next.json"								
 			};
 
 			// Get URL for JSon version of pane specified
