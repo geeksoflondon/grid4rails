@@ -9,3 +9,5 @@ log/*.log
 .project
 .DS_Store
 Gemfile.lock
+/dump.rdb
+/.gitignore
