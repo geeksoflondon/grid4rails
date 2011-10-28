@@ -61,6 +61,8 @@ function init_pubsubhubbub() {
 }
 
 
+var babbler = null;
+
 jQuery(function($) {
 	
 	// Width fixes
@@ -105,11 +107,22 @@ jQuery(function($) {
 	
 	
 	// Babble (Twitter)
-	$(".tweets .stream").babble({
-		username : "barcamplondon",
-		avatar_size : 32,
-		count : 10
-	});	
+	$(".tweets .stream").each(function() {
+		babbler = new $.fn.babble({
+			username : "barcamplondon",
+			avatar_size : 32,
+			count : 10
+		});
+		babbler.run(this);
+		/*
+        babbler = $.fn.babble({
+			username : "barcamplondon",
+			avatar_size : 32,
+			count : 10
+		});
+		*/
+	});
+
 	
 	
 	$(document).ready(function() {

@@ -1,8 +1,11 @@
 // Automatic page refresh
 function refresh() {
 	window.location.reload(false);
-}(function($) {
+}
 
+
+
+(function($) {
 
 	$.fn.flypost = function(context) {
 
@@ -15,7 +18,7 @@ function refresh() {
 				var start = (data.timeslot.start).substring(11, 16);
 				var end = (data.timeslot.end).substring(11, 16);
 								
-				timestamp.replace('<p class="time">' + start + '-' + end + '</p>');
+				$(timestamp).replaceWith('<p class="time">' + start + '-' + end + '</p>');
 				
 			});
 
@@ -119,9 +122,17 @@ function refresh() {
 							if (this.speaker !== null && $.trim(this.speaker) != '') {
 								$(this.parent).append('<h3 class="heading speaker">' + this.speaker + '</h3>');
 							}
+							if (this.title) {
+								
+							}
 						}	
 					};				
 				};
+
+				if(slotData === null) {
+					refresh();	
+					return;
+				}
 
 				if($(slot).children(".empty").length > 0) {
 
@@ -168,14 +179,8 @@ function refresh() {
 		};
 		var fetchJson = function(context) {
 			var sources = {
-				/*
-				now  : "http://bcl9grid.heroku.com/m/grid/now.json",
-				next : "http://bcl9grid.heroku.com/m/grid/next.json"
-				now  : "/m/grid/now.json",
-				next : "/m/grid/next.json"
-				*/
-				now : "http://localhost:3000/m/grid/now.json",
-				next : "http://localhost:3000/m/grid/next.json"				
+				now  : "http://bcl9grid.heroku.com/s/grid/now.json",
+				next : "http://bcl9grid.heroku.com/s/grid/next.json"								
 			};
 
 			// Get URL for JSon version of pane specified
@@ -243,6 +248,13 @@ function refresh() {
 			// Find the now and next panes
 			visible = $(".grid .whats-on").filter(".visible");
 			invisible = $(".grid .whats-on").filter(".invisible");
+			
+			if (invisible === null && $(".main > p.message")) {
+				var original = $(".main > p.message");
+				var clone = $(original).clone();
+				$(".grid .whats-on").append(clone);		
+				$(original).remove();		
+			}		
 
 			$(invisible).adjustToFit();
 
@@ -265,7 +277,7 @@ function refresh() {
 			}, 2500);
 			$(visible).removeClass("visible").addClass("invisible");
 			$(invisible).removeClass("invisible").addClass("visible");
-			setTimeout("$(this).blade({})", 30000);
+			setTimeout("$(this).blade()", 30000);
 		};
 
 		this.each(function() {
@@ -274,6 +286,8 @@ function refresh() {
 			rotate();
 		});
 	};
+	
+	
 	// Automatic page refresh, every 60 seconds
 	$(document).ready(function() {
 		// the timeout value should be the same as in the "refresh" meta-t

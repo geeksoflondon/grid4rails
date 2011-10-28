@@ -6,7 +6,7 @@ namespace :db do
   	Run using the command 'rake db:load_bcl9
   DESC
   
-  task :load_now_next_test_event => :environment do  
+  task :load_xl_grid_test_event => :environment do  
   
   	# Drop the existing database
     Rake::Task['db:drop'].invoke
@@ -135,7 +135,7 @@ namespace :db do
   	
   	
   	## All Timeslots		
-  	Timeslot.generate!(1, 10, Time.now.utc, 2.minutes, 1.minute)	
+  	Timeslot.generate!(1, 10, Time.now.utc, 60.minutes, 1.minute)	
   	
   	
   	## Summary of timeslots created

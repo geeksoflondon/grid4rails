@@ -10,7 +10,7 @@ namespace :db do
   
   # Settings
   start_date = Time.now.utc
-	total_days = 5	
+	total_days = 5
 	start = Array.new
 	start[0] = Time.utc(start_date.strftime("%Y"), start_date.strftime("%m"), start_date.strftime("%d"), 9,00,00)	
 	curr_date = start_date
