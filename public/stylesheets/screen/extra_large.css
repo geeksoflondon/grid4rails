@@ -1,5 +1,14 @@
 /* See /stylesheets/README.txt for guidelines */
 
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans|Didact+Gothic|Nosifer+Caps);
+
+
+body,
+h1, h2, h3, h4, h5, h6,
+div, p, li, th, td {  
+    font-family: 'Didact Gothic', 'Droid Sans', 'Lucida Sans', 'Lucida Grande', arial, helvetica, sans-serif;
+}
+
 /* Custom hides (screenreader-friendly)
 -----------------------------*/
 
@@ -125,7 +134,7 @@ div.grid {
 
 .context {
 	font-size: 3em;
-	font-family: serif;
+	font-family: 'Nosifer Caps', 'Didact Gothic', serif;
 	text-transform: uppercase;
 	color: yellow;
 }
@@ -208,6 +217,10 @@ div.grid {
 	margin-left: 50px;
 	color: #ffffff;
 	word-wrap: break-word;
+}
+
+.tweet .message {
+	font-size: 1.2em;
 }
 
 .tweet .when {
