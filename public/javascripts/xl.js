@@ -129,6 +129,10 @@ function refresh() {
 					};				
 				};
 
+				if(slotData === null) {
+					refresh();	
+				}
+
 				if($(slot).children(".empty").length > 0) {
 
 					if(slotData.talk_id && slotData.talk_id !== null) {
@@ -281,6 +285,8 @@ function refresh() {
 			rotate();
 		});
 	};
+	
+	
 	// Automatic page refresh, every 60 seconds
 	$(document).ready(function() {
 		// the timeout value should be the same as in the "refresh" meta-t
