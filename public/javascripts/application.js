@@ -28,7 +28,7 @@ function process_pubnub(message) {
 	}
 
 	if(message.slot !== null && ($("body").attr('id') == 'date-grid' && slot.talk_id !== null)) {
-		$.getJSON("/talks/" + message.slot.talk_id + ".json", function(data) {
+		$.getJSON("/s/talks/" + message.slot.talk_id + ".json", function(data) {
 			if($("#slot-" + message.slot.id).parent().hasClass('empty')) {
 				$("#slot-" + message.slot.id).children().first().append('<h4 class="heading title"><a href="/' + getCookie('version') + '/talks/' + data.talk.id + '">' + data.talk.title + '</a></h4>');
 			} else {
