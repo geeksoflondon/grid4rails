@@ -1,5 +1,5 @@
-class StatsController < ApplicationController
-	
+class StatsController < ActionController::Base
+
 	def talks
 		@talks = Talk.count - Slot.where('locked' => true).count
 		@slots_free = Slot.where('talk_id' => nil).count
