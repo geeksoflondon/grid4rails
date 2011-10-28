@@ -131,6 +131,7 @@ function refresh() {
 
 				if(slotData === null) {
 					refresh();	
+					return;
 				}
 
 				if($(slot).children(".empty").length > 0) {
