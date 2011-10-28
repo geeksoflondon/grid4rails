@@ -18,7 +18,7 @@ function refresh() {
 				var start = (data.timeslot.start).substring(11, 16);
 				var end = (data.timeslot.end).substring(11, 16);
 								
-				timestamp.replace('<p class="time">' + start + '-' + end + '</p>');
+				$(timestamp).replace('<p class="time">' + start + '-' + end + '</p>');
 				
 			});
 
@@ -243,6 +243,13 @@ function refresh() {
 			// Find the now and next panes
 			visible = $(".grid .whats-on").filter(".visible");
 			invisible = $(".grid .whats-on").filter(".invisible");
+			
+			if (invisible === null && $(".main > p.message")) {
+				var original = $(".main > p.message");
+				var clone = $(original).clone();
+				$(".grid .whats-on").append(clone);		
+				$(original).remove();		
+			}		
 
 			$(invisible).adjustToFit();
 
@@ -265,7 +272,7 @@ function refresh() {
 			}, 2500);
 			$(visible).removeClass("visible").addClass("invisible");
 			$(invisible).removeClass("invisible").addClass("visible");
-			setTimeout("$(this).blade({})", 30000);
+			setTimeout("$(this).blade()", 30000);
 		};
 
 		this.each(function() {
