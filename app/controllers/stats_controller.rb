@@ -6,6 +6,13 @@ class StatsController < ActionController::Base
 		render :layout => false, :content_type => 'application/xml'
 	end
 
+  def time_till
+    t = Timeslot.on_next
+    minute = (t.start - Time.now)/60
+    @minute = minute.round
+    render :layout => false, :content_type => 'application/xml'
+  end
+
 	def now
 		@page_id = "now"
 		@timeslot = Timeslot.on_now
