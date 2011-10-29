@@ -88,4 +88,28 @@ jQuery(function($) {
 
 		
 	});			
+
+    $(document).ready(function() {
+      var limit = 128;
+      var counter = $("#char_count");
+
+      // only need to run this if we're on the talk form
+      if (counter.length > 0) {
+        var input = $("textarea#talk_description");
+        var update_counter = function() {
+          var count = limit - input.val().length;
+          counter.text(count);
+          if (count < 0) {
+            counter.addClass("counter_warning");
+          } else {
+            counter.removeClass("counter_warning");
+          }
+        };
+        input.keyup(update_counter);
+
+        // initial update: set the length when editing
+        update_counter();
+      }
+    });
+
 });
