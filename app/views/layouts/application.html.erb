@@ -60,17 +60,21 @@
 		
 		<% if (@version != 's') %>
 			
-			<%## PubNub %>
-			<div pub-key="<%= ENV['PUBNUB_PUBLISH_KEY'] %>" sub-key="<%= ENV['PUBNUB_SUBSCRIBE_KEY'] %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+			<% if (@version != 'xl') %>
+				<%## PubNub %>
+				<div pub-key="<%= ENV['PUBNUB_PUBLISH_KEY'] %>" sub-key="<%= ENV['PUBNUB_SUBSCRIBE_KEY'] %>" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+			<% end %>
 		
 			<!-- Scripts -->
 			<%## Libraries %>											
 			<%= javascript_include_tag "jquery.min.js" %>
-			<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>			
-			<%= javascript_include_tag "babble.js" %>
 			<% if (@version == 'xl') %>
+				<%= javascript_include_tag "babble.js" %>
 				<%= javascript_include_tag "xl.js" %>
-			<% end %> 
+			<% else %>
+				<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+				<%= javascript_include_tag "pubnub.js" %>
+			<% end %>								
 			
 			<%## Bespoke %>
 			<%= javascript_include_tag "application" %>		
