@@ -11,17 +11,6 @@ function refresh() {
 
 		var publish = function(element, data) {
 
-			$(element).find(".header .time").each(function(){
-				
-				var timestamp = this;
-
-				var start = (data.timeslot.start).substring(11, 16);
-				var end = (data.timeslot.end).substring(11, 16);
-								
-				$(timestamp).replaceWith('<p class="time">' + start + '-' + end + '</p>');
-				
-			});
-
 			$(element).find(".slot").each(function() {
 
 				var slot = this;
