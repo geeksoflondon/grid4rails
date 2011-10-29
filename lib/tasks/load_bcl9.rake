@@ -59,14 +59,14 @@ namespace :db do
   		:description => 'Large room in the basement. To your right, behind you as you come down the stairs (near the zombie-infested toilets, practically under the stairs).', 
   		:short_code => 'cem', 
   		:capacity => 60, 
-  		:facilities => 'Same as little shop of horrors'
+  		:facilities => 'Teaching pod, intermittent Lecture capture'
   	)
   	room2 = Room.create(
   		:name => 'Little Shop of Horrors', 
   		:description => 'Large room in the basement. In front and to your right as you come down the stairs (down the short corridor to the right of the crypt).', 
   		:short_code => 'lsh', 
   		:capacity => 60, 
-  		:facilities => 'everything'
+  		:facilities => 'Teaching pod, intermittent Lecture capture'
   	)
   	room3 = Room.create(
   		:name => 'Lake Placid', 
@@ -101,7 +101,7 @@ namespace :db do
   		:description => 'First floor.', 
   		:short_code => 'blk', 
   		:capacity => 30, 
-  		:facilities => 'Teaching pod'
+  		:facilities => 'Teaching pod, intermittent Lecture capture'
   	)
   	room8 = Room.create(
   		:name => 'Burkittsville', 
