@@ -41,6 +41,10 @@ a:active {
 	background-color: #ffffff;	
 }
 
+.counter_warning {
+  color: #990000;
+}
+
 
 /* FEATURE: Versions Flash
 -----------------------------*/

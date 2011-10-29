@@ -319,3 +319,11 @@ table.single-timeslot .empty .where-when a:active {
 #header {
 	background: transparent url('/images/themes/bcl9/glow.jpg') scroll no-repeat -90px -225px;
 }
+
+/* FEATURE: Create/Edit Talk Form
+-----------------------------*/
+
+fieldset.details #char_count {
+  display: inline-block;
+  float: right;
+}

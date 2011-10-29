@@ -12,7 +12,9 @@
 				<p><%= f.text_field :title, :placeholder => "e.g. My awesome talk", :autofocus => true %></p>
 			</div>
 			<div class="field">
-				<p class="label"><%= f.label :description %></p>
+				<p class="label"><%= f.label :description %>
+					<span id="char_count"></span>
+				</p>
 				<p><%= f.text_area :description, :rows => 10 %></p>
 			</div>
 			<div class="field">
