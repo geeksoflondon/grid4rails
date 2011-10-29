@@ -47,7 +47,7 @@
     <% if (!slot.locked && slot.is_empty?) %>              
         <div id="empty-<%= @empty_slot_index %>" class="empty">    
             <% if (@page_id != "room") %>    
-                <% cache("where_when_#{slot.id}") do %>
+                <% cache("where_when_#{slot.id}_#{@page_id}_#{@version}") do %>
                     <%= render '/shared/grid/where_when', :timeslot => timeslot, :room => room  %>
                 <% end %>
             <% end %>
