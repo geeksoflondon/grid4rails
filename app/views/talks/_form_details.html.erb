@@ -12,8 +12,10 @@
 				<p><%= f.text_field :title, :placeholder => "e.g. My awesome talk", :autofocus => true %></p>
 			</div>
 			<div class="field">
-				<p class="label"><%= f.label :description %></p>
-				<p><%= f.text_area :description, :rows => 10 %></p>
+              <p class="label"><%= f.label :description %>
+                <span id="char_count" style="display: inline-block; float: right;"></span>
+              </p>
+              <p><%= f.text_area :description, :rows => 10 %></p>
 			</div>
 			<div class="field">
 				<p class="label"><%= f.label :speaker, "Speaker name(s)".html_safe %></p>
