@@ -48,80 +48,81 @@ namespace :db do
   	)
   	room_b = Room.create(
   		:name => 'The Hellmouth', 
-  		:description => 'The huge room in the basement; down the stairs and to the left.', 
+  		:description => 'The common room. In the basement, down the stairs and to the left.', 
   		:short_code => 'hel', 
   		:capacity => 250,  
+  		:facilities => '',
   		:include_in_grid => false
   	)
   	room1 = Room.create(
-  		:name => 'Amityville', 
-  		:description => 'Basement.', 
-  		:short_code => 'amv', 
-  		:capacity => 40, 
-  		:facilities => 'tbd'
+  		:name => '0001 Cemetery Lane', 
+  		:description => 'Large room in the basement. To your right, behind you as you come down the stairs (near the zombie-infested toilets, practically under the stairs).', 
+  		:short_code => 'cem', 
+  		:capacity => 60, 
+  		:facilities => 'Same as little shop of horrors'
   	)
   	room2 = Room.create(
-  		:name => '0001 Cemetery Lane', 
-  		:description => 'Basement', 
-  		:short_code => 'cem', 
-  		:capacity => 40, 
-  		:facilities => 'tbd'
+  		:name => 'Little Shop of Horrors', 
+  		:description => 'Large room in the basement. In front and to your right as you come down the stairs (down the short corridor to the right of the crypt).', 
+  		:short_code => 'lsh', 
+  		:capacity => 60, 
+  		:facilities => 'everything'
   	)
   	room3 = Room.create(
-  		:name => 'Little Shop of Horrors', 
-  		:description => 'Basement', 
-  		:short_code => 'lsh', 
-  		:capacity => 40, 
-  		:facilities => 'tbd'
-  	)
-  	room4 = Room.create(
   		:name => 'Lake Placid', 
-  		:description => 'First floor.', 
+  		:description => 'In the basement, to the right of the Help Desk.', 
   		:short_code => 'lkp', 
   		:capacity => 40, 
-  		:facilities => 'tbd'
+  		:facilities => 'Teaching pod'
   	)
+    room4 = Room.create(
+      :name => 'Amityville', 
+      :description => 'First floor', 
+      :short_code => 'amv', 
+      :capacity => 40, 
+      :facilities => 'Teaching pod'
+    )  	
   	room5 = Room.create(
   		:name => 'Island of Lost Souls', 
   		:description => 'First floor.', 
   		:short_code => 'ils', 
   		:capacity => 30, 
-  		:facilities => 'tbd'
+  		:facilities => 'Teaching pod'
   	)
   	room6 = Room.create(
   		:name => 'Pan\'s Labyrinth', 
   		:description => 'First floor.', 
   		:short_code => 'lab', 
   		:capacity => 30,
-  		:facilities => 'tbd'
+  		:facilities => 'Teaching pod, Lecture capture'
   	)
   	room7 = Room.create(
   		:name => 'The Black Lagoon', 
   		:description => 'First floor.', 
   		:short_code => 'blk', 
   		:capacity => 30, 
-  		:facilities => 'tbd'
+  		:facilities => 'Teaching pod'
   	)
   	room8 = Room.create(
   		:name => 'Burkittsville', 
   		:description => 'Second floor.', 
   		:short_code => 'bkv', 
   		:capacity => 30, 
-  		:facilities => 'tbd'
+  		:facilities => 'Teaching pod'
   	)
   	room9 = Room.create(
   		:name => 'Eastwick', 
   		:description => 'Second floor.', 
   		:short_code => 'ewk', 
   		:capacity => 30, 
-  		:facilities => 'tbd'
+  		:facilities => 'Teaching pod'
   	)
   	room10 = Room.create(
   		:name => 'Sleepy Hollow', 
   		:description => 'Second floor.', 
   		:short_code => 'slh', 
   		:capacity => 30, 
-  		:facilities => 'tbd'
+  		:facilities => 'Teaching pod'
   	)
   	
   	puts "Total Rooms: " + Room.all.count.to_s
