@@ -31,7 +31,7 @@ function init_pubsubhubbub() {
 	PUBNUB.subscribe({
 		channel : "griddy", // CONNECT TO THIS CHANNEL.
 		error : function() {// LOST CONNECTION (auto reconnects)
-			alert("Connection Lost. Will auto-reconnect when Online.");
+			// alert("Connection Lost. Will auto-reconnect when Online.");
 		},
 		callback : function(message) {// RECEIVED A MESSAGE.
 			process_pubnub(message);
