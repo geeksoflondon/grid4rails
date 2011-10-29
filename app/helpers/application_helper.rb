@@ -183,6 +183,8 @@ module ApplicationHelper
 				return true
 			end
 			return false
+		when "xl"
+			return false
 		else
 			case @show_room_col				
 			when false
