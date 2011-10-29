@@ -169,7 +169,7 @@ function refresh() {
 		var fetchJson = function(context) {
 			var sources = {
 				now  : "http://bcl9grid.heroku.com/s/grid/now.json",
-				next : "http://bcl9grid.heroku.com/s/grid/next.json"								
+				next : "http://bcl9grid.heroku.com/s/grid/next.json"							
 			};
 
 			// Get URL for JSon version of pane specified
@@ -280,6 +280,6 @@ function refresh() {
 	// Automatic page refresh, every 60 seconds
 	$(document).ready(function() {
 		// the timeout value should be the same as in the "refresh" meta-t
-		// setTimeout("refresh()", 60*1000);
+		setTimeout("refresh()", 60*1000);
 	});
 })(jQuery);
