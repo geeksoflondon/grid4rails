@@ -70,9 +70,22 @@ function getCookie(name) {
 }
 
 jQuery(function($) {
+	
+	// XL Grid	
+	$("body#grid, .v-xl").each(function() {
+		$(".grid .whats-on").each(function() {
+			console.log(this);
+			$(this).filter(".now").addClass("visible");
+			$(this).filter(".next").addClass("invisible");	
+		});
+	});	
+	setTimeout('$("body#grid, .v-xl").dg()', 30000);			
+	
+	// Babble (Twitter)
 	$(".tweets .stream").babble({
 		username : "barcamplondon",
 		avatar_size : 32,
 		count : 10
 	});
+	
 });

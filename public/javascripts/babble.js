@@ -16,7 +16,7 @@
 			delay : 20, // [integer]  the interval to leave between calls to Twitter to refresh the stream
 			query : null, // [string]   optional search query
 			running : false
-		}
+		};
 
 		// Properties
 		var placeholder = null;
@@ -91,7 +91,7 @@
 		}, process_response = function(data) {
 
 			// Update display
-			element = notify(settings.messages.loading);
+			var element = notify(settings.messages.loading);
 
 			// Create a container for the marked-up tweets
 			var tweets = Array();
@@ -104,7 +104,7 @@
 						var returning = [];
 						var regexp = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi;
 						this.each(function() {
-							returning.push(this.replace(regexp, "<a href=\"$1\">$1</a>"))
+							returning.push(this.replace(regexp, "<a href=\"$1\">$1</a>"));
 						});
 						return $(returning);
 					},
@@ -112,7 +112,7 @@
 						var returning = [];
 						var regexp = /[\@]+([A-Za-z0-9-_]+)/gi;
 						this.each(function() {
-							returning.push(this.replace(regexp, "<a href=\"http://twitter.com/$1\">@$1</a>"))
+							returning.push(this.replace(regexp, "<a href=\"http://twitter.com/$1\">@$1</a>"));
 						});
 						return $(returning);
 					},
@@ -120,11 +120,34 @@
 						var returning = [];
 						var regexp = / [\#]+([A-Za-z0-9-_]+)/gi;
 						this.each(function() {
-							returning.push(this.replace(regexp, ' <a href="http://search.twitter.com/search?q=&tag=$1&lang=all&from=' + settings.username + "%2BOR%2B" + '">#$1</a>'))
+							returning.push(this.replace(regexp, ' <a href="http://search.twitter.com/search?q=&tag=$1&lang=all&from=' + settings.username + "%2BOR%2B" + '">#$1</a>'));
 						});
 						return $(returning);
 					}
-				})
+				});
+				
+				// Takes in a timestamp and returns a phrase
+				// indicative of how long ago the tweet was sent
+				var relative_time = function(time_value) {
+					var parsed_date = Date.parse(time_value);
+					var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
+					var delta = parseInt(((relative_to.getTime() - parsed_date) / 1000), 10);
+					if(delta < 60) {
+						return 'less than a minute ago';
+					} else if(delta < 120) {
+						return 'about a minute ago';
+					} else if(delta < (45 * 60)) {
+						return (parseInt((delta / 60), 10)).toString() + ' minutes ago';
+					} else if(delta < (90 * 60)) {
+						return 'about an hour ago';
+					} else if(delta < (24 * 60 * 60)) {
+						return 'about ' + (parseInt((delta / 3600), 10)).toString() + ' hours ago';
+					} else if(delta < (48 * 60 * 60)) {
+						return '1 day ago';
+					} else {
+						return (parseInt((delta / 86400), 10)).toString() + ' days ago';
+					}
+				};					
 
 				var avatar_template = '<p class="avatar"><a href="http://twitter.com/' + item.from_user + '"><img src="' + item.profile_image_url + '" height="' + settings.avatar_size + '" width="' + settings.avatar_size + '" alt="' + item.from_user + '\'s avatar" border="0"/></a></p>';
 				var avatar = (settings.avatar_size ? avatar_template : '');
@@ -136,29 +159,9 @@
 				var tweet_html = '<li class="tweet">' + avatar + message + date + '</li>';
 				return tweet_html;
 
-			}
-			// Takes in a timestamp and returns a phrase
-			// indicative of how long ago the tweet was sent
-			var relative_time = function(time_value) {
-				var parsed_date = Date.parse(time_value);
-				var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
-				var delta = parseInt((relative_to.getTime() - parsed_date) / 1000);
-				if(delta < 60) {
-					return 'less than a minute ago';
-				} else if(delta < 120) {
-					return 'about a minute ago';
-				} else if(delta < (45 * 60)) {
-					return (parseInt(delta / 60)).toString() + ' minutes ago';
-				} else if(delta < (90 * 60)) {
-					return 'about an hour ago';
-				} else if(delta < (24 * 60 * 60)) {
-					return 'about ' + (parseInt(delta / 3600)).toString() + ' hours ago';
-				} else if(delta < (48 * 60 * 60)) {
-					return '1 day ago';
-				} else {
-					return (parseInt(delta / 86400)).toString() + ' days ago';
-				}
-			}
+			};
+		
+			
 			// Process the JSON returned from Twitter
 			$.each(data.results, function(i, item) {
 
@@ -174,8 +177,8 @@
 		}, display = function(tweets) {
 
 			// Create html list element
-			if(list == null) {
-				var list = $('<ul class="tweet_list">').appendTo(placeholder);
+			if(list === null) {
+				list = $('<ul class="tweet_list">').appendTo(placeholder);
 			}
 
 			// Remove current status
@@ -184,7 +187,7 @@
 			for(var i = tweets.length - 1; i >= 0; i--) {
 
 				// Add the marked-up tweet to the list
-				tweet = tweets[i];
+				var tweet = tweets[i];
 				$(tweet).css("display", "none"); 
 				
 				list.prepend(tweet);
@@ -197,12 +200,12 @@
 				$(tweet).fadeIn("slow");			
 
 			}
-		}
+		};
 
 		this.each(function() {
 			placeholder = this;
 			init();
 			fetch();
-		})
-	}
+		});
+	};
 })(jQuery);
