@@ -69,6 +69,12 @@ class GridController < ApplicationController
 		@empty_slot_index = 0
 		@rooms = Room.all
 		@description = @timeslot.name
+		
+		respond_to do |format|
+			format.html # index.html.erb
+			format.xml  { render :xml => @timeslot }
+			format.json  { render :json => @timeslot }
+		end
 	end
 
 
