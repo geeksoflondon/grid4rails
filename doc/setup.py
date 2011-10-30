@@ -39,10 +39,10 @@ def apt(package):
 def brew(package):
     if package is "mercurial":
         system("brew install python")
-	system("brew install pip")
-	system("pip install mercurial")
+        system("brew install pip")
+        system("pip install mercurial")
     else:
-	system("brew install ", package)
+        system("brew install ", package)
 
 def gem(pkg):
   system("sudo gem install ", pkg, " --no-ri --no-rdoc")
