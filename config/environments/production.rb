@@ -49,5 +49,8 @@ Griddy::Application.configure do
   
   # Activate observers that should always be running 
   config.active_record.observers = :slot_observer 
-   
+
+  ## DO NOT COMMIT ###	
+	config.serve_static_assets = true
+     
 end
