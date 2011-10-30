@@ -46,32 +46,13 @@ a:active {
 }
 
 body#grid {
-	padding: .5em 0 .5em .5em;	
+	padding: 20px 0 20px 20px;	
 	background-color: #000000;
 	font-size: 2em;
-	background-image: url('/images/themes/bcl9/glowing_background.png');
-	background-position: center top;
+	background-image: url('/images/themes/bcl9/logo_with_glow.png');
+	background-position: right top;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
-}
-
-.tweets {
-	position: relative;
-	top: -20px;
-}
-
-.pumpkin {
-	position: relative;
-	top: 0;
-	left: -10%;
-	width: 35%;
-}
-.logo {
-	display: block;
-	position: absolute;
-	top: 1em;
-	right: 0;
-	width: 97%;
 }
 
 div.grid {
@@ -106,8 +87,8 @@ div.grid {
 	display: block;
 	position: absolute;
 	width: 35%;
-	top: -1em;
-	right: 1em;
+	top: 120px;
+	right: 20px;
 }
 
 .pair {
@@ -247,6 +228,7 @@ div.grid {
 	color: #ff8c00;
 }
 
+/*
 div.grid {
 	border: 1px solid red;
 }
@@ -256,4 +238,4 @@ div.grid {
 .whats-on {
 	border: 1px solid green;
 }
-
+*/

@@ -178,7 +178,7 @@
 
 			// Create html list element
 			if(list === null) {
-				list = $('<ul class="tweet_list">').appendTo(placeholder);
+				list = $('<ul>').appendTo(placeholder);
 			}
 
 			// Remove current status
