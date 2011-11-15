@@ -116,6 +116,12 @@ table.grid .slot {
 }
 
 
+p.duration {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: x-small;
+}
+
 /* VIEW: Help
 -----------------------------*/
 

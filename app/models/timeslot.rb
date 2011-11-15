@@ -122,6 +122,10 @@ class Timeslot < ActiveRecord::Base
   def self.end_date
     Timeslot.all.last.start.to_date
   end
+  
+  def duration_in_minutes
+    ((self.end - self.start).seconds / 60).round
+  end
 
   def contains_empty_slot?
     @empty_slots = Slot.find_empty

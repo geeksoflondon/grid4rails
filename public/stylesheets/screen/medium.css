@@ -560,6 +560,13 @@ table.grid th .summary {
     padding: 3px 6px;
 }
 
+table.grid th .time {
+    padding-bottom: 0;
+}
+table.grid th .duration {
+    padding-bottom: 3px;
+}
+
 table.grid th .summary .shortcode {
 	padding: 6px 0;
 }
