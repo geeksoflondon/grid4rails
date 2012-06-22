@@ -2,6 +2,8 @@ class Room < ActiveRecord::Base
 
 	has_many :slots
 
+  attr_accessible :name, :description, :short_code, :capacity, :as => :admin
+	
 	default_scope order('id')
 
 	validates :name,

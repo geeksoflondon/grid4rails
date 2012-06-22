@@ -1,6 +1,8 @@
 class Talk < ActiveRecord::Base
 
 	has_one :slot
+	
+  attr_accessible :title, :speaker, :description 
 
 	validates :title,
 	:length => {

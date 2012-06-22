@@ -33,7 +33,7 @@ gem 'haml' # for SASS
 gem 'redis'
 gem 'resque'
 gem 'resque-scheduler'
-gem 'redis-store'
+gem 'redis-store', "~> 1.0.0" 
 
 
 ##### Exception Capture and logging

@@ -37,8 +37,8 @@ Griddy::Application.configure do
   config.assets.debug = true
 
   # Clearence Mailer Url
-  config.action_mailer.default_url_options = { :host => 'grid4rails.dev' }
-    
+  config.action_mailer.default_url_options = { :host => 'grid4rails.dev' } 
+     
   ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
 
 end
