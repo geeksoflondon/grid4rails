@@ -1,19 +1,28 @@
 development:
   adapter: postgresql
-  database: griddy_development
-  username: gol
   encoding: unicode
+  database: griddy_development
+  pool: 5
+  username: gol
   host: localhost
 
-testing:
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
   adapter: postgresql
-  database: griddy_testing
-  username: gol
   encoding: unicode
+  database: griddy_testing
+  pool: 5
+  username: gol
   host: localhost
 
 production:
   adapter: postgresql
-  database: griddy_production
-  username: gol
   encoding: unicode
+  database: griddy_production
+  pool: 5
+  username: gol
+
+cucumber:
+  <<: *test

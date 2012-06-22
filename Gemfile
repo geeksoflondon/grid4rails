@@ -1,39 +1,63 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.2.6'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem "rake", ">= 0.9.2"
+#### Data
 
-#Frontendy stuff
-gem "jquery-rails", "~> 1.0.12"
+# Database
+gem 'pg'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+
+#### Client-side
+
+group :assets do
+	# gem 'sass-rails', "~> 3.1.0"
+	# gem 'coffee-rails', "~> 3.1.0"
+	# gem 'uglifier'
+end
+
+gem 'jquery-rails', "~> 2.0.0"
 gem 'compass'
 gem 'haml' # for SASS
 
-#queueing and caching
+
+# Queueing and Caching
+
 gem 'redis'
 gem 'resque'
 gem 'resque-scheduler'
 gem 'redis-store'
 
-#exception capture and logging
+
+##### Exception Capture and logging
+
 gem 'exceptional'
 gem 'newrelic_rpm'
 
 
-#realtime foo
+##### Realtime foo
+
 gem 'pubnub-ruby'
+
+
+##### Environment-specific
 
 group :development do 
   gem 'heroku'
 end
 
 group :test do 
-  gem 'timecop'
+  gem 'cucumber-rails', '1.2.1', require: false
+  gem 'database_cleaner', '0.7.0'
+  # gem 'timecop'
 end
 
 group :production do
-  gem 'pg'
 end
 
+group :development, :test do
+end
