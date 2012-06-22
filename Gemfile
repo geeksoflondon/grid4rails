@@ -12,15 +12,18 @@ gem 'pg'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 
-#### Client-side
+#### Asset-management
 
 group :assets do
-	# gem 'sass-rails', "~> 3.1.0"
-	# gem 'coffee-rails', "~> 3.1.0"
-	# gem 'uglifier'
+	gem 'sass-rails',   '~> 3.2.3'
+  	gem 'coffee-rails', '~> 3.2.1'
+  	gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails', "~> 2.0.0"
+
+#### Client-side
+
+gem 'jquery-rails'
 gem 'compass'
 gem 'haml' # for SASS
 
@@ -47,17 +50,23 @@ gem 'pubnub-ruby'
 ##### Environment-specific
 
 group :development do 
+
   gem 'heroku'
+  
 end
 
 group :test do 
-  gem 'cucumber-rails', '1.2.1', require: false
-  gem 'database_cleaner', '0.7.0'
-  # gem 'timecop'
+  gem "factory_girl_rails", ">= 1.6.0"
+  gem "cucumber-rails", ">= 1.2.1"
+  gem "capybara", ">= 1.1.2"
+  gem "database_cleaner"
+  gem "launchy"
+   # gem 'timecop'
 end
 
 group :production do
 end
 
 group :development, :test do
+	gem "rspec-rails", ">= 2.8.1"
 end
