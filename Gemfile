@@ -54,7 +54,7 @@ group :development do
 end
 
 group :test do 
-  gem "factory_girl_rails", ">= 1.6.0"
+  gem "factory_girl_rails", "~> 3.0"
   gem "cucumber-rails", ">= 1.2.1", :require => false
   gem "capybara", ">= 1.1.2"
   gem "database_cleaner"
