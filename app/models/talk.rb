@@ -49,7 +49,13 @@ class Talk < ActiveRecord::Base
 		end
 		return false
 	end
-
+	
+	def schedule(target_slot)
+	  if (target_slot.is_empty?)
+      self.slot = target_slot
+	  end	  
+	end
+	
 	private
 
 	def clear_cache
