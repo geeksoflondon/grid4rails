@@ -2,6 +2,8 @@ class Room < ActiveRecord::Base
 
 	has_many :slots
 
+  attr_accessible :name, :description, :short_code, :capacity, :as => :admin
+	
 	default_scope order('id')
 
 	validates :name,
@@ -19,7 +21,7 @@ class Room < ActiveRecord::Base
 
 	validates :capacity,
 	:presence => true,
-	:numericality => { :only_integer => true }
+	:numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
 
 	def slots
 		Slot.find_all_by_room_id(id)
@@ -41,5 +43,5 @@ class Room < ActiveRecord::Base
 		end
 		return false
 	end
-
+	
 end

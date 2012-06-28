@@ -1,6 +1,8 @@
 class Timeslot < ActiveRecord::Base
 
   has_many :slots
+  
+  attr_accessible :start, :end, :as => :admin
 
   validates :end, :uniqueness => {:scope => :start}
 

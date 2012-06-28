@@ -4,8 +4,19 @@ Feature: Schedule a talk
 	
 		Given there is an unscheduled talk
 		And there is an empty slot
-		When I schedule the talk in the slot
-		And I submit the form
-		Then the schedule should be displayed
-		And my talk should be shown to occupy the slot I chose
-		And I should see a message confirming the successful scheduling of my talk
+		When I schedule the talk in the empty slot
+		Then the talk should not be unscheduled
+		And the talk should be scheduled to occur in the slot		
+		
+		
+	Scenario: Chosen slot is not free
+	
+		Given there is an unscheduled talk
+		And there is an empty slot
+		And there is an occupied slot	
+		And the talk in the occupied slot is not the talk I wish to schedule
+		When I schedule the talk in the occupied slot		
+		Then the talk should be unscheduled
+		And the talk should not be scheduled to occur in the slot
+		And the original talk should still be scheduled		
+		And the original talk should still be scheduled to occur in the slot

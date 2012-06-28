@@ -1,0 +1,5 @@
+app/assets is for assets that are owned by the application, such as custom images, JavaScript files or stylesheets.
+
+lib/assets is for your own libraries’ code that doesn’t really fit into the scope of the application or those libraries which are shared across applications.
+
+vendor/assets is for assets that are owned by outside entities, such as code for JavaScript plugins and CSS frameworks.

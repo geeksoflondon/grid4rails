@@ -4,6 +4,9 @@ class Slot < ActiveRecord::Base
   belongs_to :timeslot
   belongs_to :talk
 
+  attr_accessible :talk_id 
+  attr_accessible :room_id, :timeslot_id, :talk_id, :as => :admin
+  
   validates :timeslot_id, :presence => true
   validates :room_id, :presence => true
 
@@ -23,7 +26,7 @@ class Slot < ActiveRecord::Base
 
     Room.all.each do |room|
       Timeslot.all.each do |timeslot|
-        slot = Slot.create(:room_id => room.id, :timeslot_id => timeslot.id)
+        slot = Slot.create({:room_id => room.id, :timeslot_id => timeslot.id}, :without_protection => true)
         puts "Slot #{slot.id} created (#{room.name}, #{timeslot.start.to_s})"
       end
     end
