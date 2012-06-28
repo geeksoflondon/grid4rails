@@ -39,90 +39,102 @@ namespace :db do
   	# Room specs: https://geeksoflondon.basecamphq.com/projects/7251895-barcamp-london-9/posts/52762583/comments
   	# Naming scheme: https://geeksoflondon.basecamphq.com/projects/7251895-barcamp-london-9/cat/73463514/posts
   	
-  	room_a = Room.create(
-  		:name => 'Everywhere', 
-  		:description => 'Any and all rooms (assuming it\'s not out-of-bounds and there\'s no other talk scheduled in it)', 
-  		:short_code => 'any', 
-  		:capacity => 250, 
-  		:include_in_grid => false
+  	room_a = Room.create({
+	  		:name => 'Everywhere', 
+	  		:description => 'Any and all rooms (assuming it\'s not out-of-bounds and there\'s no other talk scheduled in it)', 
+	  		:short_code => 'any', 
+	  		:capacity => 250, 
+	  		:include_in_grid => false
+		}, :without_protection => true
   	)
-  	room_b = Room.create(
+  	room_b = Room.create({
   		:name => 'The Hellmouth', 
   		:description => 'The common room. In the basement, down the stairs and to the left.', 
   		:short_code => 'hel', 
   		:capacity => 250,  
   		:facilities => '',
   		:include_in_grid => false
+  		}, :without_protection => true
   	)
-  	room1 = Room.create(
+  	room1 = Room.create({
   		:name => '0001 Cemetery Lane', 
   		:description => 'Large room in the basement. To your right, behind you as you come down the stairs (near the zombie-infested toilets, practically under the stairs).', 
   		:short_code => 'cem', 
   		:capacity => 60, 
   		:facilities => 'Teaching pod, intermittent Lecture capture'
+  		}, :without_protection => true
   	)
-  	room2 = Room.create(
+  	room2 = Room.create({
   		:name => 'Little Shop of Horrors', 
   		:description => 'Large room in the basement. In front and to your right as you come down the stairs (down the short corridor to the right of the crypt).', 
   		:short_code => 'lsh', 
   		:capacity => 60, 
   		:facilities => 'Teaching pod, intermittent Lecture capture'
+  		}, :without_protection => true
   	)
-  	room3 = Room.create(
+  	room3 = Room.create({
   		:name => 'Lake Placid', 
   		:description => 'In the basement, to the right of the Help Desk.', 
   		:short_code => 'lkp', 
   		:capacity => 40, 
   		:facilities => 'Teaching pod'
+  		}, :without_protection => true
   	)
-    room4 = Room.create(
+    room4 = Room.create({
       :name => 'Amityville', 
       :description => 'First floor', 
       :short_code => 'amv', 
       :capacity => 40, 
       :facilities => 'Teaching pod'
+      }, :without_protection => true
     )  	
-  	room5 = Room.create(
+  	room5 = Room.create({
   		:name => 'Island of Lost Souls', 
   		:description => 'First floor.', 
   		:short_code => 'ils', 
   		:capacity => 30, 
   		:facilities => 'Teaching pod'
+  		}, :without_protection => true
   	)
-  	room6 = Room.create(
+  	room6 = Room.create({
   		:name => 'Pan\'s Labyrinth', 
   		:description => 'First floor.', 
   		:short_code => 'lab', 
   		:capacity => 30,
   		:facilities => 'Teaching pod, Lecture capture'
+  		}, :without_protection => true
   	)
-  	room7 = Room.create(
+  	room7 = Room.create({
   		:name => 'The Black Lagoon', 
   		:description => 'First floor.', 
   		:short_code => 'blk', 
   		:capacity => 30, 
   		:facilities => 'Teaching pod, intermittent Lecture capture'
+  		}, :without_protection => true
   	)
-  	room8 = Room.create(
+  	room8 = Room.create({
   		:name => 'Burkittsville', 
   		:description => 'Second floor.', 
   		:short_code => 'bkv', 
   		:capacity => 30, 
   		:facilities => 'Teaching pod'
+  		}, :without_protection => true
   	)
-  	room9 = Room.create(
+  	room9 = Room.create({
   		:name => 'Eastwick', 
   		:description => 'Second floor.', 
   		:short_code => 'ewk', 
   		:capacity => 30, 
   		:facilities => 'Teaching pod'
+  		}, :without_protection => true
   	)
-  	room10 = Room.create(
+  	room10 = Room.create({
   		:name => 'Sleepy Hollow', 
   		:description => 'Second floor.', 
   		:short_code => 'slh', 
   		:capacity => 30, 
   		:facilities => 'Teaching pod'
+  		}, :without_protection => true
   	)
   	
   	puts "Total Rooms: " + Room.all.count.to_s
@@ -139,7 +151,7 @@ namespace :db do
   	start_time = Time.utc(2011, "oct", 29,9,30,00)
   	end_time = start_time + 40.minutes
   	timeslot_label = 'Opening Talk'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_b, "Welcome to BarcampLondon9!", "The Crew", true]
   	timeslots_to_lock << timeslot
   	
@@ -149,7 +161,7 @@ namespace :db do
   	start_time = end_time
   	end_time = start_time + 20.minutes
   	timeslot_label = 'Grid Population'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_a, "Add your talk to the grid", "You", true]
   	timeslots_to_lock << timeslot
   	
@@ -172,7 +184,7 @@ namespace :db do
   	start_time = end_time
   	end_time = start_time + 1.hour
   	timeslot_label = 'Lunch'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_b, nil, nil, true]
   	timeslots_to_lock << timeslot
   	
@@ -189,7 +201,7 @@ namespace :db do
     start_time = end_time
     end_time = start_time + 30.minutes
     timeslot_label = 'Tea Break'
-    timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+    timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
     predetermined_talks << [timeslot, room_b, nil, nil, true]
     timeslots_to_lock << timeslot
   
@@ -206,7 +218,7 @@ namespace :db do
   	start_time = end_time
   	end_time = start_time + 90.minutes
   	timeslot_label = 'Dinner'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_b, nil, nil, true]
   	timeslots_to_lock << timeslot
   	
@@ -223,7 +235,7 @@ namespace :db do
   	start_time = end_time
   	end_time = Time.utc(2011, "oct", 30,8,00,00)
   	timeslot_label = 'Games, etc.'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_a, nil, nil, true]
   	timeslots_to_lock << timeslot
   	
@@ -233,7 +245,7 @@ namespace :db do
   	start_time = end_time
   	end_time = start_time + 120.minutes
   	timeslot_label = 'Breakfast'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_b, nil, nil, true]
   	timeslots_to_lock << timeslot
   	
@@ -255,7 +267,7 @@ namespace :db do
   	start_time = end_time
   	end_time = start_time + 60.minutes
   	timeslot_label = 'Lunch'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_b, nil, nil, true]
   	timeslots_to_lock << timeslot
   	
@@ -272,7 +284,7 @@ namespace :db do
   	start_time = end_time + 5.minutes
   	end_time = start_time + 15.minutes
   	timeslot_label = 'Closing Talk'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_b, "A quick round-up of the weekend.", "The Crew", true]
   	timeslots_to_lock << timeslot
   	
@@ -282,7 +294,7 @@ namespace :db do
   	start_time = end_time
   	end_time = start_time + 30.minutes
   	timeslot_label = 'Tidy-up'
-  	timeslot = Timeslot.create(:name => timeslot_label, :start => start_time, :end => end_time)
+  	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
   	predetermined_talks << [timeslot, room_a, "A quick zip-round to set the rooms back as they were before we took over.", "Everyone", true]
   	timeslots_to_lock << timeslot
   	
@@ -312,7 +324,7 @@ namespace :db do
   	  puts "Timeslot Name: " + timeslot.name   
   	
   	  ### Create a talk with the name specified
-  	  talk = Talk.create(:title => timeslot.name, :description => predetermined_talk[2].to_s, :speaker => predetermined_talk[3])
+  	  talk = Talk.create({:title => timeslot.name, :description => predetermined_talk[2].to_s, :speaker => predetermined_talk[3]}, :without_protection => true)
   	  
   	  #### Set the talk as the timeslot's global talk
   	  if (predetermined_talk[4] == true)
