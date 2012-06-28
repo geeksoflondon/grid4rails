@@ -48,94 +48,126 @@ namespace :db do
 		}, :without_protection => true
   	)
   	room_b = Room.create({
-  		:name => 'The Hellmouth', 
-  		:description => 'The common room. In the basement, down the stairs and to the left.', 
-  		:short_code => 'hel', 
-  		:capacity => 250,  
-  		:facilities => '',
+  		:name => 'Windsor Great Park', 
+  		:description => 'The common room. On the top floor.', 
+  		:short_code => 'PRk', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		:include_in_grid => false
   		}, :without_protection => true
   	)
   	room1 = Room.create({
-  		:name => '0001 Cemetery Lane', 
-  		:description => 'Large room in the basement. To your right, behind you as you come down the stairs (near the zombie-infested toilets, practically under the stairs).', 
-  		:short_code => 'cem', 
-  		:capacity => 60, 
-  		:facilities => 'Teaching pod, intermittent Lecture capture'
+  		:name => 'Calleva Atrebatum ', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'ATR', 
+  		:capacity => 1, 
+  		:facilities => '[details required]'
   		}, :without_protection => true
   	)
   	room2 = Room.create({
-  		:name => 'Little Shop of Horrors', 
-  		:description => 'Large room in the basement. In front and to your right as you come down the stairs (down the short corridor to the right of the crypt).', 
-  		:short_code => 'lsh', 
-  		:capacity => 60, 
-  		:facilities => 'Teaching pod, intermittent Lecture capture'
+  		:name => 'Windsor Castle', 
+  		:description => '[description and directions required]',  
+  		:short_code => 'CAS', 
+  		:capacity => 1, 
+  		:facilities => '[details required]'
   		}, :without_protection => true
   	)
   	room3 = Room.create({
-  		:name => 'Lake Placid', 
-  		:description => 'In the basement, to the right of the Help Desk.', 
-  		:short_code => 'lkp', 
-  		:capacity => 40, 
-  		:facilities => 'Teaching pod'
+  		:name => 'Donnington Castle', 
+  		:description => '[description and directions required]',  
+  		:short_code => 'DON', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		}, :without_protection => true
   	)
     room4 = Room.create({
-      :name => 'Amityville', 
-      :description => 'First floor', 
-      :short_code => 'amv', 
-      :capacity => 40, 
-      :facilities => 'Teaching pod'
+      :name => 'Frogmore', 
+      :description => '[description and directions required]', 
+      :short_code => 'FRG', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
       }, :without_protection => true
     )  	
   	room5 = Room.create({
-  		:name => 'Island of Lost Souls', 
-  		:description => 'First floor.', 
-  		:short_code => 'ils', 
-  		:capacity => 30, 
-  		:facilities => 'Teaching pod'
+  		:name => 'Combe Gibbet', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'GIB', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		}, :without_protection => true
   	)
   	room6 = Room.create({
-  		:name => 'Pan\'s Labyrinth', 
-  		:description => 'First floor.', 
-  		:short_code => 'lab', 
-  		:capacity => 30,
-  		:facilities => 'Teaching pod, Lecture capture'
+  		:name => 'Greenham Common', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'GRN', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		}, :without_protection => true
   	)
   	room7 = Room.create({
-  		:name => 'The Black Lagoon', 
-  		:description => 'First floor.', 
-  		:short_code => 'blk', 
-  		:capacity => 30, 
-  		:facilities => 'Teaching pod, intermittent Lecture capture'
+  		:name => 'Goring Gap', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'GAP', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		}, :without_protection => true
   	)
   	room8 = Room.create({
-  		:name => 'Burkittsville', 
-  		:description => 'Second floor.', 
-  		:short_code => 'bkv', 
-  		:capacity => 30, 
-  		:facilities => 'Teaching pod'
+  		:name => 'The Holies', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'HOL', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		}, :without_protection => true
   	)
   	room9 = Room.create({
-  		:name => 'Eastwick', 
-  		:description => 'Second floor.', 
-  		:short_code => 'ewk', 
-  		:capacity => 30, 
-  		:facilities => 'Teaching pod'
+  		:name => 'Lardon Chase', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'LAR', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		}, :without_protection => true
   	)
   	room10 = Room.create({
-  		:name => 'Sleepy Hollow', 
-  		:description => 'Second floor.', 
-  		:short_code => 'slh', 
-  		:capacity => 30, 
-  		:facilities => 'Teaching pod'
+  		:name => 'Blake\'s Lock', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'LOK', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
   		}, :without_protection => true
   	)
+  	room11 = Room.create({
+  		:name => 'Lough Down', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'LOU', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
+  		}, :without_protection => true
+  	)  	
+  	room12 = Room.create({
+  		:name => 'The Ridgeway', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'RID', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
+  		}, :without_protection => true
+  	)  	
+  	room13 = Room.create({
+  		:name => 'Walbury Hill', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'WAL', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
+  		}, :without_protection => true
+  	)
+  	room14 = Room.create({
+  		:name => 'Watermill Theatre', 
+  		:description => '[description and directions required]', 
+  		:short_code => 'WAT', 
+  		:capacity => 1,  
+  		:facilities => '[details required]',
+  		}, :without_protection => true
+  	)  	
   	
   	puts "Total Rooms: " + Room.all.count.to_s
   	puts "ID of first Room: " + Room.all.first.id.to_s
