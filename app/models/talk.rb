@@ -44,15 +44,19 @@ class Talk < ActiveRecord::Base
 	end
 
 	def is_unscheduled
-		if (slot == nil)
+		if (self.slot.nil?)
 			return true
 		end
 		return false
 	end
 	
+	# Assigns this talk to the slot specified
+	# as long as that slot is empty
 	def schedule(target_slot)
 	  if (target_slot.is_empty?)
       self.slot = target_slot
+	  else
+	    # do nothing
 	  end	  
 	end
 	

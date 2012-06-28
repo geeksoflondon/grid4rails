@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe Timeslot do
+  
+  subject { FactoryGirl.build(:timeslot) }
+    it { should be_valid }
+      
+    describe "associations" do
+      it { should have_many(:slots) }
+    end
+    
+    describe "validations" do
+      pending
+    end
+  
 
   before(:each) do
       
@@ -10,99 +22,111 @@ describe Timeslot do
   end
   
   describe "#slot_by_room(room)" do
-    # pending
+    
+    it "returns a single slot" do
+      pending
+    end
+    
+    it "returns a slot belonging to this timeslot" do
+      pending
+    end
+    
+    it "returns a slot belonging to the room specified" do
+      pending
+    end
+    
   end
   
   describe "#on_now?" do
-    # pending
+    pending
   end  
     
   describe "#on_next?" do
-    # pending
+    pending
   end  
   
   describe "#next" do
-    # pending
+    pending
   end  
   
   describe "#prev" do
-    # pending
+    pending
   end  
   
   describe "#duration_in_minutes" do
-    # pending
+    pending
   end
   
   describe "#contains_empty_slot?" do
-    # pending
+    pending
   end  
   
   describe "#global_talk" do
-    # pending
+    pending
   end  
   
   describe "#has_global_talk" do
-    # pending
+    pending
   end  
   
   describe "#slots_for_display(room, empty)" do
-    # pending
+    pending
   end  
   
   describe ".generate!(session_no, num_timeslots, start_time, session_duration, break_duration)" do
-    # pending
+    pending
   end  
   
   describe ".past" do
-    # pending
+    pending
   end
       
   describe ".upcoming" do
-    # pending
+    pending
   end
   
   describe ".on_now" do
-    # pending
+    pending
   end      
 
   describe ".on_next" do
-    # pending
+    pending
   end  
 
   describe ".today" do
-    # pending
+    pending
   end    
   
   describe ".first_day" do
-    # pending
+    pending
   end  
   
   describe ".by_date(date_in)" do
-    # pending
+    pending
   end  
   
   describe ".by_day(name)" do
-    # pending
+    pending
   end  
   
   describe ".dates" do
-    # pending
+    pending
   end    
   
   describe ".start_date" do
-    # pending
+    pending
   end    
   
   describe ".end_date" do
-    # pending
+    pending
   end    
   
   describe ".auto_date" do
-    # pending
+    pending
   end  
     
   describe ".non_assignables" do
-    # pending
+    pending
   end   
   
 end

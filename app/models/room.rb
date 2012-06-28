@@ -21,7 +21,7 @@ class Room < ActiveRecord::Base
 
 	validates :capacity,
 	:presence => true,
-	:numericality => { :only_integer => true }
+	:numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
 
 	def slots
 		Slot.find_all_by_room_id(id)
@@ -43,5 +43,5 @@ class Room < ActiveRecord::Base
 		end
 		return false
 	end
-
+	
 end

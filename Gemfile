@@ -54,9 +54,10 @@ group :development do
 end
 
 group :test do 
-  gem "factory_girl_rails", "~> 3.0"
+  gem "factory_girl_rails", ">= 3.0"
   gem "cucumber-rails", ">= 1.2.1", :require => false
   gem "capybara", ">= 1.1.2"
+  gem "shoulda"
   gem "database_cleaner"
   gem 'timecop'
 end
@@ -65,6 +66,6 @@ group :production do
 end
 
 group :development, :test do
-	gem "rspec-rails", ">= 2.8.1"
+	gem "rspec-rails", ">= 2.10.1"
 	gem "launchy"
 end

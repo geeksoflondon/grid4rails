@@ -10,7 +10,8 @@ FactoryGirl.define do
     short_code    { FactoryGirl.generate(:room_short_code) }
     capacity      { "10" }
       
-  end 
+  end
+   
 end
 
 FactoryGirl.define do
