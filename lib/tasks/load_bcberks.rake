@@ -39,136 +39,213 @@ namespace :db do
   	# Room specs: https://geeksoflondon.basecamphq.com/projects/7251895-barcamp-london-9/posts/52762583/comments
   	# Naming scheme: https://geeksoflondon.basecamphq.com/projects/7251895-barcamp-london-9/cat/73463514/posts
   	
-  	room_a = Room.create({
+  	room_a = Room.create(
+  		{
 	  		:name => 'Everywhere', 
 	  		:description => 'Any and all rooms (assuming it\'s not out-of-bounds and there\'s no other talk scheduled in it)', 
 	  		:short_code => 'any', 
 	  		:capacity => 250, 
 	  		:include_in_grid => false
-		}, :without_protection => true
+		}, 
+		:without_protection => true
   	)
-  	room_b = Room.create({
-  		:name => 'Windsor Great Park', 
-  		:description => 'The common room. On the top floor.', 
-  		:short_code => 'PRk', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		:include_in_grid => false
-  		}, :without_protection => true
+  	room_b = Room.create(
+  		{
+	  		:name => 'The Atrium', 
+	  		:description => 'On the ground floor, in the middle of the building. This is where you can chill, chat, watch the tennis or F1 and check the grid.', 
+	  		:short_code => 'ATR', 
+	  		:capacity => 1,  
+	  		:facilities => 'TVs, digital grid screen',
+	  		:include_in_grid => false
+  		}, 
+  		:without_protection => true
   	)
-  	room1 = Room.create({
-  		:name => 'Calleva Atrebatum ', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'ATR', 
-  		:capacity => 1, 
-  		:facilities => '[details required]'
-  		}, :without_protection => true
-  	)
-  	room2 = Room.create({
-  		:name => 'Windsor Castle', 
-  		:description => '[description and directions required]',  
-  		:short_code => 'CAS', 
-  		:capacity => 1, 
-  		:facilities => '[details required]'
-  		}, :without_protection => true
-  	)
-  	room3 = Room.create({
-  		:name => 'Donnington Castle', 
-  		:description => '[description and directions required]',  
-  		:short_code => 'DON', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-    room4 = Room.create({
-      :name => 'Frogmore', 
-      :description => '[description and directions required]', 
-      :short_code => 'FRG', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-      }, :without_protection => true
-    )  	
-  	room5 = Room.create({
-  		:name => 'Combe Gibbet', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'GIB', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-  	room6 = Room.create({
-  		:name => 'Greenham Common', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'GRN', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-  	room7 = Room.create({
-  		:name => 'Goring Gap', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'GAP', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-  	room8 = Room.create({
-  		:name => 'The Holies', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'HOL', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-  	room9 = Room.create({
-  		:name => 'Lardon Chase', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'LAR', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-  	room10 = Room.create({
-  		:name => 'Blake\'s Lock', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'LOK', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-  	room11 = Room.create({
-  		:name => 'Lough Down', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'LOU', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)  	
-  	room12 = Room.create({
-  		:name => 'The Ridgeway', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'RID', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)  	
-  	room13 = Room.create({
-  		:name => 'Walbury Hill', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'WAL', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)
-  	room14 = Room.create({
-  		:name => 'Watermill Theatre', 
-  		:description => '[description and directions required]', 
-  		:short_code => 'WAT', 
-  		:capacity => 1,  
-  		:facilities => '[details required]',
-  		}, :without_protection => true
-  	)  	
   	
+  	## Ground Floor, clockwise from Arena
+  	room1 = Room.create(
+  		{
+	  		:name => 'The Arena', 
+	  		:description => 'Best A/V Setup in building.  On the ground floor, in the East River zone.', 
+	  		:short_code => 'ARN', 
+	  		:capacity => 40, 
+	  		:facilities => 'Projector'
+  		}, 
+  		:without_protection => true
+  	)
+  	room2 = Room.create(
+  		{
+  			:name => 'The Blueroom', 
+  			:description => 'Simple board room style.  On the ground floor, in the East River zone.',  
+	  		:short_code => 'BLU', 
+	  		:capacity => 20, 
+	  		:facilities => 'Projector'
+  		}, 
+  		:without_protection => true
+  	)
+    room4 = Room.create(
+    	{
+	    	:name => 'Maria Luisa Park', 
+	    	:description => 'On the ground floor, in the Atrium zone.',
+	    	:short_code => 'MAR', 
+  			:capacity => 20,  
+  			:facilities => 'Plasma screen',
+		}, 
+		:without_protection => true
+    )
+    room5 = Room.create(
+  		{
+	  		:name => 'Oak Hill', 
+	  		:description => 'On the ground floor, in the Atrium zone', 
+	  		:short_code => 'OAK', 
+	  		:capacity => 8,  
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)
+  	room3 = Room.create(
+  		{
+	  		:name => 'Whittington Park', 
+	  		:description => 'On the ground floor, in the Atrium zone.',
+	  		:short_code => 'WHI', 
+	  		:capacity => 8,  
+	  		:facilities => 'No A/V',
+  		}, 
+  		:without_protection => true
+  	)	  	
+  	# Alameda Park ???
+  	    
+    ## First floor, clockwise from 
+  	room11 = Room.create(
+  		{
+	  		:name => 'Haynes Park', 
+	  		:description => 'In the East River zone, on the first floor.', 
+	  		:short_code => 'HAY', 
+	  		:capacity => 8,  
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  
+  	room9 = Room.create(
+  		{
+	  		:name => 'Gately Park', 
+	  		:description => 'In the East River zone, on the first floor.',  
+	  		:short_code => 'GAT', 
+	  		:capacity => 14,  
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  		
+  	room10 = Room.create(
+  		{
+	  		:name => 'Manor House', 
+	  		:description => 'This room has an awesome view.  In the East River zone, on the first floor.', 
+	  		:short_code => 'MAN', 
+	  		:capacity => 10,  
+	  		:facilities => 'Whiteboards',
+  		}, 
+  		:without_protection => true
+  	)         
+  	room12 = Room.create(
+  		{
+	  		:name => 'Nutall Park', 
+	  		:description => 'In the East River zone, on the first floor.', 
+	  		:short_code => 'NUT', 
+	  		:capacity => 8,  
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  	  	
+	room13 = Room.create(
+  		{
+	  		:name => 'Springburn Park', 
+	  		:description => 'In the East Quarter, on the first floor.', 
+	  		:short_code => 'SPR', 
+	  		:capacity => 12,  
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  	
+  	room6 = Room.create(
+  		{
+	  		:name => 'The Lab', 
+	  		:description => 'In the East Quarter, on the first floor.', 
+	  		:short_code => 'LAB', 
+	  		:capacity => 20,  
+	  		:facilities => '72" Smart Plasma TV, XBOX 360, Apple TV, Visualiser',
+  		}, 
+  		:without_protection => true
+  	)
+  	room15 = Room.create(
+  		{
+	  		:name => 'Wimbledon Common', 
+	  		:description => 'In the East Quarter, on the first floor.  Watch out for Wombles.',  
+	  		:short_code => 'WIM', 
+	  		:capacity => 8,    
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  	  	   	  	
+	room14 = Room.create(
+  		{
+	  		:name => 'Parc Guinardo', 
+	  		:description => 'In the East Quarter, on the first floor.',  
+	  		:short_code => 'GUI', 
+	  		:capacity => 14,    
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  	  	
+	room8 = Room.create(
+  		{
+	  		:name => 'St Stephens Green', 
+	  		:description => 'In the East End zone, on the first floor.', 
+	  		:short_code => 'STE', 
+	  		:capacity => 8,  
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  	
+  	room16 = Room.create(
+  		{
+	  		:name => 'Kelston Park', 
+	  		:description => 'In the East Quarter, on the first floor.',  
+	  		:short_code => 'KEL', 
+	  		:capacity => 14,    
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)  	
+	room7 = Room.create(
+  		{
+	  		:name => 'Abbey Park', 
+	  		:description => 'In the East Park zone, on the first floor.', 
+	  		:short_code => 'ABB', 
+	  		:capacity => 8,  
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)
+  	room17 = Room.create(
+  		{
+	  		:name => 'Upton Court Park', 
+	  		:description => 'In the East Beach zone, on the first floor.',  
+	  		:short_code => 'UPT', 
+	  		:capacity => 12,    
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)      	
+	room18 = Room.create(
+  		{
+	  		:name => 'Petrin Gardens', 
+	  		:description => 'In the East Beach zone, on the first floor.',    
+	  		:short_code => 'PET', 
+	  		:capacity => 12,    
+	  		:facilities => 'Projector',
+  		}, 
+  		:without_protection => true
+  	)
+  	    	
   	puts "Total Rooms: " + Room.all.count.to_s
   	puts "ID of first Room: " + Room.all.first.id.to_s
   	
