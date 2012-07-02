@@ -44,7 +44,8 @@ gem 'newrelic_rpm'
 
 ##### Realtime foo
 
-gem 'pubnub-ruby'
+gem 'pubnub-ruby', "0.0.5"
+gem 'json'
 
 
 ##### Environment-specific
