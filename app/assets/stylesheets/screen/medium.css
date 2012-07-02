@@ -148,7 +148,7 @@ input,
 -----------------------------*/
 
 #top {
-	border-bottom: 3px solid #4F2918;
+	border-bottom: 3px solid;
 }
 
 body.grid #top,
@@ -188,6 +188,11 @@ body#talk-move #top {
     position: absolute;
     top: 9px;
     right: 9px;
+}
+
+#footer {  
+  border-width: 3px 0;
+  border-style: solid;  
 }
 
 #footer .version-switcher {

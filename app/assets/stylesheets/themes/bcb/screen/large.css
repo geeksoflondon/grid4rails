@@ -1,0 +1,114 @@
+/* Basic background rules
+-----------------------------*/
+
+html,
+#header {
+  background-color: #486DA1;
+}
+
+#footer {
+  background-color: #67BD45;    
+}
+
+
+/* Basic form rules (inc. pseudo form elements)
+-----------------------------*/
+
+form .field_with_errors input[type=text], 
+form .field_with_errors textarea {
+  border-color: #990000; /* ws */
+}
+
+form input[type=text],
+form textarea {  
+  border-color: #999999; /* ws */    
+}
+
+
+/* Layout
+-----------------------------*/
+
+#top,
+#body {
+    border-bottom-color: #486DA1; /* ws */
+}
+
+#body {
+    border-top: none;
+}
+
+#footer {
+  border-color: #529936; /* ws */ 
+}
+
+#top {
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+  box-shadow: 0px 3px 6px 0px rgba(60, 60, 60, 0.5);
+}
+
+
+/* FEATURE: Header
+-----------------------------*/
+
+#header #core-options {
+	background-color: transparent;
+} 
+
+
+/* FEATURE: Footer
+-----------------------------*/
+
+#footer .nav li {
+    border-color: #cccccc; /* ws */
+}
+
+
+/* FEATURE: Version Switcher
+-----------------------------*/
+
+.version-switcher,
+.version-switcher .heading,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+  color: #ffffff;
+}
+
+
+/* FEATURE: Timeslot scroller
+-----------------------------*/
+
+.scroller {  
+  color: #cccccc; /* ws */
+}
+
+.scroller a {
+  color: #333333; /* ws */
+}
+
+.scroller .arrows {
+  color: #cccccc; /* ws */
+}
+
+
+/* VIEW: Schedule Talk
+-----------------------------*/
+
+#talk-assign table.grid tr.even .empty {
+  background-color: #fafafa; /* ! */
+}
+
+#talk-assign table.grid tr.odd .empty {
+  background-color: #ffffff;
+}
+
+
+/* FEATURE: Create/Edit Talk Form
+-----------------------------*/
+
+body.talks #main fieldset.actions {
+    border-color: #cccccc; /* ws */
+}

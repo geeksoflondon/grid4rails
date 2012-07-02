@@ -1,0 +1,128 @@
+/* Basic form rules
+-----------------------------*/
+
+.actions a {
+    background-color: #cccccc; /* ws */
+    color: #333333; /* ws */
+}
+
+
+/* FEATURE: Header
+-----------------------------*/
+
+#header {
+    border-bottom-color: #000000;
+}
+
+#header .branding {
+    background-color: #336699;
+    border-bottom-width: 3px;
+    border-bottom-color: #6699cc;
+    padding-bottom: 2px;    
+}
+
+#header .skip-down {
+    border-top: 3px solid #000000;
+}
+
+
+/* FEATURE: Footer
+-----------------------------*/
+
+#footer {
+    border-top-color: #000000;    
+}
+
+
+/* FEATURE: Scrollers
+-----------------------------*/
+
+.scroller {
+    background-color: #99ccff; /* ws */ 
+    color: #000000;
+    border-color: #66ccff; /* wc */
+}
+.scroller a,
+.scroller a:link,
+.scroller a:visited,
+.scroller a:hover,
+.scroller a:focus,
+.scroller a:active {
+    color: #000000;
+}
+
+
+/* FEATURE: Version Switcher
+-----------------------------*/
+
+.version-switcher {   
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.version-switcher .heading,
+.version-switcher a:link,
+.version-switcher a:visited,
+.version-switcher a:hover,
+.version-switcher a:focus,
+.version-switcher a:active {
+    color: #ffffff;
+}
+
+#footer .version-switcher .delimiter {
+    border-color: #666666; /* ws */
+}
+
+
+/* FEATURE: Skippers
+-----------------------------*/
+
+.skip-up {
+    border-bottom-color: #000000;
+}
+
+
+/* FEATURE: the grid
+-----------------------------*/
+
+hr {
+	color: #eff7e7;
+	background-color: #eff7e7;
+}
+
+div.grid .timeslot .header {  
+    background-color: #e7eff7; /* wc */
+    color: #000000;
+}
+
+div.grid .timeslot .header .context,
+div.grid .timeslot .header .day { 
+	color: #336666; /* ws */
+}
+
+div.grid .talk,
+div.grid .empty {
+    border-color: #cccccc; /* ws */
+}
+
+.grid .slot .empty .heading{
+    color: #999999; /* ws */
+}
+
+.grid .slot .empty .skip-to-empty {
+    color: #555555; /* ws */
+}
+
+div.grid .talk .description {
+	color: #333333;
+}
+
+.grid .talk .where-when .start,
+.grid .empty .where-when .start {
+	color: #555555;
+}
+
+.grid .slot .actions {
+    background-color: #ffffff;
+    border-color: #333333; /* ws */ 
+}

@@ -1,12 +1,14 @@
 module ApplicationHelper
 	
 	def event
-		"bcl9"		
+		"bcb"		
 	end
 	
 	def theme		
 		event_code = event()
 		case event_code
+    when "bcb"
+      return "bcb"
 		when "bcl9"
 			return "bcl9"
 		when "mediacity"
