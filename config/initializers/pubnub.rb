@@ -5,7 +5,7 @@ subscribe_key = ENV['PUBNUB_SUBSCRIBE_KEY'] || 'demo'
 secret_key    = ENV['PUBNUB_SECRET_KEY'] || ''
 ssl_on        = false
 
-PUBNUB_CHANNEL = 'griddy'.freeze
+PUBNUB_CHANNEL = 'griddy'
 
 ## -----------------------------------------
 ## Create Pubnub Client API (INITIALIZATION)
