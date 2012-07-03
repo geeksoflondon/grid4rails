@@ -170,7 +170,7 @@ body.talks #main {
 #header .skip-to-versions a:focus,
 #header .skip-to-versions a:active {
     padding-right: 19px;    
-    background-image: url("/images/themes/default/icons/version/large_small.png");
+    background-image: image-url("themes/default/icons/version/large_small.png");
 }
 
 
@@ -252,7 +252,7 @@ body.talks #main {
 }
 
 #header .nav li a.add {
-  background-image: url("/images/themes/default/icons/add.png");
+  background-image: image-url("themes/default/icons/add.png");
   background-repeat: no-repeat;
   background-position: center left;
   padding-left: 22px;
@@ -306,15 +306,15 @@ body.talks #main {
 }
 
 .instructions {  
-  background-image: url("/images/themes/default/icons/info.png");      
+  background-image: image-url("themes/default/icons/info.png");      
 }
 
 .notice { 
-  background-image: url("/images/themes/default/icons/confirmation.png");      
+  background-image: image-url("themes/default/icons/confirmation.png");      
 }
 
 .warning {
-  background-image: url("/images/themes/default/icons/info.png");    
+  background-image: image-url("themes/default/icons/info.png");    
 }
 
 .message form {

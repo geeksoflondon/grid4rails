@@ -1,7 +1,7 @@
 <% if (@version == 's' && @page_id != "room") %>
 	<p class="skip-to-empty skip-down hide">		
 		<a name="empty-0" href="#empty-1" title="Skip to the first empty slot">
-			<img class="icon" width="14" height="8" src="/images/themes/default/arrows/down_14x8.png" alt="An arrow pointing downwards" />
+			<img class="icon" width="14" height="8" src="<%= image_path('themes/default/arrows/down_14x8.png') %>" alt="An arrow pointing downwards" />
 			<span class="label">first empty slot</span>
 		</a>
 	</p>
@@ -80,7 +80,7 @@
 </div>
 <% if (@page_id != "room" && (@timeslot.contains_empty_slot? unless @timeslot.nil?)) %>
 	<p id="empty-<%= @empty_slot_index %>" class="skip skip-to-empty skip-to-empty-last">
-		<img class="icon" width="14" height="8" src="/images/themes/default/arrows/up_14x8.png" alt="An arrow pointing upwards" />		
+		<img class="icon" width="14" height="8" src="<%= image_path('themes/default/arrows/up_14x8.png') %>" alt="An arrow pointing upwards" />		
 		<a href="#empty-0 %>">first empty</a>
 		<span class="delimiter"> | </span>
 		<a href="#empty-<%= @empty_slot_index - 1 %>">last empty</a>

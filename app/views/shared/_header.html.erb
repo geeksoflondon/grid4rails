@@ -3,7 +3,7 @@
 		<% @header = true %>
 		<p class="branding"><a href="/" accesskey="h" title="Home page (h)"><img src="<%= url_for_logo %>" height="35" alt="Event Logo" /></a></p>
 		<% if (@version == "s") %>
-			<p class="skip-down hide"><img src="/images/themes/default/arrows/down_28x15.png" class="icon" width="28" height="15" alt="An arrow pointing downwards" /><a href="#options" title="Skip to site options">options</a></p>
+			<p class="skip-down hide"><img src="<%= image_path('themes/default/arrows/down_28x15.png') %>" class="icon" width="28" height="15" alt="An arrow pointing downwards" /><a href="#options" title="Skip to site options">options</a></p>
 		<% else %>
 			<p class="skip-to-versions"><a href="#version-switcher"><span class="title">Version</span></a></p>
 			<%= render '/shared/nav/global' %>

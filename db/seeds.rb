@@ -15,7 +15,7 @@ Slot.delete_all
 Talk.delete_all
 
 #Clear down redis
-REDIS.keys('*').each do |key| REDIS.del(key) end
+$redis.keys('*').each do |key| $redis.del(key) end
 
 puts "Total Timeslots: " + Timeslot.all.count.to_s
 puts "Total Rooms: " + Room.all.count.to_s

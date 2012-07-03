@@ -1,22 +1,20 @@
-/* Basic background rules
------------------------------*/
-
-#footer {
-  background-color: #67BD45;    
-}
-
 /* Basic link rules
 -----------------------------*/
 
 a:link,
-a:visited {	
-    border-bottom-color: #999999; /* ws */
+a:visited,
+#header .skip-to-versions a:link .title,
+#header .skip-to-versions a:visited .title {	
+    border-bottom-color: #999999;
 }
 
 a:hover,
 a:focus,
-a:active {	
-	border-bottom-color: #999999; /* ws */
+a:active,
+#header .skip-to-versions a:hover .title,
+#header .skip-to-versions a:focus .title,
+#header .skip-to-versions a:active .title {	
+	border-bottom-color: #999999;
 }
 
 
@@ -25,27 +23,27 @@ a:active {
 
 form input,
 form textarea {
-  border-color: #cccccc; /* ws */
+  border-color: #cccccc;
 }
 
 .actions p {
-  border-color: #cccccc; /* ws */
+  border-color: #cccccc;
 }
 
 .actions a {
-    background-color: #dddddd; /* wc */
-    color: #333333; /* ws */    
+    background-color: #DDDDDD;
+    color: #333333;    
 }
 
 input.green,
 .actions a.green {     
-    background-color: #99cc33; /* wc */
+    background-color: #99cc33; /* Green */
     color: #ffffff;    
 }
 
 input.orange,
 .actions a.orange {
-    background-color: #FF8C00; /* wc */
+    background-color: #f78d1d; /* Orange */
     color: #ffffff;
 }
 
@@ -53,33 +51,40 @@ input.orange,
 /* FEATURE: Header
 -----------------------------*/
 
-#top,
 #header {
-    background-color: #486DA1;
+    background-color: #000000; /* #000000 */
 }
 
 #header .skip-to-versions a:link,
 #header .skip-to-versions a:visited,
 #header .skip-to-versions a:hover,
 #header .skip-to-versions a:focus,
-#header .skip-to-versions a:active,
-#header .skip-to-versions a:link .title,
-#header .skip-to-versions a:visited .title,
-#header .skip-to-versions a:hover .title,
-#header .skip-to-versions a:focus .title,
-#header .skip-to-versions a:active .title {
+#header .skip-to-versions a:active {
     background-color: inherit;
-    color: #ffffff; /* wc */ 
+    color: #dddddd;  
+    background-color: transparent;   
 }
 
-.scroller,
-#top {
-     border-color: #38557E;
+#header .nav li a,
+#header .nav li a.add span {
+    border-bottom-color: #000000;
+}
+
+#header .nav li.selected a,
+#header .nav li.selected a.add span {
+    border-bottom-color: #ffffff;
+}
+
+#header .nav li a:hover,
+#header .nav li a:focus,
+#header .nav li a.add:hover span,
+#header .nav li a.add:focus span {
+    border-bottom-color: red;
 }
 
 /* Logo */
 #header .page-title a {    
-    background-image: url('/images/themes/mediacity/logo.png');
+    background-image: image-url("themes/mediacity/logo.png");
     background-repeat: no-repeat;    
 }
 
@@ -87,14 +92,10 @@ input.orange,
 /* FEATURE: Footer
 -----------------------------*/
 
-#footer {  
-  border-color: #529936;
-}
-
 #footer .nav,
 #footer .version-switcher {
-    background-color: inherit;
-    color: #ffffff;
+    background-color: #000000; /* #000000 */
+    color: #ffffff; /* #ffffff */
 }
 
 #footer .heading,
@@ -109,25 +110,30 @@ input.orange,
 .version-switcher a:focus,
 .version-switcher a:active {
     background-color: inherit;
-    color: #ffffff;
+    color: #ffffff; /* #ffffff */
 }
 
-#footer a:link,
-#footer a:visited,
-#footer a:hover,
-#footer a:focus,
-#footer a:active {
-    border-bottom-color: #ffffff;
-}
 
 /* FEATURE: Global Navigation
 -----------------------------*/
+
+/* In Header */
+
+#header .nav,
+#header .nav a:link,
+#header .nav a:visited,
+#header .nav a:hover,
+#header .nav a:focus,
+#header .nav a:active {
+    background-color: inherit;
+    color: #ffffff;
+}
 
 /* In Footer */
 
 #footer .nav .delimiter,
 #footer .version-switcher .delimiter {
-    border-color: #669933; /* ws */
+    border-color: #555555;
 }
 
 
@@ -135,8 +141,9 @@ input.orange,
 -----------------------------*/
 
 .scroller {
-    background-color: #000033;
-    color: #fcfcfc; /* ! */
+    background-color: #000000; /* #f5f5f5 */
+    color: #fcfcfc;
+    border-color: #555555; /* #555555 */   
 }
 
 .scroller a:link,
@@ -152,13 +159,22 @@ input.orange,
     border-bottom-color: #000000;
 }
 
+.scroller a.selected span {
+    border-bottom-color: #ffffff;
+}
+
+.scroller a:hover span,
+.scroller a:focus span {
+    border-bottom-color: red;
+}
+
 
 /* FEATURE: Skippers
 -----------------------------*/
 
 
 .skip-up {
-    border-bottom-color: #000000;
+    border-bottom-color: #000000; /* #000000 */
 }
 
 
@@ -166,15 +182,25 @@ input.orange,
 -----------------------------*/
 
 .message {          
-    background-color: #C9E2AE; /* ! */      
-}
-
-.instructions {   
-  background-color: #99cc99; /* ws */   
+    background-color: #C9E2AE;         
 }
 
 .warning {
-  	background-color: #F9EEEE; /* WS */
+	color: #7E2B29;
+  	background-color: #F9EEEE;
+}
+
+#error_explanation li {
+  color: #a00;
+}
+
+.message,
+.message p {
+    color: #444;    
+}
+
+.message .actions {
+	background-color: #ffffff;	
 }
 
 
@@ -183,21 +209,21 @@ input.orange,
 
 table.grid td, 
 table.grid th {
-    border-color: #cccccc; /* WS */
+    border-color: #cccccc;
 }
 
 table.grid th {  
-    background-color: #f5f5f5; /* WC */
+    background-color: #f5f5f5;
     color: #000000;       
 }
 
 table.grid tr.even th,
 table.grid th.odd {
-    background-color: #eeeeee; /* ! */
+    background-color: #eeeeee;
 }
 
 table.grid tr.even {
-  background-color: #fafafa; /* ! */
+  background-color: #fafafa;
 }
 
 table.grid tr.odd {
@@ -206,19 +232,14 @@ table.grid tr.odd {
 
 /* Room headings */
 
+table.grid th.room .shortcode,
 table.grid th.room .heading a:link,
 table.grid th.room .heading a:visited,
 table.grid th.room .heading a:hover,
 table.grid th.room .heading a:focus,
 table.grid th.room .heading a:active {
   background-color: inherit;
-  color: #336699; /* ws */
-}
-
-/* Dark Brown */
-#room .grid .timeslot .header .context,
-table.grid th.room .shortcode {
-	color: #336666; /* ws */
+  color: #660000;
 }
 
 /* Talk */
@@ -235,7 +256,7 @@ table.grid .talk .title a:active {
 /* Break slots */
 
 table.grid .locked {
-    background: #ffffff url("/images/themes/bcb/locked_slot_bg.gif") repeat;
+    background-color: #ffffcc;
 }
 
 /* Empty slots */
@@ -246,14 +267,13 @@ table.grid .empty .where-when a:visited,
 table.grid .empty .where-when a:hover,
 table.grid .empty .where-when a:focus,
 table.grid .empty .where-when a:active {
-    color: #333333; /* ws */
+    color: #444444; 
 }
-
 
 /* On now */
 
 table.grid td.now {
-    background-color: #e0efe1; /* ! */
+    background-color: #e0efe1;
 }
 
 /* Single time-slot view */
@@ -268,79 +288,33 @@ table.single-timeslot .where-when span,
 	color: #000000;
 }
 
-
+#room .grid .timeslot .header .context,
 table.single-timeslot .empty .where-when a:link,
 table.single-timeslot .empty .where-when a:visited,
 table.single-timeslot .empty .where-when a:hover,
 table.single-timeslot .empty .where-when a:focus,
 table.single-timeslot .empty .where-when a:active {
-	color: #cc6600; /* ws */
+	color: #7E2B29
 }
-
 
 
 /* VIEW: Room
 -----------------------------*/
 
 #room .grid .timeslot .header {
-	background-color: #F5F5F5; /* wc */
+	background-color: #F5F5F5;
     color: #000000;
 }
 
+#room .grid .slot .heading {
+    color: #666666;
+}
 
-
-
-/* Links */
-
-
+#room .grid a, 
 #room .grid a:link, 
 #room .grid a:visited,
 #room .grid a:hover, 
 #room .grid a:focus, 
 #room .grid a:active {
     color: #000000;
-}
-
-#header .nav,
-#header .nav a:link,
-#header .nav a:visited,
-#header .nav a:hover,
-#header .nav a:focus,
-#header .nav a:active {
-    background-color: inherit;
-    color: #ffffff;
-}
-
-.scroller a.selected span,
-#header .nav li.selected a:link span,
-#header .nav li.selected a:visited span {
-	border-bottom-color: #ffff33; /* ws */
-}
-
-#header .nav li a:link span,
-#header .nav li a:visited span,
-#header .nav li a:hover span,
-#header .nav li a:focus span,
-#header .nav li a:active span {
-    border-bottom-color: transparent;
-}
-
-#header .nav li a:hover span,
-#header .nav li a:focus span,
-#header .nav li a:active span,
-#header .nav li.selected a:hover span,
-#header .nav li.selected a:focus span,
-#header .nav li.selected a:active span,
-.scroller a:hover span,
-.scroller a:focus span,
-.scroller a:active span {
-    border-bottom-color: #ffffff;
-}
-
-/* FEATURE: Create/Edit Talk Form
------------------------------*/
-
-fieldset.details #char_count {
-  display: inline-block;
-  float: right;
 }

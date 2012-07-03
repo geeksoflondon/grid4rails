@@ -24,3 +24,4 @@
 .project
 Gemfile.lock
 /log
+/.sass-cache

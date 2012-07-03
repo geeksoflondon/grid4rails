@@ -70,8 +70,8 @@ class Slot < ActiveRecord::Base
   private
 
   def clear_cache
-    REDIS.keys("views/slot_#{self.id}*").each do |key|
-      REDIS.del(key)
+    $redis.keys("views/slot_#{self.id}*").each do |key|
+      $redis.del(key)
     end
   end
 

@@ -1,14 +1,14 @@
 <% @footer = true %>
 <% if (@version == "s") %>
-	<p class="skip-up hide"><img src="/images/themes/default/arrows/up_28x15.png" class="icon" width="28" height="15" alt="An arrow pointing upwards" /><a href="#header" title="Skip to the top of the page">top</a></p>
+	<p class="skip-up hide"><img src="<%= image_path('themes/default/arrows/up_28x15.png') %>" class="icon" width="28" height="15" alt="An arrow pointing upwards" /><a href="#header" title="Skip to the top of the page">top</a></p>
 <% end %>
 <div id="footer"> 
 	<% if (@version == "s") %>
-		<p class="skip-down hide"><img src="/images/themes/default/arrows/down_28x15.png" class="icon" width="28" height="15" alt="An arrow pointing downwards" /><a href="#version-switcher" title="Skip to the version switcher">versions</a></p>
+		<p class="skip-down hide"><img src="<%= image_path('themes/default/arrows/down_28x15.png') %>" class="icon" width="28" height="15" alt="An arrow pointing downwards" /><a href="#version-switcher" title="Skip to the version switcher">versions</a></p>
 	<% end %>
 	<%= render '/shared/nav/global' %>
 	<% if (@version == "s") %>		
-		<p class="skip-up hide"><img src="/images/themes/default/arrows/up_28x15.png" class="icon" width="28" height="15" alt="An arrow pointing upwards" /><a href="#header" title="Skip to the top of the page">top</a></p>
+		<p class="skip-up hide"><img src="<%= image_path('themes/default/arrows/up_28x15.png') %>" class="icon" width="28" height="15" alt="An arrow pointing upwards" /><a href="#header" title="Skip to the top of the page">top</a></p>
 	<% end %>
 	<%= render '/shared/nav/versions' %>
 	<p class="clear"><span class="hide"><a href="#header" title="Skip to the top of the page">top</a></span>

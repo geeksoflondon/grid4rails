@@ -136,11 +136,15 @@ module ApplicationHelper
 	end
 
 	def url_for_logo
-		path =  "/images/themes/#{theme}/logo"
-		if (@version == 's')
-			path = path + "_solid_bg"
-		end
-		path = path + ".png"
+	  
+	  asset_path = "themes/#{theme}/logo"
+    if (@version == 's')
+      asset_path = asset_path + "_solid_bg"
+    end
+    asset_path = asset_path + ".png"
+	  	  
+		path =  image_path(asset_path)
+		
 	end
 	
 	def show_when

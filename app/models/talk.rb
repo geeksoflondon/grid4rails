@@ -64,8 +64,8 @@ class Talk < ActiveRecord::Base
 
 	def clear_cache
 		unless self.slot.nil?
-			REDIS.keys("views/slot_#{self.slot.id}*").each do |key|
-				REDIS.del(key)
+      $redis.keys("views/slot_#{self.slot.id}*").each do |key|
+        $redis.del(key)
 			end
 		end
 	end
