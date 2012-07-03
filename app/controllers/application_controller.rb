@@ -41,7 +41,9 @@ class ApplicationController < ActionController::Base
 		
 		## If @version still doesn't have a value,
 		## default to small
-		@version ||= "s"
+		## @version ||= "s"
+		## default to large
+    @version ||= "l"
 		
 		## If the stored value doesn't match the value of @version,
 		## update the stored value to match @version
@@ -52,11 +54,13 @@ class ApplicationController < ActionController::Base
 		## Ensure that the current version is
 		## available as a parameter
 		params[:version] = @version
-			
-		if (cookies[:version_check].to_s == 'true' || version_check == true)
-			@page_id = 'version-check'
-			render 'application/version'			
-		end
+		
+		### Disable initial version check ###  	
+    cookies[:version_check] = false
+		# if (cookies[:version_check].to_s == 'true' || version_check == true)
+		#	  @page_id = 'version-check'
+		# 	render 'application/version'			
+		# end
 		
 	end
 
