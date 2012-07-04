@@ -145,6 +145,8 @@ module ApplicationHelper
 	  	  
 		path =  image_path(asset_path)
 		
+		return path
+		
 	end
 	
 	def show_when
