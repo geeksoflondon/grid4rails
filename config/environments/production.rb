@@ -45,7 +45,12 @@ Griddy::Application.configure do
   config.cache_store = :redis_store, ENV["REDISTOGO_URL"]
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-	config.action_controller.asset_host = "http://d3m5f8nndd1dly.cloudfront.net"
+  if ENV["DISABLE_CLOUDFRONT"] != "true"
+    puts("Enabling cloudfront")
+    config.action_controller.asset_host = "http://d3m5f8nndd1dly.cloudfront.net"
+  else
+    puts("Cloudfront disabled")
+  end	
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
