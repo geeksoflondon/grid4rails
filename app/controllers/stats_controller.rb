@@ -4,7 +4,7 @@ class StatsController < ActionController::Base
   def talks
                 
     @talks = Talk.find_attendee_talks.count
-    @slots_free = Slot.find_available.count
+    @slots_free = Slot.find_all_available_upcoming.count
       
     result = {:talks => @talks, :slots_free => @slots_free}
     render :json => result.to_json

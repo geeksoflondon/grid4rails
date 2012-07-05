@@ -44,14 +44,31 @@ class Slot < ActiveRecord::Base
     return @slots
   end
   
-  # Empty and unlocked
-  def self.find_available
+  # Empty and in the future (but not necessarily available)
+  def self.find_empty_upcoming
+    @slots = Array.new()
     
-    empty_slots = Slot.find_empty
+    upcoming_timeslots = Timeslot.upcoming
+    empty_slots.find_empty.each do | slot |
+      if (upcoming_timeslots.include?(slot.timeslot))
+        @slots << slot
+      end
+    end
+    return @slots
+    
+  end
+  
+  # Empty and unlocked (but not necessarily in the future)
+  def self.find_all_available
+    self.find_available(Slot.all)
+  end
+  
+  # Empty and unlocked from set of slots provided (but not necessarily in the future)
+  def self.find_available(slots_to_check)      
     
     @slots = Array.new()
-    empty_slots.each do | slot |
-      if (!slot.locked)
+    slots_to_check.each do | slot |
+      if (!slot.locked && slot.is_empty?)
         @slots << slot
       end
     end
@@ -59,6 +76,25 @@ class Slot < ActiveRecord::Base
     return @slots
   end
 
+  # Available and in the future
+  def self.find_all_available_upcoming
+    Slot.find_available_upcoming(Slot.all)    
+  end
+  
+  # Available and in the future
+  def self.find_available_upcoming(slots_to_check)      
+    
+    @slots = Array.new()
+    slots_to_check.each do | slot |
+      if (!slot.locked && slot.is_empty? && slot.timeslot.is_upcoming?)
+        @slots << slot
+      end
+    end
+    
+    return @slots
+    
+  end
+  
   def self.find_occupied
     Slot.select {|slot| !slot.is_empty?}
   end

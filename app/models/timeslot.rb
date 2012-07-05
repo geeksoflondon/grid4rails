@@ -42,6 +42,10 @@ class Timeslot < ActiveRecord::Base
   def on_next?
     self == Timeslot.on_next
   end
+  
+  def is_upcoming?
+      self.start >= Time.now
+  end
 
   # Returns the timeslot that immediately follows the current timeslot
   def next
@@ -61,7 +65,7 @@ class Timeslot < ActiveRecord::Base
   # Returns all timeslots that begin during the first day of the event
   def self.first_day
     Timeslot.by_date(Timeslot.all.first.start.to_date)
-  end
+  end    
 
   # Returns all timeslots that begin during date specified
   def self.by_date(date_in)
