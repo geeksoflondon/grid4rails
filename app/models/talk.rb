@@ -42,6 +42,26 @@ class Talk < ActiveRecord::Base
 	def self.by_updated
 		Talk.limit(50).order("updated_at DESC")
 	end
+	
+	# Returns all talks that aren't in a locked slot
+	def self.find_attendee_talks
+	  
+    all_talks = Talk.all
+    
+    @talks = Array.new()
+    all_talks.each do | talk |
+      slot = talk.slot
+      
+      puts(slot.locked).to_s
+      
+      if (!slot.locked)
+        @talks << talk
+      end
+    end
+    
+    return @talks
+	  
+	end
 
 	def is_unscheduled
 		if (self.slot.nil?)

@@ -1,10 +1,13 @@
 class StatsController < ActionController::Base
-
-	def talks
-		@talks = Talk.count - Slot.where('locked' => true).count
-		@slots_free = Slot.where('talk_id' => nil).count
-		render :layout => false, :content_type => 'application/xml'
-	end
+	
+	# All talks by attendees (doesn't include talks in locked slots)
+  def talks
+                
+      @talks = Talk.find_attendee_talks.count
+      @slots_free = Slot.find_available.count
+      
+      render :layout => false, :content_type => 'application/xml'
+  end
 
   def time_till
     t = Timeslot.on_next

@@ -33,6 +33,7 @@ class Slot < ActiveRecord::Base
 
   end
 
+  # Empty (but not necessarily available)
   def self.find_empty
     @slots = Array.new()
     Slot.all.each do | slot |
@@ -40,6 +41,21 @@ class Slot < ActiveRecord::Base
         @slots << slot
       end
     end
+    return @slots
+  end
+  
+  # Empty and unlocked
+  def self.find_available
+    
+    empty_slots = Slot.find_empty
+    
+    @slots = Array.new()
+    empty_slots.each do | slot |
+      if (!slot.locked)
+        @slots << slot
+      end
+    end
+    
     return @slots
   end
 
