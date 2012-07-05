@@ -16,7 +16,7 @@ Griddy::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -32,7 +32,7 @@ Griddy::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -42,7 +42,7 @@ Griddy::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
-  config.cache_store = :redis_store, ENV["REDISTOGO_URL"]
+  # config.cache_store = :redis_store, ENV["REDISTOGO_URL"]
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   if ENV["DISABLE_CLOUDFRONT"] != "true"
@@ -54,6 +54,11 @@ Griddy::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
+  config.assets.precompile += ['button.css', 'global.css', 'print.css', 'scaffold.css']
+  config.assets.precompile += ['screen/extra_large.css', 'screen/large.css', 'screen/medium.css', 'screen/shared.css', 'screen/small.css']
+  config.assets.precompile += ['themes/bcb/global.css', 'themes/bcb/screen/extra_large.css', 'themes/bcb/screen/large.css', 'themes/bcb/screen/medium.css', 'themes/bcb/screen/shared.css', 'themes/bcb/screen/small.css']
+  config.assets.precompile += ['themes/default/global.css', 'themes/default/screen/large.css', 'themes/default/screen/medium.css', 'themes/default/screen/shared.css', 'themes/default/screen/small.css']
+  config.assets.precompile += ['babble.js', 'jquery.min.js', 'pubnub.js', 'xl.js']
 	
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

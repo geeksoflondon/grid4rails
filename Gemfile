@@ -24,7 +24,6 @@ end
 #### Client-side
 
 gem 'jquery-rails'
-gem 'compass'
 gem 'haml' # for SASS
 
 

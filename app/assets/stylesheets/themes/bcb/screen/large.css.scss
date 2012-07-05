@@ -59,6 +59,12 @@ form textarea {
 /* FEATURE: Footer
 -----------------------------*/
 
+#footer .nav,
+#footer .version-switcher,
+#footer .heading {
+    /* color: #cccccc; *//* ws */
+}
+
 #footer .nav li {
     border-color: #cccccc; /* ws */
 }

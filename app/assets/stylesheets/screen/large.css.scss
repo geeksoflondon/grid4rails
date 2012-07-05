@@ -1,7 +1,7 @@
 /* See /stylesheets/README.txt for guidelines */
 
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
-@import url(../buttons.css);
+@import "buttons.css.scss";
 
 /* Custom hides (screenreader-friendly)
 -----------------------------*/
@@ -252,7 +252,7 @@ body.talks #main {
 }
 
 #header .nav li a.add {
-  background-image: image-url("themes/default/icons/add.png");
+  background-image: image-url('themes/default/icons/add.png');
   background-repeat: no-repeat;
   background-position: center left;
   padding-left: 22px;
