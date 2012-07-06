@@ -53,7 +53,7 @@ namespace :db do
   		{
 	  		:name => 'The Atrium', 
 	  		:description => 'On the ground floor, in the middle of the building. This is where you can chill, chat, watch the tennis or F1 and check the grid.', 
-	  		:short_code => 'ATR', 
+	  		:short_code => 'atr', 
 	  		:capacity => 1,  
 	  		:facilities => 'TVs, digital grid screen',
 	  		:include_in_grid => false
@@ -66,7 +66,7 @@ namespace :db do
   		{
 	  		:name => 'The Arena', 
 	  		:description => 'Best A/V Setup in building.  On the ground floor, in the East River zone.', 
-	  		:short_code => 'ARN', 
+	  		:short_code => 'arn', 
 	  		:capacity => 40, 
 	  		:facilities => 'Projector'
   		}, 
@@ -76,7 +76,7 @@ namespace :db do
   		{
   			:name => 'The Blueroom', 
   			:description => 'Simple board room style.  On the ground floor, in the East River zone.',  
-	  		:short_code => 'BLU', 
+	  		:short_code => 'blu', 
 	  		:capacity => 20, 
 	  		:facilities => 'Projector'
   		}, 
@@ -86,7 +86,7 @@ namespace :db do
     	{
 	    	:name => 'Maria Luisa Park', 
 	    	:description => 'On the ground floor, in the Atrium zone.',
-	    	:short_code => 'MAR', 
+	    	:short_code => 'mar', 
   			:capacity => 20,  
   			:facilities => 'Plasma screen',
 		}, 
@@ -96,7 +96,7 @@ namespace :db do
   		{
 	  		:name => 'Oak Hill', 
 	  		:description => 'On the ground floor, in the Atrium zone', 
-	  		:short_code => 'OAK', 
+	  		:short_code => 'oak', 
 	  		:capacity => 8,  
 	  		:facilities => 'Projector',
   		}, 
@@ -106,7 +106,7 @@ namespace :db do
   		{
 	  		:name => 'Whittington Park', 
 	  		:description => 'On the ground floor, in the Atrium zone.',
-	  		:short_code => 'WHI', 
+	  		:short_code => 'whi', 
 	  		:capacity => 8,  
 	  		:facilities => 'No A/V',
   		}, 
@@ -119,7 +119,7 @@ namespace :db do
   		{
 	  		:name => 'Haynes Park', 
 	  		:description => 'In the East River zone, on the first floor.', 
-	  		:short_code => 'HAY', 
+	  		:short_code => 'hay', 
 	  		:capacity => 8,  
 	  		:facilities => 'Projector',
   		}, 
@@ -129,7 +129,7 @@ namespace :db do
   		{
 	  		:name => 'Gately Park', 
 	  		:description => 'In the East River zone, on the first floor.',  
-	  		:short_code => 'GAT', 
+	  		:short_code => 'gat', 
 	  		:capacity => 14,  
 	  		:facilities => 'Projector',
   		}, 
@@ -139,7 +139,7 @@ namespace :db do
   		{
 	  		:name => 'Manor House', 
 	  		:description => 'This room has an awesome view.  In the East River zone, on the first floor.', 
-	  		:short_code => 'MAN', 
+	  		:short_code => 'man', 
 	  		:capacity => 10,  
 	  		:facilities => 'Whiteboards',
   		}, 
@@ -149,7 +149,7 @@ namespace :db do
   		{
 	  		:name => 'Nutall Park', 
 	  		:description => 'In the East River zone, on the first floor.', 
-	  		:short_code => 'NUT', 
+	  		:short_code => 'nut', 
 	  		:capacity => 8,  
 	  		:facilities => 'Projector',
   		}, 
@@ -159,7 +159,7 @@ namespace :db do
   		{
 	  		:name => 'Springburn Park', 
 	  		:description => 'In the East Quarter, on the first floor.', 
-	  		:short_code => 'SPR', 
+	  		:short_code => 'spr', 
 	  		:capacity => 12,  
 	  		:facilities => 'Projector',
   		}, 
@@ -169,7 +169,7 @@ namespace :db do
   		{
 	  		:name => 'The Lab', 
 	  		:description => 'In the East Quarter, on the first floor.', 
-	  		:short_code => 'LAB', 
+	  		:short_code => 'lab', 
 	  		:capacity => 20,  
 	  		:facilities => '72" Smart Plasma TV, XBOX 360, Apple TV, Visualiser',
   		}, 
@@ -179,7 +179,7 @@ namespace :db do
   		{
 	  		:name => 'Wimbledon Common', 
 	  		:description => 'In the East Quarter, on the first floor.  Watch out for Wombles.',  
-	  		:short_code => 'WIM', 
+	  		:short_code => 'wim', 
 	  		:capacity => 8,    
 	  		:facilities => 'Projector',
   		}, 
@@ -189,7 +189,7 @@ namespace :db do
   		{
 	  		:name => 'Parc Guinardo', 
 	  		:description => 'In the East Quarter, on the first floor.',  
-	  		:short_code => 'GUI', 
+	  		:short_code => 'gui', 
 	  		:capacity => 14,    
 	  		:facilities => 'Projector',
   		}, 
@@ -199,7 +199,7 @@ namespace :db do
   		{
 	  		:name => 'St Stephens Green', 
 	  		:description => 'In the East End zone, on the first floor.', 
-	  		:short_code => 'STE', 
+	  		:short_code => 'ste', 
 	  		:capacity => 8,  
 	  		:facilities => 'Projector',
   		}, 
@@ -209,7 +209,7 @@ namespace :db do
   		{
 	  		:name => 'Kelston Park', 
 	  		:description => 'In the East Quarter, on the first floor.',  
-	  		:short_code => 'KEL', 
+	  		:short_code => 'kel', 
 	  		:capacity => 14,    
 	  		:facilities => 'Projector',
   		}, 
@@ -219,7 +219,7 @@ namespace :db do
   		{
 	  		:name => 'Abbey Park', 
 	  		:description => 'In the East Park zone, on the first floor.', 
-	  		:short_code => 'ABB', 
+	  		:short_code => 'abb', 
 	  		:capacity => 8,  
 	  		:facilities => 'Projector',
   		}, 
@@ -229,7 +229,7 @@ namespace :db do
   		{
 	  		:name => 'Upton Court Park', 
 	  		:description => 'In the East Beach zone, on the first floor.',  
-	  		:short_code => 'UPT', 
+	  		:short_code => 'upt', 
 	  		:capacity => 12,    
 	  		:facilities => 'Projector',
   		}, 
@@ -239,7 +239,7 @@ namespace :db do
   		{
 	  		:name => 'Petrin Gardens', 
 	  		:description => 'In the East Beach zone, on the first floor.',    
-	  		:short_code => 'PET', 
+	  		:short_code => 'pet', 
 	  		:capacity => 12,    
 	  		:facilities => 'Projector',
   		}, 
