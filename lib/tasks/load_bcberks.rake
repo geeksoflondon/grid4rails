@@ -361,12 +361,12 @@ namespace :db do
   	
   	## Sunday Morning, Part I
   	
-  	num_timeslots = 4
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes, 10.minutes)
+  	num_timeslots = 2
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 40.minutes, 10.minutes)
   	session_no = session_no+num_timeslots
   	
   	end_time = end_time + 10.minutes
-  	num_timeslots = 1
+  	num_timeslots = 3
     end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 20.minutes, 10.minutes)
     session_no = session_no+num_timeslots	
   	  		
@@ -383,14 +383,14 @@ namespace :db do
   	
   	## Sunday Afternoon
   	
-  	num_timeslots = 4
-  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 25.minutes, 5.minutes)
+  	num_timeslots = 3
+  	end_time = Timeslot.generate!(session_no, num_timeslots, end_time, 30.minutes, 10.minutes)
   	session_no = session_no+num_timeslots	
   	
   	
   	## Closing Talk
   	  	  
-  	start_time = end_time + 5.minutes
+  	start_time = end_time + 10.minutes
   	end_time = start_time + 15.minutes
   	timeslot_label = 'Closing Talk'
   	timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
