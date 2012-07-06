@@ -1,6 +1,12 @@
 class GridController < ApplicationController
-
-
+  
+  caches_action :show
+  caches_action :recent
+  
+  cache_sweeper :slot_sweeper
+  cache_sweeper :timeslot_sweeper
+  
+  
 	def index
 		if (params[:version] != 'xl')
 			redirect_to :controller => "grid", :action => "date", :version => params[:version]

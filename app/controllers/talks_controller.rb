@@ -1,8 +1,13 @@
 class TalksController < ApplicationController
 
+  caches_action :index
+  caches_action :show
+  
+  cache_sweeper :talk_sweeper
+  
 	skip_before_filter :verify_authenticity_token
-
-
+	
+    
 	# A view listing all talks
 	def index
 		@page_id = "talks"
@@ -72,8 +77,8 @@ class TalksController < ApplicationController
 	# Updates the details of the specified talk, in the DB
 	# and then redirects to the "show" view of that talk
 	def update
-		@talk = Talk.find(params[:id])
-
+		@talk = Talk.find(params[:id])		  
+		  
 		respond_to do |format|
 			if @talk.update_attributes(params[:talk])
 				format.html {
@@ -92,8 +97,8 @@ class TalksController < ApplicationController
 
 
 	def remove
-		talk = Talk.find(params[:id])
-
+		talk = Talk.find(params[:id]) 
+		  
 		# Reset the original slot (if there was one)
 		if (talk.slot)
 			slot = talk.slot
@@ -178,7 +183,7 @@ class TalksController < ApplicationController
 	def assign_slot
 		talk = Talk.find(session[:talk_id]) unless session[:talk_id].blank?
 		slot = Slot.find(params[:slot]) unless params[:slot].blank?
-
+		  
 		if (talk.nil?)
 			flash[:warning] = "Oops, something may have just gone wrong.  Please check that your talk's in the correct place."
 			if (params[:date].blank?)
@@ -207,8 +212,8 @@ class TalksController < ApplicationController
 		end
 
 		# Create associations between the talk and slot
-		slot.talk_id = talk.id
-
+		slot.talk_id = talk.id	
+		
 		# Bug means that notice won't show if defined in redirect_to statement
 		# http://www.ruby-forum.com/topic/830332
 		if slot.save
@@ -254,7 +259,7 @@ class TalksController < ApplicationController
 
 		# Swap the talks
 		slot_1.talk_id = talk_2.id
-		slot_2.talk_id = talk_1.id
+		slot_2.talk_id = talk_1.id	
 
 		# Bug means that notice won't show if defined in redirect_to statement
 		# http://www.ruby-forum.com/topic/830332
@@ -278,8 +283,8 @@ class TalksController < ApplicationController
 
 		# Reset the original slot
 		slot = Slot.find(talk.slot)
-		slot.talk_id = nil
-
+		slot.talk_id = nil    
+		
 		# Bug means that notice won't show if defined in redirect_to statement
 		# http://www.ruby-forum.com/topic/830332
 		if slot.save

@@ -1,4 +1,9 @@
 class RoomsController < ApplicationController
+  
+  caches_action :index
+  caches_action :show
+  
+  cache_sweeper :room_sweeper
 	
 	def index
 		@page_id = "rooms"
@@ -39,5 +44,5 @@ class RoomsController < ApplicationController
 			format.json  { render :json => @room }
 		end
 	end
-
+	
 end

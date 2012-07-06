@@ -10,17 +10,13 @@ class Slot < ActiveRecord::Base
   validates :timeslot_id, :presence => true
   validates :room_id, :presence => true
 
-  after_save :clear_cache
   after_save :notify
 
-  def start
-    timeslot.start
-  end
+  
+  ## Static Methods ##
 
-  def end
-    timeslot.end
-  end
-
+  
+  # Deletes all existing slot and generates new ones
   def self.generate!
     Slot.delete_all
 
@@ -33,7 +29,8 @@ class Slot < ActiveRecord::Base
 
   end
 
-  # Empty (but not necessarily available)
+  
+  # Empty (but not necessarily available) 
   def self.find_empty
     @slots = Array.new()
     Slot.all.each do | slot |
@@ -43,6 +40,7 @@ class Slot < ActiveRecord::Base
     end
     return @slots
   end
+  
   
   # Empty and in the future (but not necessarily available)
   def self.find_empty_upcoming
@@ -58,12 +56,14 @@ class Slot < ActiveRecord::Base
     
   end
   
+  
   # Empty and unlocked (but not necessarily in the future)
   def self.find_all_available
     self.find_available(Slot.all)
   end
   
-  # Empty and unlocked from set of slots provided (but not necessarily in the future)
+  
+  # Empty and unlocked (but not necessarily in the future)
   def self.find_available(slots_to_check)      
     
     @slots = Array.new()
@@ -76,10 +76,12 @@ class Slot < ActiveRecord::Base
     return @slots
   end
 
+  
   # Available and in the future
   def self.find_all_available_upcoming
     Slot.find_available_upcoming(Slot.all)    
   end
+  
   
   # Available and in the future
   def self.find_available_upcoming(slots_to_check)      
@@ -95,10 +97,47 @@ class Slot < ActiveRecord::Base
     
   end
   
+  
+  # All slots that aren't empty
   def self.find_occupied
     Slot.select {|slot| !slot.is_empty?}
   end
+  
 
+  # Returns all slots belonging to the timeslot specified
+  def self.by_timeslot(timeslot)
+    Slot.joins(:timeslot).where('timeslots.id = ?', timeslot)
+  end
+
+  
+  # All slots happening now
+  def self.on_now
+    Timeslot.on_now.slots
+  end
+
+  
+  # All slots due to happen next
+  def self.on_next
+    Timeslot.on_next.slots
+  end  
+  
+        
+  ## Instance Methods ##
+  
+  
+  # Returns the start time of this slot
+  def start
+    timeslot.start
+  end
+
+  
+  # Returns the end time of this slot
+  def end
+    timeslot.end
+  end
+
+
+  # Returns true if this slot doesn't have a talk assigned to it, false if it does
   def is_empty?
     if (self.talk.nil?)
       return true
@@ -107,26 +146,12 @@ class Slot < ActiveRecord::Base
     end
   end
 
-  def self.by_timeslot(timeslot)
-    Slot.joins(:timeslot).where('timeslots.id = ?', timeslot)
-  end
+  
+  #######
+  
+  private  
 
-  def self.on_now
-    Timeslot.on_now.slots
-  end
-
-  def self.on_next
-    Timeslot.on_next.slots
-  end
-
-  private
-
-  def clear_cache
-    $redis.keys("views/slot_#{self.id}*").each do |key|
-      $redis.del(key)
-    end
-  end
-
+  # Sends the latest data on this slot to pubnub  
   def notify
     if (defined?(PUBNUB) && ENV["REALTIME"] == 'ON')
       PUBNUB.publish({

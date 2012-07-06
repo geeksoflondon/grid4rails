@@ -7,22 +7,24 @@ class Timeslot < ActiveRecord::Base
   validates :end, :uniqueness => {:scope => :start}
 
   default_scope order('start')
+  
+      
+  ## Static Methods ##
 
+  
+  # Returns all timeslots that started earlier than the current time
   def self.past
     Timeslot.where('start < ?', Time.now.utc).order("start DESC")
   end
 
+  # Returns all timeslost that start later than the current time
   def self.upcoming
     Timeslot.where('start >= ?', Time.now.utc).order("start DESC")
   end
 
+  # Returns all timeslots to which a talk can't be assigned
   def self.non_assignables
     Timeslot.where("assign_slots = ?", false)
-  end
-
-  # Returns the slot in this timeslot assigned to the room specified
-  def slot_by_room(room)
-    self.slots.where('room_id = ?', room.id).first unless room.nil?
   end
 
   # Returns the current timeslot (relative to the current date and time)
@@ -33,28 +35,6 @@ class Timeslot < ActiveRecord::Base
   # Returns the timeslot that will be next (relative to the current date and time)
   def self.on_next
     Timeslot.upcoming.first
-  end
-
-  def on_now?
-    (self.start <= Time.now && self.end >= Time.now)
-  end
-
-  def on_next?
-    self == Timeslot.on_next
-  end
-  
-  def is_upcoming?
-      self.start >= Time.now
-  end
-
-  # Returns the timeslot that immediately follows the current timeslot
-  def next
-    Timeslot.where('start > ?', self.start).find(:all, :order => 'start ASC').first
-  end
-
-  # Returns the timeslot that immediately precedes the current timeslot
-  def prev
-    Timeslot.where('start < ?', self.start).find(:all, :order => 'start ASC').last
   end
 
   # Returns all timeslots that begin today
@@ -129,56 +109,6 @@ class Timeslot < ActiveRecord::Base
     Timeslot.all.last.start.to_date
   end
   
-  def duration_in_minutes
-    ((self.end - self.start).seconds / 60).round
-  end
-
-  def contains_empty_slot?
-    @empty_slots = Slot.find_empty
-    slots.each do | slot |
-      if (@empty_slots.include?(slot))
-        return true
-      end
-    end
-    return false
-  end
-
-  def global_talk
-    Talk.find(self.global_talk_id) unless self.global_talk_id.nil?
-  end
-
-  def has_global_talk?
-    if (!self.global_talk_id.nil?)
-      return true
-    end
-    return false
-  end
-  
-  def slots_for_display(room = nil, empty = false)
-  		if (empty == false)
-	  		slots = Array.new
-	  		if (self.has_global_talk?)
-	  			self.slots.each do |slot|
-	  					if (slot.talk)
-	  							slots << slot
-	  					end
-	  			end
-	  		else
-	  			self.slots.each do |slot|
-	  					if (slot.room.include_in_grid? && (room.nil? || room == slot.room))
-	  							slots << slot
-	  					end
-	  			end  			
-	  		end
-  		else
-  			if (room.nil?)
-  				slots = timeslot.slots
-  			else
-  				slots = timeslot.slot_by_room(room)
-  			end
-  		end
-  		slots.sort_by{|slot| [slot.room.id, slot.id]}
-  end
   
   
 	def self.generate!(session_no = 1, num_timeslots = 2, start_time = nil, session_duration = 30.minutes, break_duration = 5.minutes)
@@ -209,5 +139,99 @@ class Timeslot < ActiveRecord::Base
 		return end_time
 		
 	end
+
+
+	## Instance Methods ##
+  
+  
+  # Returns the slot in this timeslot assigned to the room specified
+  def slot_by_room(room)
+    self.slots.where('room_id = ?', room.id).first unless room.nil?
+  end
+  
+  # Returns true if this timeslot has started but not yet ended
+  def on_now?
+    (self.start <= Time.now && self.end >= Time.now)
+  end
+  
+  # Returns true if this timeslot will be the next to start
+  def on_next?
+    self == Timeslot.on_next
+  end
+  
+  # Returns true if this timeslot is yet to start
+  def is_upcoming?
+      self.start >= Time.now
+  end
+  
+  # Returns the timeslot that immediately follows the current timeslot
+  def next
+    Timeslot.where('start > ?', self.start).find(:all, :order => 'start ASC').first
+  end
+  
+  # Returns the timeslot that immediately precedes the current timeslot
+  def prev
+    Timeslot.where('start < ?', self.start).find(:all, :order => 'start ASC').last
+  end
+
+  # Returns the duration of this timeslot in minutes
+  def duration_in_minutes
+    ((self.end - self.start).seconds / 60).round
+  end
+  
+  # Returns true if this timeslot contains an empty slot, false if it doesn't
+  def contains_empty_slot?
+    @empty_slots = Slot.find_empty
+    slots.each do | slot |
+      if (@empty_slots.include?(slot))
+        return true
+      end
+    end
+    return false
+  end
+  
+  # Returns the global talk assigned to this timeslot, if there is one
+  def global_talk
+    Talk.find(self.global_talk_id) unless self.global_talk_id.nil?
+  end
+  
+  # Returns true if this timeslot has a global talk assigned to it, false if it doesn't
+  def has_global_talk?
+    if (!self.global_talk_id.nil?)
+      return true
+    end
+    return false
+  end
+  
+  def slots_for_display(room = nil, empty = false)
+      if (empty == false)
+        slots = Array.new
+        if (self.has_global_talk?)
+          self.slots.each do |slot|
+              if (slot.talk)
+                  slots << slot
+              end
+          end
+        else
+          self.slots.each do |slot|
+              if (slot.room.include_in_grid? && (room.nil? || room == slot.room))
+                  slots << slot
+              end
+          end       
+        end
+      else
+        if (room.nil?)
+          slots = timeslot.slots
+        else
+          slots = timeslot.slot_by_room(room)
+        end
+      end
+      slots.sort_by{|slot| [slot.room.id, slot.id]}
+  end
+
+			
+  #######
+  
+  private  
 
 end

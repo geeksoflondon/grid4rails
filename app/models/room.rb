@@ -23,14 +23,10 @@ class Room < ActiveRecord::Base
 	:presence => true,
 	:numericality => { :only_integer => true, :greater_than_or_equal_to => 1 }
 
-	def slots
-		Slot.find_all_by_room_id(id)
-	end
 
-	def slots_mixed_with_nonassignables
-		(slots + Timeslot.non_assignables).sort_by(:start)
-	end
+	## Static Methods ##
 
+	  	
 	def self.by_short_code(short_code)
 		Room.where("short_code = ?", short_code).first
 	end
@@ -43,5 +39,21 @@ class Room < ActiveRecord::Base
 		end
 		return false
 	end
+	
+	
+  ## Instance Methods ##  
+         
+   def slots
+     Slot.find_all_by_room_id(id)
+   end
+ 
+   def slots_mixed_with_nonassignables
+     (slots + Timeslot.non_assignables).sort_by(:start)
+   end
+   
+	
+	#######
+	
+  private  
 	
 end
