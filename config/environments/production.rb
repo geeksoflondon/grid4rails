@@ -47,7 +47,7 @@ Griddy::Application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   if ENV["DISABLE_CLOUDFRONT"] != "true"
     puts("Enabling cloudfront")
-  #  config.action_controller.asset_host = "http://d3m5f8nndd1dly.cloudfront.net"
+    config.action_controller.asset_host = "http://d3m5f8nndd1dly.cloudfront.net"
   else
     puts("Cloudfront disabled")
   end	
