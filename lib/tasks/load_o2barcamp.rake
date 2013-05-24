@@ -120,7 +120,7 @@ namespace :db do
     
     ##Opening Talk
     
-    start_time = Time.utc(2013, "jun", 16,9,30,00)
+    start_time = Time.utc(2013, "jun", 17,8,30,00)
     end_time = start_time + 30.minutes
     timeslot_label = 'Opening Talk'
     timeslot = Timeslot.create({:name => timeslot_label, :start => start_time, :end => end_time}, :without_protection => true)
