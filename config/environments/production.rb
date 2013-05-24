@@ -56,7 +56,7 @@ Griddy::Application.configure do
   # config.assets.precompile += %w( search.js )
   config.assets.precompile += ['button.css', 'global.css', 'print.css', 'scaffold.css']
   config.assets.precompile += ['screen/extra_large.css', 'screen/large.css', 'screen/medium.css', 'screen/shared.css', 'screen/small.css']
-  config.assets.precompile += ['themes/bcb/global.css', 'themes/bcb/screen/extra_large.css', 'themes/bcb/screen/large.css', 'themes/bcb/screen/medium.css', 'themes/bcb/screen/shared.css', 'themes/bcb/screen/small.css']
+  config.assets.precompile += ['themes/o2/global.css', 'themes/o2/screen/extra_large.css', 'themes/o2/screen/large.css', 'themes/o2/screen/medium.css', 'themes/o2/screen/shared.css', 'themes/o2/screen/small.css']
   config.assets.precompile += ['themes/default/global.css', 'themes/default/screen/large.css', 'themes/default/screen/medium.css', 'themes/default/screen/shared.css', 'themes/default/screen/small.css']
   config.assets.precompile += ['babble.js', 'jquery.min.js', 'pubnub.js', 'xl.js']
 	
