@@ -3,7 +3,6 @@ development:
   encoding: unicode
   database: griddy_development
   pool: 5
-  username: gol
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
