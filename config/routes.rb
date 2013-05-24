@@ -25,7 +25,7 @@ Griddy::Application.routes.draw do
       resources :talks
 
     match "rooms/:room", :to => "rooms#show"
-      resources :rooms, :only => [:index, :show]
+    resources :rooms, :only => [:index, :show]
 
     match 'grid/now', :to => "grid#now"
     match 'grid/next', :to => "grid#next"

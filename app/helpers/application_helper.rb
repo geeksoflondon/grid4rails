@@ -1,20 +1,11 @@
 module ApplicationHelper
 	
 	def event
-		"bcb"		
+		"o2"		
 	end
 	
 	def theme		
-		event_code = event()
-		case event_code
-    when "bcb"
-      return "bcb"
-		when "bcl9"
-			return "bcl9"
-		when "mediacity"
-			return "mediacity"
-		end
-		return "default"
+    "o2"
 	end
 
 	def current_url(new_params)

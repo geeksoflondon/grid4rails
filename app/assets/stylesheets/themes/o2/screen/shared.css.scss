@@ -1,0 +1,115 @@
+/* Basic link rules
+-----------------------------*/
+a,
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+    color: #000000;
+}
+
+
+/* FEATURE: Informational messages
+-----------------------------*/
+
+.message {          
+    background-color: #99cc99; /* ws */   
+    color: #333333; /* ws */    
+}
+
+.instructions {   
+  background-color: #99cc99; /* ws */   
+  color: #000000;  
+}
+
+.warning {
+	color: #663333; /* ws */
+  	background-color: #Ffcccc; /* WS */
+}
+
+#error_explanation li {
+  color: #990000; /* WS */
+}
+
+.message,
+.message p {
+    color: #333333; /* WS */
+}
+
+.message .actions {
+	background-color: #ffffff;	
+}
+
+.counter_warning {
+  color: #990000;
+}
+
+
+/* FEATURE: Versions Flash
+-----------------------------*/
+
+.versions-flash a:link,
+.versions-flash a:visited,
+.versions-flash a:hover,
+.versions-flash a:focus,
+.versions-flash a:active {
+	color: #333333; /* ws */
+}
+
+.versions-flash a:link .title,
+.versions-flash a:visited .title {
+	border-bottom-color: #99cc99; /* ws */
+}
+
+.versions-flash .selected a:link .title,
+.versions-flash .selected a:visited .title {
+	border-bottom-color: #333333; /* ws */
+}
+
+.versions-flash a:hover .title,
+.versions-flash a:focus .title,
+.versions-flash a:active .title,
+.versions-flash .selected a:hover .title,
+.versions-flash .selected a:focus .title,
+.versions-flash .selected a:active .title {
+	border-bottom-color: #ffffff;
+}
+
+
+/* VIEW: the grid
+-----------------------------*/
+
+.talk .options a:link,
+.talk .options a:visited,
+.talk .options a:hover,
+.talk .options a:focus,
+.talk .options a:active {
+    background-color: #cccccc; /* ws */ 
+    color: #663333; /* ws */
+}
+
+.where-when,
+.where-when a,
+.where-when a:link,
+.where-when a:visited,
+.where-when a:hover,
+.where-when a:focus,
+.where-when a:active,
+table.single-timeslot .empty .slot .where-when,
+table.single-timeslot .empty .slot .where-when a:link,
+table.single-timeslot .empty .slot .where-when a:visited,
+table.single-timeslot .empty .slot .where-when a:hover,
+table.single-timeslot .empty .slot .where-when a:focus,
+table.single-timeslot .empty .slot .where-when a:active {
+    color: #990000; /* ws */
+}
+
+table.single-timeslot .empty .slot .heading {
+    color: #333333; /* ws */
+}
+
+
+#room .grid .slot .heading {
+    color: #666666; /* ws */
+}

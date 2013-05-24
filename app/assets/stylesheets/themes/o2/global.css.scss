@@ -1,0 +1,22 @@
+/*
+ * Rules that apply to all media
+ */
+
+
+/* Reset rules
+-----------------------------*/
+
+body {
+    color: #000000; /* #000000 */
+    background-color: #ffffff; /* #ffffff */
+}
+
+#room .grid .slot .talk .title,
+.heading {
+    color: #336699; /* Blue */
+}
+
+#room .grid .slot .talk .speaker,
+.speaker {
+    color: #3399cc; /* Green */
+}
