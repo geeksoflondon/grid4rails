@@ -46,7 +46,7 @@ Griddy::Application.routes.draw do
   	match 'grid', :to => "grid#index"
   end
 
-  root :to => "grid#now"
+  root :to => "grid#index"
   
   match "*path", :to => "application#custom_404"
 
